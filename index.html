@@ -2000,7 +2000,8 @@ async function analyzeYoutubeVideo() {
       body: JSON.stringify({
         url: url,
         startTime: globalStartTimeStr,
-        laps: rawWatchLaps
+        laps: rawWatchLaps,
+        timeline: timelineRows
       })
     });
 
@@ -2038,13 +2039,16 @@ function renderYoutubeAnalysis(data) {
   const badgesEl = document.getElementById('ytAnalysisBadges');
   badgesEl.innerHTML = '';
 
+  const pointName = analysis.pointLabel || (analysis.detectedDistanceKm ? `${analysis.detectedDistanceKm}km` : '해당 지점');
   if (analysis.detectedDistanceKm) {
-    badgesEl.innerHTML += `<span class="analysis-pill neon">📍 촬영 지점: ${analysis.detectedDistanceKm}km</span>`;
+    badgesEl.innerHTML += `<span class="analysis-pill neon">📍 촬영 지점: ${pointName}</span>`;
   }
   if (analysis.videoStartTimeStr) {
     badgesEl.innerHTML += `<span class="analysis-pill orange">⏱️ 촬영 시작: ${analysis.videoStartTimeStr}</span>`;
   }
-  badgesEl.innerHTML += `<span class="analysis-pill">🏃 내 ${analysis.detectedDistanceKm}km 통과: ${analysis.runnerPassClockStr}</span>`;
+  if (analysis.runnerPassClockStr) {
+    badgesEl.innerHTML += `<span class="analysis-pill">🏃 내 ${pointName} 통과: ${analysis.runnerPassClockStr}</span>`;
+  }
 
   // 3. 설명 분석 포인트
   const explListEl = document.getElementById('ytExplanationList');

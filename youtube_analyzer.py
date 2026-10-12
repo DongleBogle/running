@@ -108,12 +108,23 @@ def fetch_youtube_metadata(url):
     }
 
 def time_str_to_seconds(time_str):
-    """HH:MM:SS 또는 HH:MM 문자열을 초로 변환"""
-    parts = [int(p) for p in time_str.strip().split(':')]
+    """HH:MM:SS 또는 HH:MM 실제 시각(Time of Day) 문자열을 초로 변환"""
+    parts = [int(p) for p in str(time_str).strip().split(':')]
     if len(parts) == 3:
         return parts[0] * 3600 + parts[1] * 60 + parts[2]
     elif len(parts) == 2:
         return parts[0] * 3600 + parts[1] * 60
+    return 0
+
+def video_timestamp_to_seconds(ts_str):
+    """영상 재생 시간 타임스탬프 (H:MM:SS 또는 MM:SS) -> 초"""
+    if not ts_str:
+        return 0
+    parts = [int(p) for p in str(ts_str).strip().split(':')]
+    if len(parts) == 3:
+        return parts[0] * 3600 + parts[1] * 60 + parts[2]
+    elif len(parts) == 2:
+        return parts[0] * 60 + parts[1]
     return 0
 
 def seconds_to_time_str(seconds):
@@ -136,7 +147,7 @@ def _clock(h, m, s=0):
 def parse_chapters(description):
     """
     설명란 챕터에서 (영상 시작초, 실제 시각 시작초, 실제 시각 종료초) 추출
-    예: '03:40 촬영시간대 08시 40분~08시 45분'
+    예: '03:40 촬영시간대 08시 40분~08시 45분' 또는 '00:00 골인 시간대 08시 05분~08시 10분'
     """
     pat = re.compile(
         r'^\s*((?:\d+:)?\d{1,2}:\d{2})\s+.*?(\d{1,2})\s*시\s*(\d{1,2})\s*분\s*[~\-–]\s*(\d{1,2})\s*시\s*(\d{1,2})\s*분',
@@ -144,7 +155,7 @@ def parse_chapters(description):
     chapters = []
     for m in pat.finditer(description or ''):
         chapters.append({
-            "videoStart": time_str_to_seconds(m.group(1)),
+            "videoStart": video_timestamp_to_seconds(m.group(1)),
             "clockStart": _clock(m.group(2), m.group(3)),
             "clockEnd": _clock(m.group(4), m.group(5)),
         })
@@ -205,12 +216,10 @@ def runner_time_to_distance(runner_laps, dist_km):
     return secs
 
 
-def analyze_video_description(video_meta, url, runner_laps=None, runner_start_time="08:00:00"):
+def analyze_video_description(video_meta, url, runner_laps=None, runner_start_time="08:00:00", timeline=None):
     """
     영상 1개를 분석해 '내가 등장할 것으로 예상되는 구간' 추출.
-    방식 A) 설명란에 '촬영시간대' 챕터가 있으면 -> 실제 시각으로 챕터 매핑
-    방식 B) 촬영 시작 시각 + 촬영 지점(km) -> 영상 내 시각 계산
-    통과(골인) 시각은 러너 출발 시각 + 랩 기록으로 계산한다.
+    Step 2의 통합 타임라인(timeline)이 있으면 그 결과를 우선 사용하고, 없으면 runner_laps/runner_start_time으로 계산한다.
     """
     title = video_meta.get('title', '')
     desc = video_meta.get('description', '')
@@ -222,21 +231,46 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
     detected_distance = detect_distance(title, desc)
     total_km = sum(float(l.get('distance', 0)) for l in (runner_laps or [])) or FULL_DISTANCE_KM
 
-    if detected_distance is None and is_finish:
-        detected_distance = round(total_km, 2)
-
     notes = []
     mode = None
     video_start_secs = None
     calculated = None      # 영상 내 예상 시점(초)
     window = None          # (시작초, 종료초)
     pass_clock = None
+    pass_clock_str = None
+    point_label = None
 
-    if detected_distance is not None:
-        pass_secs = runner_time_to_distance(runner_laps, detected_distance)
-        pass_clock = runner_start_secs + pass_secs
-        notes.append(f"📍 촬영 지점: **{detected_distance:g}km**" + (" (골인 부근)" if is_finish else ""))
-        notes.append(f"🏃 {detected_distance:g}km 통과 예상 시각: **{seconds_to_time_str(pass_clock)}** (출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
+    # 1. Step 2 타임라인 표(timeline) 결과 우선 사용
+    if timeline and len(timeline) > 0:
+        if is_finish:
+            target_row = timeline[-1]
+            detected_distance = float(target_row.get("distance", total_km))
+            pass_clock = int(target_row.get("clockSec", 0)) or (runner_start_secs + int(target_row.get("elapsedSec", 0)))
+            pass_clock_str = target_row.get("clockStr") or seconds_to_time_str(pass_clock)
+            pass_secs = float(target_row.get("elapsedSec", max(0, pass_clock - runner_start_secs)))
+            point_label = target_row.get("label", "완주 (Finish)")
+            notes.append(f"📍 촬영 지점: **{point_label} ({detected_distance:g}km)**")
+            notes.append(f"🏃 {point_label} 통과 시각: **{pass_clock_str}** (Step 2 정밀 타임라인 표 기준, 소요 시간 {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
+        elif detected_distance is not None:
+            target_row = min(timeline, key=lambda r: abs(float(r.get("distance", 0)) - detected_distance))
+            pass_clock = int(target_row.get("clockSec", 0)) or (runner_start_secs + int(target_row.get("elapsedSec", 0)))
+            pass_clock_str = target_row.get("clockStr") or seconds_to_time_str(pass_clock)
+            pass_secs = float(target_row.get("elapsedSec", max(0, pass_clock - runner_start_secs)))
+            point_label = target_row.get("label", f"{detected_distance:g}km 지점")
+            notes.append(f"📍 촬영 지점: **{point_label}**")
+            notes.append(f"🏃 {point_label} 통과 예상 시각: **{pass_clock_str}** (Step 2 정밀 타임라인 표 기준, 출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
+
+    # 2. 타임라인이 없거나 매칭되지 않은 경우 fallback
+    if pass_clock is None:
+        if detected_distance is None and is_finish:
+            detected_distance = round(total_km, 2)
+
+        if detected_distance is not None:
+            pass_secs = runner_time_to_distance(runner_laps, detected_distance)
+            pass_clock = runner_start_secs + pass_secs
+            pass_clock_str = seconds_to_time_str(pass_clock)
+            notes.append(f"📍 촬영 지점: **{detected_distance:g}km**" + (" (골인 부근)" if is_finish else ""))
+            notes.append(f"🏃 {detected_distance:g}km 통과 예상 시각: **{pass_clock_str}** (출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
 
     if chapters and detected_distance is not None:
         mode = "chapters"
@@ -299,9 +333,10 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
         "mode": mode,
         "source": source,
         "detectedDistanceKm": detected_distance,
+        "pointLabel": point_label,
         "videoStartTimeStr": seconds_to_time_str(video_start_secs) if video_start_secs is not None else None,
         "videoStartSeconds": video_start_secs,
-        "runnerPassClockStr": seconds_to_time_str(pass_clock) if pass_clock is not None else None,
+        "runnerPassClockStr": pass_clock_str or (seconds_to_time_str(pass_clock) if pass_clock is not None else None),
         "calculatedVideoSeconds": calculated if source == "calculated" else None,
         "urlTimestamp": None,
         "primaryTimestamp": calculated,

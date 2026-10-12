@@ -124,10 +124,16 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
 
             runner_start_time = req_data.get('startTime', '08:00:00')
             runner_laps = req_data.get('laps', [])
+            timeline = req_data.get('timeline', [])
 
             try:
                 meta = fetch_youtube_metadata(url)
-                analysis = analyze_video_description(meta, url, runner_laps=runner_laps, runner_start_time=runner_start_time)
+                analysis = analyze_video_description(
+                    meta, url,
+                    runner_laps=runner_laps,
+                    runner_start_time=runner_start_time,
+                    timeline=timeline
+                )
                 self.send_json_response({
                     "success": True,
                     "video": meta,
