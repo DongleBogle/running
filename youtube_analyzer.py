@@ -216,6 +216,84 @@ def runner_time_to_distance(runner_laps, dist_km):
     return secs
 
 
+def interpolate_timeline_point(timeline, target_dist, runner_start_secs):
+    """
+    Step 2 타임라인 표에서 target_dist(예: 17.5km)에 해당하는 시점을 선형 보간하여 반환
+    """
+    if not timeline:
+        return None
+    sorted_tl = sorted(timeline, key=lambda r: float(r.get("distance", 0)))
+
+    # 1. 오차 0.05km 이내로 일치하는 행이 있으면 그대로 사용
+    exact = next((r for r in sorted_tl if abs(float(r.get("distance", 0)) - target_dist) < 0.05), None)
+    if exact:
+        pass_clock = int(exact.get("clockSec", 0)) or (runner_start_secs + int(exact.get("elapsedSec", 0)))
+        pass_secs = float(exact.get("elapsedSec", max(0, pass_clock - runner_start_secs)))
+        return {
+            "distance": float(exact.get("distance", target_dist)),
+            "pass_clock": pass_clock,
+            "pass_clock_str": exact.get("clockStr") or seconds_to_time_str(pass_clock),
+            "pass_secs": pass_secs,
+            "label": exact.get("label", f"{target_dist:g}km 지점"),
+            "is_interpolated": False
+        }
+
+    # 2. 범위를 벗어난 경우 (시작 전 또는 완주 후)
+    if target_dist <= float(sorted_tl[0].get("distance", 0)):
+        first = sorted_tl[0]
+        pass_clock = int(first.get("clockSec", 0)) or (runner_start_secs + int(first.get("elapsedSec", 0)))
+        pass_secs = float(first.get("elapsedSec", 0))
+        return {
+            "distance": target_dist,
+            "pass_clock": pass_clock,
+            "pass_clock_str": seconds_to_time_str(pass_clock),
+            "pass_secs": pass_secs,
+            "label": f"{target_dist:g}km 지점",
+            "is_interpolated": False
+        }
+    if target_dist >= float(sorted_tl[-1].get("distance", 0)):
+        last = sorted_tl[-1]
+        pass_clock = int(last.get("clockSec", 0)) or (runner_start_secs + int(last.get("elapsedSec", 0)))
+        pass_secs = float(last.get("elapsedSec", 0))
+        return {
+            "distance": target_dist,
+            "pass_clock": pass_clock,
+            "pass_clock_str": last.get("clockStr") or seconds_to_time_str(pass_clock),
+            "pass_secs": pass_secs,
+            "label": f"{target_dist:g}km 지점",
+            "is_interpolated": False
+        }
+
+    # 3. 앞뒤 인접 행 사이 선형 보간
+    for i in range(len(sorted_tl) - 1):
+        d_lo = float(sorted_tl[i].get("distance", 0))
+        d_hi = float(sorted_tl[i + 1].get("distance", 0))
+        if d_lo <= target_dist <= d_hi:
+            frac = (target_dist - d_lo) / (d_hi - d_lo) if d_hi > d_lo else 0
+
+            c_lo = int(sorted_tl[i].get("clockSec", 0)) or (runner_start_secs + int(sorted_tl[i].get("elapsedSec", 0)))
+            c_hi = int(sorted_tl[i + 1].get("clockSec", 0)) or (runner_start_secs + int(sorted_tl[i + 1].get("elapsedSec", 0)))
+            pass_clock = int(round(c_lo + (c_hi - c_lo) * frac))
+
+            e_lo = float(sorted_tl[i].get("elapsedSec", 0))
+            e_hi = float(sorted_tl[i + 1].get("elapsedSec", 0))
+            pass_secs = e_lo + (e_hi - e_lo) * frac
+
+            lbl_lo = sorted_tl[i].get("label", f"{d_lo:g}km")
+            lbl_hi = sorted_tl[i + 1].get("label", f"{d_hi:g}km")
+
+            return {
+                "distance": target_dist,
+                "pass_clock": pass_clock,
+                "pass_clock_str": seconds_to_time_str(pass_clock),
+                "pass_secs": pass_secs,
+                "label": f"{target_dist:g}km 지점",
+                "is_interpolated": True,
+                "interp_range": f"{lbl_lo} ~ {lbl_hi}"
+            }
+    return None
+
+
 def analyze_video_description(video_meta, url, runner_laps=None, runner_start_time="08:00:00", timeline=None):
     """
     영상 1개를 분석해 '내가 등장할 것으로 예상되는 구간' 추출.
@@ -252,13 +330,15 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
             notes.append(f"📍 촬영 지점: **{point_label} ({detected_distance:g}km)**")
             notes.append(f"🏃 {point_label} 통과 시각: **{pass_clock_str}** (Step 2 정밀 타임라인 표 기준, 소요 시간 {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
         elif detected_distance is not None:
-            target_row = min(timeline, key=lambda r: abs(float(r.get("distance", 0)) - detected_distance))
-            pass_clock = int(target_row.get("clockSec", 0)) or (runner_start_secs + int(target_row.get("elapsedSec", 0)))
-            pass_clock_str = target_row.get("clockStr") or seconds_to_time_str(pass_clock)
-            pass_secs = float(target_row.get("elapsedSec", max(0, pass_clock - runner_start_secs)))
-            point_label = target_row.get("label", f"{detected_distance:g}km 지점")
-            notes.append(f"📍 촬영 지점: **{point_label}**")
-            notes.append(f"🏃 {point_label} 통과 예상 시각: **{pass_clock_str}** (Step 2 정밀 타임라인 표 기준, 출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
+            matched = interpolate_timeline_point(timeline, detected_distance, runner_start_secs)
+            if matched:
+                pass_clock = matched["pass_clock"]
+                pass_clock_str = matched["pass_clock_str"]
+                pass_secs = matched["pass_secs"]
+                point_label = matched["label"]
+                interp_info = f" ({matched['interp_range']} 사이 보간)" if matched.get("is_interpolated") else ""
+                notes.append(f"📍 촬영 지점: **{point_label}**{interp_info}")
+                notes.append(f"🏃 {point_label} 통과 예상 시각: **{pass_clock_str}** (Step 2 정밀 타임라인 표 기준, 출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
 
     # 2. 타임라인이 없거나 매칭되지 않은 경우 fallback
     if pass_clock is None:
