@@ -93,6 +93,7 @@ def parse_running(items, size):
             time_str, clock = laps[0], ''
             pace = laps[-1] if len(laps) >= 2 else ''
             point, typ = f"Lap {lap_no}", "lap"
+            lap_dist = dist.group(0)
         else:
             continue
 
@@ -102,8 +103,12 @@ def parse_running(items, size):
         y1 = max(i["y1"] for i in row)
         box = {"top": round(y0 / h * 100, 2), "left": round(x0 / w * 100, 2),
                "width": round((x1 - x0) / w * 100, 2), "height": round((y1 - y0) / h * 100, 2)}
-        parsed.append({"point": point, "time": time_str, "clock": clock, "pace": pace,
-                       "type": typ, "box": box})
+        item = {"point": point, "time": time_str, "clock": clock, "pace": pace,
+                "type": typ, "box": box}
+        if typ == "lap":
+            item["lapNo"] = lap_no
+            item["dist"] = lap_dist
+        parsed.append(item)
     avg = (sum(i["score"] for i in items) / len(items) * 100) if items else 0
     return {"items": parsed, "rawText": '\n'.join(raw_lines),
             "confidence": f"{avg:.1f}", "boxCount": len(items)}

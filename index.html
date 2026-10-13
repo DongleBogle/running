@@ -1222,6 +1222,20 @@
             <!-- 동적 배지 -->
           </div>
 
+          <!-- 자동 파싱 값 수정 -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; background: #090e1a; border: 1px solid #334155; border-radius: 10px; padding: 10px 12px;">
+            <div>
+              <label for="ytEditDistance" style="display:block; font-size: 0.72rem; color: #94a3b8; margin-bottom: 3px;">📍 촬영 지점 (km)</label>
+              <input type="number" step="0.01" min="0" id="ytEditDistance" placeholder="예: 20.9" style="width: 110px; padding: 6px 8px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0;">
+            </div>
+            <div>
+              <label for="ytEditStart" style="display:block; font-size: 0.72rem; color: #94a3b8; margin-bottom: 3px;">⏱️ 촬영 시작 시각 (HH:MM:SS)</label>
+              <input type="text" id="ytEditStart" placeholder="예: 08:05:00" style="width: 130px; padding: 6px 8px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0;">
+            </div>
+            <button type="button" onclick="recalcYoutubeAnalysis()" style="padding: 7px 14px; border-radius: 6px; border: none; background: #38bdf8; color: #0a0e17; font-weight: 700; cursor: pointer;">수정값으로 다시 계산</button>
+            <span style="font-size: 0.72rem; color: #64748b;">자동 파싱된 값이 채워져 있으며, 틀리면 고쳐서 다시 계산하세요.</span>
+          </div>
+
           <div>
             <div style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase;">
               💡 영상 설명 분석 및 통과 계산 내역
@@ -1434,8 +1448,8 @@ function buildUnifiedTimeline() {
     return {
       lapNum: lap.lap,
       dist: lap.distance,
-      startDist: i * 1.0,
-      endDist: i * 1.0 + lap.distance,
+      startDist: (lap.lap - 1) * 1.0,
+      endDist: (lap.lap - 1) * 1.0 + lap.distance,
       sec: lap.seconds,
       pace: lap.pace,
       cumStartSec: start,
@@ -1511,12 +1525,14 @@ function buildUnifiedTimeline() {
         if (wSpan > 0) fraction = (watchAt(dist) - wLow) / wSpan;
       }
       elapsedSec = lowerCp.timeSec + ((upperCp.timeSec - lowerCp.timeSec) * fraction);
-      clockStr = secondsToClockString(startSec + elapsedSec);
+      // Time of Day는 앞쪽 공식 계측 시각 + 경과 차이로 계산 (출발 시각 반올림 오차 방지)
+      const lowerClockSec = lowerCp.clockStr ? parseTimeToSeconds(lowerCp.clockStr) : startSec + lowerCp.timeSec;
+      clockStr = secondsToClockString(lowerClockSec + (elapsedSec - lowerCp.timeSec));
       label = `${dist.toFixed(0)} km 지점`;
 
       // 인근 랩 페이스 찾기
-      const lapIndex = Math.min(Math.floor(dist) - 1, rawWatchLaps.length - 1);
-      paceStr = rawWatchLaps[Math.max(0, lapIndex)].pace;
+      const lapRef = rawWatchLaps.find(l => l.lap === Math.ceil(dist)) || rawWatchLaps[rawWatchLaps.length - 1];
+      paceStr = lapRef ? lapRef.pace : '-';
     }
 
     const segDist = dist - prevDist;
@@ -1528,7 +1544,7 @@ function buildUnifiedTimeline() {
       segSec: segSec,
       elapsedSec: elapsedSec,
       clockStr: clockStr,
-      clockSec: startSec + elapsedSec,
+      clockSec: parseTimeToSeconds(clockStr),
       paceStr: paceStr,
       label: label,
       isVerified: isVerified
@@ -1977,7 +1993,18 @@ function setYtExampleUrl(url) {
   analyzeYoutubeVideo();
 }
 
-async function analyzeYoutubeVideo() {
+function recalcYoutubeAnalysis() {
+  const dist = document.getElementById('ytEditDistance').value.trim();
+  const start = document.getElementById('ytEditStart').value.trim();
+  if (start && !/^\d{1,2}:\d{2}(:\d{2})?$/.test(start)) {
+    alert('촬영 시작 시각은 HH:MM 또는 HH:MM:SS 형식으로 입력해주세요.');
+    return;
+  }
+  analyzeYoutubeVideo({ distance: dist, start: start, reuseVideo: true });
+}
+
+async function analyzeYoutubeVideo(opts) {
+  opts = opts || {};
   const urlInput = document.getElementById('ytUrlInput');
   const url = urlInput.value.trim();
   if (!url) {
@@ -2001,7 +2028,10 @@ async function analyzeYoutubeVideo() {
         url: url,
         startTime: globalStartTimeStr,
         laps: rawWatchLaps,
-        timeline: timelineRows
+        timeline: timelineRows,
+        video: opts.reuseVideo && currentYtData ? currentYtData.video : undefined,
+        overrideDistanceKm: opts.distance || undefined,
+        overrideStartClock: opts.start || undefined
       })
     });
 
@@ -2049,6 +2079,10 @@ function renderYoutubeAnalysis(data) {
   if (analysis.runnerPassClockStr) {
     badgesEl.innerHTML += `<span class="analysis-pill">🏃 내 ${pointName} 통과: ${analysis.runnerPassClockStr}</span>`;
   }
+
+  // 수정 입력칸에 현재(자동 파싱 또는 사용자 지정) 값 채우기
+  document.getElementById('ytEditDistance').value = analysis.detectedDistanceKm != null ? analysis.detectedDistanceKm : '';
+  document.getElementById('ytEditStart').value = analysis.videoStartTimeStr || '';
 
   // 3. 설명 분석 포인트
   const explListEl = document.getElementById('ytExplanationList');
@@ -2304,11 +2338,26 @@ function applyOcrResults(verified, laps) {
     last.name = `완주 (Finish ${last.distance}km)`;
   }
 
+  // 랩: OCR이 읽은 실제 랩 번호/거리를 사용한다 (사진에 누락된 랩이 있어도 번호가 밀리지 않도록)
   rawWatchLaps.length = 0;
+  const lapMap = new Map();
   laps.forEach((l, i) => {
+    const m = /(\d+)/.exec(l.point || '');
+    const lapNo = l.lapNo || (m ? parseInt(m[1], 10) : i + 1);
     const sec = parseElapsedToSec((l.time || '').split('.')[0]) + (parseFloat('0.' + ((l.time || '').split('.')[1] || '0')) || 0);
-    rawWatchLaps.push({ lap: i + 1, timeStr: l.time, seconds: sec, distance: 1.0, pace: l.pace || '-' });
+    const dist = parseFloat(l.dist) || 1.0;
+    lapMap.set(lapNo, { lap: lapNo, timeStr: l.time, seconds: sec, distance: dist, pace: l.pace || '-', estimated: false });
   });
+  const lapNos = [...lapMap.keys()].sort((a, b) => a - b);
+  for (let n = 1; n <= (lapNos[lapNos.length - 1] || 0); n++) {
+    if (lapMap.has(n)) { rawWatchLaps.push(lapMap.get(n)); continue; }
+    // 누락된 랩: 앞뒤 랩의 평균 시간으로 추정 (공식 계측 구간 내에서 다시 보정됨)
+    const prev = lapMap.get(n - 1) || rawWatchLaps[rawWatchLaps.length - 1];
+    let next = null;
+    for (let k = n + 1; k <= lapNos[lapNos.length - 1]; k++) { if (lapMap.has(k)) { next = lapMap.get(k); break; } }
+    const secs = prev && next ? (prev.seconds + next.seconds) / 2 : (prev || next || { seconds: 0 }).seconds;
+    rawWatchLaps.push({ lap: n, timeStr: '', seconds: secs, distance: 1.0, pace: secondsToPaceString(secs).replace("'", ':').replace('"', ''), estimated: true });
+  }
 
   buildUnifiedTimeline();
   onElapsedMinutesChange();

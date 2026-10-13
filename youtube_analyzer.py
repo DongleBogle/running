@@ -1,4 +1,6 @@
 import re
+import os
+import subprocess
 import json
 import ssl
 import urllib.request
@@ -44,6 +46,30 @@ def extract_url_timestamp(url):
     if m_s:
         return int(m_s.group(1))
     return None
+
+def fetch_pinned_comment(video_id, timeout=30):
+    """고정 댓글(없으면 '촬영시간' 안내가 있는 댓글) 텍스트를 yt-dlp로 조회. 실패 시 빈 문자열"""
+    yt_dlp_bin = '/opt/homebrew/bin/yt-dlp'
+    if not os.path.exists(yt_dlp_bin):
+        yt_dlp_bin = 'yt-dlp'
+    try:
+        out = subprocess.run(
+            [yt_dlp_bin, '--skip-download', '--write-comments',
+             '--extractor-args', 'youtube:max_comments=20,all,0,0;comment_sort=top',
+             '-O', '%(comments)j', f'https://www.youtube.com/watch?v={video_id}'],
+            capture_output=True, text=True, timeout=timeout).stdout
+        comments = json.loads(out.strip().splitlines()[-1]) or []
+    except Exception:
+        return ""
+    comments = [c for c in comments if c.get('parent') in (None, 'root')]
+    for c in comments:
+        if c.get('is_pinned'):
+            return c.get('text', '')
+    for c in comments:
+        if re.search(r'촬영\s*시간', c.get('text', '')):
+            return c.get('text', '')
+    return ""
+
 
 def fetch_youtube_metadata(url):
     """유튜브 HTML에서 비디오 정보(제목, 채널, 설명, 길이) 추출"""
@@ -97,12 +123,17 @@ def fetch_youtube_metadata(url):
         if m_desc:
             description = m_desc.group(1)
             
+    pinned_comment = fetch_pinned_comment(video_id)
+    if pinned_comment:
+        description = f"{description}\n{pinned_comment}"
+
     return {
         "videoId": video_id,
         "cleanUrl": clean_url,
         "title": title,
         "author": author,
         "description": description,
+        "pinnedComment": pinned_comment,
         "lengthSeconds": length_seconds,
         "thumbnailUrl": thumbnail_url
     }
@@ -135,7 +166,7 @@ def seconds_to_time_str(seconds):
     s = seconds % 60
     return f"{h:02d}:{m:02d}:{s:02d}"
 
-FINISH_KEYWORDS = r'골인|피니시|결승|마지막\s*꺾|finish'
+FINISH_KEYWORDS = r'골인|피니시|피니쉬|결승|마지막\s*꺾|finish'
 MAX_CLIP_SECONDS = 60  # 추천 구간 최대 길이
 FULL_DISTANCE_KM = 21.0975  # 하프 기준 (랩 정보가 없을 때)
 
@@ -174,6 +205,16 @@ def clock_to_video_seconds(chapters, clock_sec, video_length):
     return None
 
 
+def detect_finish_offset_m(title, desc):
+    """'피니쉬 200m 직전/전' 처럼 결승선까지 남은 거리(m)를 탐색. 없으면 None"""
+    pat = r'(?:골인|피니시|피니쉬|결승(?:선)?|finish)\s*(?:지점\s*)?(\d+)\s*m\s*(?:직전|전|앞|남|막판)'
+    for text in (title, desc):
+        m = re.search(pat, text or '', re.IGNORECASE)
+        if m:
+            return int(m.group(1))
+    return None
+
+
 def detect_distance(title, desc):
     """제목 우선으로 촬영 지점(km) 탐색. 없으면 None"""
     for text in (title, desc):
@@ -185,6 +226,9 @@ def detect_distance(title, desc):
 
 def detect_video_start_clock(title, desc):
     """영상 촬영 시작 시각(초). (초, 근거) 반환"""
+    m = re.search(r'촬영\s*시간\s*[:：]?\s*(\d{1,2})\s*시\s*(\d{1,2})\s*분', f"{title}\n{desc}")
+    if m:
+        return _clock(m.group(1), m.group(2)), "설명란/고정댓글 '촬영시간'"
     m = re.search(r'([0-1]?[0-9]|2[0-3]):([0-5][0-9])(?::([0-5][0-9]))?\s*(?:부터|촬영|start)', f"{title}\n{desc}")
     if m:
         return _clock(m.group(1), m.group(2), m.group(3) or 0), "설명란 '시각부터'"
@@ -294,10 +338,12 @@ def interpolate_timeline_point(timeline, target_dist, runner_start_secs):
     return None
 
 
-def analyze_video_description(video_meta, url, runner_laps=None, runner_start_time="08:00:00", timeline=None):
+def analyze_video_description(video_meta, url, runner_laps=None, runner_start_time="08:00:00", timeline=None,
+                              override_distance_km=None, override_start_clock=None):
     """
     영상 1개를 분석해 '내가 등장할 것으로 예상되는 구간' 추출.
     Step 2의 통합 타임라인(timeline)이 있으면 그 결과를 우선 사용하고, 없으면 runner_laps/runner_start_time으로 계산한다.
+    override_distance_km / override_start_clock(HH:MM[:SS] 문자열)이 주어지면 자동 파싱 값 대신 사람이 지정한 값을 사용한다.
     """
     title = video_meta.get('title', '')
     desc = video_meta.get('description', '')
@@ -307,9 +353,28 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
     chapters = parse_chapters(desc)
     is_finish = bool(re.search(FINISH_KEYWORDS, title, re.IGNORECASE))
     detected_distance = detect_distance(title, desc)
-    total_km = sum(float(l.get('distance', 0)) for l in (runner_laps or [])) or FULL_DISTANCE_KM
+    # 결승선 거리는 Step 2의 '✓ Time of Day (확실)' 완주 행(마지막 행)을 최우선 기준으로 사용
+    if timeline:
+        total_km = float(timeline[-1].get("distance", 0)) or FULL_DISTANCE_KM
+    else:
+        total_km = sum(float(l.get('distance', 0)) for l in (runner_laps or [])) or FULL_DISTANCE_KM
+
+    # 피니쉬 N m 전 촬영이면 제목의 '11K'(러너 종목/배번 등)가 아닌 결승선 기준 거리를 사용
+    finish_offset_m = detect_finish_offset_m(title, desc)
+    if finish_offset_m is not None:
+        detected_distance = round(total_km - finish_offset_m / 1000.0, 4)
+        is_finish = False
+
+    override_note = None
+    if override_distance_km not in (None, ''):
+        detected_distance = float(override_distance_km)
+        is_finish = False
+        finish_offset_m = None
+        override_note = f"✏️ 촬영 지점을 사용자가 **{detected_distance:g}km**로 지정했습니다."
 
     notes = []
+    if override_note:
+        notes.append(override_note)
     mode = None
     video_start_secs = None
     calculated = None      # 영상 내 예상 시점(초)
@@ -349,7 +414,7 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
             pass_secs = runner_time_to_distance(runner_laps, detected_distance)
             pass_clock = runner_start_secs + pass_secs
             pass_clock_str = seconds_to_time_str(pass_clock)
-            notes.append(f"📍 촬영 지점: **{detected_distance:g}km**" + (" (골인 부근)" if is_finish else ""))
+            notes.append(f"📍 촬영 지점: **{detected_distance:g}km**" + (" (골인 부근)" if is_finish else (f" (결승선 {finish_offset_m}m 전)" if finish_offset_m is not None else "")))
             notes.append(f"🏃 {detected_distance:g}km 통과 예상 시각: **{pass_clock_str}** (출발 {runner_start_time} + {int(pass_secs//60)}분 {int(pass_secs%60)}초)")
 
     if chapters and detected_distance is not None:
@@ -378,6 +443,8 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
             notes.append("⚠️ 예상 통과 시각이 챕터 촬영 범위 밖입니다.")
     elif detected_distance is not None:
         video_start_secs, basis = detect_video_start_clock(title, desc)
+        if override_start_clock not in (None, ''):
+            video_start_secs, basis = time_str_to_seconds(override_start_clock), "사용자 지정"
         if video_start_secs is None:
             notes.append("⚠️ 촬영 시작 시각을 찾지 못했습니다.")
         else:

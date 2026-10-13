@@ -127,12 +127,15 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
             timeline = req_data.get('timeline', [])
 
             try:
-                meta = fetch_youtube_metadata(url)
+                # 재계산 시에는 클라이언트가 보낸 영상 정보를 재사용 (유튜브 재조회 생략)
+                meta = req_data.get('video') or fetch_youtube_metadata(url)
                 analysis = analyze_video_description(
                     meta, url,
                     runner_laps=runner_laps,
                     runner_start_time=runner_start_time,
-                    timeline=timeline
+                    timeline=timeline,
+                    override_distance_km=req_data.get('overrideDistanceKm'),
+                    override_start_clock=req_data.get('overrideStartClock')
                 )
                 self.send_json_response({
                     "success": True,
