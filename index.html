@@ -2264,22 +2264,80 @@ function parseOcrTextToRunningData(rawText) {
   return items;
 }
 
-async function runBrowserOcr(imageUrl, onProgress) {
+let _ocrWorker = null;
+async function getOcrWorker() {
   if (typeof Tesseract === 'undefined') {
     throw new Error('Tesseract.js 라이브러리를 불러오지 못했습니다.');
   }
-  const worker = await Tesseract.createWorker(['eng', 'kor']);
-  try {
-    if (onProgress) {
-      // 진행률 모니터링
-    }
-    const ret = await worker.recognize(imageUrl);
-    await worker.terminate();
-    return ret.data.text;
-  } catch (e) {
-    await worker.terminate();
-    throw e;
+  if (!_ocrWorker) {
+    // 숫자/시간 위주 화면이므로 영어 모델만 사용 (kor 혼용 시 숫자 오인식 증가)
+    _ocrWorker = await Tesseract.createWorker('eng');
+    await _ocrWorker.setParameters({
+      tessedit_char_whitelist: '0123456789:.;,·kmKM ',
+      tessedit_pageseg_mode: '6',
+      preserve_interword_spaces: '1'
+    });
   }
+  return _ocrWorker;
+}
+
+// 이미지 전처리: 확대 + 그레이스케일 + 어두운 배경 반전 + 대비 보정
+async function preprocessForOcr(imageUrl) {
+  const img = await new Promise((resolve, reject) => {
+    const im = new Image();
+    im.onload = () => resolve(im);
+    im.onerror = () => reject(new Error('이미지를 불러오지 못했습니다.'));
+    im.src = imageUrl;
+  });
+  const scale = Math.min(3, Math.max(1, 2200 / Math.max(img.width, img.height)));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.width * scale);
+  c.height = Math.round(img.height * scale);
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, c.width, c.height);
+  const d = ctx.getImageData(0, 0, c.width, c.height);
+  const px = d.data;
+  let sum = 0;
+  const gray = new Uint8ClampedArray(px.length / 4);
+  for (let i = 0, j = 0; i < px.length; i += 4, j++) {
+    const g = 0.299 * px[i] + 0.587 * px[i + 1] + 0.114 * px[i + 2];
+    gray[j] = g; sum += g;
+  }
+  const invert = (sum / gray.length) < 128;
+  for (let i = 0, j = 0; i < px.length; i += 4, j++) {
+    let g = invert ? 255 - gray[j] : gray[j];
+    g = Math.max(0, Math.min(255, (g - 128) * 1.6 + 128));
+    px[i] = px[i + 1] = px[i + 2] = g;
+  }
+  ctx.putImageData(d, 0, 0);
+  return c.toDataURL('image/png');
+}
+
+// Tesseract 단어들을 y 중심 기준으로 행으로 묶어 텍스트화
+function wordsToLines(words) {
+  const ws = (words || []).filter(w => w.text && w.text.trim())
+    .map(w => ({ t: w.text.trim(), x0: w.bbox.x0, cy: (w.bbox.y0 + w.bbox.y1) / 2, h: w.bbox.y1 - w.bbox.y0 }))
+    .sort((a, b) => a.cy - b.cy);
+  const rows = [];
+  for (const w of ws) {
+    const row = rows[rows.length - 1];
+    if (row) {
+      const ref = row.reduce((s, r) => s + r.cy, 0) / row.length;
+      if (Math.abs(w.cy - ref) <= Math.max(w.h, row[0].h) * 0.6) { row.push(w); continue; }
+    }
+    rows.push([w]);
+  }
+  return rows.map(r => r.sort((a, b) => a.x0 - b.x0).map(w => w.t).join(' ')).join('\n');
+}
+
+async function runBrowserOcr(imageUrl, onProgress) {
+  const worker = await getOcrWorker();
+  const processed = await preprocessForOcr(imageUrl);
+  const ret = await worker.recognize(processed);
+  const text = (ret.data.words && ret.data.words.length) ? wordsToLines(ret.data.words) : ret.data.text;
+  console.debug('[OCR raw]\n' + text);
+  return text;
 }
 
 async function analyzeAndGoStep2() {
@@ -2301,6 +2359,7 @@ async function analyzeAndGoStep2() {
       // 1. 서버 OCR이 있으면 우선 시도 (로컬 개발 편의성)
       let serverOk = false;
       try {
+        if (!['localhost', '127.0.0.1'].includes(location.hostname)) throw new Error('no server ocr');
         const res = await fetch('/api/ocr', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
