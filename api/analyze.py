@@ -188,12 +188,22 @@ def detect_finish_offset_m(title, desc):
             return int(m.group(1))
     return None
 
-def detect_distance(title, desc):
+def detect_distance_candidates(title, desc):
+    """제목 우선으로 km 후보를 모두 수집. '[4K]' 같은 화질 표기는 거리로 보지 않는다."""
     for text in (title, desc):
-        m = re.search(r'(\d+(?:\.\d+)?)\s*(?:km|k)\b', text, re.IGNORECASE)
-        if m:
-            return float(m.group(1))
-    return None
+        cleaned = re.sub(r'[\[\(]\s*\d+\s*K\s*[\]\)]|\d+\s*K\s*(?:UHD|HDR|화질)|\b\d{3,4}p\b', ' ', text or '', flags=re.IGNORECASE)
+        found = []
+        for m in re.finditer(r'(\d+(?:\.\d+)?)\s*(?:km|k)\b', cleaned, re.IGNORECASE):
+            v = float(m.group(1))
+            if v not in found:
+                found.append(v)
+        if found:
+            return found
+    return []
+
+def detect_distance(title, desc):
+    c = detect_distance_candidates(title, desc)
+    return c[0] if c else None
 
 def detect_video_start_clock(title, desc):
     m = re.search(r'촬영\s*시간\s*[:：]?\s*(\d{1,2})\s*시\s*(\d{1,2})\s*분', f"{title}\n{desc}")
@@ -205,7 +215,8 @@ def detect_video_start_clock(title, desc):
     m = re.search(r'(\d{1,2})[:;]([0-5]\d)\s*[~\-–]\s*(\d{1,2})[:;]([0-5]\d)', title)
     if m:
         return _clock(m.group(1), m.group(2)), "제목의 시간 범위"
-    m = re.search(r'([0-1]?[0-9]|2[0-3])\s*시\s*([0-5][0-9])\s*분(?:\s*([0-5][0-9])\s*초)?', f"{title}\n{desc}")
+    real_lines = '\n'.join(l for l in f"{title}\n{desc}".split('\n') if not re.search(r'라면|이면|예시|예를\s*들', l))
+    m = re.search(r'([0-1]?[0-9]|2[0-3])\s*시\s*([0-5][0-9])\s*분(?:\s*([0-5][0-9])\s*초)?', real_lines)
     if m:
         return _clock(m.group(1), m.group(2), m.group(3) or 0), "설명란 'N시 M분'"
     return None, None
@@ -302,7 +313,8 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
 
     chapters = parse_chapters(desc)
     is_finish = bool(re.search(FINISH_KEYWORDS, title, re.IGNORECASE))
-    detected_distance = detect_distance(title, desc)
+    distance_candidates = detect_distance_candidates(title, desc)
+    detected_distance = distance_candidates[0] if distance_candidates else None
 
     if timeline:
         total_km = float(timeline[-1].get("distance", 0)) or FULL_DISTANCE_KM
@@ -324,6 +336,8 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
     notes = []
     if override_note:
         notes.append(override_note)
+    if len(distance_candidates) > 1 and override_distance_km in (None, ''):
+        notes.append("ℹ️ 영상에 촬영 지점이 여러 개 감지됨: " + ", ".join(f"{d:g}km" for d in distance_candidates) + f" → 우선 {distance_candidates[0]:g}km로 계산했습니다. 다른 지점은 촬영 지점을 직접 지정하세요.")
     mode = None
     video_start_secs = None
     calculated = None
@@ -392,7 +406,7 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
         if override_start_clock not in (None, ''):
             video_start_secs, basis = time_str_to_seconds(override_start_clock), "사용자 지정"
         if video_start_secs is None:
-            notes.append("⚠️ 촬영 시작 시각을 찾지 못했습니다.")
+            notes.append("⚠️ 설명란에서 촬영 시작 시각을 찾지 못했습니다. 영상 화면에 표시된 시각을 보고 '촬영 시작 시각'을 직접 지정해주세요.")
         else:
             mode = "start_time"
             notes.append(f"⏱️ 촬영 시작 시각: **{seconds_to_time_str(video_start_secs)}** ({basis})")
