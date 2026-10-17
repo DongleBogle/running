@@ -1087,8 +1087,10 @@
   <div class="grid-top">
     <div class="stat-card">
       <div class="stat-label">공식 출발 시각 (Start Time of Day)</div>
-      <div class="stat-value">
-        <input type="time" id="startTimeInput" step="1" value="" readonly title="공식 계측소 기록으로 자동 계산됩니다" style="font-size: 1.15rem; padding: 4px 6px; background: transparent; border: 1px dashed #334155; width: auto; color: #34d399; font-weight: 700;">
+      <div class="stat-value" style="display: flex; flex-direction: column; gap: 6px; align-items: flex-start;">
+        <select id="startRaceSelect" onchange="onStartRaceChange()" title="대회를 고르면 예상 출발 시각이 채워집니다" style="font-size: 0.8rem; padding: 4px 6px; max-width: 100%;"></select>
+        <input type="time" id="startTimeInput" step="1" value="09:00:00" oninput="onStartTimeEdit()" title="예상 출발 시각입니다. 직접 수정할 수 있고, 공식 계측소 기록이 있으면 그 값으로 자동 계산됩니다" style="font-size: 1.15rem; padding: 4px 6px; background: transparent; border: 1px dashed #334155; width: auto; color: #34d399; font-weight: 700;">
+        <span id="startTimeHint" style="font-size: 0.72rem; color: var(--text-muted); font-weight: 400;">예상값 · 직접 수정 가능</span>
       </div>
     </div>
     <div class="stat-card">
@@ -2022,11 +2024,54 @@ function handlePhotoUpload(event) {
   event.target.value = '';
 }
 
+let startTimeManual = false; // 사용자가 출발 시각을 직접 고쳤으면 계측소 기록으로 덮어쓰지 않는다
+let startRaces = [];
+
+function setStartHint(text) {
+  document.getElementById('startTimeHint').textContent = text;
+}
+
 function deriveStartTimeFromCheckpoints() {
+  if (startTimeManual) return;
   const cp = officialCheckpoints.find(c => c.distance > 0 && c.clockStr);
   if (!cp) return;
   globalStartTimeStr = secondsToClockString(parseTimeToSeconds(cp.clockStr) - cp.timeSec);
   document.getElementById('startTimeInput').value = globalStartTimeStr;
+  setStartHint('공식 계측소 기록으로 계산됨');
+}
+
+// 대회별 예상 출발 시각 (data/marathons.json 의 startTime)
+async function loadStartTimePredictions() {
+  const sel = document.getElementById('startRaceSelect');
+  try {
+    const res = await fetch('/data/marathons.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(res.status);
+    startRaces = ((await res.json()).races || []).filter(r => r.startTime);
+  } catch (err) {
+    console.warn('대회별 예상 출발 시각을 불러오지 못했습니다', err);
+  }
+  if (!startRaces.length) { sel.style.display = 'none'; return; }
+  sel.innerHTML = startRaces.map(r => `<option value="${escHtml(r.id)}">${escHtml(r.name)}</option>`).join('');
+  onStartRaceChange();
+}
+
+function onStartRaceChange() {
+  const race = startRaces.find(r => r.id === document.getElementById('startRaceSelect').value);
+  if (!race) return;
+  startTimeManual = false;
+  globalStartTimeStr = race.startTime;
+  document.getElementById('startTimeInput').value = race.startTime;
+  setStartHint('예상값 · 직접 수정 가능');
+  updateAllCalculations();
+}
+
+function onStartTimeEdit() {
+  const v = document.getElementById('startTimeInput').value;
+  if (!v) return;
+  startTimeManual = true;
+  globalStartTimeStr = v.length === 5 ? v + ':00' : v;
+  setStartHint('직접 입력한 값');
+  updateAllCalculations();
 }
 
 function updateAllCalculations() {
@@ -2360,6 +2405,7 @@ window.addEventListener('DOMContentLoaded', () => {
   onElapsedMinutesChange();
   onClockTimeChange();
   loadRaceVideos();
+  loadStartTimePredictions();
 });
 
 // -------------------------------------------------------------------------
@@ -2618,6 +2664,9 @@ function applyOcrResults(verified, laps) {
     const first = cps.find(c => c.clockStr) || cps[0];
     const startSec = first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
     globalStartTimeStr = secondsToClockString(startSec);
+    startTimeManual = false;
+    document.getElementById('startTimeInput').value = globalStartTimeStr;
+    setStartHint('공식 계측소 기록으로 계산됨');
     officialCheckpoints.push({ distance: 0, timeSec: 0, clockStr: globalStartTimeStr, pace: '-', name: '출발 (Start)' });
     cps.forEach(c => {
       if (!c.clockStr) c.clockStr = secondsToClockString(startSec + c.timeSec);

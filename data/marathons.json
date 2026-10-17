@@ -73,7 +73,8 @@
         "7_yq01wodKg": "course",
         "RMYryi2l7Qk": "course",
         "vJC_Ef1zII4": "course"
-      }
+      },
+      "startTime": "09:00:00"
     },
     {
       "id": "gyeongju-intl-2026",
@@ -96,7 +97,8 @@
       ],
       "excludeTerms": [],
       "pinned": [],
-      "overrides": {}
+      "overrides": {},
+      "startTime": "09:00:00"
     },
     {
       "id": "mindrun-2026",
@@ -117,7 +119,8 @@
       ],
       "excludeTerms": [],
       "pinned": [],
-      "overrides": {}
+      "overrides": {},
+      "startTime": "09:30:00"
     },
     {
       "id": "daecheongho-2026",
@@ -137,7 +140,8 @@
         "기안"
       ],
       "pinned": [],
-      "overrides": {}
+      "overrides": {},
+      "startTime": "09:30:00"
     },
     {
       "id": "jeongseon-donggang-2026",
@@ -156,7 +160,8 @@
       ],
       "excludeTerms": [],
       "pinned": [],
-      "overrides": {}
+      "overrides": {},
+      "startTime": "10:00:00"
     }
   ]
 }
