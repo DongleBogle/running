@@ -600,6 +600,38 @@
       }
     }
 
+
+    /* 대회별 추천 영상 */
+    .race-rec-box { margin-top: 16px; background: #090e1a; border: 1px solid #1e293b; border-radius: 12px; padding: 16px; }
+    .race-rec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .race-rec-head h4 { font-size: 1rem; font-weight: 800; color: #f1f5f9; }
+    .race-rec-head span { font-size: 0.74rem; color: #64748b; }
+    .race-chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .race-chip { border: 1px solid #334155; background: #0f172a; color: #cbd5e1; border-radius: 999px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .race-chip:hover { border-color: #38bdf8; color: #e0f2fe; }
+    .race-chip.active { background: rgba(56,189,248,0.15); border-color: #38bdf8; color: #7dd3fc; }
+    .race-chip.date { font-weight: 800; }
+    .race-chip.date.active { background: rgba(250,204,21,0.12); border-color: #facc15; color: #fde047; }
+    .race-chip .cnt { color: #64748b; font-weight: 500; margin-left: 4px; }
+    .race-meta { font-size: 0.78rem; color: #94a3b8; margin: 4px 0 10px; }
+    .race-tab-row { display: flex; gap: 6px; border-bottom: 1px solid #1e293b; margin-bottom: 12px; }
+    .race-tab { background: none; border: none; border-bottom: 2px solid transparent; color: #94a3b8; padding: 8px 12px; font-size: 0.88rem; font-weight: 700; cursor: pointer; }
+    .race-tab.active { color: #f1f5f9; border-bottom-color: #ef4444; }
+    .race-video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; max-height: 520px; overflow-y: auto; padding-right: 2px; }
+    .race-video-card { display: flex; flex-direction: column; text-align: left; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden; cursor: pointer; color: inherit; text-decoration: none; padding: 0; font: inherit; transition: all 0.15s; }
+    .race-video-card:hover { border-color: #ef4444; transform: translateY(-1px); }
+    .race-video-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; display: block; }
+    .race-video-card .body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 5px; }
+    .race-video-card .t { font-size: 0.82rem; font-weight: 700; color: #e2e8f0; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .race-video-card .c { font-size: 0.72rem; color: #64748b; }
+    .race-video-card .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+    .race-video-card .tag { font-size: 0.68rem; padding: 2px 6px; border-radius: 4px; background: #1e293b; color: #cbd5e1; }
+    .race-video-card .tag.km { background: rgba(16,185,129,0.15); color: #34d399; }
+    .race-video-card .tag.fin { background: rgba(250,204,21,0.12); color: #fde047; }
+    .race-video-card .tag.clock { background: rgba(56,189,248,0.12); color: #7dd3fc; }
+    .race-empty { font-size: 0.84rem; color: #64748b; padding: 18px; text-align: center; border: 1px dashed #334155; border-radius: 10px; }
+    @media (max-width: 600px) { .race-video-grid { grid-template-columns: 1fr 1fr; } .race-video-card .body { padding: 6px 8px 8px; } }
+
     /* 유튜브 분석기 스타일 */
     .yt-section-card {
       background: linear-gradient(145deg, #131b2e, #0c1322);
@@ -1183,6 +1215,23 @@
         <span class="badge" style="background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.3); color: #f87171;">YouTube Analyzer</span>
         <span class="badge" style="background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #34d399;">30s Clip Export</span>
       </div>
+    </div>
+
+    <!-- 대회별 추천 영상 (data/marathon_videos.json, scripts/collect_marathon_videos.py 로 생성) -->
+    <div class="race-rec-box" id="raceRecBox">
+      <div class="race-rec-head">
+        <h4>🏁 대회별 추천 영상</h4>
+        <span id="raceRecUpdated"></span>
+      </div>
+      <div class="race-chip-row" id="raceDateChips"></div>
+      <div class="race-chip-row" id="raceNameChips"></div>
+      <div class="race-meta" id="raceMeta"></div>
+      <div class="race-tab-row">
+        <button type="button" class="race-tab active" data-kind="course" onclick="setRaceVideoKind('course')">📍 주로영상 <span id="raceCourseCnt"></span></button>
+        <button type="button" class="race-tab" data-kind="review" onclick="setRaceVideoKind('review')">🎬 후기·1인칭 <span id="raceReviewCnt"></span></button>
+      </div>
+      <p id="raceKindHint" style="font-size: 0.74rem; color: #64748b; margin: -4px 0 10px;"></p>
+      <div class="race-video-grid" id="raceVideoGrid"></div>
     </div>
 
     <!-- URL 입력 폼 -->
@@ -2227,6 +2276,117 @@ function setClipStartFromTimestamp(sec) {
 }
 
 // -------------------------------------------------------------------------
+// 대회별 추천 영상 (주로영상 / 후기 구분)
+// -------------------------------------------------------------------------
+const raceRec = { races: [], date: null, raceId: null, kind: 'course' };
+
+// 같은 날짜 대회는 주로영상이 많은 순으로
+function racesOnDate(date) {
+  return raceRec.races.filter(r => r.date === date)
+    .sort((a, b) => (b.course.length - a.course.length) || (b.review.length - a.review.length));
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function formatRaceDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()} (${'일월화수목금토'[d.getDay()]})`;
+}
+
+function formatDuration(sec) {
+  if (!sec) return '';
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${m}:${String(s).padStart(2, '0')}`;
+}
+
+async function loadRaceVideos() {
+  try {
+    const res = await fetch('/data/marathon_videos.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    raceRec.races = data.races || [];
+    if (data.generatedAt) document.getElementById('raceRecUpdated').textContent = `수집: ${data.generatedAt.replace('T', ' ').slice(0, 16)}`;
+  } catch (err) {
+    console.warn('추천 영상 목록을 불러오지 못했습니다', err);
+    document.getElementById('raceRecBox').style.display = 'none';
+    return;
+  }
+  if (!raceRec.races.length) { document.getElementById('raceRecBox').style.display = 'none'; return; }
+  selectRaceDate(raceRec.races[0].date);
+}
+
+// 날짜를 고르면 그 날짜의 대회만 보여준다
+function selectRaceDate(date) {
+  raceRec.date = date;
+  const first = racesOnDate(date)[0];
+  raceRec.raceId = first ? first.id : null;
+  renderRaceRec();
+}
+
+// 대회명을 누르면 같은 날짜의 대회들만 남기고 그 대회 영상을 보여준다
+function selectRace(raceId) {
+  const race = raceRec.races.find(r => r.id === raceId);
+  if (!race) return;
+  raceRec.date = race.date;
+  raceRec.raceId = raceId;
+  renderRaceRec();
+}
+
+function setRaceVideoKind(kind) {
+  raceRec.kind = kind;
+  renderRaceRec();
+}
+
+function renderRaceRec() {
+  const dates = [...new Set(raceRec.races.map(r => r.date))];
+  document.getElementById('raceDateChips').innerHTML = dates.map(d => {
+    const n = raceRec.races.filter(r => r.date === d).length;
+    return `<button type="button" class="race-chip date ${d === raceRec.date ? 'active' : ''}" onclick="selectRaceDate('${d}')">📅 ${formatRaceDate(d)}<span class="cnt">${n}개 대회</span></button>`;
+  }).join('');
+
+  const sameDay = racesOnDate(raceRec.date);
+  document.getElementById('raceNameChips').innerHTML = sameDay.map(r =>
+    `<button type="button" class="race-chip ${r.id === raceRec.raceId ? 'active' : ''}" onclick="selectRace('${r.id}')">${escHtml(r.name)}<span class="cnt">${r.course.length + r.review.length}</span></button>`
+  ).join('');
+
+  const race = raceRec.races.find(r => r.id === raceRec.raceId);
+  if (!race) return;
+  document.getElementById('raceMeta').textContent = `${formatRaceDate(race.date)} · ${race.location || ''}`;
+  document.getElementById('raceCourseCnt').textContent = race.course.length;
+  document.getElementById('raceReviewCnt').textContent = race.review.length;
+  document.querySelectorAll('.race-tab').forEach(t => t.classList.toggle('active', t.dataset.kind === raceRec.kind));
+  document.getElementById('raceKindHint').textContent = raceRec.kind === 'course'
+    ? '고정 지점에서 지나가는 주자들을 찍은 영상입니다. 누르면 아래에서 바로 내 통과 시점을 분석합니다.'
+    : '참가자 후기·1인칭 풀영상·중계 등입니다. 누르면 유튜브에서 열립니다.';
+
+  const list = race[raceRec.kind] || [];
+  const grid = document.getElementById('raceVideoGrid');
+  if (!list.length) {
+    grid.innerHTML = `<div class="race-empty" style="grid-column: 1 / -1;">아직 수집된 ${raceRec.kind === 'course' ? '주로영상' : '후기 영상'}이 없습니다.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(v => {
+    const tags = [];
+    if (v.distanceKm != null && v.spot !== '골인/피니시') tags.push(`<span class="tag km">📍 ${v.distanceKm}km</span>`);
+    if (v.spot) tags.push(`<span class="tag fin">🏁 ${escHtml(v.spot)}</span>`);
+    if (v.startClock) tags.push(`<span class="tag clock">⏱️ ${v.startClock.slice(0, 5)}~</span>`);
+    if (v.lengthSeconds) tags.push(`<span class="tag">${formatDuration(v.lengthSeconds)}</span>`);
+    const inner = `<img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
+      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div>`;
+    return raceRec.kind === 'course'
+      ? `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">${inner}</button>`
+      : `<a class="race-video-card" title="${escHtml(v.title)}" href="${escHtml(v.url)}" target="_blank" rel="noopener">${inner}</a>`;
+  }).join('');
+}
+
+function pickRaceVideo(url) {
+  setYtExampleUrl(url);
+  document.getElementById('ytUrlInput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// -------------------------------------------------------------------------
 // 초기화
 // -------------------------------------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
@@ -2235,6 +2395,7 @@ window.addEventListener('DOMContentLoaded', () => {
   loadPersistedPhotos();
   onElapsedMinutesChange();
   onClockTimeChange();
+  loadRaceVideos();
 });
 
 // -------------------------------------------------------------------------

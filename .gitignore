@@ -21,3 +21,4 @@ env/
 clips/*.mp4
 clips/*.webm
 clips/*.mkv
+data/.video_meta_cache.json
