@@ -1345,6 +1345,37 @@
 // -------------------------------------------------------------------------
 let uploadedPhotos = [];
 
+// 업로드 사진 브라우저 캐싱 (IndexedDB: dataURL이 커서 localStorage 용량으로는 부족)
+let _photosLoaded = false;
+function openPhotoDb() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('running-photos', 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('kv');
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function loadPersistedPhotos() {
+  try {
+    const db = await openPhotoDb();
+    const saved = await new Promise((resolve, reject) => {
+      const r = db.transaction('kv').objectStore('kv').get('uploadedPhotos');
+      r.onsuccess = () => resolve(r.result);
+      r.onerror = () => reject(r.error);
+    });
+    if (Array.isArray(saved) && saved.length) uploadedPhotos = saved.concat(uploadedPhotos);
+  } catch (e) { /* 저장소를 못 쓰는 환경(시크릿 모드 등)에서는 캐싱 없이 동작 */ }
+  _photosLoaded = true;
+  renderPhotosGallery();
+}
+async function persistPhotos() {
+  if (!_photosLoaded) return;
+  try {
+    const db = await openPhotoDb();
+    db.transaction('kv', 'readwrite').objectStore('kv').put(uploadedPhotos, 'uploadedPhotos');
+  } catch (e) { /* 무시 */ }
+}
+
 // 공식 스마트칩 체크포인트 기록 (Time of Day 기준 확실한 시간)
 // 2026 SEOUL RACE 하프 마라톤
 const officialCheckpoints = [];
@@ -1877,6 +1908,7 @@ function renderPhotosGallery() {
   const badge = document.getElementById('photoCountBadge');
   gallery.innerHTML = '';
   badge.textContent = uploadedPhotos.length;
+  persistPhotos();
 
   if (uploadedPhotos.length === 0) {
     gallery.innerHTML = `
@@ -2173,6 +2205,7 @@ function setClipStartFromTimestamp(sec) {
 window.addEventListener('DOMContentLoaded', () => {
   buildUnifiedTimeline();
   renderPhotosGallery();
+  loadPersistedPhotos();
   onElapsedMinutesChange();
   onClockTimeChange();
 });
