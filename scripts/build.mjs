@@ -33,7 +33,7 @@ writeFileSync(join(out, 'js', 'platform.js'), platformJs);
 
 const htmlPath = join(out, 'index.html');
 writeFileSync(htmlPath, readFileSync(htmlPath, 'utf8').replace('<!-- @@PLATFORM_HEAD@@ -->', head));
-// 웹은 루트(/)에서 탭(변환기·캘린더)이 보이도록 main.html 을 index.html 로 올리고, 변환기는 converter.html 로 옮긴다.
+// 웹은 루트(/)에서 탭(홈·변환기·캘린더)이 보이도록 main.html 을 index.html 로 올리고, 변환기는 converter.html 로 옮긴다.
 if (target === 'web' && existsSync(join(out, 'main.html'))) {
   renameSync(htmlPath, join(out, 'converter.html'));
   const main = readFileSync(join(out, 'main.html'), 'utf8').replaceAll('index.html', 'converter.html');
