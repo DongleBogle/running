@@ -1,0 +1,28 @@
+{
+  "_comment": "마라톤 캘린더 데이터. registration.opensAt/closesAt 은 'YYYY-MM-DD' 또는 'YYYY-MM-DDTHH:MM' (KST). url 은 공식 접수 페이지. sample:true 항목은 UI 확인용 예시이므로 실제 값으로 교체하세요.",
+  "races": [
+    { "id": "seoul-race-2026", "name": "2026 서울레이스", "date": "2026-10-11", "location": "서울 광화문~서울광장", "distances": ["하프", "11K"],
+      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
+    { "id": "gyeongju-intl-2026", "name": "2026 경주국제마라톤", "date": "2026-10-17", "location": "경북 경주시민운동장", "distances": ["풀", "하프", "10K"],
+      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
+    { "id": "mindrun-2026", "name": "2026 마인드런 페스티벌", "date": "2026-10-17", "location": "서울 여의도공원", "distances": ["10K", "5K"],
+      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
+    { "id": "daecheongho-2026", "name": "제24회 청원생명쌀 대청호마라톤", "date": "2026-10-17", "location": "충북 청주", "distances": ["풀", "하프", "10K", "5K"],
+      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
+    { "id": "jeongseon-donggang-2026", "name": "2026 정선동강마라톤", "date": "2026-10-17", "location": "강원 정선", "distances": ["하프", "10K", "5K"],
+      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
+
+    { "id": "sample-1", "sample": true, "name": "[예시] 가을 한강 하프마라톤", "date": "2026-11-08", "location": "서울 여의도 한강공원", "distances": ["하프", "10K"],
+      "registration": { "opensAt": "2026-09-20T10:00", "closesAt": "2026-10-25", "url": "https://example.com/register/han-river-half" } },
+    { "id": "sample-2", "sample": true, "name": "[예시] 춘천 단풍 마라톤", "date": "2026-11-15", "location": "강원 춘천", "distances": ["풀", "하프", "10K"],
+      "registration": { "opensAt": "2026-10-01T10:00", "closesAt": "2026-10-31", "url": "https://example.com/register/chuncheon" } },
+    { "id": "sample-3", "sample": true, "name": "[예시] 부산 바다 마라톤", "date": "2026-11-29", "location": "부산 광안리", "distances": ["하프", "10K", "5K"],
+      "registration": { "opensAt": "2026-10-20T14:00", "closesAt": "2026-11-15", "url": "https://example.com/register/busan" } },
+    { "id": "sample-4", "sample": true, "name": "[예시] 송년 10K 런", "date": "2026-12-20", "location": "서울 잠실종합운동장", "distances": ["10K", "5K"],
+      "registration": { "opensAt": "2026-11-10T10:00", "closesAt": "2026-12-10", "url": "https://example.com/register/yearend" } },
+    { "id": "sample-5", "sample": true, "name": "[예시] 새해 첫날 5K", "date": "2027-01-01", "location": "서울 상암 월드컵공원", "distances": ["5K"],
+      "registration": { "opensAt": "2026-12-01T10:00", "closesAt": "2026-12-25", "url": "https://example.com/register/newyear" } },
+    { "id": "sample-6", "sample": true, "name": "[예시] 이미 마감된 가을 하프", "date": "2026-10-25", "location": "경기 파주", "distances": ["하프"],
+      "registration": { "opensAt": "2026-08-15T10:00", "closesAt": "2026-10-10", "url": "https://example.com/register/paju" } }
+  ]
+}
