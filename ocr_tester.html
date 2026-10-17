@@ -848,7 +848,10 @@ function runImageAnalysis() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ image: dataUrl })
-    }).then(r => r.json())
+    }).then(r => {
+      if (!(r.headers.get('content-type') || '').includes('json')) throw new Error('서버 OCR(/api/ocr)은 로컬(python3 server.py)에서만 동작합니다. 배포 환경에서는 메인 화면 Step 1의 브라우저 OCR을 사용하세요.');
+      return r.json();
+    })
   ).then(res => {
     if (!res.success) throw new Error(res.error || 'OCR 실패');
     const resultData = {
