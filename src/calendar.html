@@ -279,7 +279,7 @@ function calFilter(mode) {
   renderCalendar();
 }
 window.addEventListener('resize', () => { if (calLoaded) renderCalendar(); });
-if (window.self !== window.top) document.getElementById('backLink').style.display = 'none';
+if (window.self !== window.top) document.querySelector('.top').style.display = 'none';  // 탭 화면 안에서는 제목·돌아가기 줄 숨김
 loadCalendar();
 
 </script>

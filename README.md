@@ -4,7 +4,7 @@
 
 ```
 src/
-  index.html, ocr_tester.html
+  index.html
   styles/app.css
   js/app.js                # 플랫폼 무관 로직
   js/platform/base.js      # 공통 어댑터 (apiUrl, dataUrl, track, openExternal)
