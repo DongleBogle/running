@@ -897,7 +897,7 @@ img, video, iframe { max-width: 100%; }
   .header-title svg { width: 24px; height: 24px; flex-shrink: 0; }
   .header-title h1 { font-size: 1.22rem; line-height: 1.3; word-break: keep-all; }
   .header-sub { font-size: 0.8rem; word-break: keep-all; }
-  .header-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .header-actions { width: 100%; display: grid; grid-template-columns: 1fr; gap: 8px; }
   .header-actions .btn { justify-content: center; text-align: center; min-height: 42px; padding: 8px 10px; font-size: 0.8rem; line-height: 1.25; }
 
   /* 공통 버튼·입력 터치 크기 */
@@ -1006,3 +1006,8 @@ img, video, iframe { max-width: 100%; }
   .clip-action-row .btn-download-clip { font-size: 0.95rem; padding: 12px; min-height: 48px; }
   .btn-open-yt { min-height: 44px; }
 }
+
+/* 탭 화면(main) 안에서는 상단 브랜드를 바깥 헤더가 보여주므로 숨기고 액션만 남긴다 */
+.framed header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
+.framed header > div:first-child { display: none; }
+.framed header .header-actions { width: auto; }
