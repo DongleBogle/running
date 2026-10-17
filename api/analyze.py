@@ -61,6 +61,46 @@ def fetch_pinned_comment_light(html):
         pass
     return ""
 
+def parse_initial_data(html):
+    """watch 페이지 ytInitialData에서 제목/채널/설명란 추출 (videoDetails가 빠진 응답 대비)"""
+    try:
+        m = re.search(r'ytInitialData\s*=\s*({.+?});\s*</script>', html)
+        if not m:
+            return "", "", ""
+        data = json.loads(m.group(1))
+        contents = (data.get('contents', {}).get('twoColumnWatchNextResults', {})
+                    .get('results', {}).get('results', {}).get('contents', []))
+        title = author = desc = ""
+        for c in contents:
+            p = c.get('videoPrimaryInfoRenderer')
+            if p:
+                title = ''.join(r.get('text', '') for r in p.get('title', {}).get('runs', []))
+            s = c.get('videoSecondaryInfoRenderer')
+            if s:
+                desc = s.get('attributedDescription', {}).get('content', '') or \
+                    ''.join(r.get('text', '') for r in s.get('description', {}).get('runs', []))
+                owner = s.get('owner', {}).get('videoOwnerRenderer', {}).get('title', {})
+                author = ''.join(r.get('text', '') for r in owner.get('runs', []))
+        return title, author, desc
+    except Exception:
+        return "", "", ""
+
+def fetch_player_mweb(video_id):
+    """Innertube player API(MWEB 클라이언트)로 videoDetails 조회. 영상 길이 확보용 폴백"""
+    try:
+        payload = json.dumps({
+            "context": {"client": {"clientName": "MWEB", "clientVersion": "2.20240101.00.00", "hl": "ko"}},
+            "videoId": video_id
+        }).encode('utf-8')
+        req = urllib.request.Request(
+            "https://www.youtube.com/youtubei/v1/player?prettyPrint=false", data=payload,
+            headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
+        )
+        with urllib.request.urlopen(req, context=ssl._create_unverified_context(), timeout=6) as resp:
+            return json.loads(resp.read().decode('utf-8', errors='ignore')).get('videoDetails', {}) or {}
+    except Exception:
+        return {}
+
 def fetch_youtube_metadata(url):
     video_id = extract_video_id(url)
     if not video_id:
@@ -97,6 +137,26 @@ def fetch_youtube_metadata(url):
             thumbs = vd.get('thumbnail', {}).get('thumbnails', [])
             if thumbs:
                 thumbnail_url = thumbs[-1].get('url', thumbnail_url)
+            if not length_seconds:
+                mf = player_data.get('microformat', {}).get('playerMicroformatRenderer', {})
+                length_seconds = int(mf.get('lengthSeconds', 0) or 0)
+        except Exception:
+            pass
+
+    # Vercel(데이터센터 IP)에서는 유튜브가 videoDetails 없는 페이지를 주는 경우가 많아 ytInitialData로 보완
+    if not title or not description:
+        d_title, d_author, d_desc = parse_initial_data(html)
+        title = title or d_title
+        author = author or d_author
+        description = description or d_desc
+
+    if not title or not length_seconds:
+        p = fetch_player_mweb(video_id)
+        title = title or p.get('title', '')
+        author = author or p.get('author', '')
+        description = description or p.get('shortDescription', '')
+        try:
+            length_seconds = length_seconds or int(p.get('lengthSeconds', 0) or 0)
         except Exception:
             pass
 
