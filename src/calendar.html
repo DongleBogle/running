@@ -278,7 +278,7 @@ function calFilter(mode) {
   document.querySelectorAll('[data-calf]').forEach(b => b.classList.toggle('active', b.dataset.calf === mode));
   renderCalendar();
 }
-window.addEventListener('resize', () => { if (calLoaded && !document.getElementById('viewCalendar').classList.contains('view-hidden')) renderCalendar(); });
+window.addEventListener('resize', () => { if (calLoaded) renderCalendar(); });
 if (window.self !== window.top) document.getElementById('backLink').style.display = 'none';
 loadCalendar();
 
