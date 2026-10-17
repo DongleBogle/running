@@ -132,6 +132,7 @@ function calParse(s) { return s ? new Date(s.length <= 10 ? s + 'T00:00:00' : s)
 function calStatus(r) {
   const reg = r.registration || {};
   const now = new Date();
+  if (reg.closed) return 'closed';
   const opens = calParse(reg.opensAt);
   let closes = calParse(reg.closesAt);
   if (closes && String(reg.closesAt).length <= 10) closes = new Date(closes.getTime() + 86400000 - 1); // 마감일 당일 끝까지
@@ -207,8 +208,9 @@ function renderCalList() {
     const st = calStatus(r), reg = r.registration || {};
     const period = reg.opensAt || reg.closesAt ? `접수 ${calFmt(reg.opensAt) || '?'} ~ ${calFmt(reg.closesAt) || '?'}` : '';
     const btn = reg.url && st !== 'closed'
-      ? `<a class="btn btn-green" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">${st === 'upcoming' ? '접수 페이지 보기' : '신청하러 가기'} ➔</a>`
-      : (reg.url ? `<a class="btn btn-outline" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">대회 페이지</a>` : '');
+      ? `<a class="btn btn-green" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">${st === 'upcoming' ? '공식 홈페이지 보기' : '공식 홈페이지에서 신청'} ➔</a>`
+      : (reg.url ? `<a class="btn btn-outline" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a>`
+        : (st === 'closed' ? '' : '<span class="meta">공식 링크 준비중</span>'));
     return `<div class="cal-item">
       <span class="cal-badge ${st}">${CAL_LABEL[st]}</span>
       <div class="info"><div class="name">${calEsc(r.name)}</div>
