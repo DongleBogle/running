@@ -302,60 +302,6 @@
       color: #e2e8f0;
     }
 
-    /* 시뮬레이터 슬라이더 */
-    .timeline-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 28px;
-    }
-
-    .slider-container {
-      margin: 18px 0 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 8px;
-      border-radius: 5px;
-      background: #1e293b;
-      outline: none;
-      cursor: pointer;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--accent-cyan);
-      box-shadow: 0 0 10px var(--accent-cyan);
-      cursor: pointer;
-      border: 2px solid #fff;
-    }
-
-    .slider-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .controls-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -910,9 +856,6 @@
   .ocr-status { align-self: center; margin-right: 14px; font-size: 0.85rem; color: #94a3b8; }
   .legend-item { display: flex; align-items: center; gap: 6px; }
   .res-value-wrap { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-  .sim-status { font-size: 0.85rem; color: var(--text-muted); }
-  .sim-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .sim-speed { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); }
   .table-filter-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .laps-table th, .laps-table td { white-space: nowrap; }
   .quick-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -962,7 +905,6 @@
     .btn-quick { min-height: 38px; padding: 6px 12px; font-size: 0.8rem; }
     input[type="number"], input[type="time"], input[type="text"] { font-size: 16px; min-height: 44px; }
     input[type="range"] { height: 10px; }
-    input[type="range"]::-webkit-slider-thumb { width: 28px; height: 28px; }
 
     /* Step 카드 */
     .step-card { margin-top: 14px; border-radius: 12px; }
@@ -977,8 +919,8 @@
     .step-footer .ocr-status { margin-right: 0; align-self: auto; text-align: center; }
     .step-next-btn { width: 100%; justify-content: center; min-height: 48px; }
 
-    .table-card, .timeline-card { padding: 14px 12px; margin-bottom: 16px; border-radius: 12px; }
-    .table-card h3, .timeline-card h3 { font-size: 1rem !important; line-height: 1.35; word-break: keep-all; }
+    .table-card { padding: 14px 12px; margin-bottom: 16px; border-radius: 12px; }
+    .table-card h3 { font-size: 1rem !important; line-height: 1.35; word-break: keep-all; }
     .section-head > div:first-child { min-width: 0; flex: 1 1 100%; }
 
     /* Step 1 업로드·갤러리 */
@@ -990,7 +932,7 @@
     .img-card-info { flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 10px; font-size: 0.74rem; }
     .img-card-info > span:first-child { width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-    /* Step 2 요약·변환기·시뮬레이터 */
+    /* Step 2 요약·변환기 */
     .grid-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
     .stat-card { padding: 12px; }
     .stat-label { font-size: 0.66rem; letter-spacing: 0; word-break: keep-all; }
@@ -1006,12 +948,6 @@
     .res-value-big { font-size: 1.5rem; }
     .result-details { gap: 8px; }
     .res-sub-val { font-size: 0.86rem; overflow-wrap: anywhere; }
-    .sim-status { font-size: 0.8rem; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
-    .controls-row { flex-direction: column; align-items: stretch; gap: 10px; }
-    .sim-btns { display: grid; grid-template-columns: 1fr 1fr; }
-    .sim-btns .btn { justify-content: center; white-space: nowrap; padding: 8px 10px; font-size: 0.8rem; }
-    .sim-speed { display: grid; grid-template-columns: auto repeat(4, minmax(0, 1fr)); gap: 6px; }
-    .sim-speed .btn-quick { padding: 6px 4px; }
 
     /* Step 2 타임테이블: 표 안에서만 가로 스크롤, 첫 열 고정 */
     .table-filter-btns { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
@@ -1143,7 +1079,7 @@
   <div class="step-card collapsed" id="step2">
     <div class="step-header" onclick="toggleStep(2)">
       <div class="step-num">2</div>
-      <div class="step-title"><h2>Step 2. 기록 계산 · 타임테이블</h2><p>출발 시각, 구간 변환기, 시뮬레이터, 타임테이블</p></div>
+      <div class="step-title"><h2>Step 2. 기록 계산 · 타임테이블</h2><p>출발 시각, 구간 변환기, 타임테이블</p></div>
       <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
@@ -1276,47 +1212,6 @@
             <span class="res-sub-val" id="resClockProgress">47.3 %</span>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 인터랙티브 타임라인 슬라이더 & 러너 비주얼라이저 -->
-  <div class="timeline-card">
-    <div class="section-head">
-      <h3 style="font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-        실시간 마라톤 코스 주행 시뮬레이터 (Timeline Slider)
-      </h3>
-      <div class="sim-status">
-        실제 시각: <strong id="simCurrentClock" style="color: #38bdf8; font-family: monospace;">08:05:20</strong>
-        | 경과: <strong id="simCurrentElapsed" style="color: var(--accent-neon); font-family: monospace;">30.5분</strong>
-        | <span id="simTag" class="badge-tag-verified">✓ 공식 계측</span>
-      </div>
-    </div>
-
-    <div class="slider-container">
-      <input type="range" id="masterSlider" min="0" max="0" step="1" value="0" oninput="onSliderInput(this.value)">
-      <div class="slider-labels">
-        <span id="sliderStartLabel">출발</span>
-        <span id="sliderFinishLabel">완주</span>
-      </div>
-    </div>
-
-    <div class="controls-row">
-      <div class="sim-btns">
-        <button class="btn btn-green" id="playBtn" onclick="togglePlaySimulation()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span id="playBtnText">재생 (시뮬레이션)</span>
-        </button>
-        <button class="btn btn-outline" onclick="resetToStart()">출발점으로</button>
-      </div>
-
-      <div class="sim-speed">
-        배속 설정:
-        <button class="btn-quick" onclick="setSpeed(10)">10배</button>
-        <button class="btn-quick" onclick="setSpeed(30)">30배</button>
-        <button class="btn-quick" onclick="setSpeed(60)">60배</button>
-        <button class="btn-quick" onclick="setSpeed(120)">120배</button>
       </div>
     </div>
   </div>
@@ -1638,11 +1533,6 @@ let totalRaceSeconds = 0;
 let totalRaceDistance = 0;
 let tableFilterMode = 'all'; // 'all' or 'verified'
 
-// 시뮬레이션 상태
-let isPlaying = false;
-let simInterval = null;
-let simSpeed = 30;
-
 // -------------------------------------------------------------------------
 // 시간 유틸리티
 // -------------------------------------------------------------------------
@@ -1695,9 +1585,6 @@ function buildUnifiedTimeline() {
     document.getElementById('summaryDistance').textContent = '-';
     document.getElementById('summaryTime').textContent = '-';
     document.getElementById('summaryPace').textContent = '-';
-    document.getElementById('masterSlider').max = 0;
-    document.getElementById('sliderStartLabel').textContent = '출발';
-    document.getElementById('sliderFinishLabel').textContent = '완주';
     renderLapsTable();
     return;
   }
@@ -1830,12 +1717,6 @@ function buildUnifiedTimeline() {
   const avgPaceSec = totalRaceSeconds / totalRaceDistance;
   document.getElementById('summaryPace').textContent = secondsToPaceString(avgPaceSec);
 
-  // 슬라이더 갱신
-  const slider = document.getElementById('masterSlider');
-  slider.max = totalRaceSeconds;
-  document.getElementById('sliderStartLabel').textContent = `출발 ${globalStartTimeStr} (0.0km)`;
-  document.getElementById('sliderFinishLabel').textContent = `완주 ${officialCheckpoints[officialCheckpoints.length - 1].clockStr} (${totalRaceDistance.toFixed(2)}km)`;
-
   renderLapsTable();
 }
 
@@ -1958,7 +1839,6 @@ function onElapsedMinutesChange() {
   document.getElementById('resElapsedPace').textContent = `${state.pace} /km`;
   document.getElementById('resElapsedRemain').textContent = state.isFinished ? "0 km / 완주" : `${state.remainDist.toFixed(2)} km / ${(state.remainSec / 60).toFixed(1)}분 남음`;
 
-  syncSimulation(elapsedSec, false);
 }
 
 function setElapsedMinutes(mins) {
@@ -1997,100 +1877,11 @@ function onClockTimeChange() {
   const progress = totalRaceDistance > 0 ? Math.min(100, (state.distance / totalRaceDistance) * 100) : 0;
   document.getElementById('resClockProgress').textContent = `${progress.toFixed(1)} %`;
 
-  syncSimulation(elapsedSec, false);
 }
 
 function setExactClockTime(timeStr) {
   document.getElementById('clockInputTime').value = timeStr;
   onClockTimeChange();
-}
-
-// -------------------------------------------------------------------------
-// 시뮬레이터 연동
-// -------------------------------------------------------------------------
-function onSliderInput(value) {
-  const sec = parseFloat(value);
-  syncSimulation(sec, true);
-}
-
-function syncSimulation(elapsedSec, updateInputs) {
-  const state = getRunnerState(elapsedSec);
-  const slider = document.getElementById('masterSlider');
-  slider.value = Math.min(elapsedSec, totalRaceSeconds);
-
-  document.getElementById('simCurrentClock').textContent = state.clockStr;
-  document.getElementById('simCurrentElapsed').textContent = `${(state.elapsedSec / 60).toFixed(1)}분`;
-
-  const simTag = document.getElementById('simTag');
-  if (state.isVerified) {
-    simTag.className = "badge-tag-verified";
-    simTag.textContent = "✓ 확실한 시간";
-  } else {
-    simTag.className = "badge-tag-estimated";
-    simTag.textContent = "~ 페이스 유추";
-  }
-
-  if (updateInputs) {
-    document.getElementById('elapsedInputMinutes').value = (state.elapsedSec / 60).toFixed(1);
-    onElapsedMinutesChange();
-  }
-}
-
-function togglePlaySimulation() {
-  if (isPlaying) {
-    pauseSimulation();
-  } else {
-    playSimulation();
-  }
-}
-
-function playSimulation() {
-  isPlaying = true;
-  document.getElementById('playBtnText').textContent = "일시정지";
-  document.getElementById('playBtn').classList.remove('btn-green');
-  document.getElementById('playBtn').style.background = '#ef4444';
-
-  const slider = document.getElementById('masterSlider');
-  if (parseFloat(slider.value) >= totalRaceSeconds) {
-    slider.value = 0;
-  }
-
-  const intervalMs = 100;
-  const stepSeconds = (intervalMs / 1000) * simSpeed;
-
-  simInterval = setInterval(() => {
-    let currentVal = parseFloat(slider.value) + stepSeconds;
-    if (currentVal >= totalRaceSeconds) {
-      currentVal = totalRaceSeconds;
-      slider.value = currentVal;
-      syncSimulation(currentVal, true);
-      pauseSimulation();
-    } else {
-      slider.value = currentVal;
-      syncSimulation(currentVal, true);
-    }
-  }, intervalMs);
-}
-
-function pauseSimulation() {
-  isPlaying = false;
-  clearInterval(simInterval);
-  document.getElementById('playBtnText').textContent = "재생 (시뮬레이션)";
-  document.getElementById('playBtn').classList.add('btn-green');
-  document.getElementById('playBtn').style.background = '';
-}
-
-function resetToStart() {
-  pauseSimulation();
-  syncSimulation(0, true);
-}
-
-function setSpeed(speed) {
-  simSpeed = speed;
-  if (isPlaying) {
-    pauseSimulation();
-    playSimulation();
-  }
 }
 
 // -------------------------------------------------------------------------
