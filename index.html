@@ -1368,6 +1368,33 @@ async function loadPersistedPhotos() {
   _photosLoaded = true;
   renderPhotosGallery();
 }
+// 동일 사진은 OCR을 다시 돌리지 않도록 결과를 사진 해시 기준으로 캐싱
+async function photoHash(src) {
+  try {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(src));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  } catch (e) {
+    let h = 5381;
+    for (let i = 0; i < src.length; i++) h = ((h << 5) + h + src.charCodeAt(i)) | 0;
+    return 'djb2-' + src.length + '-' + h;
+  }
+}
+async function ocrCacheGet(hash) {
+  try {
+    const db = await openPhotoDb();
+    return await new Promise((resolve) => {
+      const r = db.transaction('kv').objectStore('kv').get('ocr:' + hash);
+      r.onsuccess = () => resolve(r.result || null);
+      r.onerror = () => resolve(null);
+    });
+  } catch (e) { return null; }
+}
+async function ocrCachePut(hash, items) {
+  try {
+    const db = await openPhotoDb();
+    db.transaction('kv', 'readwrite').objectStore('kv').put(items, 'ocr:' + hash);
+  } catch (e) { /* 무시 */ }
+}
 async function persistPhotos() {
   if (!_photosLoaded) return;
   try {
@@ -2389,6 +2416,13 @@ async function analyzeAndGoStep2() {
     for (let i = 0; i < uploadedPhotos.length; i++) {
       status.textContent = `브라우저 OCR 인식 중... (${i + 1}/${uploadedPhotos.length})`;
       let ocrItems = [];
+      const hash = await photoHash(uploadedPhotos[i].src);
+      const cached = await ocrCacheGet(hash);
+      if (cached) {
+        status.textContent = `저장된 OCR 결과 사용 중... (${i + 1}/${uploadedPhotos.length})`;
+        cached.forEach(it => (it.type === 'verified' ? verified : laps).push(it));
+        continue;
+      }
 
       // 1. 서버 OCR이 있으면 우선 시도 (로컬 개발 편의성)
       let serverOk = false;
@@ -2417,6 +2451,7 @@ async function analyzeAndGoStep2() {
         ocrItems = parseOcrTextToRunningData(text);
       }
 
+      if (ocrItems.length) await ocrCachePut(hash, JSON.parse(JSON.stringify(ocrItems)));
       ocrItems.forEach(it => (it.type === 'verified' ? verified : laps).push(it));
     }
     applyOcrResults(verified, laps);
