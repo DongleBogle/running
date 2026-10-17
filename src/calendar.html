@@ -77,6 +77,10 @@
     .cal-dist.d10 { color: var(--accent-neon); border-color: rgba(16,185,129,.4); }
     .cal-dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
     .cal-dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
+    .cal-distbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+    .cal-distbar .lbl { font-size: 0.8rem; color: var(--text-muted); margin-right: 2px; }
+    button.cal-dist { background: none; font: inherit; font-size: 0.8rem; font-weight: 600; padding: 4px 12px; cursor: pointer; opacity: 0.6; }
+    button.cal-dist.on { opacity: 1; background: rgba(255,255,255,.08); }
     .cal-empty { color: var(--text-muted); font-size: 0.9rem; padding: 12px 0; }
     @media (max-width: 640px) {
       .cal-cell { min-height: 54px; padding: 3px; }
@@ -104,6 +108,14 @@
       <button class="cal-btn active" data-calf="all" onclick="calFilter('all')">전체</button>
       <button class="cal-btn" data-calf="open" onclick="calFilter('open')">접수중</button>
       <button class="cal-btn" data-calf="upcoming" onclick="calFilter('upcoming')">접수예정</button>
+    </div>
+    <div class="cal-distbar" id="calDistBar">
+      <span class="lbl">종목</span>
+      <button class="cal-dist d5" data-d="d5" onclick="calToggleDist('d5')">5km</button>
+      <button class="cal-dist d10" data-d="d10" onclick="calToggleDist('d10')">10km</button>
+      <button class="cal-dist dhalf" data-d="dhalf" onclick="calToggleDist('dhalf')">하프</button>
+      <button class="cal-dist dfull" data-d="dfull" onclick="calToggleDist('dfull')">풀</button>
+      <button class="cal-btn" id="calDistClear" onclick="calClearDist()" hidden>전체 종목</button>
     </div>
     <div class="cal-grid" id="calGrid"></div>
     <div class="cal-legend">
@@ -152,7 +164,23 @@ function calStatus(r) {
 }
 const CAL_LABEL = { open: '접수중', upcoming: '접수예정', closed: '접수마감', unknown: '접수정보 없음' };
 
-function calMatches(r) { return calFilterMode === 'all' || calStatus(r) === calFilterMode; }
+const calDistSel = new Set();
+function calMatches(r) {
+  if (calFilterMode !== 'all' && calStatus(r) !== calFilterMode) return false;
+  return !calDistSel.size || (r.distances || []).some(d => calDistSel.has(calDistClass(d)));
+}
+function calToggleDist(k) {
+  calDistSel.has(k) ? calDistSel.delete(k) : calDistSel.add(k);
+  document.querySelectorAll('#calDistBar [data-d]').forEach(b => b.classList.toggle('on', calDistSel.has(b.dataset.d)));
+  document.getElementById('calDistClear').hidden = !calDistSel.size;
+  renderCalendar();
+}
+function calClearDist() {
+  calDistSel.clear();
+  document.querySelectorAll('#calDistBar [data-d]').forEach(b => b.classList.remove('on'));
+  document.getElementById('calDistClear').hidden = true;
+  renderCalendar();
+}
 
 function calEventsByDay() {
   const map = {};
