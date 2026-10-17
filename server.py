@@ -229,7 +229,7 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
 def run(port=PORT):
     server_address = ('', port)
     httpd = HTTPServer(server_address, RunningAppHandler)
-    print(f"🚀 러닝 타임 컨버터 & 유튜브 클립 서버 시작: http://localhost:{port}")
+    print(f"🚀 MarathonNote 서버 시작: http://localhost:{port}")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

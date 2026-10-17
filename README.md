@@ -1,4 +1,4 @@
-# running
+# MarathonNote
 
 하나의 웹 코드(`src/`)를 웹 · 토스 인앱 · 네이티브 앱(WebView) 세 타깃으로 빌드한다.
 

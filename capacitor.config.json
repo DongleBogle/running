@@ -1,5 +1,5 @@
 {
-  "appId": "com.example.running",
-  "appName": "running",
+  "appId": "com.marathonnote.app",
+  "appName": "MarathonNote",
   "webDir": "dist/app"
 }
