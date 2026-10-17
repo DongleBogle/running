@@ -71,6 +71,12 @@
     .cal-badge.open { background: rgba(16,185,129,.15); color: var(--accent-neon); }
     .cal-badge.upcoming { background: rgba(250,204,21,.15); color: var(--accent-gold); }
     .cal-badge.closed, .cal-badge.unknown { background: rgba(100,116,139,.2); color: var(--text-muted); }
+    .cal-dists { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .cal-dist { font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); }
+    .cal-dist.d5 { color: var(--accent-cyan); border-color: rgba(6,182,212,.4); }
+    .cal-dist.d10 { color: var(--accent-neon); border-color: rgba(16,185,129,.4); }
+    .cal-dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
+    .cal-dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
     .cal-empty { color: var(--text-muted); font-size: 0.9rem; padding: 12px 0; }
     @media (max-width: 640px) {
       .cal-cell { min-height: 54px; padding: 3px; }
@@ -187,6 +193,15 @@ function renderCalendar() {
 
 function calEsc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
+function calDistClass(d) {
+  const t = String(d).toLowerCase().replace(/\s/g, '');
+  if (t === '5km') return 'd5';
+  if (t === '10km') return 'd10';
+  if (t === '하프' || t === 'half') return 'dhalf';
+  if (t === '풀' || t === 'full') return 'dfull';
+  return '';
+}
+
 function calFmt(s) {
   const d = calParse(s);
   if (!d) return '';
@@ -216,7 +231,8 @@ function renderCalList() {
     return `<div class="cal-item">
       <span class="cal-badge ${st}">${CAL_LABEL[st]}</span>
       <div class="info"><div class="name">${calEsc(r.name)}</div>
-        <div class="meta">${r.date} · ${calEsc(r.location || '')} · ${(r.distances || []).map(calEsc).join(' / ')}</div>
+        <div class="meta">${r.date} · ${calEsc(r.location || '')}</div>
+        ${r.distances && r.distances.length ? `<div class="cal-dists">${r.distances.map(d => `<span class="cal-dist ${calDistClass(d)}">${calEsc(d)}</span>`).join('')}</div>` : ''}
         ${period ? `<div class="meta">${period}</div>` : ''}</div>${btn}</div>`;
   }).join('');
   const clear = calSelected ? ' <button class="cal-btn" onclick="calSelect(null)">월 전체 보기</button>' : '';
