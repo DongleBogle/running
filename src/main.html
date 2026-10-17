@@ -12,7 +12,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     .topbar { flex: none; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 32px;
       max-width: 1100px; width: 100%; margin: 0 auto; padding: 16px 16px 0; border-bottom: 1px solid var(--card-border); }
-    .brand { padding-bottom: 12px; }
+    .brand { padding-bottom: 12px; color: inherit; text-decoration: none; cursor: pointer; }
     .header-title { display: flex; align-items: center; gap: 12px; }
     .brand-mark { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; }
     .header-title h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px;
@@ -33,24 +33,25 @@
 </head>
 <body>
   <div class="topbar">
-    <div class="brand">
+    <a class="brand" href="#home" data-view="home" title="홈으로">
       <div class="header-title">
         <img src="assets/logo-mark.png" class="brand-mark" alt="MarathonNote 로고">
         <h1>MarathonNote</h1>
       </div>
-    </div>
+    </a>
     <nav>
-      <button class="tab active" data-view="converter">⏱ 구간 변환기</button>
+      <button class="tab" data-view="converter">⏱ 구간 변환기</button>
       <button class="tab" data-view="calendar">📅 마라톤 캘린더</button>
     </nav>
   </div>
-  <iframe id="converter" src="index.html" title="구간 변환기"></iframe>
+  <iframe id="home" src="home.html" title="홈"></iframe>
+  <iframe id="converter" title="구간 변환기" hidden></iframe>
   <iframe id="calendar" title="마라톤 캘린더" hidden></iframe>
 <script>
-  const frames = { converter: document.getElementById('converter'), calendar: document.getElementById('calendar') };
-  const srcs = { converter: 'index.html', calendar: 'calendar.html' };
+  const frames = { home: document.getElementById('home'), converter: document.getElementById('converter'), calendar: document.getElementById('calendar') };
+  const srcs = { home: 'home.html', converter: 'index.html', calendar: 'calendar.html' };
   function show(view) {
-    if (!frames[view]) view = 'converter';
+    if (!frames[view]) view = 'home';
     for (const k in frames) {
       frames[k].hidden = k !== view;
       if (k === view && !frames[k].getAttribute('src')) frames[k].src = srcs[k];
@@ -59,6 +60,12 @@
     try { history.replaceState(null, '', '#' + view); } catch (e) {}
   }
   document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => show(t.dataset.view)));
+  // 로고(MarathonNote)를 누르면 홈으로
+  document.querySelector('.brand').addEventListener('click', e => { e.preventDefault(); show('home'); });
+  // 홈 화면의 '캘린더에서 보기' 등 탭 안 페이지에서 탭 전환 요청
+  window.addEventListener('message', e => {
+    if (e.origin === location.origin && e.data && e.data.type === 'show-view') show(e.data.view);
+  });
   show(location.hash.slice(1));
 </script>
 </body>

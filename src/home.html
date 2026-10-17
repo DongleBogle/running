@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarathonNote - 홈</title>
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-neon: #10b981;
+      --accent-gold: #facc15;
+      --accent-cyan: #06b6d4;
+      --accent-orange: #f97316;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
+    .top h1 { font-size: 1.4rem; }
+    .top a { color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; }
+    .btn { display: inline-block; padding: 7px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; border: 1px solid var(--card-border); white-space: nowrap; }
+    .btn-green { background: var(--accent-neon); color: #04120c; border-color: var(--accent-neon); }
+    .home-section { margin-bottom: 28px; }
+    .home-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 10px; }
+    .home-head h2 { font-size: 1.15rem; }
+    .home-head .sub { color: var(--text-muted); font-size: 0.8rem; }
+    .home-head .more { margin-left: auto; color: var(--accent-cyan); font-size: 0.82rem; text-decoration: none; }
+    .home-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+    .home-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+    .home-dday { flex: none; min-width: 64px; text-align: center; padding: 6px 8px; border-radius: 10px; font-weight: 800; font-size: 1rem;
+      background: rgba(59,130,246,.15); color: #60a5fa; }
+    .home-dday.today { background: var(--accent-neon); color: #04120c; }
+    .home-dday.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
+    .home-dday.reg { font-size: 0.8rem; background: rgba(16,185,129,.15); color: var(--accent-neon); }
+    .home-dday.reg.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
+    .info { flex: 1; min-width: 0; }
+    .name { font-weight: 700; font-size: 0.95rem; word-break: keep-all; }
+    .meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+    .dists { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .dist { font-size: 0.7rem; font-weight: 600; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); }
+    .dist.d5 { color: var(--accent-cyan); border-color: rgba(6,182,212,.4); }
+    .dist.d10 { color: var(--accent-neon); border-color: rgba(16,185,129,.4); }
+    .dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
+    .dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
+    .item-actions { margin-top: 8px; }
+    .empty { color: var(--text-muted); font-size: 0.9rem; padding: 12px 0; }
+    @media (max-width: 640px) {
+      .home-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="top">
+    <h1>🏠 홈</h1>
+    <a href="calendar.html">📅 마라톤 캘린더 보기 ➔</a>
+  </div>
+
+  <section class="home-section">
+    <div class="home-head">
+      <h2>🏁 곧 열리는 마라톤</h2>
+      <span class="sub" id="upcomingSub"></span>
+      <a class="more" href="calendar.html" data-view="calendar">캘린더에서 보기 ➔</a>
+    </div>
+    <div class="home-list" id="upcomingList"></div>
+  </section>
+
+  <section class="home-section">
+    <div class="home-head">
+      <h2>📝 접수중인 마라톤</h2>
+      <span class="sub" id="openSub"></span>
+      <a class="more" href="calendar.html" data-view="calendar">캘린더에서 보기 ➔</a>
+    </div>
+    <div class="home-list" id="openList"></div>
+  </section>
+</div>
+<script>
+// data/calendar/*.json 으로 곧 열리는 대회(D-day)와 접수중인 대회를 보여준다.
+const UPCOMING_DAYS = 14;  // D-day ~ D-14 까지
+const PREVIEW = 6;         // 섹션별로 보여줄 개수 (나머지는 캘린더에서)
+const DAY = 86400000;
+
+const pad2 = n => String(n).padStart(2, '0');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const dayOf = s => { const [y, m, d] = s.slice(0, 10).split('-').map(Number); return new Date(y, m - 1, d); };
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const daysFromToday = s => Math.round((dayOf(s) - today) / DAY);
+const fmtDay = s => { const d = dayOf(s); return `${d.getMonth() + 1}/${d.getDate()}(${'일월화수목금토'[d.getDay()]})`; };
+const fmtDateTime = s => !s ? '?' : (s.length > 10 ? `${fmtDay(s)} ${s.slice(11, 16)}` : fmtDay(s));
+
+// calendar.html 의 calStatus 와 같은 기준
+function isOpen(r) {
+  const reg = r.registration || {};
+  if (reg.closed || (!reg.opensAt && !reg.closesAt)) return false;
+  const opens = reg.opensAt ? new Date(reg.opensAt.length <= 10 ? reg.opensAt + 'T00:00:00' : reg.opensAt) : null;
+  const closes = reg.closesAt ? new Date(reg.closesAt.length <= 10 ? reg.closesAt + 'T23:59:59' : reg.closesAt) : null;
+  if (opens && now < opens) return false;
+  if (closes && now > closes) return false;
+  return new Date(r.date + 'T23:59:59') >= now;
+}
+
+function distClass(d) {
+  const t = String(d).toLowerCase().replace(/\s/g, '');
+  return { '5km': 'd5', '10km': 'd10', '하프': 'dhalf', half: 'dhalf', '풀': 'dfull', full: 'dfull' }[t] || '';
+}
+
+function item(r, badge, extra) {
+  const dists = (r.distances || []).map(d => `<span class="dist ${distClass(d)}">${esc(d)}</span>`).join('');
+  return `<div class="home-item">${badge}<div class="info">
+    <div class="name">${esc(r.name)}</div>
+    <div class="meta">${fmtDay(r.date)} · ${esc(r.location || '')}</div>
+    ${dists ? `<div class="dists">${dists}</div>` : ''}${extra || ''}</div></div>`;
+}
+
+function renderList(listId, html, emptyMsg) {
+  document.getElementById(listId).innerHTML = html.length ? html.slice(0, PREVIEW).join('') : `<div class="empty">${emptyMsg}</div>`;
+}
+
+function render(races) {
+  const upcoming = races
+    .map(r => ({ r, n: daysFromToday(r.date) }))
+    .filter(x => x.n >= 0 && x.n <= UPCOMING_DAYS)
+    .sort((a, b) => a.n - b.n || a.r.name.localeCompare(b.r.name));
+  document.getElementById('upcomingSub').textContent = `D-day ~ D-${UPCOMING_DAYS} · ${upcoming.length}개`;
+  renderList('upcomingList', upcoming.map(({ r, n }) => {
+    const cls = n === 0 ? 'today' : n <= 3 ? 'soon' : '';
+    return item(r, `<div class="home-dday ${cls}">${n === 0 ? 'D-day' : 'D-' + n}</div>`);
+  }), `앞으로 ${UPCOMING_DAYS}일 안에 열리는 대회가 없어요.`);
+
+  // 마감일 가까운 순, 마감일 없는 대회는 뒤로
+  const open = races.filter(isOpen).sort((a, b) =>
+    (a.registration.closesAt || '9999').localeCompare(b.registration.closesAt || '9999') || a.date.localeCompare(b.date));
+  document.getElementById('openSub').textContent = `마감 임박 순 · ${open.length}개`;
+  renderList('openList', open.map(r => {
+    const reg = r.registration;
+    const left = reg.closesAt ? daysFromToday(reg.closesAt) : null;
+    const label = left == null ? '접수중' : left === 0 ? '오늘 마감' : `마감 D-${left}`;
+    const badge = `<div class="home-dday reg ${left != null && left <= 3 ? 'soon' : ''}">${label}</div>`;
+    const extra = `<div class="meta">접수 ${fmtDateTime(reg.opensAt)} ~ ${fmtDateTime(reg.closesAt)}</div>` +
+      (reg.url ? `<div class="item-actions"><a class="btn btn-green" href="${esc(reg.url)}" target="_blank" rel="noopener noreferrer">공식 홈페이지에서 신청 ➔</a></div>` : '');
+    return item(r, badge, extra);
+  }), '지금 접수중인 대회가 없어요.');
+}
+
+async function loadHome() {
+  try {
+    const get = async f => (await fetch('data/calendar/' + f, { cache: 'no-cache' })).json();
+    const { months = [] } = await get('index.json');
+    const files = await Promise.all(months.map(m => get(m + '.json').catch(() => ({ races: [] }))));
+    render(files.flatMap(f => f.races || []));
+  } catch (e) {
+    for (const id of ['upcomingList', 'openList'])
+      document.getElementById(id).innerHTML = '<div class="empty">대회 정보를 불러오지 못했습니다.</div>';
+  }
+}
+
+// 탭 화면(main.html) 안에서는 제목 줄을 숨기고, 캘린더 링크는 캘린더 탭으로 전환
+if (window.self !== window.top) {
+  document.querySelector('.top').style.display = 'none';
+  document.querySelectorAll('a[data-view]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    window.top.postMessage({ type: 'show-view', view: a.dataset.view }, '*');
+  }));
+}
+loadHome();
+</script>
+</body>
+</html>
