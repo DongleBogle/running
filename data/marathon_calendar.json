@@ -1,28 +1,209 @@
 {
-  "_comment": "마라톤 캘린더 데이터. registration.opensAt/closesAt 은 'YYYY-MM-DD' 또는 'YYYY-MM-DDTHH:MM' (KST). url 은 공식 접수 페이지. sample:true 항목은 UI 확인용 예시이므로 실제 값으로 교체하세요.",
+  "_comment": "마라톤 캘린더 데이터. registration.opensAt/closesAt 은 'YYYY-MM-DD' 또는 'YYYY-MM-DDTHH:MM' (KST), url 은 공식 홈페이지/접수 페이지. 일정은 kormarathon.com 및 각 대회 공식 페이지 기준(2026-10-17 확인)이며 접수 마감일은 변경될 수 있으니 신청 전 공식 페이지를 확인하세요.",
   "races": [
-    { "id": "seoul-race-2026", "name": "2026 서울레이스", "date": "2026-10-11", "location": "서울 광화문~서울광장", "distances": ["하프", "11K"],
-      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
-    { "id": "gyeongju-intl-2026", "name": "2026 경주국제마라톤", "date": "2026-10-17", "location": "경북 경주시민운동장", "distances": ["풀", "하프", "10K"],
-      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
-    { "id": "mindrun-2026", "name": "2026 마인드런 페스티벌", "date": "2026-10-17", "location": "서울 여의도공원", "distances": ["10K", "5K"],
-      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
-    { "id": "daecheongho-2026", "name": "제24회 청원생명쌀 대청호마라톤", "date": "2026-10-17", "location": "충북 청주", "distances": ["풀", "하프", "10K", "5K"],
-      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
-    { "id": "jeongseon-donggang-2026", "name": "2026 정선동강마라톤", "date": "2026-10-17", "location": "강원 정선", "distances": ["하프", "10K", "5K"],
-      "registration": { "opensAt": null, "closesAt": null, "url": "" } },
-
-    { "id": "sample-1", "sample": true, "name": "[예시] 가을 한강 하프마라톤", "date": "2026-11-08", "location": "서울 여의도 한강공원", "distances": ["하프", "10K"],
-      "registration": { "opensAt": "2026-09-20T10:00", "closesAt": "2026-10-25", "url": "https://example.com/register/han-river-half" } },
-    { "id": "sample-2", "sample": true, "name": "[예시] 춘천 단풍 마라톤", "date": "2026-11-15", "location": "강원 춘천", "distances": ["풀", "하프", "10K"],
-      "registration": { "opensAt": "2026-10-01T10:00", "closesAt": "2026-10-31", "url": "https://example.com/register/chuncheon" } },
-    { "id": "sample-3", "sample": true, "name": "[예시] 부산 바다 마라톤", "date": "2026-11-29", "location": "부산 광안리", "distances": ["하프", "10K", "5K"],
-      "registration": { "opensAt": "2026-10-20T14:00", "closesAt": "2026-11-15", "url": "https://example.com/register/busan" } },
-    { "id": "sample-4", "sample": true, "name": "[예시] 송년 10K 런", "date": "2026-12-20", "location": "서울 잠실종합운동장", "distances": ["10K", "5K"],
-      "registration": { "opensAt": "2026-11-10T10:00", "closesAt": "2026-12-10", "url": "https://example.com/register/yearend" } },
-    { "id": "sample-5", "sample": true, "name": "[예시] 새해 첫날 5K", "date": "2027-01-01", "location": "서울 상암 월드컵공원", "distances": ["5K"],
-      "registration": { "opensAt": "2026-12-01T10:00", "closesAt": "2026-12-25", "url": "https://example.com/register/newyear" } },
-    { "id": "sample-6", "sample": true, "name": "[예시] 이미 마감된 가을 하프", "date": "2026-10-25", "location": "경기 파주", "distances": ["하프"],
-      "registration": { "opensAt": "2026-08-15T10:00", "closesAt": "2026-10-10", "url": "https://example.com/register/paju" } }
+    {
+      "id": "seoul-race-2026",
+      "name": "2026 서울레이스",
+      "date": "2026-10-11",
+      "location": "서울 광화문~서울광장",
+      "distances": [
+        "하프",
+        "11K"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": ""
+      }
+    },
+    {
+      "id": "gyeongju-intl-2026",
+      "name": "2026 경주국제마라톤",
+      "date": "2026-10-17",
+      "location": "경북 경주시민운동장",
+      "distances": [
+        "풀",
+        "하프",
+        "10K"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": ""
+      }
+    },
+    {
+      "id": "mindrun-2026",
+      "name": "2026 마인드런 페스티벌",
+      "date": "2026-10-17",
+      "location": "서울 여의도공원",
+      "distances": [
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": ""
+      }
+    },
+    {
+      "id": "daecheongho-2026",
+      "name": "제24회 청원생명쌀 대청호마라톤",
+      "date": "2026-10-17",
+      "location": "충북 청주",
+      "distances": [
+        "풀",
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": ""
+      }
+    },
+    {
+      "id": "jeongseon-donggang-2026",
+      "name": "2026 정선동강마라톤",
+      "date": "2026-10-17",
+      "location": "강원 정선",
+      "distances": [
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": ""
+      }
+    },
+    {
+      "id": "mbn-seoul-2026",
+      "name": "2026 MBN 서울마라톤",
+      "date": "2026-11-15",
+      "location": "서울 광화문~잠실종합운동장",
+      "distances": [
+        "하프",
+        "10K"
+      ],
+      "registration": {
+        "opensAt": "2026-06-25T14:00",
+        "closesAt": "2026-09-22",
+        "url": "https://www.mbn-seoulmarathon.com/"
+      }
+    },
+    {
+      "id": "gangnam-half-2026",
+      "name": "2026 강남하프마라톤",
+      "date": "2026-11-08",
+      "location": "서울 대치유수지 체육공원",
+      "distances": [
+        "하프"
+      ],
+      "registration": {
+        "opensAt": null,
+        "closesAt": null,
+        "url": "https://www.kormarathon.com/ko/races/2026-gangnam-half-marathon"
+      }
+    },
+    {
+      "id": "muju-firefly-2026",
+      "name": "2026 무주반딧불 평화마라톤대회",
+      "date": "2026-11-22",
+      "location": "전북 무주 등나무운동장",
+      "distances": [
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": "2026-09-01",
+        "closesAt": "2026-10-25",
+        "url": "https://mujumarathon.com"
+      }
+    },
+    {
+      "id": "namwon-chunghyang-2026",
+      "name": "2026 남원춘향 전국 마라톤대회",
+      "date": "2026-11-28",
+      "location": "전북 남원 종합스포츠타운 운동장",
+      "distances": [
+        "풀",
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": "2026-07-01",
+        "closesAt": "2026-10-30",
+        "url": "https://mara1080.com/event/c2cec79b-c38a-4832-bf4f-7ecb499cdcd5"
+      }
+    },
+    {
+      "id": "kakaopay-longrun-2026",
+      "name": "2026 카카오페이 롱런",
+      "date": "2026-11-28",
+      "location": "경기 하남 미사 경정공원",
+      "distances": [
+        "10K"
+      ],
+      "registration": {
+        "opensAt": "2026-10-20T14:00",
+        "closesAt": "2026-11-03T23:59",
+        "url": "https://www.kormarathon.com/ko/races/2026-long-run-aafaeb7ee8e740cc999eedd4ec700e1f"
+      }
+    },
+    {
+      "id": "seoul-love-2026",
+      "name": "2026 서울사랑마라톤",
+      "date": "2026-11-29",
+      "location": "서울 성북구 석관동 일대",
+      "distances": [
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": "2026-09-23",
+        "closesAt": "2026-10-31",
+        "url": "https://seoulloverun.com"
+      }
+    },
+    {
+      "id": "hangang-citizen-23",
+      "name": "제23회 한강시민마라톤대회",
+      "date": "2026-12-05",
+      "location": "서울 여의도 한강공원 너른들판",
+      "distances": [
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": "2026-07-20",
+        "closesAt": "2026-10-28",
+        "url": "http://hangangmarathon.kr"
+      }
+    },
+    {
+      "id": "jinju-36",
+      "name": "제36회 진주마라톤대회",
+      "date": "2026-12-13",
+      "location": "경남 진주노을공원(남강댐 물 문화관)",
+      "distances": [
+        "풀",
+        "하프",
+        "10K",
+        "5K"
+      ],
+      "registration": {
+        "opensAt": "2026-09-14T10:00",
+        "closesAt": "2026-10-29",
+        "url": "https://www.jinma.co.kr/ko/"
+      }
+    }
   ]
 }
