@@ -1044,7 +1044,7 @@
   <div class="step-card" id="step1">
     <div class="step-header" onclick="toggleStep(1)">
       <div class="step-num">1</div>
-      <div class="step-title"><h2>Step 1. 러닝 기록 사진 입력</h2><p>스마트칩 기록·워치 랩 스크린샷 등 사진을 업로드하세요.</p></div>
+      <div class="step-title"><h2>Step 1. 러닝 기록 사진 입력</h2><p>스마트칩 공식 기록 이미지 1건, 워치 1km 단위 구간기록 이미지를 첨부하세요. (최대 5장)</p></div>
       <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
@@ -1058,6 +1058,7 @@
         </h3>
         <p style="color: var(--text-muted); font-size: 0.8rem;">
           업로드된 사진마다 <strong>[제거] 버튼</strong>을 눌러 개별 삭제할 수 있으며, 새 사진을 추가 등록할 수도 있습니다.
+          <br><strong>스마트칩 공식 기록 이미지 1건</strong>과 <strong>워치 1km 단위 구간기록 이미지</strong>를 첨부해 주세요. 사진은 최대 5장까지 등록할 수 있습니다.
         </p>
       </div>
       <label class="btn btn-outline upload-btn" style="cursor: pointer;">
@@ -2004,12 +2005,19 @@ function clearAllUploadedPhotos() {
   }
 }
 
-// 새 사진 업로드
+// 새 사진 업로드 (최대 MAX_PHOTOS장)
+const MAX_PHOTOS = 5;
+
 function handlePhotoUpload(event) {
   const files = event.target.files;
   if (!files || files.length === 0) return;
 
-  for (let i = 0; i < files.length; i++) {
+  const room = Math.max(0, MAX_PHOTOS - uploadedPhotos.length);
+  if (files.length > room) {
+    alert(`사진은 최대 ${MAX_PHOTOS}장까지 등록할 수 있습니다.` + (room > 0 ? ` 앞의 ${room}장만 추가됩니다.` : ' 기존 사진을 제거한 뒤 추가해 주세요.'));
+  }
+
+  for (let i = 0; i < Math.min(files.length, room); i++) {
     const file = files[i];
     const reader = new FileReader();
     reader.onload = function(e) {
