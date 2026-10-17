@@ -115,7 +115,7 @@ let calYear = calNow.getFullYear(), calMonth = calNow.getMonth();
 
 async function loadCalendar() {
   try {
-    const res = await fetch('/data/marathon_calendar.json', { cache: 'no-cache' });
+    const res = await fetch('data/marathon_calendar.json', { cache: 'no-cache' });
     calRaces = (await res.json()).races || [];
     calLoaded = true;
   } catch (e) {
