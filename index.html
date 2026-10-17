@@ -2213,7 +2213,7 @@ function parseOcrTextToRunningData(rawText) {
   const lines = rawText.split('\n').map(l => normOcrText(l.trim())).filter(Boolean);
   const items = [];
   const CLOCK_RE = /\b([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\b/g;
-  const LAP_RE = /\b(\d{1,2}):([0-5]\d)(?:\.(\d))?\b/g;
+  const LAP_RE = /\b(\d{1,2}):([0-5]\d)(?:\.(\d+))?\b/g;
   const KM_RE = /(\d+(?:\.\d+)?)\s*km/i;
   const DIST_RE = /(?<![\d:.])\d{1,2}\.\d{2}(?![\d:])/;
 
@@ -2226,7 +2226,8 @@ function parseOcrTextToRunningData(rawText) {
     const rest = line.replace(CLOCK_RE, ' ');
     const kmMatch = KM_RE.exec(line);
     const distMatch = DIST_RE.exec(rest);
-    const lapMatches = [...rest.matchAll(LAP_RE)].map(m => m[0]);
+    // OCR이 소수 자리를 과인식(7:44.77)해도 소수 1자리로 정규화
+    const lapMatches = [...rest.matchAll(LAP_RE)].map(m => m[3] ? `${m[1]}:${m[2]}.${m[3][0]}` : m[0]);
 
     if (kmMatch && clockMatches.length >= 1) {
       // 공식 체크포인트: POINT, TIME, TIME-OF-DAY, PACE
