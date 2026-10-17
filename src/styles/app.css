@@ -50,6 +50,13 @@
     gap: 12px;
   }
 
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
   .header-title h1 {
     font-size: 1.6rem;
     font-weight: 800;
