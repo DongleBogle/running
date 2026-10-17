@@ -55,8 +55,6 @@
     .dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
     .dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
     .item-actions { margin-top: 8px; }
-    .show-all { margin-top: 10px; width: 100%; background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main);
-      border-radius: 10px; padding: 9px; font: inherit; font-size: 0.85rem; cursor: pointer; }
     .empty { color: var(--text-muted); font-size: 0.9rem; padding: 12px 0; }
     @media (max-width: 640px) {
       .home-list { grid-template-columns: 1fr; }
@@ -77,7 +75,6 @@
       <a class="more" href="calendar.html" data-view="calendar">캘린더에서 보기 ➔</a>
     </div>
     <div class="home-list" id="upcomingList"></div>
-    <button class="show-all" id="upcomingMore" hidden></button>
   </section>
 
   <section class="home-section">
@@ -87,13 +84,12 @@
       <a class="more" href="calendar.html" data-view="calendar">캘린더에서 보기 ➔</a>
     </div>
     <div class="home-list" id="openList"></div>
-    <button class="show-all" id="openMore" hidden></button>
   </section>
 </div>
 <script>
 // data/calendar/*.json 으로 곧 열리는 대회(D-day)와 접수중인 대회를 보여준다.
 const UPCOMING_DAYS = 14;  // D-day ~ D-14 까지
-const PREVIEW = 6;         // 펼치기 전 보여줄 개수
+const PREVIEW = 6;         // 섹션별로 보여줄 개수 (나머지는 캘린더에서)
 const DAY = 86400000;
 
 const pad2 = n => String(n).padStart(2, '0');
@@ -129,14 +125,8 @@ function item(r, badge, extra) {
     ${dists ? `<div class="dists">${dists}</div>` : ''}${extra || ''}</div></div>`;
 }
 
-// 처음엔 PREVIEW 개만, 버튼으로 전체 펼치기
-function renderList(listId, moreId, html, emptyMsg) {
-  const list = document.getElementById(listId), more = document.getElementById(moreId);
-  if (!html.length) { list.innerHTML = `<div class="empty">${emptyMsg}</div>`; return; }
-  const draw = all => { list.innerHTML = (all ? html : html.slice(0, PREVIEW)).join(''); more.hidden = all || html.length <= PREVIEW; };
-  more.textContent = `${html.length - PREVIEW}개 더 보기 ▾`;
-  more.onclick = () => draw(true);
-  draw(false);
+function renderList(listId, html, emptyMsg) {
+  document.getElementById(listId).innerHTML = html.length ? html.slice(0, PREVIEW).join('') : `<div class="empty">${emptyMsg}</div>`;
 }
 
 function render(races) {
@@ -145,7 +135,7 @@ function render(races) {
     .filter(x => x.n >= 0 && x.n <= UPCOMING_DAYS)
     .sort((a, b) => a.n - b.n || a.r.name.localeCompare(b.r.name));
   document.getElementById('upcomingSub').textContent = `D-day ~ D-${UPCOMING_DAYS} · ${upcoming.length}개`;
-  renderList('upcomingList', 'upcomingMore', upcoming.map(({ r, n }) => {
+  renderList('upcomingList', upcoming.map(({ r, n }) => {
     const cls = n === 0 ? 'today' : n <= 3 ? 'soon' : '';
     return item(r, `<div class="home-dday ${cls}">${n === 0 ? 'D-day' : 'D-' + n}</div>`);
   }), `앞으로 ${UPCOMING_DAYS}일 안에 열리는 대회가 없어요.`);
@@ -154,7 +144,7 @@ function render(races) {
   const open = races.filter(isOpen).sort((a, b) =>
     (a.registration.closesAt || '9999').localeCompare(b.registration.closesAt || '9999') || a.date.localeCompare(b.date));
   document.getElementById('openSub').textContent = `마감 임박 순 · ${open.length}개`;
-  renderList('openList', 'openMore', open.map(r => {
+  renderList('openList', open.map(r => {
     const reg = r.registration;
     const left = reg.closesAt ? daysFromToday(reg.closesAt) : null;
     const label = left == null ? '접수중' : left === 0 ? '오늘 마감' : `마감 D-${left}`;
