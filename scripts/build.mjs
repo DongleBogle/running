@@ -1,6 +1,6 @@
 // 사용법: node scripts/build.mjs <web|toss|app>
 // src/ 를 dist/<target>/ 으로 복사하고 플랫폼 어댑터(js/platform.js)를 조립한다.
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,4 +33,11 @@ writeFileSync(join(out, 'js', 'platform.js'), platformJs);
 
 const htmlPath = join(out, 'index.html');
 writeFileSync(htmlPath, readFileSync(htmlPath, 'utf8').replace('<!-- @@PLATFORM_HEAD@@ -->', head));
+// 웹은 루트(/)에서 탭(변환기·캘린더)이 보이도록 main.html 을 index.html 로 올리고, 변환기는 converter.html 로 옮긴다.
+if (target === 'web' && existsSync(join(out, 'main.html'))) {
+  renameSync(htmlPath, join(out, 'converter.html'));
+  const main = readFileSync(join(out, 'main.html'), 'utf8').replaceAll('index.html', 'converter.html');
+  writeFileSync(htmlPath, main);
+  rmSync(join(out, 'main.html'));
+}
 console.log(`built ${target} -> dist/${target} (apiBase="${apiBase}")`);
