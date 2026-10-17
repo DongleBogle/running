@@ -1566,6 +1566,11 @@ function secondsToDurationFormatted(sec) {
   return `${m}분 ${String(s).padStart(2, '0')}초`;
 }
 
+// 페이스 표기 통일: 분의 앞자리 0만 제거 (06:56 -> 6:56, 10:11 은 그대로)
+function normalizePace(p) {
+  return typeof p === 'string' ? p.trim().replace(/^0+(\d:)/, '$1') : p;
+}
+
 function secondsToPaceString(paceSec) {
   if (!paceSec || isNaN(paceSec)) return "-";
   const m = Math.floor(paceSec / 60);
@@ -1838,7 +1843,7 @@ function onElapsedMinutesChange() {
 
   document.getElementById('resElapsedDistance').textContent = `${state.distance.toFixed(2)} km`;
   document.getElementById('resElapsedLap').textContent = state.isFinished ? "완주 완료 🎉" : state.label;
-  document.getElementById('resElapsedPace').textContent = `${state.pace} /km`;
+  document.getElementById('resElapsedPace').textContent = `${normalizePace(state.pace)} /km`;
   document.getElementById('resElapsedRemain').textContent = state.isFinished ? "0 km / 완주" : `${state.remainDist.toFixed(2)} km / ${(state.remainSec / 60).toFixed(1)}분 남음`;
 
 }
@@ -1923,7 +1928,7 @@ function renderLapsTable() {
       </td>
       <td>${item.segDist.toFixed(2)} km</td>
       <td style="font-family: monospace;">${segTimeStr}</td>
-      <td style="font-weight: 600;">${item.paceStr}</td>
+      <td style="font-weight: 600;">${normalizePace(item.paceStr)}</td>
       <td class="${clockClass}" style="font-family: monospace; font-size: 1rem;">
         ${item.clockStr}
       </td>
@@ -2653,7 +2658,7 @@ function applyOcrResults(verified, laps) {
       distance: parseFloat(v.point),
       timeSec: parseElapsedToSec(v.time),
       clockStr: v.clock || '',
-      pace: v.pace || '-',
+      pace: normalizePace(v.pace) || '-',
       name: `${parseFloat(v.point)}km 계측소`
     }))
     .filter(c => !isNaN(c.distance) && c.distance > 0)
@@ -2684,7 +2689,7 @@ function applyOcrResults(verified, laps) {
     const lapNo = l.lapNo || (m ? parseInt(m[1], 10) : i + 1);
     const sec = parseElapsedToSec((l.time || '').split('.')[0]) + (parseFloat('0.' + ((l.time || '').split('.')[1] || '0')) || 0);
     const dist = parseFloat(l.dist) || 1.0;
-    lapMap.set(lapNo, { lap: lapNo, timeStr: l.time, seconds: sec, distance: dist, pace: l.pace || '-', estimated: false });
+    lapMap.set(lapNo, { lap: lapNo, timeStr: l.time, seconds: sec, distance: dist, pace: normalizePace(l.pace) || '-', estimated: false });
   });
   const lapNos = [...lapMap.keys()].sort((a, b) => a - b);
   for (let n = 1; n <= (lapNos[lapNos.length - 1] || 0); n++) {
@@ -2694,7 +2699,7 @@ function applyOcrResults(verified, laps) {
     let next = null;
     for (let k = n + 1; k <= lapNos[lapNos.length - 1]; k++) { if (lapMap.has(k)) { next = lapMap.get(k); break; } }
     const secs = prev && next ? (prev.seconds + next.seconds) / 2 : (prev || next || { seconds: 0 }).seconds;
-    rawWatchLaps.push({ lap: n, timeStr: '', seconds: secs, distance: 1.0, pace: secondsToPaceString(secs).replace("'", ':').replace('"', ''), estimated: true });
+    rawWatchLaps.push({ lap: n, timeStr: '', seconds: secs, distance: 1.0, pace: normalizePace(secondsToPaceString(secs).replace("'", ':').replace('"', '')), estimated: true });
   }
 
   buildUnifiedTimeline();
