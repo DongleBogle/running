@@ -115,8 +115,10 @@ let calYear = calNow.getFullYear(), calMonth = calNow.getMonth();
 
 async function loadCalendar() {
   try {
-    const res = await fetch('data/marathon_calendar.json', { cache: 'no-cache' });
-    calRaces = (await res.json()).races || [];
+    const get = async f => (await fetch('data/calendar/' + f, { cache: 'no-cache' })).json();
+    const { months = [] } = await get('index.json');
+    const files = await Promise.all(months.map(m => get(m + '.json').catch(() => ({ races: [] }))));
+    calRaces = files.flatMap(f => f.races || []);
     calLoaded = true;
   } catch (e) {
     document.getElementById('calList').innerHTML = '<div class="cal-empty">캘린더 데이터를 불러오지 못했습니다.</div>';

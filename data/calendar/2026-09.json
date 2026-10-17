@@ -1,0 +1,850 @@
+{
+ "month": "2026-09",
+ "generatedAt": "2026-10-18T00:21",
+ "races": [
+  {
+   "id": "2026-seolleim-run",
+   "name": "2026 설레임 RUN",
+   "date": "2026-09-05",
+   "location": "경기 하남 미사경정공원",
+   "distances": [
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-13",
+    "closesAt": "2026-08-26",
+    "closed": true,
+    "url": "https://www.kottonseed.io/seoleimrun"
+   }
+  },
+  {
+   "id": "just-run10-sejong-race-1",
+   "name": "JUST RUN10 세종",
+   "date": "2026-09-05",
+   "location": "대전 세종마루공원 밑 금강변 인근",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-08-01",
+    "closed": true,
+    "url": "https://runten.co.kr/competitions/741aa2b1-e4ef-440d-b631-cfcfcaa528fd"
+   }
+  },
+  {
+   "id": "v-run-2026",
+   "name": "V런 2026",
+   "date": "2026-09-05",
+   "location": "서울 신정교하부육상트랙구장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-05-20",
+    "closesAt": "2026-08-12",
+    "closed": true,
+    "url": "http://vrun.kr"
+   }
+  },
+  {
+   "id": "the-23rd-cheorwon-dmz-international-peace-marathon",
+   "name": "제23회 철원DMZ 국제평화마라톤",
+   "date": "2026-09-05",
+   "location": "강원 강원도 철원군 고석정(강원 철원군 동송읍 태봉로 1825)",
+   "distances": [
+    "~5km",
+    "10km",
+    "하프",
+    "풀"
+   ],
+   "registration": {
+    "opensAt": "2026-02-02",
+    "closesAt": "2026-04-05",
+    "closed": true,
+    "url": "http://dmzrun.kr"
+   }
+  },
+  {
+   "id": "ytn-seoul-tour-marathon-2026",
+   "name": "2026 YTN 서울 투어마라톤",
+   "date": "2026-09-06",
+   "location": "서울 서울광장",
+   "distances": [
+    "기타",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-17",
+    "closesAt": "2026-06-20",
+    "closed": true,
+    "url": "http://run.ytn.co.kr/"
+   }
+  },
+  {
+   "id": "2026-cheongju-marathon",
+   "name": "2026 전마협회장배 청주 마라톤 대회",
+   "date": "2026-09-06",
+   "location": "충북 청주 무심천체육공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-07-15",
+    "closed": true,
+    "url": "https://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792/guide/overview"
+   }
+  },
+  {
+   "id": "2026-2nd-sandrun-in-yeongdeok",
+   "name": "2026 제2회 샌드런 in 영덕",
+   "date": "2026-09-06",
+   "location": "경북 영덕군 대진해수욕장~고래불해수욕장",
+   "distances": [
+    "~5km",
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-03-16",
+    "closesAt": "2026-07-31",
+    "closed": true,
+    "url": "https://sandrun.co.kr/"
+   }
+  },
+  {
+   "id": "lotte-world-adventure-busan-water-run-with-treasure-hunt",
+   "name": "롯데월드 어드벤처 부산 워터런 with 보물찾기",
+   "date": "2026-09-06",
+   "location": "부산 롯데월드 어드벤처 부산",
+   "distances": [
+    "5km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-23",
+    "closesAt": "2026-09-02",
+    "closed": true,
+    "url": "https://leisure-web.yanolja.com/leisure/10359880"
+   }
+  },
+  {
+   "id": "bonghwa-songi-national-marathon",
+   "name": "봉화송이 전국마라톤대회",
+   "date": "2026-09-06",
+   "location": "경북 봉화공설운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-02-03",
+    "closesAt": "2026-07-15",
+    "closed": true,
+    "url": "http://bonghwarun.kr"
+   }
+  },
+  {
+   "id": "the-11th-2026-kim-dae-jung-peace-marathon",
+   "name": "제11회 2026 김대중 평화 마라톤 대회",
+   "date": "2026-09-06",
+   "location": "서울 상암 월드컵공원 평화광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-02-01",
+    "closesAt": "2026-08-30",
+    "closed": true,
+    "url": "http://kdjrun.kr/"
+   }
+  },
+  {
+   "id": "23rd-hope-dream-dawn-riverside-international-marathon",
+   "name": "희망드림 제23회 새벽강변 국제마라톤",
+   "date": "2026-09-06",
+   "location": "서울 양천구 목동종합운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-05-04",
+    "closesAt": "2026-05-30",
+    "closed": true,
+    "url": "http://amarunsb.com/"
+   }
+  },
+  {
+   "id": "2026-egg-marathon",
+   "name": "2026 계란마라톤대회",
+   "date": "2026-09-12",
+   "location": "인천 정서진 경인아라뱃길 여객터미널 광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-08-06",
+    "closesAt": "2026-08-27",
+    "closed": true,
+    "url": "https://egg-run.com/"
+   }
+  },
+  {
+   "id": "2026-yangyang-riverside-national-marathon",
+   "name": "2026 양양 강변 전국 마라톤대회",
+   "date": "2026-09-12",
+   "location": "강원 강원도 양양군 웰컴센터 및 남대천 일원 (양양읍 남문리 210-36)",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-02-27",
+    "closesAt": "2026-06-30",
+    "closed": true,
+    "url": "http://yrun.co.kr/"
+   }
+  },
+  {
+   "id": "2026-energy-hero-race",
+   "name": "2026 에너지 히어로 레이스",
+   "date": "2026-09-12",
+   "location": "서울 월드컵공원 평화광장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-27",
+    "closesAt": "2026-08-15",
+    "closed": true,
+    "url": "https://www.herorace.kr/"
+   }
+  },
+  {
+   "id": "yeosu-baekriseomseom-trail-run-2026",
+   "name": "2026 여수 백리섬섬 트레일런",
+   "date": "2026-09-12",
+   "location": "전남 청심국제해양청소년수련원 (여수시 화양면 장수로 183-5)",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-07-18",
+    "closesAt": "2026-07-22",
+    "closed": true,
+    "url": "https://speedtrailrun.kr"
+   }
+  },
+  {
+   "id": "2026-2nd-white-run",
+   "name": "2026 제2회 화이트런",
+   "date": "2026-09-12",
+   "location": "서울 영등포구 신정교 및 인라인스케이트장",
+   "distances": [
+    "~5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-04-27",
+    "closesAt": "2026-08-14",
+    "closed": true,
+    "url": "https://www.whiterun.kr"
+   }
+  },
+  {
+   "id": "night-run-in-cheongju-2026",
+   "name": "2026 청주 나이트 런 페스티벌",
+   "date": "2026-09-12",
+   "location": "충북 청주시 무심천 체육공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-08-15",
+    "closed": true,
+    "url": "https://n-runplus.co.kr/nightrun_in_cheongju"
+   }
+  },
+  {
+   "id": "2026-forest-run",
+   "name": "2026 포레스트런",
+   "date": "2026-09-12",
+   "location": "서울 여의도 공원 문화의 마당",
+   "distances": [
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-23",
+    "closesAt": "2026-07-30",
+    "closed": true,
+    "url": "https://www.hyundai.com/kr/ko/brand/forestrun/forestrun-apply/finalrun"
+   }
+  },
+  {
+   "id": "good-neighbors-race-with-think-earth-seoul-race",
+   "name": "굿네이버스 레이스 with 띵크어스 - 서울 레이스",
+   "date": "2026-09-12",
+   "location": "서울 여의도 한강공원 물빛무대 앞 광장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-27",
+    "closesAt": "2026-08-12",
+    "closed": true,
+    "url": "https://gnrace.kr"
+   }
+  },
+  {
+   "id": "before-sunrise-slow-marathon",
+   "name": "비포 선라이즈 슬로우 마라톤(강릉)",
+   "date": "2026-09-12",
+   "location": "강원 강릉 경포호수공원 및 경포해변",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-14",
+    "closesAt": "2026-08-23",
+    "closed": true,
+    "url": "https://healingtour.gtdc.or.kr/"
+   }
+  },
+  {
+   "id": "bbang-trail-run-2026",
+   "name": "빵트레일런2026",
+   "date": "2026-09-12",
+   "location": "강원 하이원 리조트 및 하늘길",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-03-25",
+    "closesAt": "2026-05-31",
+    "closed": true,
+    "url": "https://2026.bbangtrailrun.co.kr/"
+   }
+  },
+  {
+   "id": "seoul-olympics-memorial-88run",
+   "name": "서울올림픽기념 88RUN",
+   "date": "2026-09-12",
+   "location": "경기 하남 미사경정공원 일원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-14",
+    "closesAt": "2026-08-21",
+    "closed": true,
+    "url": "https://88run.kr/"
+   }
+  },
+  {
+   "id": "2026-green-umbrella-runway-marathon",
+   "name": "제2회 초록우산 런웨이 마라톤",
+   "date": "2026-09-12",
+   "location": "대전 대전엑스포시민광장",
+   "distances": [
+    "~5km",
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-04-01",
+    "closesAt": "2026-07-31",
+    "closed": true,
+    "url": "https://mara1080.com/event/9443583f-6577-466c-ab2f-43d1dbd820d4"
+   }
+  },
+  {
+   "id": "2026-run-seoul-run",
+   "name": "2026 RUN SEOUL RUN",
+   "date": "2026-09-13",
+   "location": "서울 서울 광장",
+   "distances": [
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-29",
+    "closesAt": "2026-08-14",
+    "closed": true,
+    "url": "https://runseoulrun.com/"
+   }
+  },
+  {
+   "id": "26th-ganghwa-beach-marathon",
+   "name": "2026 강화해변 마라톤",
+   "date": "2026-09-13",
+   "location": "인천 강화함상공원 주차장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-10",
+    "closesAt": "2026-07-24",
+    "closed": true,
+    "url": "http://ganghwamarathon.co.kr/"
+   }
+  },
+  {
+   "id": "2026-uljin-geumgang-pine-healing-marathon",
+   "name": "2026 울진 금강송배 힐링마라톤",
+   "date": "2026-09-13",
+   "location": "경북 울진종합운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2025-12-08",
+    "closesAt": "2026-07-29",
+    "closed": true,
+    "url": "http://www.ujrun.kr"
+   }
+  },
+  {
+   "id": "2026-pohang-secondary-battery-national-marathon",
+   "name": "2026 포항2차전지 전국마라톤대회",
+   "date": "2026-09-13",
+   "location": "경북 포항운하관 주차장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-29",
+    "closesAt": "2026-08-13",
+    "closed": true,
+    "url": "https://energyrun.co.kr"
+   }
+  },
+  {
+   "id": "running-world-10km-run",
+   "name": "달리는 세상 10km 런",
+   "date": "2026-09-13",
+   "location": "대전 대전엑스포시민광장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-01",
+    "closesAt": "2026-08-14",
+    "closed": true,
+    "url": "https://mara1080.com/event/0674df45-473c-4182-bed4-d15582fb8c73"
+   }
+  },
+  {
+   "id": "2026-hero-race-with-small-manufacturers-and-heroes",
+   "name": "소공인과 히어로가 함께하는 2026 히어로 레이스",
+   "date": "2026-09-13",
+   "location": "서울 여의도공원 문화의마당 일대",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-07-01",
+    "closesAt": "2026-07-30",
+    "closed": true,
+    "url": "https://www.herorace.co.kr/"
+   }
+  },
+  {
+   "id": "16th-smile-run-festival",
+   "name": "제16회 스마일런페스티벌",
+   "date": "2026-09-13",
+   "location": "서울 상암동 평화의공원 평화광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-30",
+    "closesAt": "2026-08-03",
+    "closed": true,
+    "url": "https://www.smilerun.co.kr"
+   }
+  },
+  {
+   "id": "19th-guro-mayors-cup-anyangcheon-fall-foliage-marathon-2026",
+   "name": "제19회 구로구청장배 안양천 단풍 마라톤대회",
+   "date": "2026-09-13",
+   "location": "서울 구일역 하부 인라인스케이트장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-03",
+    "closesAt": "2026-08-31",
+    "closed": true,
+    "url": "https://cafe.daum.net/guro-run/LvM7/45"
+   }
+  },
+  {
+   "id": "chung-ang-university-110th-anniversary-marathon",
+   "name": "중앙대학교 개교 110주년 기념 마라톤",
+   "date": "2026-09-15",
+   "location": "서울 미정",
+   "distances": [
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-10",
+    "closesAt": "2026-08-10",
+    "closed": true,
+    "url": ""
+   }
+  },
+  {
+   "id": "2026-t1-wish-run",
+   "name": "2026 T1 WISH RUN",
+   "date": "2026-09-19",
+   "location": "경기 하남 미사 경정공원",
+   "distances": [
+    "5km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-27",
+    "closesAt": "2026-08-26",
+    "closed": true,
+    "url": "https://t1.fan/shop/products/440"
+   }
+  },
+  {
+   "id": "2026-gongju-baekje-marathon-albam-run",
+   "name": "2026 공주백제마라톤 알밤런",
+   "date": "2026-09-19",
+   "location": "충남 공주시민운동장",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-08-06",
+    "closesAt": "2026-08-21",
+    "closed": true,
+    "url": "https://dongma.club/"
+   }
+  },
+  {
+   "id": "2026-infinite-challenge-run-in-gyeongju",
+   "name": "2026 무한도전 RUN in 경주",
+   "date": "2026-09-19",
+   "location": "경북 경주시민운동장",
+   "distances": [
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-07-30",
+    "closesAt": "2026-07-31",
+    "closed": true,
+    "url": ""
+   }
+  },
+  {
+   "id": "2026-sachal-run-gyeongsan-gatbawi-rock-wish-trail-runandwalk",
+   "name": "2026 사찰런: 경산 갓바위 소원길 트레일런&워크",
+   "date": "2026-09-19",
+   "location": "경북 경산 상원사, 선본사, 갓바위 제3공영주차장",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-08-07",
+    "closesAt": "2026-09-10",
+    "closed": true,
+    "url": "https://sachalrun.com/"
+   }
+  },
+  {
+   "id": "2026-city-forestival-run-and-fit-with-discovery-expedition",
+   "name": "2026 시포레 RUN & FIT with 디스커버리",
+   "date": "2026-09-19",
+   "location": "경기 일산호수공원 노래하는 분수대 일대",
+   "distances": [
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-16",
+    "closesAt": "2026-08-20",
+    "closed": true,
+    "url": "https://cityforestival.kr/"
+   }
+  },
+  {
+   "id": "2026-anyangcheon-half-marathon",
+   "name": "2026 안양천 하프 마라톤",
+   "date": "2026-09-19",
+   "location": "서울 신정교 하부 영롱이 억새구장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-07-01",
+    "closesAt": "2026-09-10",
+    "closed": true,
+    "url": "https://aychalf.kr"
+   }
+  },
+  {
+   "id": "2026-changwon-youth-week-youth-first-run",
+   "name": "2026 창원청년주간 기념 「유스퍼스트런」",
+   "date": "2026-09-19",
+   "location": "경남 마산 3.15 해양누리공원",
+   "distances": [
+    "기타"
+   ],
+   "registration": {
+    "opensAt": "2026-08-31",
+    "closesAt": "2026-09-18",
+    "closed": true,
+    "url": "https://mellow-faun-525d91.netlify.app/"
+   }
+  },
+  {
+   "id": "2026-youth-day-namdong-run",
+   "name": "2026 청년의날 남동런",
+   "date": "2026-09-19",
+   "location": "인천 인천대공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-08-01",
+    "closesAt": "2026-09-01",
+    "closed": true,
+    "url": "https://namdongrun.kr/"
+   }
+  },
+  {
+   "id": "just-run10-gimhae-daedong",
+   "name": "JUST RUN10 김해 대동",
+   "date": "2026-09-19",
+   "location": "경남 김해 대동생태체육공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-08-05",
+    "closed": true,
+    "url": "https://runten.co.kr/competitions/694b75d9-2f7c-4d4e-aa20-4163c44e9c82"
+   }
+  },
+  {
+   "id": "18th-cyber-territory-defense-marathon",
+   "name": "제18회 사이버 영토 수호 마라톤 대회",
+   "date": "2026-09-19",
+   "location": "서울 여의도 한강공원 물빛무대",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-17",
+    "closesAt": "2026-08-03",
+    "closed": true,
+    "url": "https://cyber-run.com/"
+   }
+  },
+  {
+   "id": "4th-mungyeong-omija-run-commemorating-mungyeong-youth-day",
+   "name": "제4회 문경시 청년의 날 기념 문경 오미자런",
+   "date": "2026-09-19",
+   "location": "경북 문경종합온천 뒤 주차장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-10",
+    "closesAt": "2026-08-03",
+    "closed": true,
+    "url": "https://omijarun.com"
+   }
+  },
+  {
+   "id": "2026-gongju-baekje-marathon",
+   "name": "2026 공주백제마라톤",
+   "date": "2026-09-20",
+   "location": "충남 공주시민운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프",
+    "기타",
+    "풀"
+   ],
+   "registration": {
+    "opensAt": "2026-05-21",
+    "closesAt": "2026-05-22",
+    "closed": true,
+    "url": "https://www.gongjumarathon.com"
+   }
+  },
+  {
+   "id": "dongdaemun-marathon-2026",
+   "name": "2026 동대문 마라톤",
+   "date": "2026-09-20",
+   "location": "서울 중랑천 제1체육공원",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-10",
+    "closesAt": "2026-08-20",
+    "closed": true,
+    "url": "https://www.runddm.com/"
+   }
+  },
+  {
+   "id": "2026-seonsa-marathon-festival",
+   "name": "2026 선사마라톤축제",
+   "date": "2026-09-20",
+   "location": "서울 암사동 유적 앞 특설무대",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-08",
+    "closesAt": "2026-06-15",
+    "closed": true,
+    "url": "http://www.gomarathon.co.kr"
+   }
+  },
+  {
+   "id": "2026-ansan-marathon",
+   "name": "2026 안산마라톤대회",
+   "date": "2026-09-20",
+   "location": "경기 대부바다향기테마파크",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-07-06",
+    "closesAt": "2026-07-30",
+    "closed": true,
+    "url": "https://ansanrun.com"
+   }
+  },
+  {
+   "id": "2026-ulsan-nam-gu-athletics-federation-presidents-cup-short-distance-marathon",
+   "name": "2026 울산남구육상연맹 회장배 단축마라톤",
+   "date": "2026-09-20",
+   "location": "울산 태화강 국가정원 왕버들 공연장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-15",
+    "closesAt": "2026-08-06",
+    "closed": true,
+    "url": "https://modern-infinity-9e6.notion.site/2026-395918810cc28075b602c0e076d8d3ea"
+   }
+  },
+  {
+   "id": "2026-handon-run",
+   "name": "2026 한돈런",
+   "date": "2026-09-20",
+   "location": "경기 하남시 미사리조정경기장",
+   "distances": [
+    "기타",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-07-03",
+    "closesAt": "2026-07-30",
+    "closed": true,
+    "url": "https://handonrun.com/"
+   }
+  },
+  {
+   "id": "26th-incheon-songdo-international-marathon",
+   "name": "제 26회 인천송도국제마라톤대회",
+   "date": "2026-09-20",
+   "location": "인천 국립 인천대학교 송도캠퍼스 정문(동문) 앞",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-08-07",
+    "closed": true,
+    "url": "http://www.songdorun.net/"
+   }
+  },
+  {
+   "id": "19th-gapyeong-jaraseom-national-marathon-2026",
+   "name": "제19회 가평자라섬 전국마라톤",
+   "date": "2026-09-20",
+   "location": "경기 가평종합운동장",
+   "distances": [
+    "~5km",
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "registration": {
+    "opensAt": "2026-04-14",
+    "closesAt": "2026-05-30",
+    "closed": true,
+    "url": "http://gprun.com/"
+   }
+  },
+  {
+   "id": "2nd-mapo-mayors-cup-marathon",
+   "name": "제2회 마포 구청장배 마라톤",
+   "date": "2026-09-20",
+   "location": "서울 평화의 공원 평화광장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "registration": {
+    "opensAt": "2026-06-01",
+    "closesAt": "2026-08-19",
+    "closed": true,
+    "url": "https://mara1080.com/event/53b338c6-d38a-47b3-9479-080b00c6113a/guide/overview"
+   }
+  }
+ ]
+}
