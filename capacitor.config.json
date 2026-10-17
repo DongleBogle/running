@@ -1,0 +1,5 @@
+{
+  "appId": "com.marathonnote.app",
+  "appName": "MarathonNote",
+  "webDir": "dist/app"
+}

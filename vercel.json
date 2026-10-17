@@ -1,13 +1,11 @@
 {
   "version": 2,
+  "buildCommand": "node scripts/build.mjs web",
+  "outputDirectory": "dist/web",
   "rewrites": [
     {
       "source": "/api/youtube/analyze",
       "destination": "/api/analyze"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
