@@ -17,7 +17,14 @@ ENV = os.environ.copy()
 if '/opt/homebrew/bin' not in ENV.get('PATH', ''):
     ENV['PATH'] = f"/opt/homebrew/bin:{ENV.get('PATH', '')}"
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+# 프론트엔드는 `node scripts/build.mjs web` 결과물(dist/web)을 서빙
+WEB_DIR = os.path.join(ROOT_DIR, 'dist', 'web')
+
 class RunningAppHandler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=WEB_DIR, **kwargs)
+
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')

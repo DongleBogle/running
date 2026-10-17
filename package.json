@@ -1,0 +1,11 @@
+{
+  "name": "running",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:web": "node scripts/build.mjs web",
+    "build:toss": "node scripts/build.mjs toss && ait build",
+    "build:app": "node scripts/build.mjs app && cap sync",
+    "dev": "node scripts/build.mjs web && python3 server.py"
+  }
+}
