@@ -2580,32 +2580,10 @@ async function analyzeAndGoStep2() {
         continue;
       }
 
-      // 1. 서버 OCR이 있으면 우선 시도 (로컬 개발 편의성)
-      let serverOk = false;
-      try {
-        if (!['localhost', '127.0.0.1'].includes(location.hostname)) throw new Error('no server ocr');
-        const res = await fetch('/api/ocr', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ image: await photoToDataUrl(uploadedPhotos[i].src) })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data.success && data.items && data.items.length > 0) {
-            ocrItems = data.items;
-            serverOk = true;
-          }
-        }
-      } catch (e) {
-        // 서버가 없거나(Vercel 환경) 에러 시 브라우저 OCR로 안전하게 폴백
-      }
-
-      // 2. 서버 OCR 불가 시 Tesseract.js 클라이언트 OCR 수행 (Vercel 배포 시 동작)
-      if (!serverOk) {
-        status.textContent = `Tesseract.js 브라우저 OCR 진행 중... (${i + 1}/${uploadedPhotos.length})`;
-        const text = await runBrowserOcr(uploadedPhotos[i].src);
-        ocrItems = parseOcrTextToRunningData(text);
-      }
+      // localhost / Vercel 모두 동일하게 브라우저 Tesseract.js OCR 사용
+      status.textContent = `브라우저 OCR 진행 중... (${i + 1}/${uploadedPhotos.length})`;
+      const text = await runBrowserOcr(uploadedPhotos[i].src);
+      ocrItems = parseOcrTextToRunningData(text);
 
       if (ocrItems.length) await ocrCachePut(hash, JSON.parse(JSON.stringify(ocrItems)));
       ocrItems.forEach(it => (it.type === 'verified' ? verified : laps).push(it));
@@ -2619,16 +2597,6 @@ async function analyzeAndGoStep2() {
   } finally {
     btn.disabled = false;
   }
-}
-
-async function photoToDataUrl(src) {
-  if (src.startsWith('data:')) return src;
-  const blob = await (await fetch(src)).blob();
-  return await new Promise(resolve => {
-    const fr = new FileReader();
-    fr.onload = () => resolve(fr.result);
-    fr.readAsDataURL(blob);
-  });
 }
 
 function applyOcrResults(verified, laps) {
