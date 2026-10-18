@@ -1,6 +1,6 @@
 {
  "month": "2026-10",
- "generatedAt": "2026-10-18T10:28",
+ "generatedAt": "2026-10-18T10:45",
  "races": [
   {
    "id": "2026-rok-army-trail-running",
@@ -10,7 +10,7 @@
    "distances": [
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787812609/kormarathon/events/event-images-1787812608370.jpg",
+   "image": "data/calendar/images/868a78a4a96d8177.jpg",
    "registration": {
     "opensAt": "2026-08-31",
     "closesAt": "2026-09-06",
@@ -28,7 +28,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786404639/kormarathon/events/og-image-1786404638955-ao1ra8.jpg",
+   "image": "data/calendar/images/e779acfbee935580.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-09-27",
@@ -61,7 +61,7 @@
     "기타",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1776650525/kormarathon/events/event-images-1776650524372.jpg",
+   "image": "data/calendar/images/a601b4462436c918.jpg",
    "registration": {
     "opensAt": "2026-04-13",
     "closesAt": "2026-04-30",
@@ -78,7 +78,7 @@
     "~5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789197914/kormarathon/events/event-images-1789197913082.jpg",
+   "image": "data/calendar/images/1020724ae35ed981.jpg",
    "registration": {
     "opensAt": "2026-07-14",
     "closesAt": "2026-09-22",
@@ -96,7 +96,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786699019/kormarathon/events/event-images-1786699018296.jpg",
+   "image": "data/calendar/images/1a670942dc05667c.jpg",
    "registration": {
     "opensAt": "2026-06-19",
     "closesAt": "2026-09-11",
@@ -114,7 +114,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785288147/kormarathon/events/event-images-1785288146350.jpg",
+   "image": "data/calendar/images/21c2bc2e32455a5f.jpg",
    "registration": {
     "opensAt": "2026-07-16",
     "closesAt": "2026-08-31",
@@ -132,7 +132,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1774153472/kormarathon/events/event-images-1774153472270.png",
+   "image": "data/calendar/images/99e3eda182757e7f.jpg",
    "registration": {
     "opensAt": "2026-03-22",
     "closesAt": "2026-09-01",
@@ -148,7 +148,7 @@
    "distances": [
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785118056/kormarathon/events/og-image-1785118055898-gpnbta.jpg",
+   "image": "data/calendar/images/402d11e721f84e91.jpg",
    "registration": {
     "opensAt": "2026-08-18",
     "closesAt": "2026-09-10",
@@ -166,7 +166,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788956681/kormarathon/events/event-images-1788956680378.jpg",
+   "image": "data/calendar/images/d68ffb8b019cee8e.jpg",
    "registration": {
     "opensAt": "2026-05-20",
     "closesAt": "2026-06-09",
@@ -182,7 +182,7 @@
    "distances": [
     "5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786439284/kormarathon/events/event-images-1786439283150.jpg",
+   "image": "data/calendar/images/61a6db3008050609.jpg",
    "registration": {
     "opensAt": "2026-09-04",
     "closesAt": "2026-09-04",
@@ -198,7 +198,7 @@
    "distances": [
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784699923/kormarathon/events/event-images-1784699922539.jpg",
+   "image": "data/calendar/images/978f391757b98a00.jpg",
    "registration": {
     "opensAt": "2026-07-31",
     "closesAt": "2026-08-02",
@@ -214,7 +214,7 @@
    "distances": [
     "5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786405911/kormarathon/events/event-images-1786405910537.jpg",
+   "image": "data/calendar/images/1366783d6d214f5a.jpg",
    "registration": {
     "opensAt": "2026-09-01",
     "closesAt": "2026-09-03",
@@ -233,7 +233,7 @@
     "하프",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1778573097/kormarathon/events/event-images-1778573096163.jpg",
+   "image": "data/calendar/images/dc2c1ebb2074eae2.jpg",
    "registration": {
     "opensAt": "2026-05-06",
     "closesAt": "2026-05-30",
@@ -251,7 +251,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1778593352/events/screenshots/screenshot_aHR0cHM6Ly9ydW5ib29r_1778593350946.jpg",
+   "image": "data/calendar/images/92b3ca9c61a2157a.jpg",
    "registration": {
     "opensAt": "2026-05-01",
     "closesAt": "2026-08-10",
@@ -269,7 +269,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1779544947/kormarathon/events/event-images-1779544945870.jpg",
+   "image": "data/calendar/images/3009f3b8bd942daa.jpg",
    "registration": {
     "opensAt": "2026-05-20",
     "closesAt": "2026-08-28",
@@ -287,7 +287,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786351927/kormarathon/events/og-image-1786351926329-q6ojau.jpg",
+   "image": "data/calendar/images/bddac8ec45430165.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-08-31",
@@ -303,7 +303,7 @@
    "distances": [
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788755793/kormarathon/events/event-images-1788755792065.jpg",
+   "image": "data/calendar/images/1048c54d52b5f873.jpg",
    "registration": {
     "opensAt": "2026-08-12",
     "closesAt": "2026-10-04",
@@ -320,7 +320,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784537597/kormarathon/events/event-images-1784537596231.jpg",
+   "image": "data/calendar/images/bd1ec0184bb9d25f.jpg",
    "registration": {
     "opensAt": "2026-07-20",
     "closesAt": "2026-08-15",
@@ -338,7 +338,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1774153300/kormarathon/events/event-images-1774153300467.png",
+   "image": "data/calendar/images/e6b4de8ed299d9c0.jpg",
    "registration": {
     "opensAt": "2026-06-16",
     "closesAt": "2026-06-16",
@@ -355,7 +355,7 @@
     "~5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789199404/kormarathon/events/event-images-1789199403225.jpg",
+   "image": "data/calendar/images/5c434e90f10c14e7.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-08-14",
@@ -372,7 +372,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1777874678/kormarathon/events/event-images-1777874677057.jpg",
+   "image": "data/calendar/images/57f525a689346783.jpg",
    "registration": {
     "opensAt": "2026-04-24",
     "closesAt": "2026-05-10",
@@ -390,7 +390,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784080846/kormarathon/events/event-images-1784080845025.jpg",
+   "image": "data/calendar/images/8ca11e94d6b4baf0.jpg",
    "registration": {
     "opensAt": "2026-07-16",
     "closesAt": "2026-08-30",
@@ -407,7 +407,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783768888/kormarathon/events/og-image-1783768887220-uczbe.jpg",
+   "image": "data/calendar/images/1c20386cf7a68205.jpg",
    "registration": {
     "opensAt": "2026-07-08",
     "closesAt": "2026-07-22",
@@ -426,7 +426,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787634882/kormarathon/events/og-image-1787634881303-y2jcha.jpg",
+   "image": "data/calendar/images/3e43fe039723466f.jpg",
    "registration": {
     "opensAt": "2026-08-20",
     "closesAt": "2026-09-10",
@@ -442,7 +442,7 @@
    "distances": [
     "~5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1790326481/kormarathon/events/event-images-1790326480587.jpg",
+   "image": "data/calendar/images/d94aba2f46c94bad.jpg",
    "registration": {
     "opensAt": "2026-09-16",
     "closesAt": "2026-10-04",
@@ -459,7 +459,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787305721/kormarathon/events/og-image-1787305720448-f1ey6e.jpg",
+   "image": "data/calendar/images/d29365f4f96a21a7.jpg",
    "registration": {
     "opensAt": "2026-08-15",
     "closesAt": "2026-09-10",
@@ -477,7 +477,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789347989/kormarathon/events/event-images-1789347987920.jpg",
+   "image": "data/calendar/images/b20397f822a287da.jpg",
    "registration": {
     "opensAt": "2026-07-22",
     "closesAt": "2026-08-02",
@@ -496,7 +496,7 @@
     "하프",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1781360626/kormarathon/events/event-images-1781360625648.jpg",
+   "image": "data/calendar/images/32d56b4b8ed1ca61.jpg",
    "registration": {
     "opensAt": "2026-08-10",
     "closesAt": "2026-08-13",
@@ -514,7 +514,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787217549/kormarathon/events/event-images-1787217548644.jpg",
+   "image": "data/calendar/images/7143b3ab1c9b08ef.jpg",
    "registration": {
     "opensAt": "2026-08-19",
     "closesAt": "2026-09-05",
@@ -533,7 +533,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787652327/events/screenshots/screenshot_aHR0cDovL3d3dy5zdXBl_1787652325641.jpg",
+   "image": "data/calendar/images/5448c807428398b7.jpg",
    "registration": {
     "opensAt": "2026-08-26",
     "closesAt": "2026-09-05",
@@ -550,7 +550,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782878501/kormarathon/events/og-image-1782878500167-eac8i.jpg",
+   "image": "data/calendar/images/bb1ef7f61b5f0c59.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-07-15",
@@ -567,7 +567,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789444237/kormarathon/events/event-images-1789444235589.jpg",
+   "image": "data/calendar/images/92e460411623411e.jpg",
    "registration": {
     "opensAt": "2026-08-02",
     "closesAt": "2026-08-23",
@@ -585,7 +585,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782698669/kormarathon/events/event-images-1782698668156.jpg",
+   "image": "data/calendar/images/f8496541d5c719bc.jpg",
    "registration": {
     "opensAt": "2026-06-30",
     "closesAt": "2026-07-10",
@@ -603,7 +603,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1774154834/kormarathon/events/event-images-1774154834443.png",
+   "image": "data/calendar/images/f1549753e6ce2753.jpg",
    "registration": {
     "opensAt": "2026-03-25",
     "closesAt": "2026-07-31",
@@ -621,7 +621,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1768531898/kormarathon/events/event-images-1768531898454.png",
+   "image": "data/calendar/images/0607a2c0d7683bfd.jpg",
    "registration": {
     "opensAt": "2026-05-18",
     "closesAt": "2026-06-23",
@@ -638,7 +638,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789363014/kormarathon/events/event-images-1789363013491.jpg",
+   "image": "data/calendar/images/c7b6750dae454d23.jpg",
    "registration": {
     "opensAt": "2026-09-14",
     "closesAt": "2026-09-30",
@@ -657,7 +657,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1776412192/kormarathon/events/event-images-1776412191144.png",
+   "image": "data/calendar/images/b8affffaf1fb1829.jpg",
    "registration": {
     "opensAt": "2026-05-18",
     "closesAt": "2026-06-18",
@@ -674,7 +674,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784123103/kormarathon/events/og-image-1784123102602-3kf53a.jpg",
+   "image": "data/calendar/images/13b65e31b4bc990f.jpg",
    "registration": {
     "opensAt": "2026-07-08",
     "closesAt": "2026-09-04",
@@ -691,7 +691,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787216847/kormarathon/events/og-image-1787216846575-cj4f5k.jpg",
+   "image": "data/calendar/images/8bf5995285859ac2.jpg",
    "registration": {
     "opensAt": "2026-08-19",
     "closesAt": "2026-09-11",
@@ -708,7 +708,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786696249/kormarathon/events/event-images-1786696248255.jpg",
+   "image": "data/calendar/images/66d018739d44463a.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-09-04",
@@ -725,7 +725,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783864885/kormarathon/events/event-images-1783864884450.jpg",
+   "image": "data/calendar/images/1e139dc045ab2463.jpg",
    "registration": {
     "opensAt": "2026-07-10",
     "closesAt": "2026-08-15",
@@ -743,7 +743,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783324586/kormarathon/events/event-images-1783324585739.jpg",
+   "image": "data/calendar/images/051a73de3e260e36.jpg",
    "registration": {
     "opensAt": "2026-07-06",
     "closesAt": "2026-07-30",
@@ -761,7 +761,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782218172/kormarathon/events/event-images-1782218171082.jpg",
+   "image": "data/calendar/images/b31c2750df05d35e.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-07-15",
@@ -778,7 +778,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785819707/kormarathon/events/event-images-1785819706050.jpg",
+   "image": "data/calendar/images/03d102008d5602cb.jpg",
    "registration": {
     "opensAt": "2026-08-10",
     "closesAt": "2026-08-17",
@@ -797,7 +797,7 @@
     "하프",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1780308501/kormarathon/events/event-images-1780308499957.jpg",
+   "image": "data/calendar/images/75873def5aa39ef5.jpg",
    "registration": {
     "opensAt": "2026-05-04",
     "closesAt": "2026-06-10",
@@ -815,7 +815,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789348944/kormarathon/events/event-images-1789348943492.jpg",
+   "image": "data/calendar/images/148e3628644b6b72.jpg",
    "registration": {
     "opensAt": "2026-07-10",
     "closesAt": "2026-09-11",
@@ -832,7 +832,7 @@
     "기타",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1779108091/kormarathon/events/event-images-1779108090357.jpg",
+   "image": "data/calendar/images/c577e9e0bb51fff2.jpg",
    "registration": {
     "opensAt": "2026-05-27",
     "closesAt": "2026-05-29",
@@ -850,7 +850,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785483014/kormarathon/events/event-images-1785483013111.jpg",
+   "image": "data/calendar/images/845378fb4db1eb88.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-09-30",
@@ -867,7 +867,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786404896/kormarathon/events/og-image-1786404895749-u5r59j.jpg",
+   "image": "data/calendar/images/11ecc502c0e5b184.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-09-04",
@@ -885,7 +885,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789350022/kormarathon/events/event-images-1789350020774.jpg",
+   "image": "data/calendar/images/15c82fca3617b3f6.jpg",
    "registration": {
     "opensAt": "2026-07-31",
     "closesAt": "2026-08-28",
@@ -903,7 +903,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782296259/kormarathon/events/event-images-1782296257849.jpg",
+   "image": "data/calendar/images/42f980456fd02b2e.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-07-15",
@@ -920,7 +920,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784105162/kormarathon/events/event-images-1784105161542.jpg",
+   "image": "data/calendar/images/eed6f8a3ac170b77.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-08-10",
@@ -938,7 +938,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787218704/kormarathon/events/event-images-1787218703749.jpg",
+   "image": "data/calendar/images/18e7c4092dae0476.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-09-05",
@@ -955,7 +955,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786422247/kormarathon/events/og-image-1786422246263-zcs8p7.jpg",
+   "image": "data/calendar/images/1b38835c845559cf.jpg",
    "registration": {
     "opensAt": "2026-08-10",
     "closesAt": "2026-10-04",
@@ -971,7 +971,7 @@
    "distances": [
     "~5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789014812/kormarathon/events/event-images-1789014810818.jpg",
+   "image": "data/calendar/images/6bee40379f20a97c.jpg",
    "registration": {
     "opensAt": "2026-09-11",
     "closesAt": "2026-09-30",
@@ -991,7 +991,7 @@
     "기타",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1774155282/kormarathon/events/event-images-1774155282488.png",
+   "image": "data/calendar/images/c354c65d1104cd6c.jpg",
    "registration": {
     "opensAt": "2026-01-01",
     "closesAt": "2026-09-15",
@@ -1008,7 +1008,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788262498/kormarathon/events/event-images-1788262497545.jpg",
+   "image": "data/calendar/images/e439536affdadae2.jpg",
    "registration": {
     "opensAt": "2026-09-07",
     "closesAt": "2026-09-07",
@@ -1025,7 +1025,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789444607/kormarathon/events/event-images-1789444606012.jpg",
+   "image": "data/calendar/images/373f9fc08c958972.jpg",
    "registration": {
     "opensAt": null,
     "closesAt": null,
@@ -1042,7 +1042,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789013635/kormarathon/events/event-images-1789013634668.jpg",
+   "image": "data/calendar/images/8b5af06bacdfbf95.jpg",
    "registration": {
     "opensAt": "2026-09-04",
     "closesAt": "2026-09-18",
@@ -1058,7 +1058,7 @@
    "distances": [
     "~5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1790327725/kormarathon/events/event-images-1790327724627.jpg",
+   "image": "data/calendar/images/93d4825789a51ed3.jpg",
    "registration": {
     "opensAt": "2026-09-15",
     "closesAt": "2026-10-12",
@@ -1075,7 +1075,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788246054/kormarathon/events/og-image-1788246053992-z3x6c.jpg",
+   "image": "data/calendar/images/516dc0a33be37671.jpg",
    "registration": {
     "opensAt": "2026-08-29",
     "closesAt": "2026-09-16",
@@ -1091,7 +1091,7 @@
    "distances": [
     "5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787636385/kormarathon/events/event-images-1787636384360.jpg",
+   "image": "data/calendar/images/a26683d3f4188766.jpg",
    "registration": {
     "opensAt": "2026-09-04",
     "closesAt": "2026-10-12",
@@ -1109,7 +1109,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786404771/kormarathon/events/event-images-1786404770490.jpg",
+   "image": "data/calendar/images/a3e4d5a174de23be.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-10-07",
@@ -1126,7 +1126,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784008157/kormarathon/events/event-images-1784008156233.jpg",
+   "image": "data/calendar/images/434c238fdd9a5026.jpg",
    "registration": {
     "opensAt": "2026-08-11",
     "closesAt": "2026-09-23",
@@ -1143,7 +1143,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783302288/kormarathon/events/og-image-1783302287380-mc54.jpg",
+   "image": "data/calendar/images/8990eb4b34a1f928.jpg",
    "registration": {
     "opensAt": "2026-07-15",
     "closesAt": "2026-09-14",
@@ -1160,7 +1160,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789350509/kormarathon/events/event-images-1789350508019.jpg",
+   "image": "data/calendar/images/4321fe92268d4b3e.jpg",
    "registration": {
     "opensAt": "2026-09-09",
     "closesAt": "2026-09-28",
@@ -1178,7 +1178,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787722438/kormarathon/events/event-images-1787722437325.jpg",
+   "image": "data/calendar/images/4088bd4e33e97e39.jpg",
    "registration": {
     "opensAt": "2026-08-11",
     "closesAt": "2026-09-11",
@@ -1196,7 +1196,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789445025/kormarathon/events/event-images-1789445024561.jpg",
+   "image": "data/calendar/images/0994c47092b37541.jpg",
    "registration": {
     "opensAt": "2026-07-10",
     "closesAt": "2026-09-12",
@@ -1214,7 +1214,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789352748/kormarathon/events/event-images-1789352746847.jpg",
+   "image": "data/calendar/images/9650bc9d5facf8ad.jpg",
    "registration": {
     "opensAt": "2026-06-23",
     "closesAt": "2026-07-22",
@@ -1232,7 +1232,7 @@
     "하프",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1774339181/kormarathon/events/event-images-1774339180866.png",
+   "image": "data/calendar/images/b165e6a61b81610d.jpg",
    "registration": {
     "opensAt": "2026-05-26",
     "closesAt": "2026-06-04",
@@ -1249,7 +1249,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787306055/kormarathon/events/event-images-1787306054952.jpg",
+   "image": "data/calendar/images/da9d60abb209a334.jpg",
    "registration": {
     "opensAt": "2026-08-22",
     "closesAt": "2026-09-20",
@@ -1268,7 +1268,7 @@
     "하프",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1768532016/kormarathon/events/event-images-1768532016135.png",
+   "image": "data/calendar/images/490a3a0664147094.jpg",
    "registration": {
     "opensAt": "2026-05-11",
     "closesAt": "2026-06-30",
@@ -1286,7 +1286,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789354085/kormarathon/events/event-images-1789354084126.jpg",
+   "image": "data/calendar/images/f4c429ffcd359b7c.jpg",
    "registration": {
     "opensAt": "2026-07-23",
     "closesAt": "2026-09-17",
@@ -1303,7 +1303,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1781787769/kormarathon/events/event-images-1781787768294.jpg",
+   "image": "data/calendar/images/3a6db90f9f56cbf9.jpg",
    "registration": {
     "opensAt": "2026-09-10",
     "closesAt": "2026-09-10",
@@ -1320,7 +1320,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1772711810/kormarathon/events/event-images-1772711809940.png",
+   "image": "data/calendar/images/673180a1c17c1dc3.jpg",
    "registration": {
     "opensAt": "2026-04-21",
     "closesAt": "2026-08-18",
@@ -1337,7 +1337,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1790327269/kormarathon/events/event-images-1790327267749.png",
+   "image": "data/calendar/images/30e2ad25760e02fa.jpg",
    "registration": {
     "opensAt": "2026-08-28",
     "closesAt": "2026-09-21",
@@ -1355,7 +1355,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1777874731/kormarathon/events/event-images-1777874729879.jpg",
+   "image": "data/calendar/images/e7e5552bd9ba1101.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-07-22",
@@ -1373,7 +1373,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786405870/kormarathon/events/event-images-1786405869034.jpg",
+   "image": "data/calendar/images/21e87a22630c4ad2.jpg",
    "registration": {
     "opensAt": "2026-08-04",
     "closesAt": "2026-10-07",
@@ -1390,7 +1390,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782295532/kormarathon/events/event-images-1782295530786.jpg",
+   "image": "data/calendar/images/472601d88d6fc7e2.jpg",
    "registration": {
     "opensAt": "2026-08-03",
     "closesAt": "2026-08-24",
@@ -1408,7 +1408,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1781267189/kormarathon/events/event-images-1781267188538.jpg",
+   "image": "data/calendar/images/1982377daf7a2b07.jpg",
    "registration": {
     "opensAt": "2026-06-10",
     "closesAt": "2026-06-15",
@@ -1424,7 +1424,7 @@
    "distances": [
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789362856/kormarathon/events/event-images-1789362855206.jpg",
+   "image": "data/calendar/images/885245efcf4d278a.jpg",
    "registration": {
     "opensAt": "2026-08-05",
     "closesAt": "2026-09-20",
@@ -1441,7 +1441,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789355006/kormarathon/events/event-images-1789355005527.jpg",
+   "image": "data/calendar/images/be3dbce69e91e877.jpg",
    "registration": {
     "opensAt": "2026-09-02",
     "closesAt": "2026-09-18",
@@ -1459,7 +1459,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782217446/kormarathon/events/event-images-1782217445369.jpg",
+   "image": "data/calendar/images/b86bc4500450e5e5.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-07-15",
@@ -1476,7 +1476,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784774739/kormarathon/events/og-image-1784774738140-byzs1.jpg",
+   "image": "data/calendar/images/307c17f6339d4067.jpg",
    "registration": {
     "opensAt": "2026-07-24",
     "closesAt": "2026-08-30",
@@ -1493,7 +1493,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1781524360/kormarathon/events/event-images-1781524358810.jpg",
+   "image": "data/calendar/images/bd3ed9612d51ffc0.jpg",
    "registration": {
     "opensAt": "2026-06-18",
     "closesAt": "2026-09-24",
@@ -1510,7 +1510,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783864291/kormarathon/events/og-image-1783864291231-8ayf3i.jpg",
+   "image": "data/calendar/images/030141cc9aa66d8f.jpg",
    "registration": {
     "opensAt": "2026-07-09",
     "closesAt": "2026-08-31",
@@ -1528,7 +1528,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785820016/kormarathon/events/event-images-1785820015200.jpg",
+   "image": "data/calendar/images/c5a6cde8f5143b8f.jpg",
    "registration": {
     "opensAt": "2026-08-03",
     "closesAt": "2026-08-30",
@@ -1545,7 +1545,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789536248/kormarathon/events/event-images-1789536246934.jpg",
+   "image": "data/calendar/images/771b4ca42e5d877a.jpg",
    "registration": {
     "opensAt": "2026-08-14",
     "closesAt": "2026-10-07",
@@ -1562,7 +1562,7 @@
     "기타",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789221606/kormarathon/events/event-images-1789221604676.jpg",
+   "image": "data/calendar/images/bf616f6dbff136f5.jpg",
    "registration": {
     "opensAt": "2026-07-14",
     "closesAt": "2026-09-15",
@@ -1579,7 +1579,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1784868638/kormarathon/events/event-images-1784868637196.jpg",
+   "image": "data/calendar/images/8ed0acdac233a4a8.jpg",
    "registration": {
     "opensAt": "2026-07-31",
     "closesAt": "2026-10-23",
@@ -1596,7 +1596,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1780668053/kormarathon/events/event-images-1780668052348.jpg",
+   "image": "data/calendar/images/7efe7a5bc42d9d81.jpg",
    "registration": {
     "opensAt": "2026-08-31",
     "closesAt": "2026-08-31",
@@ -1613,7 +1613,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786513547/kormarathon/events/event-images-1786513546756.jpg",
+   "image": "data/calendar/images/1a981ce5fcb76775.jpg",
    "registration": {
     "opensAt": "2026-09-08",
     "closesAt": "2026-09-22",
@@ -1630,7 +1630,7 @@
     "5km",
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789522601/kormarathon/events/event-images-1789522600356.jpg",
+   "image": "data/calendar/images/1076c42a3dd12336.jpg",
    "registration": {
     "opensAt": "2026-09-08",
     "closesAt": "2026-10-05",
@@ -1646,7 +1646,7 @@
    "distances": [
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789474001/kormarathon/events/event-images-1789474000497.jpg",
+   "image": "data/calendar/images/73ea5616d12a9c30.jpg",
    "registration": {
     "opensAt": "2026-09-02",
     "closesAt": "2026-10-20",
@@ -1664,7 +1664,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782217059/kormarathon/events/event-images-1782217057556.jpg",
+   "image": "data/calendar/images/1b688a4970cfd4cb.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-07-30",
@@ -1681,7 +1681,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1790328240/kormarathon/events/event-images-1790328239919.jpg",
+   "image": "data/calendar/images/7f16b965412b49c0.jpg",
    "registration": {
     "opensAt": "2026-09-28",
     "closesAt": "2026-10-08",
@@ -1699,7 +1699,7 @@
     "10km",
     "기타"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789523570/kormarathon/events/event-images-1789523569768.jpg",
+   "image": "data/calendar/images/b046fc228014e419.jpg",
    "registration": {
     "opensAt": "2026-07-28",
     "closesAt": "2026-09-10",
@@ -1717,7 +1717,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786615549/kormarathon/events/event-images-1786615548067.jpg",
+   "image": "data/calendar/images/785e1fcb77647661.jpg",
    "registration": {
     "opensAt": "2026-08-19",
     "closesAt": "2026-09-20",
@@ -1735,7 +1735,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785892397/kormarathon/events/event-images-1785892396514.jpg",
+   "image": "data/calendar/images/09353feaa9f824e3.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-09-29",
@@ -1752,7 +1752,7 @@
     "10km",
     "풀"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1781524664/kormarathon/events/event-images-1781524663000.jpg",
+   "image": "data/calendar/images/3595a5740289517a.jpg",
    "registration": {
     "opensAt": "2026-09-08",
     "closesAt": "2026-09-09",
@@ -1770,7 +1770,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783324066/kormarathon/events/event-images-1783324065354.jpg",
+   "image": "data/calendar/images/dfc764a1733bd350.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-07-30",
@@ -1804,7 +1804,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786603877/kormarathon/events/event-images-1786603875970.jpg",
+   "image": "data/calendar/images/4d499a8068f891e1.jpg",
    "registration": {
     "opensAt": "2026-08-20",
     "closesAt": "2026-10-12",
@@ -1822,7 +1822,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789524047/kormarathon/events/event-images-1789524045821.jpg",
+   "image": "data/calendar/images/369090a17421252b.jpg",
    "registration": {
     "opensAt": null,
     "closesAt": "2026-09-23",
@@ -1840,7 +1840,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1782273558/kormarathon/events/event-images-1782273556840.jpg",
+   "image": "data/calendar/images/dc3b8ba313921f2f.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-07-30",
@@ -1857,7 +1857,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786440172/kormarathon/events/event-images-1786440171480.png",
+   "image": "data/calendar/images/80cf08475b20a260.jpg",
    "registration": {
     "opensAt": "2026-09-14",
     "closesAt": "2026-10-15",
@@ -1873,7 +1873,7 @@
    "distances": [
     "5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788261293/kormarathon/events/event-images-1788261292328.jpg",
+   "image": "data/calendar/images/f04534f402369cdf.jpg",
    "registration": {
     "opensAt": "2026-09-03",
     "closesAt": "2026-09-15",
@@ -1890,7 +1890,7 @@
     "~5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787722167/kormarathon/events/event-images-1787722166451.jpg",
+   "image": "data/calendar/images/edb145137a373e56.jpg",
    "registration": {
     "opensAt": "2026-08-20",
     "closesAt": "2026-09-30",
@@ -1908,7 +1908,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1783864474/kormarathon/events/og-image-1783864473022-t84ycr.jpg",
+   "image": "data/calendar/images/e3a4a006aea8bcab.jpg",
    "registration": {
     "opensAt": "2026-07-08",
     "closesAt": "2026-09-30",
@@ -1924,7 +1924,7 @@
    "distances": [
     "5km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1787719417/kormarathon/events/event-images-1787719416193.jpg",
+   "image": "data/calendar/images/7e498657171aab5c.jpg",
    "registration": {
     "opensAt": "2026-08-20",
     "closesAt": "2026-09-10",
@@ -1941,7 +1941,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786713555/kormarathon/events/event-images-1786713554015.jpg",
+   "image": "data/calendar/images/6e31cbd870d6434b.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-09-15",
@@ -1958,7 +1958,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1785893753/kormarathon/events/event-images-1785893752577.jpg",
+   "image": "data/calendar/images/b5dcd660e59eab2d.jpg",
    "registration": {
     "opensAt": "2026-08-25",
     "closesAt": "2026-08-27",
@@ -1976,7 +1976,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1788958035/kormarathon/events/event-images-1788958034781.jpg",
+   "image": "data/calendar/images/ddc12d92ae15cb0d.jpg",
    "registration": {
     "opensAt": "2026-09-22",
     "closesAt": "2026-10-12",
@@ -1994,7 +1994,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1789524600/kormarathon/events/event-images-1789524599427.jpg",
+   "image": "data/calendar/images/e816f340b2a69c1f.jpg",
    "registration": {
     "opensAt": "2026-08-21",
     "closesAt": "2026-09-16",
@@ -2011,7 +2011,7 @@
     "5km",
     "10km"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1790328584/kormarathon/events/event-images-1790328582957.jpg",
+   "image": "data/calendar/images/2c5f7a3c08dfd14f.jpg",
    "registration": {
     "opensAt": "2026-09-14",
     "closesAt": "2026-10-06",
@@ -2029,7 +2029,7 @@
     "10km",
     "하프"
    ],
-   "image": "https://res.cloudinary.com/dbst091yt/image/upload/c_fill,g_auto,w_160,h_160,f_auto,q_auto/v1786517054/kormarathon/events/event-images-1786517053747.jpg",
+   "image": "data/calendar/images/add18cf8e50275ea.jpg",
    "registration": {
     "opensAt": "2026-08-07",
     "closesAt": "2026-10-18",
