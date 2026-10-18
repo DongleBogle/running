@@ -1,0 +1,132 @@
+{
+ "id": "2026-memorial-run",
+ "name": "2026 메모리얼런",
+ "nameEn": "2026 Memorial Run",
+ "date": "2026-10-17",
+ "location": "세종 세종중앙공원 도시축제마당",
+ "region": "세종",
+ "venue": "세종중앙공원 도시축제마당",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 11.9,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/8990eb4b34a1f928.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1783302288/kormarathon/events/og-image-1783302287380-mc54.jpg",
+ "registration": {
+  "opensAt": "2026-07-15",
+  "closesAt": "2026-09-14",
+  "closed": false,
+  "url": "https://119memorial.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-memorial-run",
+ "coords": {
+  "lat": 36.49503,
+  "lon": 127.27588,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 13.4,
+  "tmin": 9.2,
+  "tmax": 19.3,
+  "humidity": 78,
+  "wind": 1.8,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 19.2,
+    "tmin": 15.0,
+    "tmax": 24.7,
+    "rain": 13.0
+   },
+   {
+    "year": 2024,
+    "temp": 17.3,
+    "tmin": 12.1,
+    "tmax": 23.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 11.2,
+    "tmin": 6.0,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 11.6,
+    "tmin": 6.9,
+    "tmax": 14.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 3.7,
+    "tmin": 1.2,
+    "tmax": 9.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.7,
+    "tmin": 6.3,
+    "tmax": 18.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 12.8,
+    "tmin": 8.1,
+    "tmax": 18.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.4,
+    "tmin": 6.4,
+    "tmax": 18.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 12.2,
+    "tmin": 7.2,
+    "tmax": 20.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 16.5,
+    "tmin": 12.7,
+    "tmax": 21.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

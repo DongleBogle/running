@@ -1,0 +1,132 @@
+{
+ "id": "gyeongju-bomun-night-run-wheres-wally",
+ "name": "경주 보문 나이트런 (월리를 찾아라)",
+ "nameEn": "Gyeongju Bomun Night Run (Where’s Wally?)",
+ "date": "2026-10-31",
+ "location": "경북 경주 보문 보덕동 행정복지센터 옆 헬기장",
+ "region": "경북",
+ "venue": "경주 보문 보덕동 행정복지센터 옆 헬기장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 55000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 66000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/b5dcd660e59eab2d.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785893753/kormarathon/events/event-images-1785893752577.jpg",
+ "registration": {
+  "opensAt": "2026-08-25",
+  "closesAt": "2026-08-27",
+  "closed": false,
+  "url": "https://wallyrun.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/gyeongju-bomun-night-run-wheres-wally",
+ "coords": {
+  "lat": 35.86077,
+  "lon": 129.2684,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.3,
+  "tmin": 6.5,
+  "tmax": 16.6,
+  "humidity": 72,
+  "wind": 2.7,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.2,
+    "tmin": 5.2,
+    "tmax": 18.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.8,
+    "tmin": 9.7,
+    "tmax": 20.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.2,
+    "tmin": 6.2,
+    "tmax": 21.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 13.1,
+    "tmin": 7.3,
+    "tmax": 17.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 11.1,
+    "tmin": 5.6,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.3,
+    "tmin": 5.9,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.6,
+    "tmin": 7.5,
+    "tmax": 18.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 6.8,
+    "tmin": 2.8,
+    "tmax": 12.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 7.4,
+    "tmin": 3.2,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 9.5,
+    "tmin": 7.1,
+    "tmax": 12.6,
+    "rain": 0.2
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

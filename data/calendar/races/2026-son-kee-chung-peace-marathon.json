@@ -1,0 +1,146 @@
+{
+ "id": "2026-son-kee-chung-peace-marathon",
+ "name": "2026 손기정평화마라톤",
+ "nameEn": "2026 Son Kee Chung Peace Marathon",
+ "date": "2026-11-15",
+ "location": "경기 임진각",
+ "region": "경기",
+ "venue": "임진각",
+ "distances": [
+  "기타",
+  "10km",
+  "하프",
+  "풀"
+ ],
+ "fees": [
+  {
+   "category": "기타",
+   "km": 6,
+   "fee": 50000,
+   "note": "제한시간 1시간"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": "제한시간 1시간 30분"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 65000,
+   "note": "제한시간 3시간"
+  },
+  {
+   "category": "풀",
+   "km": 42.2,
+   "fee": 70000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/c7918a089eb7fbf6.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782886884/kormarathon/events/event-images-1782886883171.jpg",
+ "registration": {
+  "opensAt": "2026-08-09",
+  "closesAt": "2026-08-31",
+  "closed": false,
+  "url": "https://www.sonkeechungrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-son-kee-chung-peace-marathon",
+ "coords": {
+  "lat": 37.8923,
+  "lon": 126.744,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.1,
+  "tmin": 1.3,
+  "tmax": 11.8,
+  "humidity": 72,
+  "wind": 1.9,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 3.9,
+    "tmin": -0.5,
+    "tmax": 14.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 13.6,
+    "tmin": 11.9,
+    "tmax": 20.0,
+    "rain": 0.3
+   },
+   {
+    "year": 2023,
+    "temp": 2.6,
+    "tmin": -1.4,
+    "tmax": 10.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 4.4,
+    "tmin": 0.8,
+    "tmax": 11.2,
+    "rain": 0.9
+   },
+   {
+    "year": 2021,
+    "temp": 4.0,
+    "tmin": 0.3,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 7.7,
+    "tmin": 3.6,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 5.5,
+    "tmin": 2.0,
+    "tmax": 12.3,
+    "rain": 16.3
+   },
+   {
+    "year": 2018,
+    "temp": 4.6,
+    "tmin": 0.9,
+    "tmax": 12.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.5,
+    "tmin": -3.2,
+    "tmax": 5.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 2.4,
+    "tmin": 0.0,
+    "tmax": 7.7,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

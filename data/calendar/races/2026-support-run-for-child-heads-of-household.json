@@ -1,0 +1,138 @@
+{
+ "id": "2026-support-run-for-child-heads-of-household",
+ "name": "2026 소년소녀 가장 돕기 기부런",
+ "nameEn": "2026 Support Run for Child Heads of Household",
+ "date": "2026-12-12",
+ "location": "서울 월드컵공원 평화광장",
+ "region": "서울",
+ "venue": "월드컵공원 평화광장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": "걷기"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/2a883769bfc35219.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1784107631/kormarathon/events/event-images-1784107630170.jpg",
+ "registration": {
+  "opensAt": "2026-07-01",
+  "closesAt": "2026-09-01",
+  "closed": false,
+  "url": "https://gibukidsrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-support-run-for-child-heads-of-household",
+ "coords": {
+  "lat": 37.5736,
+  "lon": 126.87037,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.2,
+  "tmin": -4.3,
+  "tmax": 4.2,
+  "humidity": 68,
+  "wind": 2.5,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -1.6,
+    "tmin": -4.1,
+    "tmax": 5.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -3.1,
+    "tmin": -4.7,
+    "tmax": 3.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.7,
+    "tmin": 0.6,
+    "tmax": 7.9,
+    "rain": 0.6
+   },
+   {
+    "year": 2022,
+    "temp": -1.6,
+    "tmin": -6.3,
+    "tmax": 5.3,
+    "rain": 2.7
+   },
+   {
+    "year": 2021,
+    "temp": 1.6,
+    "tmin": -5.2,
+    "tmax": 4.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -0.8,
+    "tmin": -4.0,
+    "tmax": 4.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -3.8,
+    "tmin": -5.9,
+    "tmax": 2.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": -4.7,
+    "tmin": -6.6,
+    "tmax": 0.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -10.8,
+    "tmin": -11.9,
+    "tmax": -5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": -0.8,
+    "tmin": -4.9,
+    "tmax": 6.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

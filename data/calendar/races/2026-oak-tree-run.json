@@ -1,0 +1,139 @@
+{
+ "id": "2026-oak-tree-run",
+ "name": "2026 참나무달리기",
+ "nameEn": "2026 Oak Tree Run",
+ "date": "2026-10-25",
+ "location": "서울 뚝섬한강공원 수변무대",
+ "region": "서울",
+ "venue": "뚝섬한강공원 수변무대",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": "걷기, 유모차, 휠체어 참가도 가능합니다."
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/09353feaa9f824e3.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785892397/kormarathon/events/event-images-1785892396514.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-09-29",
+  "closed": false,
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSdLEH2aPgDLwc0CTtcEA2ljxYLr3vISJk4izdf1CPXtLOQsBQ/viewform"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-oak-tree-run",
+ "coords": {
+  "lat": 37.52983,
+  "lon": 127.06811,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.9,
+  "tmin": 7.2,
+  "tmax": 16.8,
+  "humidity": 79,
+  "wind": 2.0,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.1,
+    "tmin": 11.0,
+    "tmax": 16.8,
+    "rain": 1.0
+   },
+   {
+    "year": 2024,
+    "temp": 10.4,
+    "tmin": 5.7,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.4,
+    "tmin": 8.7,
+    "tmax": 19.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.3,
+    "tmin": 3.3,
+    "tmax": 14.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.8,
+    "tmin": 5.7,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 9.0,
+    "tmin": 5.6,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.2,
+    "tmin": 10.1,
+    "tmax": 19.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.2,
+    "tmin": 5.5,
+    "tmax": 17.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.2,
+    "tmin": 8.9,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 13.2,
+    "tmin": 11.1,
+    "tmax": 18.5,
+    "rain": 31.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

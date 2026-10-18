@@ -1,0 +1,144 @@
+{
+ "id": "2026-cheongju-marathon",
+ "name": "2026 전마협회장배 청주 마라톤 대회",
+ "nameEn": "2026 Cheongju Marathon",
+ "date": "2026-09-06",
+ "location": "충북 청주 무심천체육공원",
+ "region": "충북",
+ "venue": "청주 무심천체육공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 78997,
+   "note": "월드런스카이마라톤화 포함"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 79000,
+   "note": "월드런스카이마라톤화 포함"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/b262dc7c916ed787.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782217766/kormarathon/events/event-images-1782217765203.jpg",
+ "registration": {
+  "opensAt": "2026-06-01",
+  "closesAt": "2026-07-15",
+  "closed": true,
+  "url": "https://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792/guide/overview"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-cheongju-marathon",
+ "coords": {
+  "lat": 36.64711,
+  "lon": 127.39236,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.8,
+  "tmin": 18.9,
+  "tmax": 27.4,
+  "humidity": 81,
+  "wind": 2.2,
+  "rainChance": 47,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 27.0,
+    "tmin": 23.4,
+    "tmax": 30.9,
+    "rain": 3.4
+   },
+   {
+    "year": 2024,
+    "temp": 25.5,
+    "tmin": 23.5,
+    "tmax": 28.3,
+    "rain": 1.5
+   },
+   {
+    "year": 2023,
+    "temp": 24.7,
+    "tmin": 19.8,
+    "tmax": 29.7,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 18.2,
+    "tmin": 15.4,
+    "tmax": 24.9,
+    "rain": 38.4
+   },
+   {
+    "year": 2021,
+    "temp": 21.0,
+    "tmin": 17.2,
+    "tmax": 24.1,
+    "rain": 38.4
+   },
+   {
+    "year": 2020,
+    "temp": 20.1,
+    "tmin": 17.7,
+    "tmax": 23.9,
+    "rain": 22.7
+   },
+   {
+    "year": 2019,
+    "temp": 25.4,
+    "tmin": 22.1,
+    "tmax": 28.3,
+    "rain": 5.8
+   },
+   {
+    "year": 2018,
+    "temp": 23.1,
+    "tmin": 17.5,
+    "tmax": 26.1,
+    "rain": 0.9
+   },
+   {
+    "year": 2017,
+    "temp": 20.8,
+    "tmin": 18.2,
+    "tmax": 23.4,
+    "rain": 1.4
+   },
+   {
+    "year": 2016,
+    "temp": 24.0,
+    "tmin": 19.8,
+    "tmax": 30.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

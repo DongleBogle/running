@@ -1,0 +1,132 @@
+{
+ "id": "2026-jeongeup-community-flea-market-run",
+ "name": "2026 정읍 공동체 프리마켓 런",
+ "nameEn": "2026 Jeongeup Community Flea Market Run",
+ "date": "2026-11-29",
+ "location": "전북 정읍천변 어린이전용축구장 (정읍시 벚꽃로 401)",
+ "region": "전북",
+ "venue": "정읍천변 어린이전용축구장 (정읍시 벚꽃로 401)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": "개인부·가족부"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "개인부·단체전"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/83c153f5df01f061.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789534095/kormarathon/events/event-images-1789534093938.jpg",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-11-15",
+  "closed": false,
+  "url": "https://www.xn--ob0bs4k27c8xc9da633vynbkyur2ft5hckl.kr:9016/run/1100.asp?T=3&wgu=1"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-jeongeup-community-flea-market-run",
+ "coords": {
+  "lat": 35.54235,
+  "lon": 126.88474,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.1,
+  "tmin": 1.5,
+  "tmax": 9.7,
+  "humidity": 68,
+  "wind": 3.0,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 5.8,
+    "tmin": -0.4,
+    "tmax": 15.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 3.3,
+    "tmin": 1.5,
+    "tmax": 8.1,
+    "rain": 4.2
+   },
+   {
+    "year": 2023,
+    "temp": 3.7,
+    "tmin": 0.7,
+    "tmax": 7.9,
+    "rain": 1.2
+   },
+   {
+    "year": 2022,
+    "temp": 12.3,
+    "tmin": 2.7,
+    "tmax": 17.1,
+    "rain": 4.8
+   },
+   {
+    "year": 2021,
+    "temp": 8.9,
+    "tmin": 4.2,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 3.0,
+    "tmin": 1.4,
+    "tmax": 5.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 1.6,
+    "tmin": -1.0,
+    "tmax": 7.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.9,
+    "tmin": 0.2,
+    "tmax": 12.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 6.8,
+    "tmin": 1.9,
+    "tmax": 9.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 2.1,
+    "tmin": -0.7,
+    "tmax": 8.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

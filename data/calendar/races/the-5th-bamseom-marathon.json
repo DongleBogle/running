@@ -1,0 +1,139 @@
+{
+ "id": "the-5th-bamseom-marathon",
+ "name": "제5회 밤섬 마라톤",
+ "nameEn": "The 5th Bamseom Marathon",
+ "date": "2026-12-13",
+ "location": "서울 상암 월드컵공원 평화광장",
+ "region": "서울",
+ "venue": "상암 월드컵공원 평화광장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 60000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 60000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/dbd7a98b9815214c.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787217143/kormarathon/events/event-images-1787217141871.jpg",
+ "registration": {
+  "opensAt": "2026-08-15",
+  "closesAt": "2026-12-06",
+  "closed": false,
+  "url": "http://bamseom.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/the-5th-bamseom-marathon",
+ "coords": {
+  "lat": 37.5736,
+  "lon": 126.87037,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.6,
+  "tmin": -4.8,
+  "tmax": 3.7,
+  "humidity": 66,
+  "wind": 2.6,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 2.2,
+    "tmin": -1.7,
+    "tmax": 2.6,
+    "rain": 8.8
+   },
+   {
+    "year": 2024,
+    "temp": -0.6,
+    "tmin": -2.6,
+    "tmax": 3.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 2.1,
+    "tmin": -1.9,
+    "tmax": 10.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": -0.4,
+    "tmin": -7.8,
+    "tmax": 2.2,
+    "rain": 0.6
+   },
+   {
+    "year": 2021,
+    "temp": -5.2,
+    "tmin": -7.1,
+    "tmax": 0.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 0.1,
+    "tmin": -7.2,
+    "tmax": 2.5,
+    "rain": 1.3
+   },
+   {
+    "year": 2019,
+    "temp": -1.6,
+    "tmin": -4.6,
+    "tmax": 4.7,
+    "rain": 1.9
+   },
+   {
+    "year": 2018,
+    "temp": -2.0,
+    "tmin": -7.3,
+    "tmax": 3.2,
+    "rain": 0.7
+   },
+   {
+    "year": 2017,
+    "temp": -10.7,
+    "tmin": -12.0,
+    "tmax": -4.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 1.5,
+    "tmin": -3.1,
+    "tmax": 6.2,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

@@ -1,0 +1,132 @@
+{
+ "id": "ready-set-public-interest-run",
+ "name": "레디, 셋, 공익런",
+ "nameEn": "Ready, set. Public interest Run!",
+ "date": "2026-11-07",
+ "location": "충북 청주 무심천체육공원",
+ "region": "충북",
+ "venue": "청주 무심천체육공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 25000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/aa328c17ebd1fa83.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789026479/kormarathon/events/event-images-1789026478740.jpg",
+ "registration": {
+  "opensAt": "2026-09-10",
+  "closesAt": "2026-10-13",
+  "closed": false,
+  "url": "https://app.notion.com/p/2026-3c97e45d0696800ca05dde948858ed26?source=copy_link"
+ },
+ "source": "https://www.kormarathon.com/ko/races/ready-set-public-interest-run",
+ "coords": {
+  "lat": 36.64711,
+  "lon": 127.39236,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.6,
+  "tmin": 4.0,
+  "tmax": 15.3,
+  "humidity": 74,
+  "wind": 2.1,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.0,
+    "tmin": 4.1,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.3,
+    "tmin": -1.4,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 7.2,
+    "tmin": 3.3,
+    "tmax": 9.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 6.2,
+    "tmin": 0.9,
+    "tmax": 14.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 12.0,
+    "tmin": 5.9,
+    "tmax": 20.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.7,
+    "tmin": 6.7,
+    "tmax": 18.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 9.7,
+    "tmin": 3.0,
+    "tmax": 14.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.9,
+    "tmin": 8.9,
+    "tmax": 14.9,
+    "rain": 2.0
+   },
+   {
+    "year": 2017,
+    "temp": 9.9,
+    "tmin": 4.0,
+    "tmax": 18.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.3,
+    "tmin": 10.2,
+    "tmax": 18.0,
+    "rain": 4.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

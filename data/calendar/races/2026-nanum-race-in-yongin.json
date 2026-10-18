@@ -1,0 +1,132 @@
+{
+ "id": "2026-nanum-race-in-yongin",
+ "name": "2026 나눔레이스 인 용인",
+ "nameEn": "2026 Nanum Race in Yongin",
+ "date": "2026-11-15",
+ "location": "경기 용인시 처인구 경안천로 76(마평동) 용인실내체육관 1층",
+ "region": "경기",
+ "venue": "용인시 처인구 경안천로 76(마평동) 용인실내체육관 1층",
+ "distances": [
+  "10km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 70000,
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 15,
+   "fee": 80000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/ed433eee5573fd7b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787641913/kormarathon/events/event-images-1787641912317.jpg",
+ "registration": {
+  "opensAt": "2026-08-24",
+  "closesAt": "2026-09-06",
+  "closed": false,
+  "url": "https://nanumrun.or.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-nanum-race-in-yongin",
+ "coords": {
+  "lat": 37.23854,
+  "lon": 127.21151,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 6.1,
+  "tmin": 2.6,
+  "tmax": 12.0,
+  "humidity": 69,
+  "wind": 2.5,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 5.3,
+    "tmin": 0.8,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 13.1,
+    "tmin": 11.0,
+    "tmax": 18.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 4.3,
+    "tmin": 0.1,
+    "tmax": 10.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.8,
+    "tmin": 1.5,
+    "tmax": 10.1,
+    "rain": 4.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.0,
+    "tmin": 4.2,
+    "tmax": 12.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 9.5,
+    "tmin": 6.7,
+    "tmax": 15.1,
+    "rain": 0.2
+   },
+   {
+    "year": 2019,
+    "temp": 4.7,
+    "tmin": -1.5,
+    "tmax": 12.4,
+    "rain": 13.3
+   },
+   {
+    "year": 2018,
+    "temp": 6.8,
+    "tmin": 3.6,
+    "tmax": 12.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.4,
+    "tmin": -1.2,
+    "tmax": 5.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 4.2,
+    "tmin": 1.2,
+    "tmax": 11.2,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

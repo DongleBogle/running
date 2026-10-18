@@ -1,0 +1,132 @@
+{
+ "id": "2026-hangeul-run",
+ "name": "2026 한글런",
+ "nameEn": "2026 Hangeul Run",
+ "date": "2026-10-09",
+ "location": "세종 세종시 중앙공원 도시축제마당",
+ "region": "세종",
+ "venue": "세종시 중앙공원 도시축제마당",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5.15,
+   "fee": 55000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10.9,
+   "fee": 75000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/bb1ef7f61b5f0c59.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782878501/kormarathon/events/og-image-1782878500167-eac8i.jpg",
+ "registration": {
+  "opensAt": "2026-07-01",
+  "closesAt": "2026-07-15",
+  "closed": false,
+  "url": "https://hangeulrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-hangeul-run",
+ "coords": {
+  "lat": 36.49354,
+  "lon": 127.26843,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.0,
+  "tmin": 12.2,
+  "tmax": 20.7,
+  "humidity": 77,
+  "wind": 2.1,
+  "rainChance": 27,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 21.6,
+    "tmin": 18.4,
+    "tmax": 24.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 16.1,
+    "tmin": 10.6,
+    "tmax": 22.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 16.2,
+    "tmin": 12.8,
+    "tmax": 21.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 13.6,
+    "tmin": 11.5,
+    "tmax": 14.4,
+    "rain": 14.0
+   },
+   {
+    "year": 2021,
+    "temp": 21.9,
+    "tmin": 18.4,
+    "tmax": 26.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 15.4,
+    "tmin": 10.0,
+    "tmax": 21.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.4,
+    "tmin": 6.3,
+    "tmax": 18.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 13.6,
+    "tmin": 8.8,
+    "tmax": 20.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 19.8,
+    "tmin": 16.3,
+    "tmax": 26.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 10.1,
+    "tmin": 8.7,
+    "tmax": 15.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

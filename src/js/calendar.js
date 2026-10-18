@@ -135,11 +135,12 @@ function renderCalList() {
       ? `<a class="btn btn-green" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">${st === 'upcoming' ? '공식 홈페이지 보기' : '공식 홈페이지에서 신청'} ➔</a>`
       : (reg.url ? `<a class="btn btn-outline" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a>`
         : (st === 'closed' ? '' : '<span class="meta">공식 링크 준비중</span>'));
-    return `<div class="cal-item"><div class="main"><div class="cal-visual">${calThumb(r)}<span class="cal-badge ${st}">${CAL_LABEL[st]}</span></div>
-      <div class="info"><div class="name">${calEsc(r.name)}</div>
+    const detail = `race.html?id=${encodeURIComponent(r.id)}`;
+    return `<div class="cal-item"><a class="main" href="${detail}"><div class="cal-visual">${calThumb(r)}<span class="cal-badge ${st}">${CAL_LABEL[st]}</span></div>
+      <div class="info"><div class="name">${calEsc(r.name)} <span class="more">›</span></div>
         <div class="meta">${r.date} · ${calEsc(r.location || '')}</div>
         ${r.distances && r.distances.length ? `<div class="cal-dists">${r.distances.map(d => `<span class="cal-dist ${calDistClass(d)}">${calEsc(d)}</span>`).join('')}</div>` : ''}
-        ${period ? `<div class="meta">${period}</div>` : ''}</div></div>${btn}</div>`;
+        ${period ? `<div class="meta">${period}</div>` : ''}</div></a>${btn}</div>`;
   }).join('');
   const clear = calSelected ? ' <button class="cal-btn" onclick="calSelect(null)">월 전체 보기</button>' : '';
   document.getElementById('calList').innerHTML = `<h3>${title}${clear}</h3>` + (items || '<div class="cal-empty">해당하는 대회가 없습니다.</div>');

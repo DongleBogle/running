@@ -1,0 +1,132 @@
+{
+ "id": "the-26th-anseong-matchum-national-marathon",
+ "name": "제26회 안성맞춤 전국 마라톤대회",
+ "nameEn": "The 26th Anseong Matchum National Marathon",
+ "date": "2026-11-08",
+ "location": "경기 안성시 안성맞춤랜드",
+ "region": "경기",
+ "venue": "안성시 안성맞춤랜드",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 55000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/f07aa3703640eb4a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788156896/kormarathon/events/event-images-1788156895708.jpg",
+ "registration": {
+  "opensAt": "2026-09-01",
+  "closesAt": "2026-09-30",
+  "closed": false,
+  "url": "https://asrun.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/the-26th-anseong-matchum-national-marathon",
+ "coords": {
+  "lat": 37.0324,
+  "lon": 127.31075,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.1,
+  "tmin": 3.9,
+  "tmax": 14.1,
+  "humidity": 72,
+  "wind": 2.5,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.2,
+    "tmin": 7.9,
+    "tmax": 16.0,
+    "rain": 0.1
+   },
+   {
+    "year": 2024,
+    "temp": 7.6,
+    "tmin": 2.3,
+    "tmax": 15.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 4.3,
+    "tmin": -0.3,
+    "tmax": 13.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.9,
+    "tmin": 5.7,
+    "tmax": 16.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.9,
+    "tmin": 4.4,
+    "tmax": 13.6,
+    "rain": 28.1
+   },
+   {
+    "year": 2020,
+    "temp": 8.2,
+    "tmin": 2.6,
+    "tmax": 11.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.6,
+    "tmin": -2.6,
+    "tmax": 10.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.9,
+    "tmin": 11.1,
+    "tmax": 15.6,
+    "rain": 38.4
+   },
+   {
+    "year": 2017,
+    "temp": 13.0,
+    "tmin": 4.2,
+    "tmax": 15.4,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 3.8,
+    "tmin": 0.8,
+    "tmax": 9.9,
+    "rain": 1.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

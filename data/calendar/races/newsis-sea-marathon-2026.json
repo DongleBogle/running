@@ -1,0 +1,157 @@
+{
+ "id": "newsis-sea-marathon-2026",
+ "name": "2026 뉴시스 바다마라톤",
+ "nameEn": "Newsis Sea Marathon 2026",
+ "date": "2026-10-24",
+ "location": "인천 중구 씨사이트파크",
+ "region": "인천",
+ "venue": "중구 씨사이트파크",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 80000,
+   "note": "하네스 포함"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 85000,
+   "note": "하네스 포함"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 85000,
+   "note": "하네스 포함"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/c5a6cde8f5143b8f.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785820016/kormarathon/events/event-images-1785820015200.jpg",
+ "registration": {
+  "opensAt": "2026-08-03",
+  "closesAt": "2026-08-30",
+  "closed": false,
+  "url": "http://marathon.newsis.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/newsis-sea-marathon-2026",
+ "coords": {
+  "lat": 37.456,
+  "lon": 126.7052,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.9,
+  "tmin": 8.2,
+  "tmax": 17.0,
+  "humidity": 73,
+  "wind": 2.7,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.7,
+    "tmin": 10.7,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 9.7,
+    "tmin": 5.3,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.7,
+    "tmin": 10.3,
+    "tmax": 17.9,
+    "rain": 2.8
+   },
+   {
+    "year": 2022,
+    "temp": 8.1,
+    "tmin": 6.0,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.6,
+    "tmin": 4.0,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 7.2,
+    "tmin": 4.6,
+    "tmax": 13.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 16.4,
+    "tmin": 12.7,
+    "tmax": 21.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.4,
+    "tmin": 6.9,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.9,
+    "tmin": 7.8,
+    "tmax": 17.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 11.8,
+    "tmin": 9.8,
+    "tmax": 17.9,
+    "rain": 0.3
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

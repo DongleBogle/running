@@ -1,0 +1,125 @@
+{
+ "id": "insam-run-2026",
+ "name": "인삼런 2026",
+ "nameEn": "INSAM RUN 2026",
+ "date": "2026-10-05",
+ "location": "서울 남산공원 백범광장",
+ "region": "서울",
+ "venue": "남산공원 백범광장",
+ "distances": [
+  "~5km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 30000,
+   "note": "비경쟁 FUN RUN"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/d94aba2f46c94bad.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790326481/kormarathon/events/event-images-1790326480587.jpg",
+ "registration": {
+  "opensAt": "2026-09-16",
+  "closesAt": "2026-10-04",
+  "closed": false,
+  "url": "https://insamrun2026.kr/register/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/insam-run-2026",
+ "coords": {
+  "lat": 37.55046,
+  "lon": 126.9916,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 15.5,
+  "tmin": 11.9,
+  "tmax": 20.1,
+  "humidity": 79,
+  "wind": 2.5,
+  "rainChance": 41,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.9,
+    "tmin": 18.0,
+    "tmax": 21.0,
+    "rain": 5.6
+   },
+   {
+    "year": 2024,
+    "temp": 13.4,
+    "tmin": 7.6,
+    "tmax": 20.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.7,
+    "tmin": 8.2,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 13.6,
+    "tmin": 12.0,
+    "tmax": 17.1,
+    "rain": 6.7
+   },
+   {
+    "year": 2021,
+    "temp": 22.1,
+    "tmin": 19.7,
+    "tmax": 24.1,
+    "rain": 1.5
+   },
+   {
+    "year": 2020,
+    "temp": 10.7,
+    "tmin": 6.1,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 16.2,
+    "tmin": 12.7,
+    "tmax": 19.8,
+    "rain": 1.7
+   },
+   {
+    "year": 2018,
+    "temp": 15.4,
+    "tmin": 12.9,
+    "tmax": 16.3,
+    "rain": 30.0
+   },
+   {
+    "year": 2017,
+    "temp": 15.2,
+    "tmin": 11.7,
+    "tmax": 20.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 15.6,
+    "tmin": 14.4,
+    "tmax": 22.7,
+    "rain": 6.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

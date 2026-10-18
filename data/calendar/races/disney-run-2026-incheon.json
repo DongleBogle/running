@@ -1,0 +1,132 @@
+{
+ "id": "disney-run-2026-incheon",
+ "name": "디즈니런 2026 인천",
+ "nameEn": "Disney Run 2026 Incheon",
+ "date": "2026-10-24",
+ "location": "인천 상상플랫폼",
+ "region": "인천",
+ "venue": "상상플랫폼",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/7efe7a5bc42d9d81.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1780668053/kormarathon/events/event-images-1780668052348.jpg",
+ "registration": {
+  "opensAt": "2026-08-31",
+  "closesAt": "2026-08-31",
+  "closed": false,
+  "url": "https://disneyrunincheon2026.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/disney-run-2026-incheon",
+ "coords": {
+  "lat": 37.47649,
+  "lon": 126.61449,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.5,
+  "tmin": 7.7,
+  "tmax": 17.1,
+  "humidity": 76,
+  "wind": 2.7,
+  "rainChance": 11,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 12.9,
+    "tmin": 9.9,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 9.2,
+    "tmin": 4.9,
+    "tmax": 17.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.7,
+    "tmin": 10.8,
+    "tmax": 18.1,
+    "rain": 3.4
+   },
+   {
+    "year": 2022,
+    "temp": 8.1,
+    "tmin": 5.4,
+    "tmax": 12.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.8,
+    "tmin": 3.2,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 7.3,
+    "tmin": 4.6,
+    "tmax": 13.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 15.7,
+    "tmin": 11.4,
+    "tmax": 21.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.9,
+    "tmin": 6.0,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.6,
+    "tmin": 7.5,
+    "tmax": 17.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.0,
+    "tmin": 10.0,
+    "tmax": 18.1,
+    "rain": 0.3
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,139 @@
+{
+ "id": "inspiring-marathon-with-s-oil",
+ "name": "S-OIL과 함께하는 감동의 마라톤",
+ "nameEn": "Inspiring Marathon with S-OIL",
+ "date": "2026-10-04",
+ "location": "서울 월드컵공원 평화광장",
+ "region": "서울",
+ "venue": "월드컵공원 평화광장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": "휠체어 및 유모차 참가자는 5km만 신청할 수 있으며, 기록계측은 적용되지 않습니다."
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 70000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/bddac8ec45430165.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786351927/kormarathon/events/og-image-1786351926329-q6ojau.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-08-31",
+  "closed": false,
+  "url": "https://감동의마라톤.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/inspiring-marathon-with-s-oil",
+ "coords": {
+  "lat": 37.5736,
+  "lon": 126.87037,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.9,
+  "tmin": 13.3,
+  "tmax": 21.6,
+  "humidity": 80,
+  "wind": 2.6,
+  "rainChance": 41,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.5,
+    "tmin": 19.5,
+    "tmax": 23.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.9,
+    "tmin": 9.3,
+    "tmax": 21.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 16.9,
+    "tmin": 12.4,
+    "tmax": 21.8,
+    "rain": 2.5
+   },
+   {
+    "year": 2022,
+    "temp": 16.0,
+    "tmin": 13.2,
+    "tmax": 21.7,
+    "rain": 22.6
+   },
+   {
+    "year": 2021,
+    "temp": 21.7,
+    "tmin": 18.6,
+    "tmax": 24.5,
+    "rain": 9.4
+   },
+   {
+    "year": 2020,
+    "temp": 17.3,
+    "tmin": 10.0,
+    "tmax": 20.3,
+    "rain": 0.3
+   },
+   {
+    "year": 2019,
+    "temp": 20.2,
+    "tmin": 16.1,
+    "tmax": 24.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 16.0,
+    "tmin": 10.8,
+    "tmax": 23.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 14.3,
+    "tmin": 10.4,
+    "tmax": 20.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 18.2,
+    "tmin": 13.2,
+    "tmax": 26.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

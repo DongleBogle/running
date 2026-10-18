@@ -1,0 +1,132 @@
+{
+ "id": "3rd-seongdong-gu-federation-presidents-marathon",
+ "name": "제3회 성동구연맹회장기 마라톤대회",
+ "nameEn": "3rd Seongdong-gu Federation Presidents Marathon",
+ "date": "2026-10-10",
+ "location": "서울 살곶이대운동장 (축구장)",
+ "region": "서울",
+ "venue": "살곶이대운동장 (축구장)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 45000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1e139dc045ab2463.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1783864885/kormarathon/events/event-images-1783864884450.jpg",
+ "registration": {
+  "opensAt": "2026-07-10",
+  "closesAt": "2026-08-15",
+  "closed": false,
+  "url": "https://samsamis.com/55"
+ },
+ "source": "https://www.kormarathon.com/ko/races/3rd-seongdong-gu-federation-presidents-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 14.5,
+  "tmin": 10.8,
+  "tmax": 19.6,
+  "humidity": 78,
+  "wind": 2.3,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 16.8,
+    "tmin": 15.7,
+    "tmax": 18.5,
+    "rain": 22.4
+   },
+   {
+    "year": 2024,
+    "temp": 16.1,
+    "tmin": 12.6,
+    "tmax": 21.0,
+    "rain": 0.3
+   },
+   {
+    "year": 2023,
+    "temp": 13.8,
+    "tmin": 10.3,
+    "tmax": 21.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.5,
+    "tmin": 6.0,
+    "tmax": 10.7,
+    "rain": 0.7
+   },
+   {
+    "year": 2021,
+    "temp": 21.6,
+    "tmin": 13.6,
+    "tmax": 24.0,
+    "rain": 9.4
+   },
+   {
+    "year": 2020,
+    "temp": 14.2,
+    "tmin": 9.7,
+    "tmax": 20.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.6,
+    "tmin": 8.6,
+    "tmax": 16.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.0,
+    "tmin": 7.2,
+    "tmax": 14.5,
+    "rain": 2.9
+   },
+   {
+    "year": 2017,
+    "temp": 19.0,
+    "tmin": 15.7,
+    "tmax": 23.8,
+    "rain": 5.7
+   },
+   {
+    "year": 2016,
+    "temp": 11.0,
+    "tmin": 6.4,
+    "tmax": 18.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,125 @@
+{
+ "id": "5th-gijang-county-athletics-federation-marathon",
+ "name": "제5회 기장군육상연맹 마라톤대회",
+ "nameEn": "5th Gijang County Athletics Federation Marathon",
+ "date": "2026-12-13",
+ "location": "부산 기장해안로 대변항 멸치광장",
+ "region": "부산",
+ "venue": "기장해안로 대변항 멸치광장",
+ "distances": [
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 20000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/025d5c2f9f415211.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785321166/kormarathon/events/event-images-1785321164939.jpg",
+ "registration": {
+  "opensAt": "2026-07-27",
+  "closesAt": "2026-10-31",
+  "closed": false,
+  "url": "https://www.band.us/band/92697432"
+ },
+ "source": "https://www.kormarathon.com/ko/races/5th-gijang-county-athletics-federation-marathon",
+ "coords": {
+  "lat": 35.19964,
+  "lon": 129.22403,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 4.3,
+  "tmin": 0.7,
+  "tmax": 8.7,
+  "humidity": 60,
+  "wind": 3.2,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 8.4,
+    "tmin": 5.1,
+    "tmax": 12.4,
+    "rain": 4.7
+   },
+   {
+    "year": 2024,
+    "temp": 1.7,
+    "tmin": -1.9,
+    "tmax": 6.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 9.3,
+    "tmin": 7.1,
+    "tmax": 13.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 4.7,
+    "tmin": 1.8,
+    "tmax": 8.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": -0.3,
+    "tmin": -3.5,
+    "tmax": 6.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 4.3,
+    "tmin": 0.4,
+    "tmax": 10.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.9,
+    "tmin": -2.3,
+    "tmax": 8.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 0.7,
+    "tmin": -2.5,
+    "tmax": 5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -3.6,
+    "tmin": -5.6,
+    "tmax": 1.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 9.9,
+    "tmin": 7.9,
+    "tmax": 11.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

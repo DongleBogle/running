@@ -1,0 +1,145 @@
+{
+ "id": "2026-yonhap-news-hanam-international-trail-run-festival-44ea415725f745708495f2cc23bd8810",
+ "name": "2026 연합뉴스 하남 국제 트레일런 페스티벌",
+ "nameEn": "2026 Yonhap News Hanam International Trail Run Festival",
+ "date": "2026-12-12",
+ "location": "경기 미사경정공원 및 하남시 일대",
+ "region": "경기",
+ "venue": "미사경정공원 및 하남시 일대",
+ "distances": [
+  "5km",
+  "10km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 15,
+   "fee": "$undefined",
+   "note": "트레일런"
+  },
+  {
+   "category": "기타",
+   "km": 28,
+   "fee": "$undefined",
+   "note": "트레일런"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-11-23",
+  "closed": false,
+  "url": "https://yhitf.co.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-yonhap-news-hanam-international-trail-run-festival-44ea415725f745708495f2cc23bd8810",
+ "coords": {
+  "lat": 37.56008,
+  "lon": 127.20763,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.1,
+  "tmin": -4.3,
+  "tmax": 4.1,
+  "humidity": 67,
+  "wind": 2.0,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -0.4,
+    "tmin": -3.3,
+    "tmax": 5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -2.4,
+    "tmin": -4.0,
+    "tmax": 3.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.9,
+    "tmin": -0.2,
+    "tmax": 7.6,
+    "rain": 0.5
+   },
+   {
+    "year": 2022,
+    "temp": -1.5,
+    "tmin": -6.3,
+    "tmax": 4.8,
+    "rain": 2.9
+   },
+   {
+    "year": 2021,
+    "temp": 1.2,
+    "tmin": -5.5,
+    "tmax": 4.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -0.5,
+    "tmin": -3.0,
+    "tmax": 4.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -3.8,
+    "tmin": -6.0,
+    "tmax": 1.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": -4.6,
+    "tmin": -6.5,
+    "tmax": 0.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -11.2,
+    "tmin": -12.2,
+    "tmax": -6.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": -0.5,
+    "tmin": -4.2,
+    "tmax": 6.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

@@ -1,0 +1,132 @@
+{
+ "id": "2026-chuncheon-marathon-1",
+ "name": "2026 춘천마라톤 (춘마)",
+ "nameEn": "2026 Chuncheon Marathon",
+ "date": "2026-10-25",
+ "location": "강원 춘천 공지천 인조잔디구장",
+ "region": "강원",
+ "venue": "춘천 공지천 인조잔디구장",
+ "distances": [
+  "10km",
+  "풀"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 100000,
+   "note": ""
+  },
+  {
+   "category": "풀",
+   "km": 42.2,
+   "fee": 150000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/3595a5740289517a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1781524664/kormarathon/events/event-images-1781524663000.jpg",
+ "registration": {
+  "opensAt": "2026-09-08",
+  "closesAt": "2026-09-09",
+  "closed": false,
+  "url": "https://www.chuncheonmarathon.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-chuncheon-marathon-1",
+ "coords": {
+  "lat": 37.86624,
+  "lon": 127.72904,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.7,
+  "tmin": 6.6,
+  "tmax": 16.9,
+  "humidity": 80,
+  "wind": 1.5,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.0,
+    "tmin": 11.2,
+    "tmax": 17.8,
+    "rain": 0.8
+   },
+   {
+    "year": 2024,
+    "temp": 11.4,
+    "tmin": 6.3,
+    "tmax": 20.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.8,
+    "tmin": 10.7,
+    "tmax": 19.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.3,
+    "tmin": 3.1,
+    "tmax": 15.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.4,
+    "tmin": 3.8,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 7.6,
+    "tmin": 2.1,
+    "tmax": 16.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 15.0,
+    "tmin": 11.3,
+    "tmax": 20.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.1,
+    "tmin": 3.7,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 10.1,
+    "tmin": 5.7,
+    "tmax": 17.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.1,
+    "tmin": 11.3,
+    "tmax": 15.0,
+    "rain": 26.2
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

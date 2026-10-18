@@ -1,0 +1,139 @@
+{
+ "id": "16th-smile-run-festival",
+ "name": "제16회 스마일런페스티벌",
+ "nameEn": "16th Smile Run Festival",
+ "date": "2026-09-13",
+ "location": "서울 상암동 평화의공원 평화광장",
+ "region": "서울",
+ "venue": "상암동 평화의공원 평화광장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/16d2bacaba911a67.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1780315943/kormarathon/events/event-images-1780315942281.jpg",
+ "registration": {
+  "opensAt": "2026-06-30",
+  "closesAt": "2026-08-03",
+  "closed": true,
+  "url": "https://www.smilerun.co.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/16th-smile-run-festival",
+ "coords": {
+  "lat": 37.56277,
+  "lon": 126.8943,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.1,
+  "tmin": 18.8,
+  "tmax": 26.5,
+  "humidity": 82,
+  "wind": 2.3,
+  "rainChance": 29,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.5,
+    "tmin": 20.2,
+    "tmax": 26.7,
+    "rain": 54.3
+   },
+   {
+    "year": 2024,
+    "temp": 25.2,
+    "tmin": 23.7,
+    "tmax": 27.2,
+    "rain": 18.1
+   },
+   {
+    "year": 2023,
+    "temp": 22.1,
+    "tmin": 19.1,
+    "tmax": 23.1,
+    "rain": 18.0
+   },
+   {
+    "year": 2022,
+    "temp": 23.7,
+    "tmin": 19.6,
+    "tmax": 27.9,
+    "rain": 0.2
+   },
+   {
+    "year": 2021,
+    "temp": 22.7,
+    "tmin": 18.7,
+    "tmax": 28.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 19.2,
+    "tmin": 15.6,
+    "tmax": 23.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 20.7,
+    "tmin": 17.6,
+    "tmax": 26.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 20.4,
+    "tmin": 18.0,
+    "tmax": 26.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 18.1,
+    "tmin": 14.2,
+    "tmax": 23.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 22.4,
+    "tmin": 18.6,
+    "tmax": 27.1,
+    "rain": 0.1
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

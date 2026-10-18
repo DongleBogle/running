@@ -1,0 +1,139 @@
+{
+ "id": "green-step-2026",
+ "name": "그린스텝 2026",
+ "nameEn": "Green Step 2026",
+ "date": "2026-10-18",
+ "location": "전남 해남 솔라시도",
+ "region": "전남",
+ "venue": "해남 솔라시도",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/e7e5552bd9ba1101.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1777874731/kormarathon/events/event-images-1777874729879.jpg",
+ "registration": {
+  "opensAt": "2026-07-01",
+  "closesAt": "2026-07-22",
+  "closed": false,
+  "url": "http://www.greenstep.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/green-step-2026",
+ "coords": {
+  "lat": 34.64297,
+  "lon": 126.40143,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.1,
+  "tmin": 13.5,
+  "tmax": 19.5,
+  "humidity": 74,
+  "wind": 3.8,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.2,
+    "tmin": 16.5,
+    "tmax": 22.0,
+    "rain": 2.2
+   },
+   {
+    "year": 2024,
+    "temp": 23.0,
+    "tmin": 20.1,
+    "tmax": 24.9,
+    "rain": 14.7
+   },
+   {
+    "year": 2023,
+    "temp": 14.0,
+    "tmin": 10.0,
+    "tmax": 21.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 12.5,
+    "tmin": 10.2,
+    "tmax": 14.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.6,
+    "tmin": 7.4,
+    "tmax": 15.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 14.4,
+    "tmin": 11.2,
+    "tmax": 18.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 16.6,
+    "tmin": 14.8,
+    "tmax": 18.5,
+    "rain": 1.4
+   },
+   {
+    "year": 2018,
+    "temp": 15.2,
+    "tmin": 11.1,
+    "tmax": 17.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 17.2,
+    "tmin": 15.6,
+    "tmax": 19.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 17.4,
+    "tmin": 16.2,
+    "tmax": 20.6,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

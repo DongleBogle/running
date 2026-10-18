@@ -1,0 +1,138 @@
+{
+ "id": "23rd-gyeongnam-marathon",
+ "name": "제23회 경남마라톤대회",
+ "nameEn": "23rd Gyeongnam Marathon",
+ "date": "2026-10-04",
+ "location": "경남 창원종합운동장 보조경기장(창원 스포츠파크), 창원시 일원",
+ "region": "경남",
+ "venue": "창원종합운동장 보조경기장(창원 스포츠파크), 창원시 일원",
+ "distances": [
+  "~5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 15000,
+   "note": "학생부"
+  },
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 20000,
+   "note": "일반부"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 30000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/5c434e90f10c14e7.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789199404/kormarathon/events/event-images-1789199403225.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-08-14",
+  "closed": true,
+  "url": "https://www.knmarathon.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/23rd-gyeongnam-marathon",
+ "coords": {
+  "lat": 35.23543,
+  "lon": 128.66542,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 19.6,
+  "tmin": 16.2,
+  "tmax": 23.8,
+  "humidity": 81,
+  "wind": 2.5,
+  "rainChance": 47,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 21.4,
+    "tmin": 18.6,
+    "tmax": 25.6,
+    "rain": 2.6
+   },
+   {
+    "year": 2024,
+    "temp": 17.2,
+    "tmin": 12.8,
+    "tmax": 23.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 17.2,
+    "tmin": 13.0,
+    "tmax": 23.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 24.3,
+    "tmin": 17.1,
+    "tmax": 24.5,
+    "rain": 4.3
+   },
+   {
+    "year": 2021,
+    "temp": 24.7,
+    "tmin": 20.9,
+    "tmax": 27.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 20.8,
+    "tmin": 17.9,
+    "tmax": 23.6,
+    "rain": 2.7
+   },
+   {
+    "year": 2019,
+    "temp": 22.2,
+    "tmin": 17.1,
+    "tmax": 25.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 17.8,
+    "tmin": 10.8,
+    "tmax": 23.1,
+    "rain": 3.8
+   },
+   {
+    "year": 2017,
+    "temp": 18.0,
+    "tmin": 17.0,
+    "tmax": 20.7,
+    "rain": 0.5
+   },
+   {
+    "year": 2016,
+    "temp": 22.7,
+    "tmin": 20.0,
+    "tmax": 26.1,
+    "rain": 1.1
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

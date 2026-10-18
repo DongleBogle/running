@@ -1,0 +1,151 @@
+{
+ "id": "marvel-run-seoul-2026",
+ "name": "마블런 2026",
+ "nameEn": "MARVEL RUN 2026 KOREA",
+ "date": "2026-10-31",
+ "location": "강원 인제스피디움",
+ "region": "강원",
+ "venue": "인제스피디움",
+ "distances": [
+  "~5km",
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 2.3,
+   "fee": 55000,
+   "note": ""
+  },
+  {
+   "category": "~5km",
+   "km": 2.3,
+   "fee": 40000,
+   "note": "어린이"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": "어린이"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 70000,
+   "note": "어린이 참가불가"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/ddc12d92ae15cb0d.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788958035/kormarathon/events/event-images-1788958034781.jpg",
+ "registration": {
+  "opensAt": "2026-09-22",
+  "closesAt": "2026-10-12",
+  "closed": false,
+  "url": "https://marvelrunkorea2026.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/marvel-run-seoul-2026",
+ "coords": {
+  "lat": 37.77253,
+  "lon": 128.38207,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.2,
+  "tmin": 2.3,
+  "tmax": 11.8,
+  "humidity": 74,
+  "wind": 2.0,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 8.1,
+    "tmin": 2.9,
+    "tmax": 15.2,
+    "rain": 0.7
+   },
+   {
+    "year": 2024,
+    "temp": 11.2,
+    "tmin": 5.8,
+    "tmax": 16.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.4,
+    "tmin": 3.9,
+    "tmax": 15.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.6,
+    "tmin": 4.1,
+    "tmax": 13.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.1,
+    "tmin": 4.9,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 6.2,
+    "tmin": 0.1,
+    "tmax": 11.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 8.0,
+    "tmin": 2.0,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 1.1,
+    "tmin": -2.9,
+    "tmax": 6.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 3.7,
+    "tmin": -1.6,
+    "tmax": 9.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 5.5,
+    "tmin": -0.2,
+    "tmax": 6.5,
+    "rain": 0.3
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

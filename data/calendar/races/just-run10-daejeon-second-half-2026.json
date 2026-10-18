@@ -1,0 +1,132 @@
+{
+ "id": "just-run10-daejeon-second-half-2026",
+ "name": "JUST RUN10 대전 하반기",
+ "nameEn": "JUST RUN10 Daejeon Second Half 2026",
+ "date": "2026-11-07",
+ "location": "대전 갑천 러닝성지",
+ "region": "대전",
+ "venue": "갑천 러닝성지",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": "엑스포다리 인근 출발·도착, 하나로아파트 인근 반환점 왕복 코스"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": "엑스포다리 인근 출발·도착, 수침교 인근 반환점 왕복 코스"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/5a10cac612d0f3ef.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789656299/kormarathon/events/event-images-1789656298515.jpg",
+ "registration": {
+  "opensAt": "2026-09-02",
+  "closesAt": "2026-10-31",
+  "closed": false,
+  "url": "https://runten.co.kr/competitions/5c0b58a2-577e-4cc3-8bc5-4234820ea4ab"
+ },
+ "source": "https://www.kormarathon.com/ko/races/just-run10-daejeon-second-half-2026",
+ "coords": {
+  "lat": 36.35455,
+  "lon": 127.35456,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.0,
+  "tmin": 4.6,
+  "tmax": 15.3,
+  "humidity": 74,
+  "wind": 2.1,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 9.8,
+    "tmin": 5.5,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.5,
+    "tmin": 0.1,
+    "tmax": 13.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 7.8,
+    "tmin": 2.9,
+    "tmax": 10.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.0,
+    "tmin": 3.1,
+    "tmax": 15.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 12.7,
+    "tmin": 7.3,
+    "tmax": 19.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 13.8,
+    "tmin": 8.5,
+    "tmax": 18.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 10.5,
+    "tmin": 3.8,
+    "tmax": 15.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.0,
+    "tmin": 8.6,
+    "tmax": 14.9,
+    "rain": 2.7
+   },
+   {
+    "year": 2017,
+    "temp": 10.1,
+    "tmin": 4.3,
+    "tmax": 19.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.2,
+    "tmin": 10.1,
+    "tmax": 18.0,
+    "rain": 3.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,144 @@
+{
+ "id": "2026-love-for-life-marathon-and-walk-with-wyd",
+ "name": "WYD와 함께하는 2026 생명사랑 마라톤/걷기 대회",
+ "nameEn": "2026 Love for Life Marathon & Walk with WYD",
+ "date": "2026-10-09",
+ "location": "경기 경기도 안성시 미리내 성지(103위 성전 앞)",
+ "region": "경기",
+ "venue": "경기도 안성시 미리내 성지(103위 성전 앞)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "성인(달리기 또는 걷기)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 15000,
+   "note": "학생(초·중·고, 달리기 또는 걷기)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 30000,
+   "note": "성인(달리기, 만 14세 이상)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 15000,
+   "note": "학생(초·중·고, 만 14세 이상 달리기)"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/92e460411623411e.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789444237/kormarathon/events/event-images-1789444235589.jpg",
+ "registration": {
+  "opensAt": "2026-08-02",
+  "closesAt": "2026-08-23",
+  "closed": true,
+  "url": "https://cafe.naver.com/browna6seu"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-love-for-life-marathon-and-walk-with-wyd",
+ "coords": {
+  "lat": 37.00777,
+  "lon": 127.27997,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 15.1,
+  "tmin": 11.4,
+  "tmax": 19.7,
+  "humidity": 78,
+  "wind": 2.4,
+  "rainChance": 31,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.6,
+    "tmin": 18.1,
+    "tmax": 23.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 15.7,
+    "tmin": 11.0,
+    "tmax": 21.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 15.8,
+    "tmin": 12.3,
+    "tmax": 20.9,
+    "rain": 0.2
+   },
+   {
+    "year": 2022,
+    "temp": 12.8,
+    "tmin": 10.7,
+    "tmax": 13.8,
+    "rain": 19.3
+   },
+   {
+    "year": 2021,
+    "temp": 19.5,
+    "tmin": 17.4,
+    "tmax": 24.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 14.2,
+    "tmin": 9.7,
+    "tmax": 21.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.9,
+    "tmin": 6.8,
+    "tmax": 17.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.8,
+    "tmin": 8.7,
+    "tmax": 19.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 19.8,
+    "tmin": 16.2,
+    "tmax": 24.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 9.4,
+    "tmin": 7.6,
+    "tmax": 15.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

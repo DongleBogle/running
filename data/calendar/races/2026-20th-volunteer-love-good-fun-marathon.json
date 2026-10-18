@@ -1,0 +1,132 @@
+{
+ "id": "2026-20th-volunteer-love-good-fun-marathon",
+ "name": "2026 제20회 자원봉사사랑 굿펀마라톤 (대회 취소)",
+ "nameEn": "2026 20th Volunteer Love Good Fun Marathon",
+ "date": "2026-11-08",
+ "location": "서울 안양천 신정교하부육상트랙구장",
+ "region": "서울",
+ "venue": "안양천 신정교하부육상트랙구장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/52633043c7126d79.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786701952/kormarathon/events/event-images-1786701951093.jpg",
+ "registration": {
+  "opensAt": "2026-07-27",
+  "closesAt": "2026-10-16",
+  "closed": true,
+  "url": "http://xn--oi2bo7bn3do4es0j56afy5b.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-20th-volunteer-love-good-fun-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.6,
+  "tmin": 3.9,
+  "tmax": 13.7,
+  "humidity": 73,
+  "wind": 2.5,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.5,
+    "tmin": 10.1,
+    "tmax": 15.3,
+    "rain": 0.1
+   },
+   {
+    "year": 2024,
+    "temp": 5.1,
+    "tmin": -0.6,
+    "tmax": 14.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 4.1,
+    "tmin": -0.5,
+    "tmax": 12.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.6,
+    "tmin": 5.8,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.0,
+    "tmin": 3.5,
+    "tmax": 13.9,
+    "rain": 22.1
+   },
+   {
+    "year": 2020,
+    "temp": 7.2,
+    "tmin": 2.4,
+    "tmax": 10.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.1,
+    "tmin": -2.1,
+    "tmax": 10.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.6,
+    "tmin": 9.9,
+    "tmax": 15.4,
+    "rain": 37.0
+   },
+   {
+    "year": 2017,
+    "temp": 12.4,
+    "tmin": 5.1,
+    "tmax": 14.6,
+    "rain": 2.1
+   },
+   {
+    "year": 2016,
+    "temp": 1.7,
+    "tmin": -0.4,
+    "tmax": 7.4,
+    "rain": 0.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

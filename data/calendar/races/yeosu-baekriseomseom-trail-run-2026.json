@@ -1,0 +1,137 @@
+{
+ "id": "yeosu-baekriseomseom-trail-run-2026",
+ "name": "2026 여수 백리섬섬 트레일런",
+ "nameEn": "Yeosu Baekriseomseom Trail Run 2026",
+ "date": "2026-09-12",
+ "location": "전남 청심국제해양청소년수련원 (여수시 화양면 장수로 183-5)",
+ "region": "전남",
+ "venue": "청심국제해양청소년수련원 (여수시 화양면 장수로 183-5)",
+ "distances": [
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "기타",
+   "km": 16.4,
+   "fee": 50000,
+   "note": "16K · 누적 상승고도 824m · 제한시간 3시간"
+  },
+  {
+   "category": "기타",
+   "km": 27.6,
+   "fee": 80000,
+   "note": "27K · 누적 상승고도 1,311m · 제한시간 6시간"
+  },
+  {
+   "category": "기타",
+   "km": 40,
+   "fee": 130000,
+   "note": "40K · 누적 상승고도 1,895m · 제한시간 9시간"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/6fffce01c844f588.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788950979/kormarathon/events/event-images-1788950978211.jpg",
+ "registration": {
+  "opensAt": "2026-07-18",
+  "closesAt": "2026-07-22",
+  "closed": true,
+  "url": "https://speedtrailrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/yeosu-baekriseomseom-trail-run-2026",
+ "coords": {
+  "lat": 34.64297,
+  "lon": 126.40143,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 23.9,
+  "tmin": 21.5,
+  "tmax": 27.0,
+  "humidity": 82,
+  "wind": 3.2,
+  "rainChance": 46,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 24.8,
+    "tmin": 23.2,
+    "tmax": 27.3,
+    "rain": 1.8
+   },
+   {
+    "year": 2024,
+    "temp": 29.2,
+    "tmin": 26.0,
+    "tmax": 33.0,
+    "rain": 0.8
+   },
+   {
+    "year": 2023,
+    "temp": 24.8,
+    "tmin": 21.8,
+    "tmax": 29.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 23.5,
+    "tmin": 21.9,
+    "tmax": 24.5,
+    "rain": 4.6
+   },
+   {
+    "year": 2021,
+    "temp": 23.4,
+    "tmin": 20.2,
+    "tmax": 27.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 22.0,
+    "tmin": 19.9,
+    "tmax": 24.8,
+    "rain": 14.4
+   },
+   {
+    "year": 2019,
+    "temp": 24.0,
+    "tmin": 20.7,
+    "tmax": 26.8,
+    "rain": 1.8
+   },
+   {
+    "year": 2018,
+    "temp": 21.7,
+    "tmin": 18.3,
+    "tmax": 27.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 23.6,
+    "tmin": 21.2,
+    "tmax": 25.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 23.8,
+    "tmin": 22.1,
+    "tmax": 27.2,
+    "rain": 4.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

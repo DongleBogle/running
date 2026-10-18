@@ -1,0 +1,144 @@
+{
+ "id": "mussu-run-zero-waste-run",
+ "name": "무쓰런",
+ "nameEn": "Mussu Run (Zero Waste Run)",
+ "date": "2026-10-24",
+ "location": "충북 무심천체육공원",
+ "region": "충북",
+ "venue": "무심천체육공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "학생(초중고)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "학생(초중고)"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1a981ce5fcb76775.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786513547/kormarathon/events/event-images-1786513546756.jpg",
+ "registration": {
+  "opensAt": "2026-09-08",
+  "closesAt": "2026-09-22",
+  "closed": false,
+  "url": "https://forms.gle/ga7gKHnRJB7pfLFY6"
+ },
+ "source": "https://www.kormarathon.com/ko/races/mussu-run-zero-waste-run",
+ "coords": {
+  "lat": 36.85272,
+  "lon": 127.71533,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.1,
+  "tmin": 5.9,
+  "tmax": 15.8,
+  "humidity": 75,
+  "wind": 1.9,
+  "rainChance": 14,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 12.2,
+    "tmin": 7.9,
+    "tmax": 18.2,
+    "rain": 2.0
+   },
+   {
+    "year": 2024,
+    "temp": 7.6,
+    "tmin": 4.1,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 11.9,
+    "tmin": 7.0,
+    "tmax": 17.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.1,
+    "tmin": 4.3,
+    "tmax": 11.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 7.8,
+    "tmin": 3.5,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 3.8,
+    "tmin": 0.7,
+    "tmax": 10.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.3,
+    "tmin": 10.5,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 8.1,
+    "tmin": 3.2,
+    "tmax": 14.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 9.8,
+    "tmin": 5.1,
+    "tmax": 14.5,
+    "rain": 0.1
+   },
+   {
+    "year": 2016,
+    "temp": 9.6,
+    "tmin": 5.7,
+    "tmax": 16.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

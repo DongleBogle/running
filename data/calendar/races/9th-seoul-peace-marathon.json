@@ -1,0 +1,132 @@
+{
+ "id": "9th-seoul-peace-marathon",
+ "name": "9회 서울평화마라톤",
+ "nameEn": "9th Seoul Peace Marathon",
+ "date": "2026-11-15",
+ "location": "서울 안양천 신정교하부육상트랙구장",
+ "region": "서울",
+ "venue": "안양천 신정교하부육상트랙구장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1ae92d196b899e3b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787818796/kormarathon/events/event-images-1787818795099.jpg",
+ "registration": {
+  "opensAt": "2026-07-15",
+  "closesAt": "2026-10-16",
+  "closed": false,
+  "url": "https://seoultongilrun.imweb.me/25"
+ },
+ "source": "https://www.kormarathon.com/ko/races/9th-seoul-peace-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.5,
+  "tmin": 2.0,
+  "tmax": 11.9,
+  "humidity": 74,
+  "wind": 2.2,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 4.8,
+    "tmin": 1.7,
+    "tmax": 14.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.4,
+    "tmin": 11.4,
+    "tmax": 18.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.0,
+    "tmin": -2.0,
+    "tmax": 10.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.6,
+    "tmin": 1.7,
+    "tmax": 10.9,
+    "rain": 1.5
+   },
+   {
+    "year": 2021,
+    "temp": 5.7,
+    "tmin": 2.7,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.3,
+    "tmin": 4.8,
+    "tmax": 14.6,
+    "rain": 0.5
+   },
+   {
+    "year": 2019,
+    "temp": 5.0,
+    "tmin": 0.1,
+    "tmax": 11.4,
+    "rain": 14.4
+   },
+   {
+    "year": 2018,
+    "temp": 5.3,
+    "tmin": 1.7,
+    "tmax": 12.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.4,
+    "tmin": -1.7,
+    "tmax": 5.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 3.0,
+    "tmin": 0.6,
+    "tmax": 9.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

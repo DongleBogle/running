@@ -1,0 +1,139 @@
+{
+ "id": "2026-gyeongbuk-new-town-marathon",
+ "name": "2026 경북도청신도시 마라톤대회",
+ "nameEn": "2026 Gyeongbuk New Town Marathon",
+ "date": "2026-11-08",
+ "location": "경북 경북도청 천년숲 앞 (안동시 풍천면 갈전리 1172)",
+ "region": "경북",
+ "venue": "경북도청 천년숲 앞 (안동시 풍천면 갈전리 1172)",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "일반"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "일반"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 45000,
+   "note": "일반"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/05ddfc803912de5d.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789526697/kormarathon/events/event-images-1789526696224.jpg",
+ "registration": {
+  "opensAt": "2026-08-31",
+  "closesAt": "2026-10-08",
+  "closed": false,
+  "url": "https://1004.tbc.co.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-gyeongbuk-new-town-marathon",
+ "coords": {
+  "lat": 36.57636,
+  "lon": 128.48613,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.3,
+  "tmin": 3.8,
+  "tmax": 15.3,
+  "humidity": 75,
+  "wind": 2.0,
+  "rainChance": 11,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.5,
+    "tmin": 7.2,
+    "tmax": 16.0,
+    "rain": 0.4
+   },
+   {
+    "year": 2024,
+    "temp": 8.5,
+    "tmin": 3.0,
+    "tmax": 16.8,
+    "rain": 0.5
+   },
+   {
+    "year": 2023,
+    "temp": 4.8,
+    "tmin": 0.2,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.0,
+    "tmin": 3.7,
+    "tmax": 16.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 14.4,
+    "tmin": 5.4,
+    "tmax": 16.6,
+    "rain": 16.3
+   },
+   {
+    "year": 2020,
+    "temp": 10.6,
+    "tmin": 3.5,
+    "tmax": 14.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 5.2,
+    "tmin": -0.1,
+    "tmax": 14.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.4,
+    "tmin": 10.9,
+    "tmax": 16.0,
+    "rain": 27.0
+   },
+   {
+    "year": 2017,
+    "temp": 15.2,
+    "tmin": 6.9,
+    "tmax": 17.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 6.0,
+    "tmin": 1.8,
+    "tmax": 10.8,
+    "rain": 3.2
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

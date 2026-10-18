@@ -1,0 +1,139 @@
+{
+ "id": "14th-jeongseojin-ara-waterway-national-marathon",
+ "name": "제14회 정서진아라뱃길 전국마라톤대회",
+ "nameEn": "14th Jeongseojin Ara Waterway National Marathon",
+ "date": "2026-10-25",
+ "location": "인천 경인아라뱃길여객터미널 아라타워",
+ "region": "인천",
+ "venue": "경인아라뱃길여객터미널 아라타워",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": "일반"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": "일반"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": "일반"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/369090a17421252b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789524047/kormarathon/events/event-images-1789524045821.jpg",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-09-23",
+  "closed": false,
+  "url": "https://www.jeongseojin.co.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/14th-jeongseojin-ara-waterway-national-marathon",
+ "coords": {
+  "lat": 37.55798,
+  "lon": 126.60677,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.2,
+  "tmin": 7.5,
+  "tmax": 17.0,
+  "humidity": 76,
+  "wind": 2.6,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 12.2,
+    "tmin": 9.5,
+    "tmax": 17.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 11.1,
+    "tmin": 7.0,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.6,
+    "tmin": 9.1,
+    "tmax": 19.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.6,
+    "tmin": 3.3,
+    "tmax": 15.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.3,
+    "tmin": 2.7,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 9.6,
+    "tmin": 4.1,
+    "tmax": 16.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.5,
+    "tmin": 10.8,
+    "tmax": 19.4,
+    "rain": 0.1
+   },
+   {
+    "year": 2018,
+    "temp": 9.9,
+    "tmin": 4.1,
+    "tmax": 17.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.5,
+    "tmin": 8.0,
+    "tmax": 17.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 14.8,
+    "tmin": 12.8,
+    "tmax": 17.6,
+    "rain": 32.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

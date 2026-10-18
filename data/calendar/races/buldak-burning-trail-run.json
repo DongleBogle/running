@@ -1,0 +1,144 @@
+{
+ "id": "buldak-burning-trail-run",
+ "name": "불닭 버닝 트레일런",
+ "nameEn": "Buldak Burning Trail Run",
+ "date": "2026-10-24",
+ "location": "강원 삼양라운드힐(삼양목장)",
+ "region": "강원",
+ "venue": "삼양라운드힐(삼양목장)",
+ "distances": [
+  "5km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": "성인"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "미성년자"
+  },
+  {
+   "category": "기타",
+   "km": 13,
+   "fee": 70000,
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 23,
+   "fee": 90000,
+   "note": "UTMB Index 20K"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1076c42a3dd12336.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789522601/kormarathon/events/event-images-1789522600356.jpg",
+ "registration": {
+  "opensAt": "2026-09-08",
+  "closesAt": "2026-10-05",
+  "closed": false,
+  "url": "https://sqnc.global/buldak-burning-festa-with-peppo"
+ },
+ "source": "https://www.kormarathon.com/ko/races/buldak-burning-trail-run",
+ "coords": {
+  "lat": 37.77253,
+  "lon": 128.38207,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.5,
+  "tmin": 3.8,
+  "tmax": 13.2,
+  "humidity": 75,
+  "wind": 2.2,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.1,
+    "tmin": 7.5,
+    "tmax": 13.0,
+    "rain": 0.4
+   },
+   {
+    "year": 2024,
+    "temp": 6.5,
+    "tmin": -0.1,
+    "tmax": 13.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.3,
+    "tmin": 4.5,
+    "tmax": 14.7,
+    "rain": 0.3
+   },
+   {
+    "year": 2022,
+    "temp": 4.1,
+    "tmin": -0.7,
+    "tmax": 7.3,
+    "rain": 1.3
+   },
+   {
+    "year": 2021,
+    "temp": 6.9,
+    "tmin": 0.8,
+    "tmax": 11.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 0.8,
+    "tmin": -2.8,
+    "tmax": 7.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 12.9,
+    "tmin": 10.4,
+    "tmax": 15.5,
+    "rain": 0.7
+   },
+   {
+    "year": 2018,
+    "temp": 5.8,
+    "tmin": 0.8,
+    "tmax": 11.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 7.4,
+    "tmin": 1.9,
+    "tmax": 13.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 7.8,
+    "tmin": 2.9,
+    "tmax": 15.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

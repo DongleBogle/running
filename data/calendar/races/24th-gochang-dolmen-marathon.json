@@ -1,0 +1,139 @@
+{
+ "id": "24th-gochang-dolmen-marathon",
+ "name": "제24회 고창고인돌마라톤",
+ "nameEn": "24th Gochang Dolmen Marathon",
+ "date": "2026-11-15",
+ "location": "전북 고창공설운동장",
+ "region": "전북",
+ "venue": "고창공설운동장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/53aada21f5f7300c.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782262621/kormarathon/events/event-images-1782262619930.jpg",
+ "registration": {
+  "opensAt": "2026-07-01",
+  "closesAt": "2026-08-31",
+  "closed": true,
+  "url": "http://www.gcrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/24th-gochang-dolmen-marathon",
+ "coords": {
+  "lat": 35.43252,
+  "lon": 126.72435,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.1,
+  "tmin": 5.3,
+  "tmax": 14.1,
+  "humidity": 70,
+  "wind": 3.0,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 9.1,
+    "tmin": 4.9,
+    "tmax": 16.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 15.4,
+    "tmin": 12.1,
+    "tmax": 20.5,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 8.3,
+    "tmin": 3.8,
+    "tmax": 12.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.3,
+    "tmin": 4.3,
+    "tmax": 12.2,
+    "rain": 0.1
+   },
+   {
+    "year": 2021,
+    "temp": 11.1,
+    "tmin": 7.1,
+    "tmax": 14.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.4,
+    "tmin": 8.0,
+    "tmax": 17.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 7.5,
+    "tmin": 1.8,
+    "tmax": 14.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.2,
+    "tmin": 3.8,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 8.5,
+    "tmin": 3.0,
+    "tmax": 9.4,
+    "rain": 0.1
+   },
+   {
+    "year": 2016,
+    "temp": 8.8,
+    "tmin": 5.4,
+    "tmax": 13.7,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

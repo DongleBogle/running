@@ -23,7 +23,9 @@
   font-size: 0.72rem; white-space: nowrap; }
 #view-home .visual .home-dday:not(.today) { background: rgba(10,14,23,.85); }
 #view-home .info { flex: 1; min-width: 0; }
-#view-home .name { font-weight: 700; font-size: 0.95rem; word-break: keep-all; }
+#view-home .name { display: block; font-weight: 700; font-size: 0.95rem; word-break: keep-all; color: inherit; text-decoration: none; }
+#view-home .name .more { color: var(--accent-cyan); }
+#view-home a.name:hover { color: var(--accent-cyan); }
 #view-home .meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
 #view-home .dists { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 #view-home .dist { font-size: 0.7rem; font-weight: 600; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); }

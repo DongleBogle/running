@@ -1,0 +1,144 @@
+{
+ "id": "sodong-luckydraw-night-run-5k-10k-ef8f7e81cf4e47358b6fac9125c9cdbf",
+ "name": "럭키드로우 나이트런 5K·10K (대회 취소)",
+ "nameEn": "SODONG LuckyDraw Night Run 5K·10K",
+ "date": "2026-10-25",
+ "location": "서울 안양천 가족정원 (오목교역 5번 출구 인근)",
+ "region": "서울",
+ "venue": "안양천 가족정원 (오목교역 5번 출구 인근)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "얼리버드"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 25000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 20000,
+   "note": "얼리버드"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-09-21",
+  "closesAt": "2026-10-20",
+  "closed": true,
+  "url": "https://run.sodong.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/sodong-luckydraw-night-run-5k-10k-ef8f7e81cf4e47358b6fac9125c9cdbf",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.9,
+  "tmin": 6.9,
+  "tmax": 16.8,
+  "humidity": 78,
+  "wind": 2.2,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.0,
+    "tmin": 10.5,
+    "tmax": 16.7,
+    "rain": 0.4
+   },
+   {
+    "year": 2024,
+    "temp": 10.8,
+    "tmin": 6.0,
+    "tmax": 19.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.5,
+    "tmin": 9.1,
+    "tmax": 20.0,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 7.9,
+    "tmin": 2.9,
+    "tmax": 14.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.3,
+    "tmin": 3.3,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.9,
+    "tmin": 6.4,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.1,
+    "tmin": 10.0,
+    "tmax": 19.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.8,
+    "tmin": 4.5,
+    "tmax": 17.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 10.9,
+    "tmin": 7.4,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.9,
+    "tmin": 10.9,
+    "tmax": 17.9,
+    "rain": 31.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

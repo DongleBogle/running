@@ -1,0 +1,132 @@
+{
+ "id": "seoul-open-marathon-2026",
+ "name": "2026 서울 오픈마라톤 (변경 일정 미정)",
+ "nameEn": "Seoul Open Marathon 2026",
+ "date": "2026-10-05",
+ "location": "서울 광화문 광장",
+ "region": "서울",
+ "venue": "광화문 광장",
+ "distances": [
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/57f525a689346783.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1777874678/kormarathon/events/event-images-1777874677057.jpg",
+ "registration": {
+  "opensAt": "2026-04-24",
+  "closesAt": "2026-05-10",
+  "closed": true,
+  "url": "http://seoulopen.or.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/seoul-open-marathon-2026",
+ "coords": {
+  "lat": 37.57593,
+  "lon": 126.97682,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.6,
+  "tmin": 13.0,
+  "tmax": 21.2,
+  "humidity": 79,
+  "wind": 2.5,
+  "rainChance": 41,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.0,
+    "tmin": 19.1,
+    "tmax": 22.1,
+    "rain": 5.6
+   },
+   {
+    "year": 2024,
+    "temp": 14.4,
+    "tmin": 8.7,
+    "tmax": 21.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 11.7,
+    "tmin": 9.3,
+    "tmax": 17.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 14.6,
+    "tmin": 13.1,
+    "tmax": 18.1,
+    "rain": 6.7
+   },
+   {
+    "year": 2021,
+    "temp": 23.1,
+    "tmin": 20.7,
+    "tmax": 25.2,
+    "rain": 1.5
+   },
+   {
+    "year": 2020,
+    "temp": 11.8,
+    "tmin": 7.2,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 17.2,
+    "tmin": 13.8,
+    "tmax": 20.9,
+    "rain": 1.7
+   },
+   {
+    "year": 2018,
+    "temp": 16.5,
+    "tmin": 13.9,
+    "tmax": 17.3,
+    "rain": 30.0
+   },
+   {
+    "year": 2017,
+    "temp": 16.2,
+    "tmin": 12.7,
+    "tmax": 21.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 16.9,
+    "tmin": 15.7,
+    "tmax": 24.0,
+    "rain": 6.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

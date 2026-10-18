@@ -1,0 +1,152 @@
+{
+ "id": "15th-buyeo-goodtrae-marathon",
+ "name": "제15회 부여 굿뜨레 마라톤",
+ "nameEn": "15th Buyeo Goodtrae Marathon",
+ "date": "2026-11-07",
+ "location": "충남 부여 구드래 나루터 선착장",
+ "region": "충남",
+ "venue": "부여 구드래 나루터 선착장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프",
+  "풀"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "부여군민"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "풀",
+   "km": 42.2,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/2b9ec4c16b9e407b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1784107089/kormarathon/events/event-images-1784107088470.jpg",
+ "registration": {
+  "opensAt": "2026-06-30",
+  "closesAt": "2026-07-30",
+  "closed": false,
+  "url": "https://mara1080.com/event/ffc023fc-7a54-4610-bdd6-2bb9a1028122/guide/overview"
+ },
+ "source": "https://www.kormarathon.com/ko/races/15th-buyeo-goodtrae-marathon",
+ "coords": {
+  "lat": 36.28992,
+  "lon": 126.90716,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.7,
+  "tmin": 5.3,
+  "tmax": 15.8,
+  "humidity": 75,
+  "wind": 2.1,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.9,
+    "tmin": 7.2,
+    "tmax": 19.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 5.4,
+    "tmin": 0.8,
+    "tmax": 14.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 8.8,
+    "tmin": 3.7,
+    "tmax": 11.4,
+    "rain": 0.3
+   },
+   {
+    "year": 2022,
+    "temp": 7.7,
+    "tmin": 2.7,
+    "tmax": 15.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 12.6,
+    "tmin": 7.5,
+    "tmax": 20.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 13.8,
+    "tmin": 8.1,
+    "tmax": 19.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.6,
+    "tmin": 5.5,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.9,
+    "tmin": 9.6,
+    "tmax": 14.5,
+    "rain": 2.5
+   },
+   {
+    "year": 2017,
+    "temp": 10.8,
+    "tmin": 5.7,
+    "tmax": 18.7,
+    "rain": 0.2
+   },
+   {
+    "year": 2016,
+    "temp": 12.5,
+    "tmin": 10.5,
+    "tmax": 17.2,
+    "rain": 4.1
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

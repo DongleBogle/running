@@ -1,0 +1,125 @@
+{
+ "id": "2026-sachal-run-gyeongsan-gatbawi-rock-wish-trail-runandwalk",
+ "name": "2026 사찰런: 경산 갓바위 소원길 트레일런&워크",
+ "nameEn": "2026 Sachal Run: Gyeongsan Gatbawi Rock Wish Trail Run&Walk",
+ "date": "2026-09-19",
+ "location": "경북 경산 상원사, 선본사, 갓바위 제3공영주차장",
+ "region": "경북",
+ "venue": "경산 상원사, 선본사, 갓바위 제3공영주차장",
+ "distances": [
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "기타",
+   "km": 6.3,
+   "fee": 30000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/8113b257289a41f5.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787722769/kormarathon/events/og-image-1787722768512-zsbmyd.jpg",
+ "registration": {
+  "opensAt": "2026-08-07",
+  "closesAt": "2026-09-10",
+  "closed": true,
+  "url": "https://sachalrun.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-sachal-run-gyeongsan-gatbawi-rock-wish-trail-runandwalk",
+ "coords": {
+  "lat": 35.81933,
+  "lon": 128.72761,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 21.6,
+  "tmin": 17.7,
+  "tmax": 25.4,
+  "humidity": 81,
+  "wind": 2.6,
+  "rainChance": 40,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.0,
+    "tmin": 18.6,
+    "tmax": 24.9,
+    "rain": 0.1
+   },
+   {
+    "year": 2024,
+    "temp": 27.6,
+    "tmin": 24.1,
+    "tmax": 34.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 24.2,
+    "tmin": 21.0,
+    "tmax": 28.6,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 24.0,
+    "tmin": 17.0,
+    "tmax": 25.6,
+    "rain": 45.1
+   },
+   {
+    "year": 2021,
+    "temp": 20.7,
+    "tmin": 14.9,
+    "tmax": 24.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 18.3,
+    "tmin": 11.6,
+    "tmax": 25.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 20.5,
+    "tmin": 14.8,
+    "tmax": 23.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 21.2,
+    "tmin": 17.0,
+    "tmax": 25.7,
+    "rain": 3.3
+   },
+   {
+    "year": 2017,
+    "temp": 21.5,
+    "tmin": 15.4,
+    "tmax": 28.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 20.1,
+    "tmin": 18.7,
+    "tmax": 21.6,
+    "rain": 0.1
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

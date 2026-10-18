@@ -38,8 +38,9 @@
 
   function item(r, badge, extra) {
     const dists = (r.distances || []).map(d => `<span class="dist ${distClass(d)}">${esc(d)}</span>`).join('');
-    return `<div class="home-item"><div class="visual">${thumb(r)}${badge}</div><div class="info">
-      <div class="name">${esc(r.name)}</div>
+    const detail = `race.html?id=${encodeURIComponent(r.id)}`;
+    return `<div class="home-item"><a class="visual" href="${detail}">${thumb(r)}${badge}</a><div class="info">
+      <a class="name" href="${detail}">${esc(r.name)} <span class="more">›</span></a>
       <div class="meta">${fmtDay(r.date)} · ${esc(r.location || '')}</div>
       ${dists ? `<div class="dists">${dists}</div>` : ''}${extra || ''}</div></div>`;
   }

@@ -1,0 +1,132 @@
+{
+ "id": "2026-style-run",
+ "name": "2026 Style Run (스타일 런)",
+ "nameEn": "2026 Style Run",
+ "date": "2026-10-18",
+ "location": "서울 롯데월드타워 월드파크",
+ "region": "서울",
+ "venue": "롯데월드타워 월드파크",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": "석촌호수·송파대로 반환 코스"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/3a6db90f9f56cbf9.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1781787769/kormarathon/events/event-images-1781787768294.jpg",
+ "registration": {
+  "opensAt": "2026-09-10",
+  "closesAt": "2026-09-10",
+  "closed": false,
+  "url": "https://www.lotteon.com/p/product/LE1222343657"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-style-run",
+ "coords": {
+  "lat": 37.51255,
+  "lon": 127.10268,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.4,
+  "tmin": 8.6,
+  "tmax": 18.1,
+  "humidity": 78,
+  "wind": 1.6,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 15.6,
+    "tmin": 13.6,
+    "tmax": 18.1,
+    "rain": 12.5
+   },
+   {
+    "year": 2024,
+    "temp": 17.4,
+    "tmin": 14.8,
+    "tmax": 19.1,
+    "rain": 26.5
+   },
+   {
+    "year": 2023,
+    "temp": 11.6,
+    "tmin": 7.1,
+    "tmax": 19.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 6.3,
+    "tmin": 2.9,
+    "tmax": 11.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 6.1,
+    "tmin": 1.6,
+    "tmax": 14.2,
+    "rain": 4.3
+   },
+   {
+    "year": 2020,
+    "temp": 11.0,
+    "tmin": 7.3,
+    "tmax": 18.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.2,
+    "tmin": 9.2,
+    "tmax": 21.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.0,
+    "tmin": 5.0,
+    "tmax": 15.4,
+    "rain": 1.2
+   },
+   {
+    "year": 2017,
+    "temp": 14.3,
+    "tmin": 11.5,
+    "tmax": 17.9,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 13.3,
+    "tmin": 10.7,
+    "tmax": 21.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

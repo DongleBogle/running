@@ -1,0 +1,145 @@
+{
+ "id": "2026-gimcheon-national-marathon",
+ "name": "2026 김천 전국마라톤 대회",
+ "nameEn": "2026 Gimcheon National Marathon",
+ "date": "2026-11-01",
+ "location": "경북 김천 종합스포츠타운 종합운동장",
+ "region": "경북",
+ "venue": "김천 종합스포츠타운 종합운동장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 10000,
+   "note": "김천시민"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 40000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/300b2bcf3ba909c8.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1784104132/kormarathon/events/event-images-1784104131166.jpg",
+ "registration": {
+  "opensAt": "2026-07-15",
+  "closesAt": "2026-07-30",
+  "closed": false,
+  "url": "http://gcmarathon.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-gimcheon-national-marathon",
+ "coords": {
+  "lat": 36.12384,
+  "lon": 128.11503,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.5,
+  "tmin": 5.6,
+  "tmax": 17.0,
+  "humidity": 71,
+  "wind": 1.9,
+  "rainChance": 6,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.4,
+    "tmin": 9.5,
+    "tmax": 17.5,
+    "rain": 0.7
+   },
+   {
+    "year": 2024,
+    "temp": 13.0,
+    "tmin": 11.5,
+    "tmax": 14.4,
+    "rain": 22.9
+   },
+   {
+    "year": 2023,
+    "temp": 12.5,
+    "tmin": 5.8,
+    "tmax": 24.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 11.9,
+    "tmin": 5.1,
+    "tmax": 20.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 13.3,
+    "tmin": 8.4,
+    "tmax": 18.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.2,
+    "tmin": 8.8,
+    "tmax": 14.0,
+    "rain": 8.5
+   },
+   {
+    "year": 2019,
+    "temp": 16.0,
+    "tmin": 7.4,
+    "tmax": 20.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 7.3,
+    "tmin": 1.7,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 10.4,
+    "tmin": 3.5,
+    "tmax": 17.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 1.7,
+    "tmin": 0.5,
+    "tmax": 7.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

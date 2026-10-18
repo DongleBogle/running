@@ -1,0 +1,139 @@
+{
+ "id": "19th-jungnang-gu-mayors-rose-marathon",
+ "name": "제19회 중랑구청장배 장미 마라톤대회",
+ "nameEn": "19th Jungnang-gu Mayors Rose Marathon",
+ "date": "2026-10-18",
+ "location": "서울 중화체육공원",
+ "region": "서울",
+ "venue": "중화체육공원",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/21e87a22630c4ad2.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786405870/kormarathon/events/event-images-1786405869034.jpg",
+ "registration": {
+  "opensAt": "2026-08-04",
+  "closesAt": "2026-10-07",
+  "closed": false,
+  "url": "https://www.jnrun.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/19th-jungnang-gu-mayors-rose-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.2,
+  "tmin": 8.1,
+  "tmax": 18.0,
+  "humidity": 77,
+  "wind": 2.0,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 14.9,
+    "tmin": 12.6,
+    "tmax": 17.6,
+    "rain": 12.2
+   },
+   {
+    "year": 2024,
+    "temp": 17.1,
+    "tmin": 15.2,
+    "tmax": 18.6,
+    "rain": 41.3
+   },
+   {
+    "year": 2023,
+    "temp": 11.6,
+    "tmin": 6.7,
+    "tmax": 19.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 6.6,
+    "tmin": 3.3,
+    "tmax": 11.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 5.9,
+    "tmin": 1.6,
+    "tmax": 13.6,
+    "rain": 2.8
+   },
+   {
+    "year": 2020,
+    "temp": 10.3,
+    "tmin": 4.8,
+    "tmax": 18.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.2,
+    "tmin": 10.1,
+    "tmax": 21.1,
+    "rain": 0.1
+   },
+   {
+    "year": 2018,
+    "temp": 9.7,
+    "tmin": 3.7,
+    "tmax": 15.6,
+    "rain": 0.7
+   },
+   {
+    "year": 2017,
+    "temp": 14.0,
+    "tmin": 11.9,
+    "tmax": 18.0,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 13.1,
+    "tmin": 10.0,
+    "tmax": 21.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

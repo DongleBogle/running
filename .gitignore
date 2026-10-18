@@ -22,6 +22,8 @@ clips/*.mp4
 clips/*.webm
 clips/*.mkv
 data/.video_meta_cache.json
+data/.geo_cache.json
+data/.climate_cache.json
 
 # Build output / deps
 dist/

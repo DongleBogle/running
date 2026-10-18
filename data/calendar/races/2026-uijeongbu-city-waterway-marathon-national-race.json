@@ -1,0 +1,139 @@
+{
+ "id": "2026-uijeongbu-city-waterway-marathon-national-race",
+ "name": "2026 의정부시 물길 마라톤 전국대회",
+ "nameEn": "2026 Uijeongbu City Waterway Marathon National Race",
+ "date": "2026-10-17",
+ "location": "경기 의정부 동막교 인라인광장",
+ "region": "경기",
+ "venue": "의정부 동막교 인라인광장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 40000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/4088bd4e33e97e39.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787722438/kormarathon/events/event-images-1787722437325.jpg",
+ "registration": {
+  "opensAt": "2026-08-11",
+  "closesAt": "2026-09-11",
+  "closed": false,
+  "url": "https://uijeongbu.my-race.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-uijeongbu-city-waterway-marathon-national-race",
+ "coords": {
+  "lat": 37.72661,
+  "lon": 127.05221,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.9,
+  "tmin": 8.2,
+  "tmax": 18.6,
+  "humidity": 77,
+  "wind": 1.7,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.2,
+    "tmin": 15.2,
+    "tmax": 23.5,
+    "rain": 6.5
+   },
+   {
+    "year": 2024,
+    "temp": 16.0,
+    "tmin": 10.5,
+    "tmax": 23.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.2,
+    "tmin": 4.7,
+    "tmax": 18.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.2,
+    "tmin": 4.7,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 2.8,
+    "tmin": -0.2,
+    "tmax": 9.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.0,
+    "tmin": 6.3,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 12.6,
+    "tmin": 7.7,
+    "tmax": 18.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.0,
+    "tmin": 5.2,
+    "tmax": 16.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 12.5,
+    "tmin": 5.7,
+    "tmax": 19.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 15.5,
+    "tmin": 11.6,
+    "tmax": 20.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

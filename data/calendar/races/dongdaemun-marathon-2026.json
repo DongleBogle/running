@@ -1,0 +1,139 @@
+{
+ "id": "dongdaemun-marathon-2026",
+ "name": "2026 동대문 마라톤",
+ "nameEn": "Dongdaemun Marathon 2026",
+ "date": "2026-09-20",
+ "location": "서울 중랑천 제1체육공원",
+ "region": "서울",
+ "venue": "중랑천 제1체육공원",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/55432dfdde1438a8.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1781525710/kormarathon/events/event-images-1781525709096.jpg",
+ "registration": {
+  "opensAt": "2026-06-10",
+  "closesAt": "2026-08-20",
+  "closed": true,
+  "url": "https://www.runddm.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/dongdaemun-marathon-2026",
+ "coords": {
+  "lat": 37.64886,
+  "lon": 127.05483,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 19.5,
+  "tmin": 15.6,
+  "tmax": 23.9,
+  "humidity": 78,
+  "wind": 2.3,
+  "rainChance": 33,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.1,
+    "tmin": 16.3,
+    "tmax": 22.5,
+    "rain": 26.7
+   },
+   {
+    "year": 2024,
+    "temp": 24.8,
+    "tmin": 15.8,
+    "tmax": 26.9,
+    "rain": 111.1
+   },
+   {
+    "year": 2023,
+    "temp": 20.8,
+    "tmin": 18.0,
+    "tmax": 21.3,
+    "rain": 36.8
+   },
+   {
+    "year": 2022,
+    "temp": 17.6,
+    "tmin": 13.9,
+    "tmax": 21.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 20.9,
+    "tmin": 17.5,
+    "tmax": 26.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 17.3,
+    "tmin": 12.8,
+    "tmax": 21.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 17.5,
+    "tmin": 12.4,
+    "tmax": 22.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 18.6,
+    "tmin": 15.8,
+    "tmax": 19.8,
+    "rain": 21.7
+   },
+   {
+    "year": 2017,
+    "temp": 16.0,
+    "tmin": 12.2,
+    "tmax": 21.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 18.1,
+    "tmin": 13.7,
+    "tmax": 24.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,139 @@
+{
+ "id": "2026-chuncheon-yonhap-marathon",
+ "name": "2026 춘천연합마라톤",
+ "nameEn": "2026 CHUNCHEON YONHAP MARATHON",
+ "date": "2026-10-03",
+ "location": "강원 춘천시 남산면 북한강변길 688 엘리시안 강촌",
+ "region": "강원",
+ "venue": "춘천시 남산면 북한강변길 688 엘리시안 강촌",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 55000,
+   "note": "9시20분 (그룹별 순차출발) / 참가비 중 10,000원을 춘천 지역 내에서 바로 사용 가능한 상품권으로 환급"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 65000,
+   "note": "9시10분 (그룹별 순차출발) / 참가비 중 10,000원을 춘천 지역 내에서 바로 사용 가능한 상품권으로 환급"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 80000,
+   "note": "9시 그룹별 순차출발) / 참가비 중 10,000원을 춘천 지역 내에서 바로 사용 가능한 상품권으로 환급"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/21c2bc2e32455a5f.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785288147/kormarathon/events/event-images-1785288146350.jpg",
+ "registration": {
+  "opensAt": "2026-07-16",
+  "closesAt": "2026-08-31",
+  "closed": false,
+  "url": "https://yonma.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-chuncheon-yonhap-marathon",
+ "coords": {
+  "lat": 37.81666,
+  "lon": 127.58714,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.1,
+  "tmin": 12.5,
+  "tmax": 21.5,
+  "humidity": 82,
+  "wind": 1.7,
+  "rainChance": 34,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 17.9,
+    "tmin": 16.0,
+    "tmax": 24.0,
+    "rain": 0.6
+   },
+   {
+    "year": 2024,
+    "temp": 13.5,
+    "tmin": 8.0,
+    "tmax": 19.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 14.5,
+    "tmin": 11.1,
+    "tmax": 20.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 17.0,
+    "tmin": 16.1,
+    "tmax": 21.9,
+    "rain": 97.0
+   },
+   {
+    "year": 2021,
+    "temp": 18.8,
+    "tmin": 13.9,
+    "tmax": 27.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 18.1,
+    "tmin": 15.7,
+    "tmax": 22.9,
+    "rain": 0.6
+   },
+   {
+    "year": 2019,
+    "temp": 20.4,
+    "tmin": 16.2,
+    "tmax": 24.2,
+    "rain": 33.6
+   },
+   {
+    "year": 2018,
+    "temp": 12.5,
+    "tmin": 8.2,
+    "tmax": 21.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 16.9,
+    "tmin": 12.5,
+    "tmax": 20.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 20.3,
+    "tmin": 17.8,
+    "tmax": 25.4,
+    "rain": 16.7
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}
