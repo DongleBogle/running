@@ -210,20 +210,19 @@
       </div>
     </div>
 
-    <!-- 대회별 추천 영상 (data/marathon_videos.json, scripts/collect_marathon_videos.py 로 생성) -->
+    <!-- 대회별 주로영상: 날짜 → 그날 대회 → 주로영상 (data/calendar + /api/race/videos) -->
     <div class="race-rec-box" id="raceRecBox">
       <div class="race-rec-head">
-        <h4>🏁 대회별 추천 영상</h4>
-        <span id="raceRecUpdated"></span>
+        <h4>🏁 대회별 주로영상</h4>
       </div>
-      <div class="race-chip-row" id="raceDateChips"></div>
-      <div class="race-chip-row" id="raceNameChips"></div>
+      <div class="race-pick-row">
+        <label class="race-pick date"><span>📅 날짜</span>
+          <select id="raceDateSelect" onchange="selectRaceDate(this.value)"></select></label>
+        <label class="race-pick name"><span>🏃 대회</span>
+          <select id="raceNameSelect" onchange="selectRace(this.value)"></select></label>
+      </div>
       <div class="race-meta" id="raceMeta"></div>
-      <div class="race-tab-row">
-        <button type="button" class="race-tab active" data-kind="course" onclick="setRaceVideoKind('course')">📍 주로영상 <span id="raceCourseCnt" class="race-tab-cnt"></span></button>
-        <button type="button" class="race-tab" data-kind="review" onclick="setRaceVideoKind('review')">🎬 후기·1인칭 <span id="raceReviewCnt" class="race-tab-cnt"></span></button>
-      </div>
-      <p id="raceKindHint" class="race-kind-hint"></p>
+      <p id="raceKindHint" class="race-kind-hint">고정 지점에서 지나가는 주자들을 찍은 영상입니다. 누르면 아래에서 바로 내 통과 시점을 분석합니다.</p>
       <div class="race-video-grid" id="raceVideoGrid"></div>
     </div>
 

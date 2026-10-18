@@ -210,15 +210,6 @@ function weatherHtml(r) {
       · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a> (ERA5, CC BY 4.0)</div></div>`;
 }
 
-// 대회명 비교용: 연도·회차·공백·'대회' 제거
-const normName = s => String(s).replace(/제\s*\d+\s*회|20\d\d|대회|\s/g, '').toLowerCase();
-
-function collectedVideos(r, videoRaces) {
-  const n = normName(r.name);
-  const match = videoRaces.find(v => v.date === r.date && (normName(v.name).includes(n) || n.includes(normName(v.name))));
-  return match ? [...(match.course || []), ...(match.review || [])] : [];
-}
-
 const MAX_VIDEOS = 12;
 function videoGrid(vids) {
   return vids.length ? `<div class="videos">${vids.slice(0, MAX_VIDEOS).map(v => `<a class="video" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">
@@ -226,27 +217,27 @@ function videoGrid(vids) {
       <div class="c">${v.type === 'course' ? '📍 주로영상' : '🎬 영상'} · ${esc(v.channel || '')}${v.publishedAt ? ' · ' + esc(v.publishedAt.slice(0, 4)) : ''}</div></a>`).join('')}</div>` : '';
 }
 
-// 모아둔 영상(data/marathon_videos.json)을 먼저 그리고, 실시간 검색 결과는 loadLiveVideos 가 채운다
-function videosHtml(r, collected) {
+// 영상 목록은 loadLiveVideos 가 유튜브 실시간 검색으로 채운다
+function videosHtml(r) {
   const q = encodeURIComponent(r.name);
-  return `<div class="card"><h2>🎬 관련 영상</h2><div id="videoGrid">${videoGrid(collected)}</div>
+  return `<div class="card"><h2>🎬 관련 영상</h2><div id="videoGrid"></div>
     <div class="links">${ext('https://www.youtube.com/results?search_query=' + q, '유튜브에서 검색')}${ext('https://www.youtube.com/results?search_query=' + encodeURIComponent(r.name + ' 주로영상'), '주로영상 검색')}</div>
     <div class="hint" id="videoHint">유튜브에서 관련 영상을 찾는 중...</div></div>`;
 }
 
-// /api/race/videos (YouTube Data API) 결과를 모아둔 영상 뒤에 중복 없이 붙인다. 실패하면 모아둔 영상만 둔다.
-async function loadLiveVideos(r, collected) {
+// /api/race/videos (YouTube Data API) 결과를 그린다. 실패하면 유튜브 검색 링크만 남는다.
+async function loadLiveVideos(r) {
   const hint = document.getElementById('videoHint');
   let live = [];
   try {
     const url = Platform.apiUrl('/api/race/videos?' + new URLSearchParams({ name: r.name, date: r.date }));
     const res = await fetch(url);
     if (res.ok) live = (await res.json()).videos || [];
-  } catch (e) { /* 네트워크 오류 등: 모아둔 영상만 */ }
-  const seen = new Set(collected.map(v => v.videoId));
-  const all = [...collected, ...live.filter(v => !seen.has(v.videoId))];
+  } catch (e) { /* 네트워크 오류 등: 검색 링크만 */ }
+  const seen = new Set();
+  const all = live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId));
   document.getElementById('videoGrid').innerHTML = videoGrid(all);
-  hint.textContent = all.length ? (live.length ? '유튜브 검색 결과예요. 지난 대회 영상도 함께 보여줘요.' : '')
+  hint.textContent = all.length ? '유튜브 검색 결과예요. 지난 대회 영상도 함께 보여줘요.'
     : '아직 찾은 영상이 없어요. 유튜브 검색으로 바로 찾아볼 수 있어요.';
   hint.hidden = !hint.textContent;
 }
@@ -259,13 +250,12 @@ function postsHtml(r) {
     ${ext('https://search.daum.net/search?w=blog&q=' + encodeURIComponent(r.name + ' 후기'), '다음 블로그 후기')}</div></div>`;
 }
 
-function render(r, videoRaces) {
+function render(r) {
   document.title = `${r.name} - MarathonNote`;
-  const collected = collectedVideos(r, videoRaces);
   document.getElementById('page').innerHTML = heroHtml(r) + feesHtml(r) + weatherHtml(r) + mapHtml(r) +
-    videosHtml(r, collected) + postsHtml(r) +
+    videosHtml(r) + postsHtml(r) +
     (r.source ? `<div class="src">대회 정보 출처: <a href="${esc(r.source)}" target="_blank" rel="noopener noreferrer">kormarathon.com</a> · 지도 © OpenStreetMap contributors</div>` : '');
-  loadLiveVideos(r, collected);
+  loadLiveVideos(r);
 }
 
 async function load() {
@@ -274,12 +264,9 @@ async function load() {
   const notFound = '<div class="card"><div class="empty">대회를 찾지 못했어요. 캘린더에서 다시 골라주세요.</div></div>';
   if (!id) { page.innerHTML = notFound; return; }
   try {
-    const [res, videos] = await Promise.all([
-      fetch(`data/calendar/races/${encodeURIComponent(id)}.json`, { cache: 'no-cache' }),
-      fetch('data/marathon_videos.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ races: [] })),
-    ]);
+    const res = await fetch(`data/calendar/races/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
     if (res.status === 404) { page.innerHTML = notFound; return; }
-    render(await res.json(), videos.races || []);
+    render(await res.json());
   } catch (e) {
     page.innerHTML = '<div class="card"><div class="empty">대회 정보를 불러오지 못했습니다.</div></div>';
   }

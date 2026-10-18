@@ -730,15 +730,10 @@ function setClipStartFromTimestamp(sec) {
 }
 
 // -------------------------------------------------------------------------
-// 대회별 추천 영상 (주로영상 / 후기 구분)
+// 대회별 주로영상: 날짜 → 그날 대회 → 주로영상
+//   대회 목록: data/calendar (전체 대회), 영상: /api/race/videos (유튜브 실시간 검색)
 // -------------------------------------------------------------------------
-const raceRec = { races: [], date: null, raceId: null, kind: 'course' };
-
-// 같은 날짜 대회는 주로영상이 많은 순으로
-function racesOnDate(date) {
-  return raceRec.races.filter(r => r.date === date)
-    .sort((a, b) => (b.course.length - a.course.length) || (b.review.length - a.review.length));
-}
+const raceRec = { races: [], date: null, raceId: null, live: {} };  // live: 대회id → 실시간 검색 결과(또는 진행 중 Promise)
 
 function escHtml(str) {
   return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -755,20 +750,27 @@ function formatDuration(sec) {
   return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${m}:${String(s).padStart(2, '0')}`;
 }
 
+function racesOnDate(date) {
+  return raceRec.races.filter(r => r.date === date).sort((a, b) => a.name.localeCompare(b.name));
+}
+
 async function loadRaceVideos() {
+  const box = document.getElementById('raceRecBox');
   try {
-    const res = await fetch(Platform.dataUrl('marathon_videos.json'), { cache: 'no-cache' });
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    raceRec.races = data.races || [];
-    if (data.generatedAt) document.getElementById('raceRecUpdated').textContent = `수집: ${data.generatedAt.replace('T', ' ').slice(0, 16)}`;
+    const get = async f => { const res = await fetch(Platform.dataUrl(f), { cache: 'no-cache' }); if (!res.ok) throw new Error(res.status); return res.json(); };
+    const { months = [] } = await get('calendar/index.json');
+    const files = await Promise.all(months.map(m => get(`calendar/${m}.json`).catch(() => ({ races: [] }))));
+    const now = new Date();
+    const todayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    // 주로영상은 대회가 끝나야 올라오므로 오늘까지 열린 대회만
+    raceRec.races = files.flatMap(f => f.races || []).filter(r => r.date <= todayKey);
   } catch (err) {
-    console.warn('추천 영상 목록을 불러오지 못했습니다', err);
-    document.getElementById('raceRecBox').style.display = 'none';
+    console.warn('대회 목록을 불러오지 못했습니다', err);
+    box.style.display = 'none';
     return;
   }
-  if (!raceRec.races.length) { document.getElementById('raceRecBox').style.display = 'none'; return; }
-  selectRaceDate(raceRec.races[0].date);
+  if (!raceRec.races.length) { box.style.display = 'none'; return; }
+  selectRaceDate(raceRec.races.reduce((a, r) => r.date > a ? r.date : a, ''));
 }
 
 // 날짜를 고르면 그 날짜의 대회만 보여준다
@@ -779,60 +781,62 @@ function selectRaceDate(date) {
   renderRaceRec();
 }
 
-// 대회명을 누르면 같은 날짜의 대회들만 남기고 그 대회 영상을 보여준다
 function selectRace(raceId) {
-  const race = raceRec.races.find(r => r.id === raceId);
-  if (!race) return;
-  raceRec.date = race.date;
+  if (!raceRec.races.some(r => r.id === raceId)) return;
   raceRec.raceId = raceId;
   renderRaceRec();
 }
 
-function setRaceVideoKind(kind) {
-  raceRec.kind = kind;
-  renderRaceRec();
+// 유튜브 실시간 검색 (대회당 한 번만 요청하고 결과는 기억해 둔다)
+function fetchLiveCourse(race) {
+  if (!raceRec.live[race.id]) {
+    const url = Platform.apiUrl('/api/race/videos?' + new URLSearchParams({ name: race.name, date: race.date, kind: 'course' }));
+    raceRec.live[race.id] = fetch(url)
+      .then(res => res.ok ? res.json() : { videos: [] })
+      .then(d => (d.videos || []).filter(v => v.type === 'course' && v.publishedAt >= race.date))
+      .catch(() => []);
+  }
+  return raceRec.live[race.id];
 }
 
 function renderRaceRec() {
-  const dates = [...new Set(raceRec.races.map(r => r.date))];
-  document.getElementById('raceDateChips').innerHTML = dates.map(d => {
-    const n = raceRec.races.filter(r => r.date === d).length;
-    return `<button type="button" class="race-chip date ${d === raceRec.date ? 'active' : ''}" onclick="selectRaceDate('${d}')">📅 ${formatRaceDate(d)}<span class="cnt">${n}개 대회</span></button>`;
-  }).join('');
+  const dates = [...new Set(raceRec.races.map(r => r.date))].sort().reverse();
+  const dateSel = document.getElementById('raceDateSelect');
+  dateSel.innerHTML = dates.map(d =>
+    `<option value="${d}">${formatRaceDate(d)} · ${raceRec.races.filter(r => r.date === d).length}개 대회</option>`).join('');
+  dateSel.value = raceRec.date;
 
-  const sameDay = racesOnDate(raceRec.date);
-  document.getElementById('raceNameChips').innerHTML = sameDay.map(r =>
-    `<button type="button" class="race-chip ${r.id === raceRec.raceId ? 'active' : ''}" onclick="selectRace('${r.id}')">${escHtml(r.name)}<span class="cnt">${r.course.length + r.review.length}</span></button>`
-  ).join('');
+  const nameSel = document.getElementById('raceNameSelect');
+  nameSel.innerHTML = racesOnDate(raceRec.date).map(r =>
+    `<option value="${escHtml(r.id)}">${escHtml(r.name)}</option>`).join('');
+  nameSel.value = raceRec.raceId;
 
   const race = raceRec.races.find(r => r.id === raceRec.raceId);
   if (!race) return;
   document.getElementById('raceMeta').textContent = `${formatRaceDate(race.date)} · ${race.location || ''}`;
-  document.getElementById('raceCourseCnt').textContent = race.course.length;
-  document.getElementById('raceReviewCnt').textContent = race.review.length;
-  document.querySelectorAll('.race-tab').forEach(t => t.classList.toggle('active', t.dataset.kind === raceRec.kind));
-  document.getElementById('raceKindHint').textContent = raceRec.kind === 'course'
-    ? '고정 지점에서 지나가는 주자들을 찍은 영상입니다. 누르면 아래에서 바로 내 통과 시점을 분석합니다.'
-    : '참가자 후기·1인칭 풀영상·중계 등입니다. 누르면 유튜브에서 열립니다.';
+  renderRaceVideos(race, [], true);
+  fetchLiveCourse(race).then(live => {
+    if (raceRec.raceId !== race.id) return;  // 그사이 다른 대회를 골랐으면 무시
+    const seen = new Set();  // 같은 영상이 검색 결과에 두 번 올 때가 있어 videoId 로 중복 제거
+    renderRaceVideos(race, live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId)), false);
+  });
+}
 
-  const list = race[raceRec.kind] || [];
+function renderRaceVideos(race, list, loading) {
   const grid = document.getElementById('raceVideoGrid');
   if (!list.length) {
-    grid.innerHTML = `<div class="race-empty" style="grid-column: 1 / -1;">아직 수집된 ${raceRec.kind === 'course' ? '주로영상' : '후기 영상'}이 없습니다.</div>`;
+    grid.innerHTML = `<div class="race-empty" style="grid-column: 1 / -1;">${loading ? '유튜브에서 주로영상을 찾는 중...'
+      : `아직 찾은 주로영상이 없습니다. <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(race.name + ' 주로영상')}" target="_blank" rel="noopener">유튜브에서 직접 검색</a>해 링크를 아래에 붙여넣어 주세요.`}</div>`;
     return;
   }
   grid.innerHTML = list.map(v => {
     const tags = [];
-    if (v.distanceKm != null && v.spot !== '골인/피니시') tags.push(`<span class="tag km">📍 ${v.distanceKm}km</span>`);
-    if (v.spot) tags.push(`<span class="tag fin">🏁 ${escHtml(v.spot)}</span>`);
-    if (v.startClock) tags.push(`<span class="tag clock">⏱️ ${v.startClock.slice(0, 5)}~</span>`);
-    if (v.lengthSeconds) tags.push(`<span class="tag">${formatDuration(v.lengthSeconds)}</span>`);
-    const inner = `<img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
-      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div>`;
-    return raceRec.kind === 'course'
-      ? `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">${inner}</button>`
-      : `<a class="race-video-card" title="${escHtml(v.title)}" href="${escHtml(v.url)}" target="_blank" rel="noopener">${inner}</a>`;
-  }).join('');
+    if (v.lengthSeconds) tags.push(`<span class="tag clock">▶ ${formatDuration(v.lengthSeconds)}</span>`);
+    if (v.publishedAt) tags.push(`<span class="tag">업로드 ${escHtml(v.publishedAt.slice(5).replace('-', '.'))}</span>`);
+    return `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">
+      <img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
+      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div></button>`;
+  }).join('') + (loading ? '<div class="race-empty" style="grid-column: 1 / -1;">유튜브에서 주로영상을 더 찾는 중...</div>' : '');
 }
 
 function pickRaceVideo(url) {
