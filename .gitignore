@@ -12,6 +12,9 @@ __pycache__/
 ehthumbs.db
 Thumbs.db
 
+# Local secrets (YOUTUBE_API_KEY 등)
+.env.local
+
 # Virtual environments
 venv/
 .venv/

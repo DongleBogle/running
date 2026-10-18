@@ -22,6 +22,10 @@
       "destination": "/api/analyze"
     },
     {
+      "source": "/api/race/videos",
+      "destination": "/api/race_videos"
+    },
+    {
       "source": "/(converter|calendar)",
       "destination": "/index.html"
     }

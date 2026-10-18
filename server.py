@@ -7,6 +7,23 @@ import time
 import uuid
 import urllib.parse
 from youtube_analyzer import fetch_youtube_metadata, analyze_video_description
+from api import race_videos
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def load_env_local(path=os.path.join(ROOT_DIR, '.env.local')):
+    """.env.local 의 KEY=VALUE 를 환경변수로 (이미 설정된 값은 덮어쓰지 않음). Vercel 에서는 프로젝트 환경변수를 쓴다."""
+    if not os.path.exists(path):
+        return
+    for line in open(path, encoding='utf-8'):
+        line = line.strip()
+        if line and not line.startswith('#') and '=' in line:
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k.strip(), v.strip().strip('"\''))
+
+
+load_env_local()
 
 PORT = 8080
 CLIPS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'clips')
@@ -17,7 +34,6 @@ ENV = os.environ.copy()
 if '/opt/homebrew/bin' not in ENV.get('PATH', ''):
     ENV['PATH'] = f"/opt/homebrew/bin:{ENV.get('PATH', '')}"
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 # 프론트엔드는 `node scripts/build.mjs web` 결과물(dist/web)을 서빙
 WEB_DIR = os.path.join(ROOT_DIR, 'dist', 'web')
 
@@ -38,6 +54,11 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
+
+        if path == '/api/race/videos':
+            status, data, _ = race_videos.handle(parsed.query)
+            self.send_json_response(data, status=status)
+            return
 
         if path == '/api/sample-data':
             sample_data = {
