@@ -876,6 +876,7 @@ function parseOcrTextToRunningData(rawText) {
   const DIST_RE = /(?<![\d:.])\d{1,2}\.\d{2}(?![\d:])/;
 
   let lastLap = 0;
+  let imageLapDist = 0;
   for (const line of lines) {
     const clockMatches = [...line.matchAll(CLOCK_RE)].map(m => {
       const h = String(parseInt(m[1], 10)).padStart(2, '0');
@@ -901,7 +902,12 @@ function parseOcrTextToRunningData(rawText) {
       });
     } else if (distMatch && lapMatches.length > 0 && lapMatches[0].includes('.')) {
       // 랩 행: [번호] 시간(M:SS.S) 거리 페이스
-      const leadMatch = /^\s*(\d{1,2})\b/.exec(line);
+      // 랩 번호는 시간 앞에 따로 있는 숫자만 인정 ('39:57.8'의 39를 번호로 읽지 않도록)
+      const leadMatch = /^\s*(\d{1,2})\s+(?=\d{1,2}:)/.exec(line);
+      const dist = parseFloat(distMatch[0]);
+      // 번호 없이 위 랩들의 거리 합보다 긴 행은 총계/합계 행 (한글 '총계'는 OCR 화이트리스트에서 지워진다)
+      if (!leadMatch && imageLapDist > 0 && dist > imageLapDist + 0.05) continue;
+      imageLapDist += dist;
       let lapNo = leadMatch ? parseInt(leadMatch[1], 10) : null;
       if (lapNo === null || (lastLap && lapNo !== lastLap + 1)) {
         lapNo = lastLap + 1;
@@ -1098,6 +1104,12 @@ function applyOcrResults(verified, laps, opts) {
   // 랩: OCR이 읽은 실제 랩 번호/거리를 사용한다 (사진에 누락된 랩이 있어도 번호가 밀리지 않도록)
   rawWatchLaps.length = 0;
   const lapMap = new Map();
+  // 총계 행만 따로 찍힌 사진 대비: 나머지 랩들의 거리·시간 합과 같은 행은 랩이 아니다
+  const totalDist = laps.reduce((s, l) => s + (parseFloat(l.dist) || 0), 0);
+  const totalSec = laps.reduce((s, l) => s + parseElapsedToSec(l.time), 0);
+  laps = laps.filter(l => !(laps.length > 2
+    && Math.abs((parseFloat(l.dist) || 0) * 2 - totalDist) < 0.02
+    && Math.abs(parseElapsedToSec(l.time) * 2 - totalSec) < 1.5));
   laps.forEach((l, i) => {
     const m = /(\d+)/.exec(l.point || '');
     const lapNo = l.lapNo || (m ? parseInt(m[1], 10) : i + 1);
