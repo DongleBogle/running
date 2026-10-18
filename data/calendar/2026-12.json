@@ -1,6 +1,6 @@
 {
  "month": "2026-12",
- "generatedAt": "2026-10-18T00:21",
+ "generatedAt": "2026-10-18T10:45",
  "races": [
   {
    "id": "sawe-2026-world-record-international-marathon-festival",
@@ -10,6 +10,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/0aa0b17e51ec4395.jpg",
    "registration": {
     "opensAt": "2026-08-31",
     "closesAt": "2026-09-10",
@@ -26,6 +27,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/47f40e9cc2614edd.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-11-26",
@@ -42,6 +44,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/affb040bc0aec557.jpg",
    "registration": {
     "opensAt": "2026-10-06",
     "closesAt": "2026-11-08",
@@ -57,6 +60,7 @@
    "distances": [
     "하프"
    ],
+   "image": "data/calendar/images/1a9c53fa13028cfb.jpg",
    "registration": {
     "opensAt": "2026-09-03",
     "closesAt": "2026-09-15",
@@ -74,6 +78,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/f7ccaec066ba4771.jpg",
    "registration": {
     "opensAt": "2026-07-20",
     "closesAt": "2026-10-28",
@@ -90,6 +95,7 @@
     "10km",
     "풀"
    ],
+   "image": "data/calendar/images/2cf2b1126b18705a.jpg",
    "registration": {
     "opensAt": "2026-08-24",
     "closesAt": "2026-08-24",
@@ -106,6 +112,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/0d0e2535e7bc5c2c.jpg",
    "registration": {
     "opensAt": "2026-09-01",
     "closesAt": "2026-11-08",
@@ -123,6 +130,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/f256bb6d4e619fbe.jpg",
    "registration": {
     "opensAt": "2026-10-01",
     "closesAt": "2026-10-20",
@@ -139,6 +147,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/6df994281b7452a5.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-10-30",
@@ -155,6 +164,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/2a883769bfc35219.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-09-01",
@@ -172,6 +182,7 @@
     "10km",
     "기타"
    ],
+   "image": "",
    "registration": {
     "opensAt": null,
     "closesAt": "2026-11-23",
@@ -189,6 +200,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/d026080b63043f02.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-12-02",
@@ -207,6 +219,7 @@
     "하프",
     "풀"
    ],
+   "image": "data/calendar/images/65faa9466dfdd85b.jpg",
    "registration": {
     "opensAt": "2026-09-14",
     "closesAt": "2026-10-29",
@@ -222,6 +235,7 @@
    "distances": [
     "10km"
    ],
+   "image": "data/calendar/images/025d5c2f9f415211.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-10-31",
@@ -239,6 +253,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/dbd7a98b9815214c.jpg",
    "registration": {
     "opensAt": "2026-08-15",
     "closesAt": "2026-12-06",
@@ -256,6 +271,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/461170cb97ef9848.jpg",
    "registration": {
     "opensAt": "2026-08-10",
     "closesAt": "2026-12-09",
@@ -273,6 +289,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/7b82fc5a8a4430d9.jpg",
    "registration": {
     "opensAt": "2026-08-25",
     "closesAt": "2026-12-16",

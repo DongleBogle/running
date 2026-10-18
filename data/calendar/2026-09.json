@@ -1,6 +1,6 @@
 {
  "month": "2026-09",
- "generatedAt": "2026-10-18T00:21",
+ "generatedAt": "2026-10-18T10:45",
  "races": [
   {
    "id": "2026-seolleim-run",
@@ -10,6 +10,7 @@
    "distances": [
     "10km"
    ],
+   "image": "data/calendar/images/20ab93290a3bf19b.jpg",
    "registration": {
     "opensAt": "2026-07-13",
     "closesAt": "2026-08-26",
@@ -26,6 +27,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/8b8eae3735a02564.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-08-01",
@@ -42,6 +44,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/b721cd3346222aed.jpg",
    "registration": {
     "opensAt": "2026-05-20",
     "closesAt": "2026-08-12",
@@ -60,6 +63,7 @@
     "하프",
     "풀"
    ],
+   "image": "data/calendar/images/3e6dc6fc3d5ed0b9.jpg",
    "registration": {
     "opensAt": "2026-02-02",
     "closesAt": "2026-04-05",
@@ -76,6 +80,7 @@
     "기타",
     "하프"
    ],
+   "image": "data/calendar/images/0cfc31502d85006a.jpg",
    "registration": {
     "opensAt": "2026-06-17",
     "closesAt": "2026-06-20",
@@ -92,6 +97,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/b262dc7c916ed787.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-07-15",
@@ -108,6 +114,7 @@
     "~5km",
     "기타"
    ],
+   "image": "data/calendar/images/c6a6acfc7fdf26bf.jpg",
    "registration": {
     "opensAt": "2026-03-16",
     "closesAt": "2026-07-31",
@@ -123,6 +130,7 @@
    "distances": [
     "5km"
    ],
+   "image": "data/calendar/images/996fc4b888e24200.jpg",
    "registration": {
     "opensAt": "2026-08-23",
     "closesAt": "2026-09-02",
@@ -140,6 +148,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/4ba5613575255ca2.jpg",
    "registration": {
     "opensAt": "2026-02-03",
     "closesAt": "2026-07-15",
@@ -157,6 +166,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/37f141c6a27ba936.jpg",
    "registration": {
     "opensAt": "2026-02-01",
     "closesAt": "2026-08-30",
@@ -174,6 +184,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/3e144f97f9cc61f5.jpg",
    "registration": {
     "opensAt": "2026-05-04",
     "closesAt": "2026-05-30",
@@ -191,6 +202,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/46047ee70c833a73.jpg",
    "registration": {
     "opensAt": "2026-08-06",
     "closesAt": "2026-08-27",
@@ -208,6 +220,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/23ed5436b1f53c51.jpg",
    "registration": {
     "opensAt": "2026-02-27",
     "closesAt": "2026-06-30",
@@ -224,6 +237,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/39c0c1a174cd90a2.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-08-15",
@@ -239,6 +253,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/6fffce01c844f588.jpg",
    "registration": {
     "opensAt": "2026-07-18",
     "closesAt": "2026-07-22",
@@ -255,6 +270,7 @@
     "~5km",
     "10km"
    ],
+   "image": "data/calendar/images/1c5f5347247951a6.jpg",
    "registration": {
     "opensAt": "2026-04-27",
     "closesAt": "2026-08-14",
@@ -271,6 +287,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/2a4eab8265edcae1.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-08-15",
@@ -286,6 +303,7 @@
    "distances": [
     "10km"
    ],
+   "image": "data/calendar/images/536ae7cc6bdc6340.jpg",
    "registration": {
     "opensAt": "2026-07-23",
     "closesAt": "2026-07-30",
@@ -302,6 +320,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/e873c0d04017b4a3.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-08-12",
@@ -318,6 +337,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/51e519aec537fd41.jpg",
    "registration": {
     "opensAt": "2026-08-14",
     "closesAt": "2026-08-23",
@@ -333,6 +353,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/662066032f37ed8c.jpg",
    "registration": {
     "opensAt": "2026-03-25",
     "closesAt": "2026-05-31",
@@ -349,6 +370,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/15353f7474c15ca5.jpg",
    "registration": {
     "opensAt": "2026-08-14",
     "closesAt": "2026-08-21",
@@ -367,6 +389,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/bd2560a81a56577f.jpg",
    "registration": {
     "opensAt": "2026-04-01",
     "closesAt": "2026-07-31",
@@ -383,6 +406,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/47b8d6659c82ad0d.jpg",
    "registration": {
     "opensAt": "2026-06-29",
     "closesAt": "2026-08-14",
@@ -400,6 +424,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/aefda46c77614aae.jpg",
    "registration": {
     "opensAt": "2026-06-10",
     "closesAt": "2026-07-24",
@@ -417,6 +442,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/aeeb219f38d27da8.jpg",
    "registration": {
     "opensAt": "2025-12-08",
     "closesAt": "2026-07-29",
@@ -434,6 +460,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/f38b109a48183f89.jpg",
    "registration": {
     "opensAt": "2026-06-29",
     "closesAt": "2026-08-13",
@@ -450,6 +477,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/a886f49739f5f566.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-08-14",
@@ -465,6 +493,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/a8b19a64bb4341cb.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-07-30",
@@ -482,6 +511,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/16d2bacaba911a67.jpg",
    "registration": {
     "opensAt": "2026-06-30",
     "closesAt": "2026-08-03",
@@ -498,6 +528,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/92cbce9a27e25f0b.jpg",
    "registration": {
     "opensAt": "2026-08-03",
     "closesAt": "2026-08-31",
@@ -513,6 +544,7 @@
    "distances": [
     "10km"
    ],
+   "image": "data/calendar/images/cbbfcf1f57b5dfa7.jpg",
    "registration": {
     "opensAt": "2026-08-10",
     "closesAt": "2026-08-10",
@@ -528,6 +560,7 @@
    "distances": [
     "5km"
    ],
+   "image": "data/calendar/images/047d4921c725a17e.jpg",
    "registration": {
     "opensAt": "2026-07-27",
     "closesAt": "2026-08-26",
@@ -543,6 +576,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/65ec0019b76e34ce.jpg",
    "registration": {
     "opensAt": "2026-08-06",
     "closesAt": "2026-08-21",
@@ -559,6 +593,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/0461d048ac683fe3.jpg",
    "registration": {
     "opensAt": "2026-07-30",
     "closesAt": "2026-07-31",
@@ -574,6 +609,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/8113b257289a41f5.jpg",
    "registration": {
     "opensAt": "2026-08-07",
     "closesAt": "2026-09-10",
@@ -589,6 +625,7 @@
    "distances": [
     "10km"
    ],
+   "image": "data/calendar/images/c1e6451f52fd147e.jpg",
    "registration": {
     "opensAt": "2026-07-16",
     "closesAt": "2026-08-20",
@@ -606,6 +643,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/608f1582a6436192.jpg",
    "registration": {
     "opensAt": "2026-07-01",
     "closesAt": "2026-09-10",
@@ -621,6 +659,7 @@
    "distances": [
     "기타"
    ],
+   "image": "data/calendar/images/60e84e2df363ce66.jpg",
    "registration": {
     "opensAt": "2026-08-31",
     "closesAt": "2026-09-18",
@@ -637,6 +676,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/535dd743dd3b264a.jpg",
    "registration": {
     "opensAt": "2026-08-01",
     "closesAt": "2026-09-01",
@@ -653,6 +693,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/868093f38c77d9c4.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-08-05",
@@ -670,6 +711,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/e729b6f49b4f83f3.jpg",
    "registration": {
     "opensAt": "2026-06-17",
     "closesAt": "2026-08-03",
@@ -686,6 +728,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/e6c7652a2cdf663a.jpg",
    "registration": {
     "opensAt": "2026-07-10",
     "closesAt": "2026-08-03",
@@ -705,6 +748,7 @@
     "기타",
     "풀"
    ],
+   "image": "data/calendar/images/b85c55613329f990.jpg",
    "registration": {
     "opensAt": "2026-05-21",
     "closesAt": "2026-05-22",
@@ -722,6 +766,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/55432dfdde1438a8.jpg",
    "registration": {
     "opensAt": "2026-06-10",
     "closesAt": "2026-08-20",
@@ -739,6 +784,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/0288c9b567f714ff.jpg",
    "registration": {
     "opensAt": "2026-06-08",
     "closesAt": "2026-06-15",
@@ -756,6 +802,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/c9612e75338bcbac.jpg",
    "registration": {
     "opensAt": "2026-07-06",
     "closesAt": "2026-07-30",
@@ -772,6 +819,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/7b1995e19c048b88.jpg",
    "registration": {
     "opensAt": "2026-07-15",
     "closesAt": "2026-08-06",
@@ -788,6 +836,7 @@
     "기타",
     "10km"
    ],
+   "image": "data/calendar/images/597b031a10e64d40.jpg",
    "registration": {
     "opensAt": "2026-07-03",
     "closesAt": "2026-07-30",
@@ -805,6 +854,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/4dab1c55f26746b9.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-08-07",
@@ -823,6 +873,7 @@
     "10km",
     "하프"
    ],
+   "image": "data/calendar/images/d8b92deb35bf31fe.jpg",
    "registration": {
     "opensAt": "2026-04-14",
     "closesAt": "2026-05-30",
@@ -839,6 +890,7 @@
     "5km",
     "10km"
    ],
+   "image": "data/calendar/images/5ca006f981aa95f3.jpg",
    "registration": {
     "opensAt": "2026-06-01",
     "closesAt": "2026-08-19",
