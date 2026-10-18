@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarathonNote - 구간 변환기 & 마라톤 캘린더</title>
+  <title>MarathonNote - 유튜브 주로 영상 추출 & 마라톤 캘린더</title>
   <style>
     :root { --bg-dark: #0a0e17; --card-border: #1e293b; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-neon: #10b981; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,12 +40,12 @@
       </div>
     </a>
     <nav>
-      <button class="tab" data-view="converter">⏱ 구간 변환기</button>
+      <button class="tab" data-view="converter">🎬 유튜브 주로 영상 추출</button>
       <button class="tab" data-view="calendar">📅 마라톤 캘린더</button>
     </nav>
   </div>
   <iframe id="home" src="home.html" title="홈"></iframe>
-  <iframe id="converter" title="구간 변환기" hidden></iframe>
+  <iframe id="converter" title="유튜브 주로 영상 추출" hidden></iframe>
   <iframe id="calendar" title="마라톤 캘린더" hidden></iframe>
 <script>
   const frames = { home: document.getElementById('home'), converter: document.getElementById('converter'), calendar: document.getElementById('calendar') };
