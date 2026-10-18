@@ -33,9 +33,6 @@
       padding-bottom: 60px;
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
-    .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
-    .top h1 { font-size: 1.4rem; margin: 0; }
-    .top a { color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; }
     .btn { display: inline-block; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--card-border); }
     .btn-green { background: var(--accent-neon); color: #04120c; border-color: var(--accent-neon); }
     .btn-outline { background: none; color: var(--text-main); }
@@ -102,10 +99,6 @@
 </head>
 <body>
 <div class="container">
-  <div class="top">
-    <h1>📅 마라톤 캘린더</h1>
-    <a id="backLink" href="index.html">← 유튜브 주로 영상 추출로 돌아가기</a>
-  </div>
     <div class="cal-toolbar">
       <button class="cal-btn" onclick="calMove(-1)" aria-label="이전 달">◀</button>
       <div class="cal-month" id="calMonthLabel"></div>
@@ -292,7 +285,6 @@ function calFilter(mode) {
   renderCalendar();
 }
 window.addEventListener('resize', () => { if (calLoaded) renderCalendar(); });
-if (window.self !== window.top) document.querySelector('.top').style.display = 'none';  // 탭 화면 안에서는 제목·돌아가기 줄 숨김
 loadCalendar();
 
 </script>
