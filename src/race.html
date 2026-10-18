@@ -8,6 +8,7 @@
   <base href="/">
   <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
+  <script src="js/common.js"></script>
   <style>
     :root {
       --bg-dark: #0a0e17;
@@ -109,38 +110,13 @@
 <script>
 // /race/<대회 id>: data/calendar/races/<id>.json (수집기가 만든 대회별 상세 정보)을 보여준다.
 // /race/<id> 는 vercel.json rewrites(로컬은 server.py)가 race.html 로 보낸다.
-const DAY = 86400000;
-const pad2 = n => String(n).padStart(2, '0');
-const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const dayOf = s => { const [y, m, d] = s.slice(0, 10).split('-').map(Number); return new Date(y, m - 1, d); };
 const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-const daysFromToday = s => Math.round((dayOf(s) - today) / DAY);
+const daysFromToday = s => Math.round((dayOf(s) - today) / DAY_MS);
 const fmtDay = s => { const d = dayOf(s); return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()} (${'일월화수목금토'[d.getDay()]})`; };
 const fmtDateTime = s => !s ? '?' : (s.length > 10 ? `${fmtDay(s)} ${s.slice(11, 16)}` : fmtDay(s));
 const won = n => n == null ? '-' : n === 0 ? '무료' : n.toLocaleString('ko-KR') + '원';
 const ext = (href, label, cls) => `<a class="btn ${cls || ''}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-
-// calendar.html 의 calStatus 와 같은 기준
-function regStatus(r) {
-  const reg = r.registration || {};
-  if (reg.closed) return 'closed';
-  const parse = s => s ? new Date(s.length <= 10 ? s + 'T00:00:00' : s) : null;
-  const opens = parse(reg.opensAt);
-  let closes = parse(reg.closesAt);
-  if (closes && String(reg.closesAt).length <= 10) closes = new Date(closes.getTime() + DAY - 1);
-  if (!opens && !closes) return 'unknown';
-  if (opens && now < opens) return 'upcoming';
-  if (closes && now > closes) return 'closed';
-  if (new Date(r.date + 'T23:59:59') < now) return 'closed';
-  return 'open';
-}
-const REG_LABEL = { open: '접수중', upcoming: '접수예정', closed: '접수마감', unknown: '접수정보 없음' };
-
-function distClass(d) {
-  const t = String(d).toLowerCase().replace(/\s/g, '');
-  return { '5km': 'd5', '10km': 'd10', '하프': 'dhalf', half: 'dhalf', '풀': 'dfull', full: 'dfull' }[t] || '';
-}
 
 function heroHtml(r) {
   const n = daysFromToday(r.date), st = regStatus(r), reg = r.registration || {};
@@ -302,7 +278,7 @@ async function load() {
   const notFound = '<div class="card"><div class="empty">대회를 찾지 못했어요. 캘린더에서 다시 골라주세요.</div></div>';
   if (!id) { page.innerHTML = notFound; return; }
   try {
-    const res = await fetch(`data/calendar/races/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+    const res = await fetch(Platform.dataUrl(`calendar/races/${encodeURIComponent(id)}.json`), { cache: 'no-cache' });
     if (res.status === 404) { page.innerHTML = notFound; return; }
     render(await res.json());
   } catch (e) {
