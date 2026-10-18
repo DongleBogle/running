@@ -358,79 +358,6 @@ function getRunnerState(elapsedSec) {
 }
 
 // -------------------------------------------------------------------------
-// 변환기 1 동작: 경과 시간(분) -> 실제 시각
-// -------------------------------------------------------------------------
-function onElapsedMinutesChange() {
-  const mins = parseFloat(document.getElementById('elapsedInputMinutes').value) || 0;
-  const elapsedSec = mins * 60;
-  const state = getRunnerState(elapsedSec);
-
-  const clockEl = document.getElementById('resClockTime');
-  const tagEl = document.getElementById('resClockTag');
-
-  clockEl.textContent = state.clockStr;
-
-  if (state.isVerified) {
-    clockEl.className = "res-value-big time-verified";
-    tagEl.className = "badge-tag-verified";
-    tagEl.textContent = "✓ Time of Day (확실한 시간)";
-  } else {
-    clockEl.className = "res-value-big time-estimated";
-    tagEl.className = "badge-tag-estimated";
-    tagEl.textContent = "~ 랩 페이스 유추";
-  }
-
-  document.getElementById('resElapsedDistance').textContent = `${state.distance.toFixed(2)} km`;
-  document.getElementById('resElapsedLap').textContent = state.isFinished ? "완주 완료 🎉" : state.label;
-  document.getElementById('resElapsedPace').textContent = `${normalizePace(state.pace)} /km`;
-  document.getElementById('resElapsedRemain').textContent = state.isFinished ? "0 km / 완주" : `${state.remainDist.toFixed(2)} km / ${(state.remainSec / 60).toFixed(1)}분 남음`;
-
-}
-
-function setElapsedMinutes(mins) {
-  document.getElementById('elapsedInputMinutes').value = mins;
-  onElapsedMinutesChange();
-}
-
-// -------------------------------------------------------------------------
-// 변환기 2 동작: 실제 시각 -> 달린 지 몇 분 후?
-// -------------------------------------------------------------------------
-function onClockTimeChange() {
-  const clockStr = document.getElementById('clockInputTime').value;
-  const targetSec = parseTimeToSeconds(clockStr);
-  const startSec = parseTimeToSeconds(globalStartTimeStr);
-
-  let elapsedSec = targetSec - startSec;
-  if (elapsedSec < 0) elapsedSec += 86400; // 자정 넘김
-
-  const state = getRunnerState(elapsedSec);
-  const elapsedMins = elapsedSec / 60;
-
-  document.getElementById('resElapsedResult').textContent = `${elapsedMins.toFixed(1)}분 후`;
-  document.getElementById('resElapsedDetail').textContent = secondsToDurationFormatted(elapsedSec);
-  document.getElementById('resClockDistance').textContent = `${state.distance.toFixed(2)} km`;
-  document.getElementById('resClockLap').textContent = state.label;
-
-  const statusTag = document.getElementById('resClockTimeStatusTag');
-  if (state.isVerified) {
-    statusTag.className = "badge-tag-verified";
-    statusTag.textContent = "✓ 공식 계측 지점 일치";
-  } else {
-    statusTag.className = "badge-tag-estimated";
-    statusTag.textContent = "~ 랩 페이스 유추 지점";
-  }
-
-  const progress = totalRaceDistance > 0 ? Math.min(100, (state.distance / totalRaceDistance) * 100) : 0;
-  document.getElementById('resClockProgress').textContent = `${progress.toFixed(1)} %`;
-
-}
-
-function setExactClockTime(timeStr) {
-  document.getElementById('clockInputTime').value = timeStr;
-  onClockTimeChange();
-}
-
-// -------------------------------------------------------------------------
 // 타임테이블 렌더링 (확실한 시간 초록색 강조 vs 유추 시간 파란색)
 // -------------------------------------------------------------------------
 function renderLapsTable() {
@@ -446,11 +373,6 @@ function renderLapsTable() {
     if (item.isVerified) {
       tr.className = "row-verified";
     }
-
-    tr.onclick = () => {
-      document.getElementById('elapsedInputMinutes').value = (item.elapsedSec / 60).toFixed(1);
-      onElapsedMinutesChange();
-    };
 
     const segTimeStr = secondsToDurationFormatted(item.segSec);
     const cumTimeStr = secondsToDurationFormatted(item.elapsedSec);
@@ -603,8 +525,6 @@ function updateAllCalculations() {
   // 출발 시각은 공식 계측소(실제 시각 - 경과 시간)로만 계산한다
   deriveStartTimeFromCheckpoints();
   buildUnifiedTimeline();
-  onElapsedMinutesChange();
-  onClockTimeChange();
 }
 
 // -------------------------------------------------------------------------
@@ -927,8 +847,6 @@ window.addEventListener('DOMContentLoaded', () => {
   buildUnifiedTimeline();
   renderPhotosGallery();
   loadPersistedPhotos();
-  onElapsedMinutesChange();
-  onClockTimeChange();
   loadRaceVideos();
 });
 
@@ -1190,6 +1108,4 @@ function applyOcrResults(verified, laps) {
   }
 
   buildUnifiedTimeline();
-  onElapsedMinutesChange();
-  onClockTimeChange();
 }

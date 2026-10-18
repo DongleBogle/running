@@ -72,7 +72,7 @@
   <div class="step-card collapsed" id="step2">
     <div class="step-header" onclick="toggleStep(2)">
       <div class="step-num">2</div>
-      <div class="step-title"><h2>Step 2. 기록 계산 · 타임테이블</h2><p>출발 시각, 구간 변환기, 타임테이블</p></div>
+      <div class="step-title"><h2>Step 2. 기록 계산 · 타임테이블</h2><p>출발 시각, 타임테이블</p></div>
       <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
@@ -110,104 +110,6 @@
       <span class="badge-tag-estimated">~ 랩 페이스 유추</span>
       <span style="color: #94a3b8;">체크포인트 간 랩 페이스로 정밀 계산된 시각</span>
     </span>
-  </div>
-
-  <!-- 핵심 양방향 계산기 (경과 시간 ↔ 실제 시각) -->
-  <div class="calculator-grid" style="margin-top: 20px;">
-    <!-- 변환기 1: 경과 시간(xx분) -> 실제 시각 몇 시 몇 분인가? -->
-    <div class="calc-card">
-      <div class="card-header">
-        <div class="card-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          달리기 시작한 지 xx분 ➔ 실제 시각
-        </div>
-        <span class="card-badge badge-elapsed">경과 시간 기준</span>
-      </div>
-
-      <div class="form-group">
-        <label for="elapsedInputMinutes">달리기 시작한 지 몇 분 후인가요? (분 단위)</label>
-        <div class="input-row">
-          <input type="number" id="elapsedInputMinutes" value="0" min="0" max="300" step="0.1" oninput="onElapsedMinutesChange()">
-          <span style="font-size: 1rem; color: var(--text-muted); font-weight: 600;">분</span>
-        </div>
-      </div>
-
-      <!-- 변환 결과 1 -->
-      <div class="result-box">
-        <div class="result-highlight">
-          <span class="res-label">통과 실제 시각 (Time of Day)</span>
-          <div class="res-value-wrap">
-            <span class="res-value-big" id="resClockTime">08:05:20</span>
-            <span id="resClockTag" class="badge-tag-verified">✓ 공식 계측</span>
-          </div>
-        </div>
-        <div class="result-details">
-          <div class="res-sub-item">
-            <span class="res-sub-label">통과 지점 거리</span>
-            <span class="res-sub-val" id="resElapsedDistance">5.00 km</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">구간 및 위치</span>
-            <span class="res-sub-val" id="resElapsedLap">5.0km 계측소 통과</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">구간 페이스</span>
-            <span class="res-sub-val" id="resElapsedPace">6'22" /km</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">남은 거리 및 시간</span>
-            <span class="res-sub-val" id="resElapsedRemain">16.14 km / 117.3분 남음</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 변환기 2: 실제 시각 -> 시작한 지 몇 분 후인가? -->
-    <div class="calc-card">
-      <div class="card-header">
-        <div class="card-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          실제 시각 ➔ 시작한 지 몇 분 후?
-        </div>
-        <span class="card-badge badge-clock">실제 시각 기준</span>
-      </div>
-
-      <div class="form-group">
-        <label for="clockInputTime">현재 몇 시 몇 분인가요? (Time of Day)</label>
-        <div class="input-row">
-          <input type="time" id="clockInputTime" step="1" value="" onchange="onClockTimeChange()">
-        </div>
-      </div>
-
-      <!-- 변환 결과 2 -->
-      <div class="result-box">
-        <div class="result-highlight">
-          <span class="res-label">달리기 시작한 지</span>
-          <div class="res-value-wrap">
-            <span class="res-value-big orange" id="resElapsedResult">63.4분 후</span>
-            <span id="resClockTimeStatusTag" class="badge-tag-verified">✓ 공식 계측 지점</span>
-          </div>
-        </div>
-        <div class="result-details">
-          <div class="res-sub-item">
-            <span class="res-sub-label">경과 시간 상세</span>
-            <span class="res-sub-val" id="resElapsedDetail">1시간 03분 26초</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">해당 시점 주행 거리</span>
-            <span class="res-sub-val" id="resClockDistance">10.00 km</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">구간 정보</span>
-            <span class="res-sub-val" id="resClockLap">10.0km 계측소 통과</span>
-          </div>
-          <div class="res-sub-item">
-            <span class="res-sub-label">전체 코스 완주율</span>
-            <span class="res-sub-val" id="resClockProgress">47.3 %</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- 마라톤 전체 랩별 시간표 (Time of Day 확실한 시간 + 유추 시간 통합 표) -->
