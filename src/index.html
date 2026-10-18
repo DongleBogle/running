@@ -417,6 +417,18 @@
     </div>
   </dialog>
 
+  <!-- 스마트칩 기록이 없을 때: 사진 첨부 또는 출발 시각 입력 (askStartTimeOrPhoto 가 연다) -->
+  <dialog class="yt-fail-dialog confirm-dialog" id="needStartDialog">
+    <h3>⚠️ 스마트칩 공식 기록이 없어요</h3>
+    <p>출발 시각을 알 수 없어 타임테이블을 계산할 수 없습니다. <strong>스마트칩 기록 사진을 첨부</strong>하거나 <strong>출발 시각을 직접 입력</strong>해주세요.</p>
+    <input type="time" id="needStartInput" step="1" class="need-start-input" aria-label="출발 시각">
+    <p id="needStartErr" class="need-start-err"></p>
+    <div class="confirm-actions">
+      <button type="button" class="btn btn-outline" id="needStartPhoto">사진 첨부하기</button>
+      <button type="button" class="btn btn-green" id="needStartOk">출발 시각으로 계산</button>
+    </div>
+  </dialog>
+
   <!-- 촬영 지점·시작 시각 자동 추출 실패 안내 (renderYoutubeAnalysis 에서 연다) -->
   <dialog class="yt-fail-dialog" id="ytExtractFailDialog">
     <h3>⚠️ 자동 추출에 실패했어요</h3>

@@ -148,12 +148,27 @@ function normalizePace(p) {
 // -------------------------------------------------------------------------
 // Time of Day 기반 통합 타임라인 생성 및 랩 페이스 보간
 // -------------------------------------------------------------------------
+// 스마트칩 기록 대신: 직접 입력한 출발 시각을 0km, 워치 랩 합계를 완주 지점으로 쓴다
+function watchOnlyCheckpoints() {
+  if (!startTimeManual || rawWatchLaps.length === 0) return [];
+  const dist = rawWatchLaps.reduce((s, l) => s + l.distance, 0);
+  const sec = rawWatchLaps.reduce((s, l) => s + l.seconds, 0);
+  return [
+    { distance: 0, timeSec: 0, clockStr: globalStartTimeStr, pace: '-', name: '출발 (Start)' },
+    { distance: Math.round(dist * 100) / 100, timeSec: sec, clockStr: '', pace: secToPace(sec / dist) || '-', name: '완주 (워치 기록)' }
+  ];
+}
+
 function buildUnifiedTimeline() {
   const startSec = parseClockToSec(globalStartTimeStr);
   timelineRows = [];
 
+  // 스마트칩 기록이 없으면 직접 입력한 출발 시각 + 워치 랩만으로 계산한다
+  const watchOnly = officialCheckpoints.length === 0;
+  const cps = watchOnly ? watchOnlyCheckpoints() : officialCheckpoints;
+
   // 데이터가 아직 없으면 빈 상태로 표시
-  if (officialCheckpoints.length === 0) {
+  if (cps.length === 0) {
     totalRaceSeconds = 0;
     totalRaceDistance = 0;
     document.getElementById('summaryDistance').textContent = '-';
@@ -190,10 +205,10 @@ function buildUnifiedTimeline() {
 
   // 모든 주요 마일스톤 생성: 1km, 2km, 3km, 3.1km(체크), 4km, 5km(체크), ... 9.3km(체크), 10km(체크), 15km(체크), 21.14km(체크)
   let milestoneDistances = [];
-  for (let d = 1; d <= Math.floor(officialCheckpoints[officialCheckpoints.length - 1].distance); d++) {
+  for (let d = 1; d <= Math.floor(cps[cps.length - 1].distance); d++) {
     milestoneDistances.push(d);
   }
-  officialCheckpoints.forEach(cp => {
+  cps.forEach(cp => {
     if (cp.distance > 0 && !milestoneDistances.includes(cp.distance)) {
       milestoneDistances.push(cp.distance);
     }
@@ -220,13 +235,13 @@ function buildUnifiedTimeline() {
     } else {
       // 랩 페이스 기반 보간(유추) 계산
       // 인근 앞뒤 체크포인트를 찾아 그 구간의 페이스 또는 워치 랩 비율로 보간
-      let lowerCp = officialCheckpoints[0];
-      let upperCp = officialCheckpoints[officialCheckpoints.length - 1];
+      let lowerCp = cps[0];
+      let upperCp = cps[cps.length - 1];
 
-      for (let i = 0; i < officialCheckpoints.length - 1; i++) {
-        if (dist >= officialCheckpoints[i].distance && dist <= officialCheckpoints[i + 1].distance) {
-          lowerCp = officialCheckpoints[i];
-          upperCp = officialCheckpoints[i + 1];
+      for (let i = 0; i < cps.length - 1; i++) {
+        if (dist >= cps[i].distance && dist <= cps[i + 1].distance) {
+          lowerCp = cps[i];
+          upperCp = cps[i + 1];
           break;
         }
       }
@@ -277,8 +292,10 @@ function buildUnifiedTimeline() {
     prevElapsedSec = elapsedSec;
   });
 
-  totalRaceSeconds = officialCheckpoints[officialCheckpoints.length - 1].timeSec;
-  totalRaceDistance = officialCheckpoints[officialCheckpoints.length - 1].distance;
+  if (watchOnly) timelineRows[timelineRows.length - 1].label = '완주 (워치 기록)';
+
+  totalRaceSeconds = cps[cps.length - 1].timeSec;
+  totalRaceDistance = cps[cps.length - 1].distance;
 
   // 헤더 요약 갱신
   document.getElementById('summaryDistance').textContent = totalRaceDistance.toFixed(2);
@@ -402,6 +419,38 @@ function askConfirm(message, opts) {
   });
 }
 
+// 스마트칩 기록이 없으면 출발 시각을 알 수 없으니, 사진을 첨부하거나 출발 시각을 직접 입력하게 한다.
+// 출발 시각을 넣으면 true, 사진 첨부를 고르거나 닫으면 false
+function askStartTimeOrPhoto() {
+  const dlg = document.getElementById('needStartDialog');
+  const input = document.getElementById('needStartInput');
+  const err = document.getElementById('needStartErr');
+  input.value = startTimeManual ? globalStartTimeStr : '';
+  err.textContent = '';
+  return new Promise(resolve => {
+    const finish = v => { dlg.onclose = null; dlg.close(); resolve(v); };
+    document.getElementById('needStartOk').onclick = () => {
+      if (!input.value) { err.textContent = '출발 시각을 입력해주세요.'; input.focus(); return; }
+      document.getElementById('startTimeInput').value = input.value;
+      finish(true);
+      onStartTimeEdit();
+    };
+    document.getElementById('needStartPhoto').onclick = () => {
+      finish(false);
+      goToStep(1);
+      document.getElementById('photoUploadInput').click();
+    };
+    dlg.onclose = () => resolve(false);
+    dlg.showModal();
+  });
+}
+
+// 스마트칩 기록·직접 입력한 출발 시각이 모두 없으면 팝업을 띄운다. 계산을 이어가도 되면 true
+async function ensureStartTime() {
+  if (officialCheckpoints.length || startTimeManual) return true;
+  return askStartTimeOrPhoto();
+}
+
 // 개별 사진 삭제
 async function removePhoto(photoId) {
   const target = uploadedPhotos.find(p => p.id === photoId);
@@ -522,6 +571,8 @@ async function analyzeYoutubeVideo(opts) {
     alert("유튜브 영상 링크를 입력해주세요.");
     return;
   }
+  // 출발 시각을 모르면 통과 시각을 계산할 수 없다
+  if (!await ensureStartTime()) return;
 
   const loadingEl = document.getElementById('ytAnalysisLoading');
   const resultEl = document.getElementById('ytAnalysisResult');
@@ -876,6 +927,7 @@ function parseOcrTextToRunningData(rawText) {
   const DIST_RE = /(?<![\d:.])\d{1,2}\.\d{2}(?![\d:])/;
 
   let lastLap = 0;
+  let imageLapDist = 0;
   for (const line of lines) {
     const clockMatches = [...line.matchAll(CLOCK_RE)].map(m => {
       const h = String(parseInt(m[1], 10)).padStart(2, '0');
@@ -901,7 +953,12 @@ function parseOcrTextToRunningData(rawText) {
       });
     } else if (distMatch && lapMatches.length > 0 && lapMatches[0].includes('.')) {
       // 랩 행: [번호] 시간(M:SS.S) 거리 페이스
-      const leadMatch = /^\s*(\d{1,2})\b/.exec(line);
+      // 랩 번호는 시간 앞에 따로 있는 숫자만 인정 ('39:57.8'의 39를 번호로 읽지 않도록)
+      const leadMatch = /^\s*(\d{1,2})\s+(?=\d{1,2}:)/.exec(line);
+      const dist = parseFloat(distMatch[0]);
+      // 번호 없이 위 랩들의 거리 합보다 긴 행은 총계/합계 행 (한글 '총계'는 OCR 화이트리스트에서 지워진다)
+      if (!leadMatch && imageLapDist > 0 && dist > imageLapDist + 0.05) continue;
+      imageLapDist += dist;
       let lapNo = leadMatch ? parseInt(leadMatch[1], 10) : null;
       if (lapNo === null || (lastLap && lapNo !== lastLap + 1)) {
         lapNo = lastLap + 1;
@@ -1022,6 +1079,7 @@ async function analyzeAndGoStep2() {
   if (await restoreEditedRecords()) {
     status.textContent = '저장된 수정값을 불러왔습니다.';
     goToStep(2);
+    await ensureStartTime();
     return;
   }
   btn.disabled = true;
@@ -1051,6 +1109,8 @@ async function analyzeAndGoStep2() {
     status.textContent = `분석 완료: 공식 계측 ${verified.length}개, 랩 ${laps.length}개`;
     setOcrReviewState(verified.length || laps.length ? 'extracted' : 'empty');
     goToStep(2);
+    // 스마트칩 기록을 못 읽었으면 사진 첨부 또는 출발 시각 입력을 받는다 (사진 첨부를 고르면 Step 1로 돌아감)
+    await ensureStartTime();
   } catch (err) {
     status.textContent = '';
     alert('OCR 분석 실패: ' + err.message);
@@ -1098,6 +1158,12 @@ function applyOcrResults(verified, laps, opts) {
   // 랩: OCR이 읽은 실제 랩 번호/거리를 사용한다 (사진에 누락된 랩이 있어도 번호가 밀리지 않도록)
   rawWatchLaps.length = 0;
   const lapMap = new Map();
+  // 총계 행만 따로 찍힌 사진 대비: 나머지 랩들의 거리·시간 합과 같은 행은 랩이 아니다
+  const totalDist = laps.reduce((s, l) => s + (parseFloat(l.dist) || 0), 0);
+  const totalSec = laps.reduce((s, l) => s + parseElapsedToSec(l.time), 0);
+  laps = laps.filter(l => !(laps.length > 2
+    && Math.abs((parseFloat(l.dist) || 0) * 2 - totalDist) < 0.02
+    && Math.abs(parseElapsedToSec(l.time) * 2 - totalSec) < 1.5));
   laps.forEach((l, i) => {
     const m = /(\d+)/.exec(l.point || '');
     const lapNo = l.lapNo || (m ? parseInt(m[1], 10) : i + 1);
@@ -1204,7 +1270,8 @@ function applyParsedEdits() {
     const clock = c.value.trim() ? secondsToClockString(parseClockToSec(c.value.trim())) : '';
     cps.push({ dist, sec, clock, input: t });
   }
-  if (!cps.length) { err.textContent = '공식 계측 기록을 하나 이상 입력해주세요. (최소한 완주 기록)'; return false; }
+  const hasLapRows = [...document.querySelectorAll('#lapEditBody tr')].some(tr => tr.querySelector('.p-time').value.trim());
+  if (!cps.length && !hasLapRows) { err.textContent = '공식 계측 기록이나 워치 랩을 하나 이상 입력해주세요.'; return false; }
   cps.sort((a, b) => a.dist - b.dist);
   for (let i = 1; i < cps.length; i++) {
     if (cps[i].sec <= cps[i - 1].sec) return bad(cps[i].input, `${cps[i].dist}km 경과 시간이 앞 지점보다 빠릅니다. 확인해주세요.`);
@@ -1234,6 +1301,7 @@ function applyParsedEdits() {
   setOcrReviewState('edited');
   saveEditedRecords();
   document.querySelector('#step2 .table-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  ensureStartTime();
   return true;
 }
 
@@ -1274,7 +1342,7 @@ async function kvSet(key, value) {
 }
 
 async function saveEditedRecords() {
-  if (!officialCheckpoints.length) return;
+  if (!officialCheckpoints.length && !rawWatchLaps.length) return;
   await kvSet('editedRecords', {
     photoKey: await photoSetKey(),
     ...currentRecordItems(),
