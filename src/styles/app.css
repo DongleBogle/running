@@ -123,60 +123,6 @@
     color: var(--text-muted);
   }
 
-  /* 계산기 섹션 */
-  .calculator-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
-    gap: 20px;
-    margin-bottom: 28px;
-  }
-
-  .calc-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--card-border);
-    padding-bottom: 12px;
-  }
-
-  .card-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .card-badge {
-    font-size: 0.72rem;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 600;
-  }
-
-  .badge-elapsed {
-    background: rgba(16, 185, 129, 0.15);
-    color: var(--accent-neon);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-  }
-
-  .badge-clock {
-    background: rgba(249, 115, 22, 0.15);
-    color: var(--accent-orange);
-    border: 1px solid rgba(249, 115, 22, 0.3);
-  }
-
   .form-group {
     display: flex;
     flex-direction: column;
@@ -187,12 +133,6 @@
     font-size: 0.85rem;
     color: var(--text-muted);
     font-weight: 600;
-  }
-
-  .input-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
   }
 
   input[type="number"],
@@ -236,70 +176,6 @@
   .btn-quick:hover {
     background: #334155;
     color: #fff;
-  }
-
-  .result-box {
-    background: #090e1a;
-    border: 1px solid #1e293b;
-    border-radius: 10px;
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-  }
-
-  .result-highlight {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .res-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .res-value-big {
-    font-size: 1.85rem;
-    font-weight: 800;
-    color: var(--accent-neon);
-    font-family: monospace;
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .res-value-big.orange {
-    color: var(--accent-orange);
-  }
-
-  .result-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    border-top: 1px solid #1e293b;
-    padding-top: 12px;
-  }
-
-  .res-sub-item {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .res-sub-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  .res-sub-val {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #e2e8f0;
   }
 
   .btn {
@@ -394,7 +270,6 @@
 
   tr:hover {
     background: rgba(255, 255, 255, 0.03);
-    cursor: pointer;
   }
 
   tr.active-row {
@@ -541,11 +416,7 @@
     .header-title h1 {
       font-size: 1.3rem;
     }
-    .calculator-grid {
-      grid-template-columns: 1fr;
-    }
   }
-
 
   /* 대회별 추천 영상 */
   .race-rec-box { margin-top: 16px; background: #090e1a; border: 1px solid #1e293b; border-radius: 12px; padding: 16px; }
@@ -855,7 +726,6 @@ img, video, iframe { max-width: 100%; }
 .section-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 .ocr-status { align-self: center; margin-right: 14px; font-size: 0.85rem; color: #94a3b8; }
 .legend-item { display: flex; align-items: center; gap: 6px; }
-.res-value-wrap { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .table-filter-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .laps-table th, .laps-table td { white-space: nowrap; }
 .quick-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -940,14 +810,6 @@ img, video, iframe { max-width: 100%; }
   .stat-value input[type="time"] { min-height: 0; font-size: 1rem !important; max-width: 100%; }
   .legend-box { flex-direction: column; align-items: flex-start; gap: 8px; font-size: 0.76rem; }
   .legend-item { flex-wrap: wrap; }
-  .calculator-grid { gap: 14px; margin-bottom: 16px; margin-top: 14px !important; }
-  .calc-card { padding: 14px 12px; gap: 12px; }
-  .card-header { flex-wrap: wrap; gap: 6px; }
-  .card-title { font-size: 0.98rem; word-break: keep-all; }
-  .result-box { padding: 12px; }
-  .res-value-big { font-size: 1.5rem; }
-  .result-details { gap: 8px; }
-  .res-sub-val { font-size: 0.86rem; overflow-wrap: anywhere; }
 
   /* Step 2 타임테이블: 표 안에서만 가로 스크롤, 첫 열 고정 */
   .table-filter-btns { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
