@@ -9,6 +9,7 @@
 수집하지 않은 월 파일(예: 이미 지난 달)은 그대로 보존됩니다.
 신청 링크(registration.url)는 대회 공식 홈페이지(apply_link)만 사용하며,
 kormarathon 자체 페이지는 링크로 쓰지 않습니다. 공식 링크가 없으면 빈 문자열입니다.
+대표 이미지(image)는 Cloudinary 변환으로 만든 작은 정사각형 썸네일 URL 입니다.
 data/calendar/overrides/YYYY-MM.json 에 {대회id: {필드: 값}} 을 넣으면 수집 결과를 덮어씁니다.
 """
 import json
@@ -51,6 +52,15 @@ def clean_url(u):
     return urlunsplit((p.scheme, p.netloc, p.path, urlencode(q), ''))
 
 
+def thumb_url(u, size=160):
+    """대표 이미지 → 정사각형 썸네일 URL. Cloudinary 가 아니면 원본 그대로 (화면에서 잘라 씀)."""
+    if not u or not u.startswith('http'):
+        return ''
+    if 'res.cloudinary.com' in u and '/image/upload/' in u:
+        return u.replace('/image/upload/', f'/image/upload/c_fill,g_auto,w_{size},h_{size},f_auto,q_auto/', 1)
+    return u
+
+
 def parse_event(html, slug):
     s = html.replace('\\"', '"')
     i = s.find('"event":{"content_version"')
@@ -73,6 +83,7 @@ def parse_event(html, slug):
         'date': ev['event_date'],
         'location': ' '.join(filter(None, [ev.get('region'), ev.get('venue')])),
         'distances': dist,
+        'image': thumb_url(ev.get('image_url') or ev.get('banner_image_url')),
         'registration': {'opensAt': opens, 'closesAt': closes, 'closed': closed, 'url': url},
     }
 

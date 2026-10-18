@@ -64,7 +64,14 @@
     .cal-list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
     .cal-list h3 { font-size: 1rem; margin: 0; }
     .cal-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
-    .cal-item .info { flex: 1 1 220px; min-width: 0; }
+    .cal-item .main { flex: 1 1 260px; min-width: 0; display: flex; gap: 12px; align-items: flex-start; }
+    .cal-item .info { flex: 1; min-width: 0; }
+    /* 썸네일 위에 접수 상태 배지를 겹쳐서, 이미지가 들어가도 블럭 높이는 그대로 */
+    .cal-visual { position: relative; flex: none; width: 64px; height: 64px; }
+    .cal-thumb { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; background: var(--card-border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .cal-item .cal-visual .cal-badge { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; padding: 1px 0;
+      border-radius: 0 0 10px 10px; font-size: 0.66rem; background: rgba(10,14,23,.85); }
     .cal-item .name { font-weight: 700; }
     .cal-item .meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
     .cal-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
@@ -230,6 +237,13 @@ function calDistClass(d) {
   return '';
 }
 
+// 대표 이미지(정사각형 썸네일). 없거나 못 불러오면 🏃 자리표시
+function calThumb(r) {
+  return r.image
+    ? `<img class="cal-thumb" src="${calEsc(r.image)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;cal-thumb&quot;>🏃</div>'">`
+    : '<div class="cal-thumb">🏃</div>';
+}
+
 function calFmt(s) {
   const d = calParse(s);
   if (!d) return '';
@@ -256,12 +270,11 @@ function renderCalList() {
       ? `<a class="btn btn-green" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">${st === 'upcoming' ? '공식 홈페이지 보기' : '공식 홈페이지에서 신청'} ➔</a>`
       : (reg.url ? `<a class="btn btn-outline" href="${calEsc(reg.url)}" target="_blank" rel="noopener noreferrer">공식 홈페이지</a>`
         : (st === 'closed' ? '' : '<span class="meta">공식 링크 준비중</span>'));
-    return `<div class="cal-item">
-      <span class="cal-badge ${st}">${CAL_LABEL[st]}</span>
+    return `<div class="cal-item"><div class="main"><div class="cal-visual">${calThumb(r)}<span class="cal-badge ${st}">${CAL_LABEL[st]}</span></div>
       <div class="info"><div class="name">${calEsc(r.name)}</div>
         <div class="meta">${r.date} · ${calEsc(r.location || '')}</div>
         ${r.distances && r.distances.length ? `<div class="cal-dists">${r.distances.map(d => `<span class="cal-dist ${calDistClass(d)}">${calEsc(d)}</span>`).join('')}</div>` : ''}
-        ${period ? `<div class="meta">${period}</div>` : ''}</div>${btn}</div>`;
+        ${period ? `<div class="meta">${period}</div>` : ''}</div></div>${btn}</div>`;
   }).join('');
   const clear = calSelected ? ' <button class="cal-btn" onclick="calSelect(null)">월 전체 보기</button>' : '';
   document.getElementById('calList').innerHTML = `<h3>${title}${clear}</h3>` + (items || '<div class="cal-empty">해당하는 대회가 없습니다.</div>');
