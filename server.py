@@ -49,17 +49,18 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
             self.send_json_response(data, status=status)
             return
 
-        # 탭 경로(/converter, /calendar)는 모두 같은 index.html 을 내려주고, 화면 전환은 js/shell.js 가 한다
+        # 탭 경로(/converter, /calendar)는 build 가 만든 화면별 HTML(내용은 index.html 과 같고 title·meta 만 다름)을 내려주고,
+        # 화면 전환은 js/shell.js 가 한다
         if path in ('/converter/', '/calendar/'):  # 끝 슬래시가 있으면 상대경로(styles/ 등)가 깨지므로 정리
             self.send_response(301)
             self.send_header('Location', path.rstrip('/'))
             self.end_headers()
             return
         if path in ('/converter', '/calendar'):
-            self.path = '/index.html'
-        # 대회 상세 /race/<id> 는 race.html 이 주소에서 id 를 읽는다 (vercel.json 과 같은 규칙)
+            self.path = path + '.html'
+        # 대회 상세 /race/<id> 는 build 가 만든 race/<id>.html (vercel.json 과 같은 규칙, 없는 대회는 404)
         elif path.startswith('/race/') and '/' not in path[len('/race/'):].rstrip('/'):
-            self.path = '/race.html'
+            self.path = path.rstrip('/') + '.html'
         return super().do_GET()
 
     def do_POST(self):

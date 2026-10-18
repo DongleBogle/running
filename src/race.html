@@ -265,7 +265,7 @@ async function loadLiveVideos(r) {
 }
 
 function render(r) {
-  document.title = `${r.name} - MarathonNote`;
+  document.title = `${r.name} (${r.date}) - MarathonNote`;
   document.getElementById('page').innerHTML = heroHtml(r) + feesHtml(r) + weatherHtml(r) + mapHtml(r) +
     videosHtml(r);
   loadLiveVideos(r);

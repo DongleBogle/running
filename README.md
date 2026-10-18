@@ -15,6 +15,7 @@ src/
 data/                      # 빌드 시 dist/<target>/data 로 복사
 api/                       # Vercel 서버리스 (세 타깃 공용 백엔드)
 scripts/build.mjs          # src → dist/<target> 조립
+scripts/seo.mjs            # 웹 빌드 시 탭별 HTML·대회별 race/<id>.html·sitemap.xml·robots.txt 생성
 ```
 
 ## 빌드
@@ -30,5 +31,8 @@ scripts/build.mjs          # src → dist/<target> 조립
 ```bash
 API_BASE=https://<배포 도메인> npm run build:toss
 ```
+
+웹 빌드는 검색엔진용 페이지도 함께 만든다(`scripts/seo.mjs`). canonical·og:url·sitemap 에 쓰는 사이트 주소는
+`SITE_URL` → 없으면 Vercel 이 넣어주는 `VERCEL_PROJECT_PRODUCTION_URL` 을 쓰고, 둘 다 없으면 그 항목만 빼고 만든다.
 
 로컬 개발: `npm run dev` (web 빌드 후 `server.py`가 `dist/web`을 서빙)
