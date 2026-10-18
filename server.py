@@ -126,6 +126,9 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
             return
         if path in ('/converter', '/calendar'):
             self.path = '/index.html'
+        # 대회 상세 /race/<id> 는 race.html 이 주소에서 id 를 읽는다 (vercel.json 과 같은 규칙)
+        elif path.startswith('/race/') and '/' not in path[len('/race/'):].rstrip('/'):
+            self.path = '/race.html'
         return super().do_GET()
 
     def do_POST(self):

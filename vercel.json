@@ -28,6 +28,10 @@
     {
       "source": "/(converter|calendar)",
       "destination": "/index.html"
+    },
+    {
+      "source": "/race/:id",
+      "destination": "/race.html"
     }
   ],
   "trailingSlash": false

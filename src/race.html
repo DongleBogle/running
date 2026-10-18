@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>대회 정보 - MarathonNote</title>
+  <!-- /race/<id> 주소에서도 js/, data/ 같은 상대경로가 루트 기준이 되도록 -->
+  <base href="/">
+  <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
   <style>
     :root {
@@ -105,7 +108,8 @@
   <div id="page"><div class="empty">대회 정보를 불러오는 중...</div></div>
 </div>
 <script>
-// race.html?id=<대회 id> : data/calendar/races/<id>.json (수집기가 만든 대회별 상세 정보)을 보여준다.
+// /race/<대회 id>: data/calendar/races/<id>.json (수집기가 만든 대회별 상세 정보)을 보여준다.
+// /race/<id> 는 vercel.json rewrites(로컬은 server.py)가 race.html 로 보낸다.
 const DAY = 86400000;
 const pad2 = n => String(n).padStart(2, '0');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -296,7 +300,8 @@ function render(r) {
 }
 
 async function load() {
-  const id = new URLSearchParams(location.search).get('id');
+  const m = location.pathname.match(/\/race\/([^/]+)\/?$/);
+  const id = m ? decodeURIComponent(m[1]) : '';
   const page = document.getElementById('page');
   const notFound = '<div class="card"><div class="empty">대회를 찾지 못했어요. 캘린더에서 다시 골라주세요.</div></div>';
   if (!id) { page.innerHTML = notFound; return; }
