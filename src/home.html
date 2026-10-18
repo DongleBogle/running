@@ -45,6 +45,13 @@
     .home-dday.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
     .home-dday.reg { font-size: 0.8rem; background: rgba(16,185,129,.15); color: var(--accent-neon); }
     .home-dday.reg.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
+    /* 썸네일 위에 D-day 배지를 겹쳐서, 이미지가 들어가도 블럭 높이·글자 폭은 그대로 */
+    .visual { position: relative; flex: none; width: 64px; height: 64px; }
+    .thumb { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; background: var(--card-border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+    .visual .home-dday { position: absolute; left: 0; right: 0; bottom: 0; min-width: 0; padding: 1px 0; border-radius: 0 0 10px 10px;
+      font-size: 0.72rem; white-space: nowrap; }
+    .visual .home-dday:not(.today) { background: rgba(10,14,23,.85); }
     .info { flex: 1; min-width: 0; }
     .name { font-weight: 700; font-size: 0.95rem; word-break: keep-all; }
     .meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
@@ -117,9 +124,16 @@ function distClass(d) {
   return { '5km': 'd5', '10km': 'd10', '하프': 'dhalf', half: 'dhalf', '풀': 'dfull', full: 'dfull' }[t] || '';
 }
 
+// 대표 이미지(정사각형 썸네일). 없거나 못 불러오면 🏃 자리표시
+function thumb(r) {
+  return r.image
+    ? `<img class="thumb" src="${esc(r.image)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;thumb&quot;>🏃</div>'">`
+    : '<div class="thumb">🏃</div>';
+}
+
 function item(r, badge, extra) {
   const dists = (r.distances || []).map(d => `<span class="dist ${distClass(d)}">${esc(d)}</span>`).join('');
-  return `<div class="home-item">${badge}<div class="info">
+  return `<div class="home-item"><div class="visual">${thumb(r)}${badge}</div><div class="info">
     <div class="name">${esc(r.name)}</div>
     <div class="meta">${fmtDay(r.date)} · ${esc(r.location || '')}</div>
     ${dists ? `<div class="dists">${dists}</div>` : ''}${extra || ''}</div></div>`;
