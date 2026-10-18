@@ -248,7 +248,7 @@ function videosHtml(r) {
 }
 
 // /api/race/videos (YouTube Data API) 결과를 업로드 날짜로 '대회 후'(대회일 포함)와 '대회 전'으로 나눠 그린다.
-// 실패하면 유튜브 검색 링크만 남는다.
+// 실패하거나 결과가 없으면 안내 문구만 남는다.
 async function loadLiveVideos(r) {
   const hint = document.getElementById('videoHint');
   let live = [];
@@ -256,7 +256,7 @@ async function loadLiveVideos(r) {
     const url = Platform.apiUrl('/api/race/videos?' + new URLSearchParams({ name: r.name, date: r.date }));
     const res = await fetch(url);
     if (res.ok) live = (await res.json()).videos || [];
-  } catch (e) { /* 네트워크 오류 등: 검색 링크만 */ }
+  } catch (e) { /* 네트워크 오류 등: 영상 없이 안내만 */ }
   const seen = new Set();
   const all = live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId));
   const groups = {
@@ -264,7 +264,7 @@ async function loadLiveVideos(r) {
     before: all.filter(v => !(v.publishedAt >= r.date)),
   };
   if (!all.length) {
-    hint.textContent = '아직 찾은 영상이 없어요. 유튜브 검색으로 바로 찾아볼 수 있어요.';
+    hint.textContent = '아직 찾은 관련 영상이 없어요.';
     return;
   }
   const HINT = {
