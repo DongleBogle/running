@@ -909,5 +909,6 @@ img, video, iframe { max-width: 100%; }
 .confirm-dialog p { font-size: 0.95rem; margin-bottom: 16px; }
 .confirm-actions { display: flex; gap: 8px; justify-content: flex-end; }
 .confirm-dialog .confirm-actions .btn { width: auto; }
-.need-start-input { width: 100%; font-size: 1.1rem; padding: 8px 10px; margin-bottom: 4px; background: #0b1222; color: #e2e8f0; border: 1px solid #334155; border-radius: 8px; }
-.need-start-err { min-height: 1.2em; font-size: 0.8rem !important; color: #f87171; }
+.need-start-picker { display: flex; align-items: center; gap: 6px; margin-bottom: 18px; }
+.need-start-picker select { flex: 1; min-width: 0; font-size: 1.1rem; font-weight: 600; text-align: center; padding: 10px 6px; background: #0b1222; color: #e2e8f0; border: 1px solid #334155; border-radius: 8px; }
+.need-start-picker span { font-size: 0.85rem; color: #94a3b8; }
