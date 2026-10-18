@@ -229,15 +229,21 @@ function videoGrid(vids) {
 }
 
 // 영상 목록은 loadLiveVideos 가 유튜브 실시간 검색으로 채운다
+// 대회가 끝났으면 구간 변환기(Step 3에서 이 대회가 미리 선택됨)로 보내 주로영상에서 내 모습을 찾게 한다
+function findMeHtml(r) {
+  return daysFromToday(r.date) > 0
+    ? '<div class="hint">대회가 끝나면 레이스 기록으로 주로영상 속 내 모습을 찾을 수 있어요.</div>'
+    : `<div class="links"><a class="btn btn-green" href="converter?race=${encodeURIComponent(r.id)}">🏃 레이스 기록으로 내 모습 찾기 ➔</a></div>`;
+}
+
 function videosHtml(r) {
-  const q = encodeURIComponent(r.name);
   return `<div class="card"><h2>🎬 관련 영상</h2>
     <div class="vtabs" id="videoTabs" hidden>
       <button type="button" class="vtab" data-when="after">대회 후 <span id="vcntAfter"></span></button>
       <button type="button" class="vtab" data-when="before">대회 전 <span id="vcntBefore"></span></button>
     </div>
     <div id="videoGrid"></div>
-    <div class="links">${ext('https://www.youtube.com/results?search_query=' + q, '유튜브에서 검색')}${ext('https://www.youtube.com/results?search_query=' + encodeURIComponent(r.name + ' 주로영상'), '주로영상 검색')}</div>
+    ${findMeHtml(r)}
     <div class="hint" id="videoHint">유튜브에서 관련 영상을 찾는 중...</div></div>`;
 }
 

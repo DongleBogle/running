@@ -770,6 +770,9 @@ async function loadRaceVideos() {
     return;
   }
   if (!raceRec.races.length) { box.style.display = 'none'; return; }
+  // 대회 페이지의 '레이스 기록으로 내 모습 찾기'(converter?race=<id>)로 왔으면 그 대회를 미리 골라 둔다
+  const linked = raceRec.races.find(r => r.id === new URLSearchParams(location.search).get('race'));
+  if (linked) { raceRec.date = linked.date; raceRec.raceId = linked.id; renderRaceRec(); return; }
   selectRaceDate(raceRec.races.reduce((a, r) => r.date > a ? r.date : a, ''));
 }
 
