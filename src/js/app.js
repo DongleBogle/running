@@ -586,12 +586,36 @@ async function analyzeYoutubeVideo(opts) {
 
     currentYtData = data;
     renderYoutubeAnalysis(data);
+    // 빈 칸 표시는 매번 갱신하고, 팝업은 새로 분석했을 때만 (직접 고쳐서 다시 계산할 때는 띄우지 않음)
+    notifyExtractFailure(data.analysis, !opts.reuseVideo);
   } catch (err) {
     console.error(err);
     alert(`유튜브 분석 실패: ${err.message}`);
   } finally {
     loadingEl.style.display = 'none';
     btnAnalyze.disabled = false;
+  }
+}
+
+// 촬영 지점·시작 시각을 영상 설명에서 못 찾았으면 빈 칸을 표시하고, showDialog 면 팝업으로 알린다
+function notifyExtractFailure(analysis, showDialog) {
+  const missing = [];
+  const distEl = document.getElementById('ytEditDistance'), startEl = document.getElementById('ytEditStart');
+  distEl.classList.toggle('missing', analysis.detectedDistanceKm == null);
+  startEl.classList.toggle('missing', !analysis.videoStartTimeStr);
+  if (analysis.detectedDistanceKm == null) missing.push('촬영 지점(km)');
+  if (!analysis.videoStartTimeStr) missing.push('촬영 시작 시각');
+  if (!missing.length || !showDialog) return;
+  document.getElementById('ytExtractFailItems').textContent = missing.join('과 ');
+  document.getElementById('ytExtractFailDialog').showModal();
+}
+
+function closeExtractFailDialog() {
+  document.getElementById('ytExtractFailDialog').close();
+  const first = document.querySelector('.yt-edit-input.missing');
+  if (first) {
+    first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    first.focus({ preventScroll: true });
   }
 }
 

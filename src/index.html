@@ -374,6 +374,17 @@
   </div>
 
 </div>
+  <!-- 촬영 지점·시작 시각 자동 추출 실패 안내 (renderYoutubeAnalysis 에서 연다) -->
+  <dialog class="yt-fail-dialog" id="ytExtractFailDialog">
+    <h3>⚠️ 자동 추출에 실패했어요</h3>
+    <p>영상 설명에서 <strong id="ytExtractFailItems"></strong>을(를) 찾지 못했습니다.</p>
+    <p>영상을 살펴보고 아래 칸에 직접 입력한 뒤 <b>수정값으로 다시 계산</b>을 눌러주세요.</p>
+    <ul>
+      <li>📍 촬영 지점: 영상 제목·화면의 km 표지판 (예: 20.9)</li>
+      <li>⏱️ 촬영 시작 시각: 영상 첫 장면의 실제 시각 (예: 08:05:00)</li>
+    </ul>
+    <button type="button" class="btn btn-green" onclick="closeExtractFailDialog()">직접 입력하기</button>
+  </dialog>
 </main>
 
 <!-- 마라톤 캘린더 -->

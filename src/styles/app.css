@@ -866,3 +866,13 @@ img, video, iframe { max-width: 100%; }
 /* 로고는 상단 바(.topbar)가 보여주므로 변환기 헤더에는 액션만 남긴다 */
 #view-converter header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
 #view-converter header .header-actions { width: auto; }
+
+/* 촬영 지점·시작 시각 자동 추출 실패 팝업 */
+.yt-fail-dialog { max-width: 420px; width: calc(100% - 32px); margin: auto; background: #131b2e; color: #e2e8f0; border: 1px solid #f97316; border-radius: 14px; padding: 20px; }
+.yt-fail-dialog::backdrop { background: rgba(2, 6, 23, 0.7); }
+.yt-fail-dialog h3 { font-size: 1.05rem; margin-bottom: 10px; color: #fdba74; }
+.yt-fail-dialog p { font-size: 0.9rem; line-height: 1.55; margin-bottom: 8px; }
+.yt-fail-dialog strong { color: #fdba74; }
+.yt-fail-dialog ul { font-size: 0.82rem; color: #94a3b8; margin: 4px 0 16px 18px; line-height: 1.6; }
+.yt-fail-dialog .btn { width: 100%; justify-content: center; }
+.yt-edit-row input.yt-edit-input.missing { border-color: #f97316; box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25); }
