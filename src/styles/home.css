@@ -1,0 +1,38 @@
+/* 홈 탭 (#view-home) */
+#view-home .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+#view-home .btn { display: inline-block; padding: 7px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; border: 1px solid var(--card-border); white-space: nowrap; }
+#view-home .btn-green { background: var(--accent-neon); color: #04120c; border-color: var(--accent-neon); }
+#view-home .home-section { margin-bottom: 28px; }
+#view-home .home-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 10px; }
+#view-home .home-head h2 { font-size: 1.15rem; }
+#view-home .home-head .sub { color: var(--text-muted); font-size: 0.8rem; }
+#view-home .home-head .more { margin-left: auto; color: var(--accent-cyan); font-size: 0.82rem; text-decoration: none; }
+#view-home .home-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+#view-home .home-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+#view-home .home-dday { flex: none; min-width: 64px; text-align: center; padding: 6px 8px; border-radius: 10px; font-weight: 800; font-size: 1rem;
+  background: rgba(59,130,246,.15); color: #60a5fa; }
+#view-home .home-dday.today { background: var(--accent-neon); color: #04120c; }
+#view-home .home-dday.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
+#view-home .home-dday.reg { font-size: 0.8rem; background: rgba(16,185,129,.15); color: var(--accent-neon); }
+#view-home .home-dday.reg.soon { background: rgba(249,115,22,.18); color: var(--accent-orange); }
+/* 썸네일 위에 D-day 배지를 겹쳐서, 이미지가 들어가도 블럭 높이·글자 폭은 그대로 */
+#view-home .visual { position: relative; flex: none; width: 64px; height: 64px; }
+#view-home .thumb { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; background: var(--card-border);
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+#view-home .visual .home-dday { position: absolute; left: 0; right: 0; bottom: 0; min-width: 0; padding: 1px 0; border-radius: 0 0 10px 10px;
+  font-size: 0.72rem; white-space: nowrap; }
+#view-home .visual .home-dday:not(.today) { background: rgba(10,14,23,.85); }
+#view-home .info { flex: 1; min-width: 0; }
+#view-home .name { font-weight: 700; font-size: 0.95rem; word-break: keep-all; }
+#view-home .meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+#view-home .dists { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+#view-home .dist { font-size: 0.7rem; font-weight: 600; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); }
+#view-home .dist.d5 { color: var(--accent-cyan); border-color: rgba(6,182,212,.4); }
+#view-home .dist.d10 { color: var(--accent-neon); border-color: rgba(16,185,129,.4); }
+#view-home .dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
+#view-home .dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
+#view-home .item-actions { margin-top: 8px; }
+#view-home .empty { color: var(--text-muted); font-size: 0.9rem; padding: 12px 0; }
+@media (max-width: 640px) {
+  #view-home .home-list { grid-template-columns: 1fr; }
+}

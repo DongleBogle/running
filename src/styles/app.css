@@ -869,7 +869,6 @@ img, video, iframe { max-width: 100%; }
   .btn-open-yt { min-height: 44px; }
 }
 
-/* 탭 화면(main) 안에서는 상단 브랜드를 바깥 헤더가 보여주므로 숨기고 액션만 남긴다 */
-.framed header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
-.framed header > div:first-child { display: none; }
-.framed header .header-actions { width: auto; }
+/* 로고는 상단 바(.topbar)가 보여주므로 변환기 헤더에는 액션만 남긴다 */
+#view-converter header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
+#view-converter header .header-actions { width: auto; }

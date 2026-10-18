@@ -3,29 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MarathonNote · 마라톤 구간 시간 & 페이스 변환기</title>
+  <title>MarathonNote - 유튜브 주로 영상 추출 & 마라톤 캘린더</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles/app.css">
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <link rel="stylesheet" href="styles/shell.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/calendar.css">
   <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
 </head>
 <body>
-<script>if (window.self !== window.top) document.documentElement.classList.add('framed');</script>
+<div class="topbar">
+  <a class="brand" href="./" data-view="home" title="홈으로">
+    <div class="header-title">
+      <img src="assets/logo-mark.png" class="brand-mark" alt="MarathonNote 로고">
+      <h1>MarathonNote</h1>
+    </div>
+  </a>
+  <nav>
+    <a class="tab" href="converter" data-view="converter">🎬 유튜브 주로 영상 추출</a>
+    <a class="tab" href="calendar" data-view="calendar">📅 마라톤 캘린더</a>
+  </nav>
+</div>
 
+<!-- 홈 -->
+<main class="view" id="view-home">
+<div class="container">
+    <section class="home-section">
+      <div class="home-head">
+        <h2>🏁 곧 열리는 마라톤</h2>
+        <span class="sub" id="upcomingSub"></span>
+        <a class="more" href="calendar" data-view="calendar">캘린더에서 보기 ➔</a>
+      </div>
+      <div class="home-list" id="upcomingList"></div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-head">
+        <h2>📝 접수중인 마라톤</h2>
+        <span class="sub" id="openSub"></span>
+        <a class="more" href="calendar" data-view="calendar">캘린더에서 보기 ➔</a>
+      </div>
+      <div class="home-list" id="openList"></div>
+    </section>
+</div>
+</main>
+
+<!-- 유튜브 주로 영상 추출 -->
+<main class="view" id="view-converter" hidden>
 <div class="container">
   <!-- 상단 헤더 -->
   <header>
-    <div>
-      <div class="header-title">
-        <img src="assets/logo-mark.png" class="brand-mark" alt="MarathonNote 로고">
-        <h1>MarathonNote</h1>
-      </div>
-      <p class="header-sub">
-        마라톤 구간 시간 & 페이스 변환기 • 공식 칩 계측 시각 기반 • 랩 페이스 정밀 유추 & 양방향 타임 컨버터
-      </p>
-    </div>
     <div class="header-actions">
       <button class="btn btn-danger" onclick="clearAllUploadedPhotos()" title="등록된 모든 사진과 데이터를 초기화합니다">
         전체 사진 비우기
@@ -351,8 +380,43 @@
   </div>
 
 </div>
+</main>
 
+<!-- 마라톤 캘린더 -->
+<main class="view" id="view-calendar" hidden>
+<div class="container">
+    <div class="cal-toolbar">
+      <button class="cal-btn" onclick="calMove(-1)" aria-label="이전 달">◀</button>
+      <div class="cal-month" id="calMonthLabel"></div>
+      <button class="cal-btn" onclick="calMove(1)" aria-label="다음 달">▶</button>
+      <button class="cal-btn" onclick="calToday()">오늘</button>
+      <div class="spacer"></div>
+      <button class="cal-btn active" data-calf="all" onclick="calFilter('all')">전체</button>
+      <button class="cal-btn" data-calf="open" onclick="calFilter('open')">접수중</button>
+      <button class="cal-btn" data-calf="upcoming" onclick="calFilter('upcoming')">접수예정</button>
+    </div>
+    <div class="cal-distbar" id="calDistBar">
+      <span class="lbl">종목</span>
+      <button class="cal-dist d5" data-d="d5" onclick="calToggleDist('d5')">5km</button>
+      <button class="cal-dist d10" data-d="d10" onclick="calToggleDist('d10')">10km</button>
+      <button class="cal-dist dhalf" data-d="dhalf" onclick="calToggleDist('dhalf')">하프</button>
+      <button class="cal-dist dfull" data-d="dfull" onclick="calToggleDist('dfull')">풀</button>
+      <button class="cal-btn" id="calDistClear" onclick="calClearDist()" hidden>전체 종목</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend">
+      <span><i style="background:var(--accent-neon)"></i>접수중</span>
+      <span><i style="background:var(--accent-gold)"></i>접수예정</span>
+      <span><i style="background:#64748b"></i>마감/정보없음</span>
+      <span><i style="border:1px dashed var(--accent-cyan)"></i>접수 오픈일</span>
+    </div>
+    <div class="cal-list" id="calList"></div>
+</div>
+</main>
+
+<script src="js/shell.js"></script>
+<script src="js/home.js"></script>
 <script src="js/app.js"></script>
-
+<script src="js/calendar.js"></script>
 </body>
 </html>

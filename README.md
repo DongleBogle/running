@@ -4,9 +4,12 @@
 
 ```
 src/
-  index.html
-  styles/app.css
-  js/app.js                # 플랫폼 무관 로직
+  index.html               # 유일한 페이지. 상단 탭(/ · /converter · /calendar)으로 화면 전환
+  styles/app.css           # 공통 + 변환기
+  styles/{shell,home,calendar}.css
+  js/shell.js              # 탭 전환 (경로 기반, pushState)
+  js/home.js, js/calendar.js
+  js/app.js                # 변환기 (플랫폼 무관 로직)
   js/platform/base.js      # 공통 어댑터 (apiUrl, dataUrl, track, openExternal)
   js/platform/{web,toss,app}.js   # 타깃별 덮어쓰기
 data/                      # 빌드 시 dist/<target>/data 로 복사
