@@ -105,6 +105,43 @@
       <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
+  <!-- 추출 결과 확인 안내 + 추출값(공식 계측·워치 랩) 직접 수정 -->
+  <div class="ocr-review" id="ocrReview">
+    <div class="ocr-review-head">
+      <div>
+        <div class="ocr-review-title" id="ocrReviewTitle">✍️ 기록을 직접 입력할 수 있어요</div>
+        <p id="ocrReviewDesc">사진 없이도 공식 계측 기록과 워치 1km 구간 기록을 입력하면 타임테이블이 계산됩니다.</p>
+      </div>
+      <button type="button" class="btn btn-outline" id="btnToggleParsed" onclick="toggleParsedEditor()">추출 결과 확인·수정</button>
+    </div>
+    <div class="parsed-editor" id="parsedEditor" hidden>
+      <div class="parsed-block">
+        <h4>🏁 공식 계측 기록 (스마트칩)</h4>
+        <p class="parsed-hint">지점·경과 시간은 필수, 실제 시각(Time of Day)은 아는 곳만 입력하세요. 마지막 지점이 완주 기록이 됩니다.</p>
+        <div class="parsed-scroll"><table class="parsed-table">
+          <thead><tr><th>지점 (km)</th><th>경과 시간 (H:MM:SS)</th><th>실제 시각 (HH:MM:SS)</th><th></th></tr></thead>
+          <tbody id="cpEditBody"></tbody>
+        </table></div>
+        <button type="button" class="btn-quick" onclick="addParsedRow('cp')">+ 계측 지점 추가</button>
+      </div>
+      <div class="parsed-block">
+        <h4>⌚ 워치 1km 구간 기록</h4>
+        <p class="parsed-hint">구간 시간은 M:SS 또는 M:SS.S 형식입니다. <span class="est-mark">추정</span> 표시는 사진에서 못 읽어 앞뒤 랩으로 채운 값이에요.</p>
+        <div class="parsed-scroll"><table class="parsed-table">
+          <thead><tr><th>랩</th><th>거리 (km)</th><th>구간 시간</th><th></th></tr></thead>
+          <tbody id="lapEditBody"></tbody>
+        </table></div>
+        <button type="button" class="btn-quick" onclick="addParsedRow('lap')">+ 랩 추가</button>
+      </div>
+      <div class="parsed-actions">
+        <span class="parsed-error" id="parsedError"></span>
+        <button type="button" class="btn btn-outline" id="btnResetEdits" onclick="resetEditedRecords()" hidden>AI 추출값으로 되돌리기</button>
+        <button type="button" class="btn btn-outline" onclick="toggleParsedEditor(false)">취소</button>
+        <button type="button" class="btn btn-green" onclick="applyParsedEdits()">수정값으로 타임테이블 다시 계산</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 러닝 요약 대시보드 카드 -->
   <div class="grid-top">
     <div class="stat-card">

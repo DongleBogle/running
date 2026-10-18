@@ -25,6 +25,7 @@ async function loadPersistedPhotos() {
   } catch (e) { /* 저장소를 못 쓰는 환경(시크릿 모드 등)에서는 캐싱 없이 동작 */ }
   _photosLoaded = true;
   renderPhotosGallery();
+  restoreEditedRecords();
 }
 // 동일 사진은 OCR을 다시 돌리지 않도록 결과를 사진 해시 기준으로 캐싱
 async function photoHash(src) {
@@ -519,6 +520,7 @@ function onStartTimeEdit() {
   globalStartTimeStr = v.length === 5 ? v + ':00' : v;
   setStartHint('직접 입력한 값');
   updateAllCalculations();
+  if (document.getElementById('ocrReview').classList.contains('edited')) saveEditedRecords();
 }
 
 function updateAllCalculations() {
@@ -1065,6 +1067,12 @@ async function analyzeAndGoStep2() {
     goToStep(2);
     return;
   }
+  // 같은 사진으로 타임테이블을 고쳐 둔 적이 있으면 OCR 결과 대신 그 값을 쓴다
+  if (await restoreEditedRecords()) {
+    status.textContent = '저장된 수정값을 불러왔습니다.';
+    goToStep(2);
+    return;
+  }
   btn.disabled = true;
   const verified = [];
   const laps = [];
@@ -1090,6 +1098,7 @@ async function analyzeAndGoStep2() {
     }
     applyOcrResults(verified, laps);
     status.textContent = `분석 완료: 공식 계측 ${verified.length}개, 랩 ${laps.length}개`;
+    setOcrReviewState(verified.length || laps.length ? 'extracted' : 'empty');
     goToStep(2);
   } catch (err) {
     status.textContent = '';
@@ -1099,7 +1108,8 @@ async function analyzeAndGoStep2() {
   }
 }
 
-function applyOcrResults(verified, laps) {
+function applyOcrResults(verified, laps, opts) {
+  opts = opts || {};
   // 공식 체크포인트: point(예 "5.0km"), time(경과), clock(Time of Day), pace
   const cps = verified
     .map(v => ({
@@ -1115,11 +1125,16 @@ function applyOcrResults(verified, laps) {
   officialCheckpoints.length = 0;
   if (cps.length > 0) {
     const first = cps.find(c => c.clockStr) || cps[0];
-    const startSec = first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
-    globalStartTimeStr = secondsToClockString(startSec);
-    startTimeManual = false;
-    document.getElementById('startTimeInput').value = globalStartTimeStr;
-    setStartHint('사진 기록으로 예측됨 · 직접 수정 가능');
+    // 타임테이블 수정에서 다시 계산할 때, 사용자가 직접 고친 출발 시각은 그대로 둔다
+    const keepStart = opts.keepStart && startTimeManual;
+    const startSec = keepStart ? parseTimeToSeconds(globalStartTimeStr)
+      : first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
+    if (!keepStart) {
+      globalStartTimeStr = secondsToClockString(startSec);
+      startTimeManual = false;
+      document.getElementById('startTimeInput').value = globalStartTimeStr;
+      setStartHint(opts.edited ? '수정한 기록으로 예측됨 · 직접 수정 가능' : '사진 기록으로 예측됨 · 직접 수정 가능');
+    }
     officialCheckpoints.push({ distance: 0, timeSec: 0, clockStr: globalStartTimeStr, pace: '-', name: '출발 (Start)' });
     cps.forEach(c => {
       if (!c.clockStr) c.clockStr = secondsToClockString(startSec + c.timeSec);
@@ -1151,4 +1166,218 @@ function applyOcrResults(verified, laps) {
   }
 
   buildUnifiedTimeline();
+}
+
+// -------------------------------------------------------------------------
+// Step 2 : 추출 결과(공식 계측·워치 랩) 확인 및 직접 수정 → 타임테이블 다시 계산
+// -------------------------------------------------------------------------
+const OCR_REVIEW_TEXT = {
+  extracted: ['✅ AI로 기록 추출 완료', '전체 구간별 타임테이블이 올바르게 추출·계산되었는지 확인 후 수정해주세요.'],
+  empty: ['⚠️ 사진에서 기록을 찾지 못했어요', '추출 결과 확인·수정을 눌러 공식 계측 기록과 워치 랩을 직접 입력해주세요.'],
+  edited: ['✏️ 수정한 기록으로 계산했어요', '수정값은 이 브라우저에 저장돼요. 다시 고칠 곳이 있으면 추출 결과 확인·수정을 눌러주세요.'],
+  manual: ['✍️ 기록을 직접 입력할 수 있어요', '사진 없이도 공식 계측 기록과 워치 1km 구간 기록을 입력하면 타임테이블이 계산됩니다.'],
+};
+
+function setOcrReviewState(state) {
+  const [title, desc] = OCR_REVIEW_TEXT[state];
+  const box = document.getElementById('ocrReview');
+  box.className = 'ocr-review ' + state;
+  document.getElementById('ocrReviewTitle').textContent = title;
+  document.getElementById('ocrReviewDesc').textContent = desc;
+}
+
+// 초 → 'H:MM:SS' / 'M:SS.s'
+function secToHms(sec) {
+  const t = Math.round(sec), h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
+  return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+function secToLapStr(sec) {
+  const m = Math.floor(sec / 60), s = sec - m * 60;
+  const whole = Math.floor(s), tenth = Math.round((s - whole) * 10);
+  return tenth === 10 ? `${m}:${String(whole + 1).padStart(2, '0')}` : `${m}:${String(whole).padStart(2, '0')}${tenth ? '.' + tenth : ''}`;
+}
+function secToPace(sec) {
+  if (!isFinite(sec) || sec <= 0) return '';
+  const r = Math.round(sec), m = Math.floor(r / 60);
+  return `${m}:${String(r % 60).padStart(2, '0')}`;
+}
+
+function parsedRowHtml(kind, v) {
+  const del = '<td><button type="button" class="parsed-del" onclick="deleteParsedRow(this)" title="이 행 삭제">✕</button></td>';
+  if (kind === 'cp') {
+    return `<tr><td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '')}" placeholder="21.1"></td>
+      <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="1:52:30"></td>
+      <td><input class="p-clock" value="${escHtml(v.clock ?? '')}" placeholder="09:42:30"></td>${del}</tr>`;
+  }
+  return `<tr><td class="lap-no">${v.estimated ? '<span class="est-mark">추정</span>' : ''}</td>
+    <td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '1.00')}" placeholder="1.00"></td>
+    <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="5:38.4"></td>${del}</tr>`;
+}
+
+function fillParsedEditor() {
+  document.getElementById('cpEditBody').innerHTML = officialCheckpoints.filter(c => c.distance > 0).map(c =>
+    parsedRowHtml('cp', { distance: c.distance, time: secToHms(c.timeSec), clock: c.clockStr || '' })).join('');
+  document.getElementById('lapEditBody').innerHTML = rawWatchLaps.map(l =>
+    parsedRowHtml('lap', { distance: Number(l.distance).toFixed(2), time: secToLapStr(l.seconds), estimated: l.estimated })).join('');
+  renumberLaps();
+  document.getElementById('parsedError').textContent = '';
+}
+
+function renumberLaps() {
+  document.querySelectorAll('#lapEditBody tr').forEach((tr, i) => {
+    const td = tr.querySelector('.lap-no');
+    td.innerHTML = `${i + 1}${td.querySelector('.est-mark') ? ' <span class="est-mark">추정</span>' : ''}`;
+  });
+}
+
+function toggleParsedEditor(open) {
+  const ed = document.getElementById('parsedEditor');
+  open = open === undefined ? ed.hidden : open;
+  if (open) fillParsedEditor();
+  ed.hidden = !open;
+  document.getElementById('btnToggleParsed').textContent = open ? '닫기' : '추출 결과 확인·수정';
+}
+
+function deleteParsedRow(btn) {
+  btn.closest('tr').remove();
+  renumberLaps();
+}
+
+function addParsedRow(kind) {
+  document.getElementById(kind === 'cp' ? 'cpEditBody' : 'lapEditBody').insertAdjacentHTML('beforeend', parsedRowHtml(kind, {}));
+  if (kind === 'lap') renumberLaps();
+}
+
+// 표의 값을 검사해 OCR 결과와 같은 형태로 바꾼 뒤 applyOcrResults 로 다시 계산한다
+function applyParsedEdits() {
+  const err = document.getElementById('parsedError');
+  document.querySelectorAll('.parsed-table input.bad').forEach(i => i.classList.remove('bad'));
+  const bad = (input, msg) => { input.classList.add('bad'); input.focus(); err.textContent = msg; return false; };
+  const HMS = /^\d{1,2}:\d{2}(:\d{2})?$/, LAP = /^\d{1,2}:\d{2}(\.\d)?$/;
+
+  const cps = [];
+  for (const tr of document.querySelectorAll('#cpEditBody tr')) {
+    const [d, t, c] = ['.p-dist', '.p-time', '.p-clock'].map(s => tr.querySelector(s));
+    if (!d.value.trim() && !t.value.trim() && !c.value.trim()) continue;  // 빈 행은 무시
+    const dist = parseFloat(d.value);
+    if (!(dist > 0)) return bad(d, '계측 지점(km)을 숫자로 입력해주세요.');
+    if (!HMS.test(t.value.trim())) return bad(t, '경과 시간은 H:MM:SS 형식으로 입력해주세요. (예: 1:52:30)');
+    if (c.value.trim() && !HMS.test(c.value.trim())) return bad(c, '실제 시각은 HH:MM:SS 형식으로 입력해주세요. (예: 09:42:30)');
+    const parts = t.value.trim().split(':').map(Number);
+    const sec = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 3600 + parts[1] * 60;
+    const clock = c.value.trim() ? secondsToClockString(parseTimeToSeconds(c.value.trim())) : '';
+    cps.push({ dist, sec, clock, input: t });
+  }
+  if (!cps.length) { err.textContent = '공식 계측 기록을 하나 이상 입력해주세요. (최소한 완주 기록)'; return false; }
+  cps.sort((a, b) => a.dist - b.dist);
+  for (let i = 1; i < cps.length; i++) {
+    if (cps[i].sec <= cps[i - 1].sec) return bad(cps[i].input, `${cps[i].dist}km 경과 시간이 앞 지점보다 빠릅니다. 확인해주세요.`);
+  }
+
+  const laps = [];
+  for (const tr of document.querySelectorAll('#lapEditBody tr')) {
+    const [d, t] = ['.p-dist', '.p-time'].map(s => tr.querySelector(s));
+    if (!d.value.trim() && !t.value.trim()) continue;
+    const dist = parseFloat(d.value);
+    if (!(dist > 0)) return bad(d, '랩 거리(km)를 숫자로 입력해주세요.');
+    if (!LAP.test(t.value.trim())) return bad(t, '구간 시간은 M:SS 또는 M:SS.S 형식으로 입력해주세요. (예: 5:38.4)');
+    laps.push({ dist, time: t.value.trim() });
+  }
+
+  const verified = cps.map((c, i) => {
+    const prev = cps[i - 1] || { dist: 0, sec: 0 };
+    return { point: `${c.dist}km`, time: secToHms(c.sec), clock: c.clock, pace: secToPace((c.sec - prev.sec) / (c.dist - prev.dist)), type: 'verified' };
+  });
+  const lapItems = laps.map((l, i) => {
+    const sec = parseElapsedToSec(l.time.split('.')[0]) + (parseFloat('0.' + (l.time.split('.')[1] || '0')) || 0);
+    return { point: `Lap ${i + 1}`, lapNo: i + 1, time: l.time, dist: l.dist.toFixed(2), pace: secToPace(sec / l.dist), type: 'lap' };
+  });
+
+  applyOcrResults(verified, lapItems, { keepStart: true, edited: true });
+  toggleParsedEditor(false);
+  setOcrReviewState('edited');
+  saveEditedRecords();
+  document.querySelector('#step2 .table-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
+}
+
+// -------------------------------------------------------------------------
+// 수정한 기록 저장/복원 (IndexedDB 'kv' 의 editedRecords)
+//   지금 등록된 사진 묶음(사진 해시 목록)과 함께 저장해, 같은 사진일 때만 복원한다.
+//   사진을 바꾸면 예전 수정값은 쓰지 않고 새로 추출한다.
+// -------------------------------------------------------------------------
+async function photoSetKey() {
+  const hashes = await Promise.all(uploadedPhotos.map(p => photoHash(p.src)));
+  return hashes.join('|');
+}
+
+// 현재 타임테이블 원본(공식 계측·워치 랩)을 applyOcrResults 입력 형태로
+function currentRecordItems() {
+  const cps = officialCheckpoints.filter(c => c.distance > 0);
+  const verified = cps.map(c => ({ point: `${c.distance}km`, time: secToHms(c.timeSec), clock: c.clockStr || '', pace: c.pace, type: 'verified' }));
+  const laps = rawWatchLaps.map((l, i) => ({ point: `Lap ${i + 1}`, lapNo: i + 1, time: secToLapStr(l.seconds), dist: Number(l.distance).toFixed(2), pace: l.pace, type: 'lap' }));
+  return { verified, laps };
+}
+
+async function kvGet(key) {
+  try {
+    const db = await openPhotoDb();
+    return await new Promise(resolve => {
+      const r = db.transaction('kv').objectStore('kv').get(key);
+      r.onsuccess = () => resolve(r.result || null);
+      r.onerror = () => resolve(null);
+    });
+  } catch (e) { return null; }
+}
+async function kvSet(key, value) {
+  try {
+    const db = await openPhotoDb();
+    const store = db.transaction('kv', 'readwrite').objectStore('kv');
+    value === undefined ? store.delete(key) : store.put(value, key);
+  } catch (e) { /* 저장소를 못 쓰는 환경에서는 저장 없이 동작 */ }
+}
+
+async function saveEditedRecords() {
+  if (!officialCheckpoints.length) return;
+  await kvSet('editedRecords', {
+    photoKey: await photoSetKey(),
+    ...currentRecordItems(),
+    start: startTimeManual ? globalStartTimeStr : null,
+    savedAt: new Date().toISOString(),
+  });
+  document.getElementById('btnResetEdits').hidden = false;
+}
+
+// 같은 사진 묶음으로 저장된 수정값이 있으면 적용하고 true
+async function restoreEditedRecords() {
+  const saved = await kvGet('editedRecords');
+  if (!saved || saved.photoKey !== await photoSetKey()) return false;
+  applyOcrResults(saved.verified, saved.laps, { edited: true });
+  if (saved.start) {
+    startTimeManual = true;
+    globalStartTimeStr = saved.start;
+    document.getElementById('startTimeInput').value = saved.start;
+    setStartHint('직접 입력한 값');
+    buildUnifiedTimeline();
+  }
+  setOcrReviewState('edited');
+  document.getElementById('btnResetEdits').hidden = false;
+  return true;
+}
+
+// 저장한 수정값을 지우고 사진에서 다시 추출 (OCR 결과는 캐시돼 있어 금방 끝남)
+async function resetEditedRecords() {
+  if (!confirm('직접 수정한 값을 지우고 사진에서 추출한 값으로 되돌릴까요?')) return;
+  await kvSet('editedRecords', undefined);
+  document.getElementById('btnResetEdits').hidden = true;
+  toggleParsedEditor(false);
+  startTimeManual = false;
+  if (uploadedPhotos.length) {
+    await analyzeAndGoStep2();
+  } else {
+    officialCheckpoints.length = 0;
+    rawWatchLaps.length = 0;
+    buildUnifiedTimeline();
+    setOcrReviewState('manual');
+  }
 }
