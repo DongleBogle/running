@@ -939,7 +939,18 @@ function parseOcrTextToRunningData(rawText) {
 }
 
 let _ocrWorker = null;
+// Tesseract.js 는 용량이 커서 홈·캘린더에서는 받지 않고, OCR 을 처음 쓸 때 불러온다
+function loadTesseract() {
+  if (typeof Tesseract !== 'undefined') return Promise.resolve();
+  return new Promise(resolve => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+    s.onload = s.onerror = resolve;
+    document.head.appendChild(s);
+  });
+}
 async function getOcrWorker() {
+  await loadTesseract();
   if (typeof Tesseract === 'undefined') {
     throw new Error('Tesseract.js 라이브러리를 불러오지 못했습니다.');
   }

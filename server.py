@@ -97,6 +97,14 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(chunk)
             return
 
+        # 탭 경로(/converter, /calendar)는 모두 같은 index.html 을 내려주고, 화면 전환은 js/shell.js 가 한다
+        if path in ('/converter/', '/calendar/'):  # 끝 슬래시가 있으면 상대경로(styles/ 등)가 깨지므로 정리
+            self.send_response(301)
+            self.send_header('Location', path.rstrip('/'))
+            self.end_headers()
+            return
+        if path in ('/converter', '/calendar'):
+            self.path = '/index.html'
         return super().do_GET()
 
     def do_POST(self):

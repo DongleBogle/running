@@ -2,10 +2,29 @@
   "version": 2,
   "buildCommand": "node scripts/build.mjs web",
   "outputDirectory": "dist/web",
+  "redirects": [
+    {
+      "source": "/home.html",
+      "destination": "/"
+    },
+    {
+      "source": "/converter.html",
+      "destination": "/converter"
+    },
+    {
+      "source": "/calendar.html",
+      "destination": "/calendar"
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/youtube/analyze",
       "destination": "/api/analyze"
+    },
+    {
+      "source": "/(converter|calendar)",
+      "destination": "/index.html"
     }
-  ]
+  ],
+  "trailingSlash": false
 }
