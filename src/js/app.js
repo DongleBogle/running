@@ -78,11 +78,21 @@ let tableFilterMode = 'all'; // 'all' or 'verified'
 // -------------------------------------------------------------------------
 // 시간 유틸리티
 // -------------------------------------------------------------------------
-function parseTimeToSeconds(timeStr) {
+// 실제 시각 'HH:MM[:SS]' → 0시부터의 초
+function parseClockToSec(timeStr) {
   if (!timeStr) return 0;
   const parts = timeStr.split(':').map(Number);
   if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
   if (parts.length === 2) return parts[0] * 3600 + parts[1] * 60;
+  return 0;
+}
+
+// 경과 시간 'H:MM:SS' / 'M:SS(.s)' → 초 (소수 초 유지)
+function parseElapsedToSec(str) {
+  const p = (str || '').split(':').map(Number);
+  if (p.some(isNaN)) return 0;
+  if (p.length === 3) return p[0] * 3600 + p[1] * 60 + p[2];
+  if (p.length === 2) return p[0] * 60 + p[1];
   return 0;
 }
 
@@ -106,23 +116,40 @@ function secondsToDurationFormatted(sec) {
   return `${m}분 ${String(s).padStart(2, '0')}초`;
 }
 
+// 초 → 'H:MM:SS' / 'M:SS.s'
+function secToHms(sec) {
+  const t = Math.round(sec), h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
+  return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+function secToLapStr(sec) {
+  const m = Math.floor(sec / 60), s = sec - m * 60;
+  const whole = Math.floor(s), tenth = Math.round((s - whole) * 10);
+  return tenth === 10 ? `${m}:${String(whole + 1).padStart(2, '0')}` : `${m}:${String(whole).padStart(2, '0')}${tenth ? '.' + tenth : ''}`;
+}
+
+// 초/km → 페이스 'M:SS' (값이 없으면 '')
+function secToPace(sec) {
+  if (!isFinite(sec) || sec <= 0) return '';
+  const r = Math.round(sec), m = Math.floor(r / 60);
+  return `${m}:${String(r % 60).padStart(2, '0')}`;
+}
+
+// 초/km → 요약 카드용 페이스 M'SS" (값이 없으면 '-')
+function secondsToPaceString(paceSec) {
+  const p = secToPace(paceSec);
+  return p ? p.replace(':', "'") + '"' : '-';
+}
+
 // 페이스 표기 통일: 분의 앞자리 0만 제거 (06:56 -> 6:56, 10:11 은 그대로)
 function normalizePace(p) {
   return typeof p === 'string' ? p.trim().replace(/^0+(\d:)/, '$1') : p;
-}
-
-function secondsToPaceString(paceSec) {
-  if (!paceSec || isNaN(paceSec)) return "-";
-  const m = Math.floor(paceSec / 60);
-  const s = Math.round(paceSec % 60);
-  return `${m}'${String(s).padStart(2, '0')}"`;
 }
 
 // -------------------------------------------------------------------------
 // Time of Day 기반 통합 타임라인 생성 및 랩 페이스 보간
 // -------------------------------------------------------------------------
 function buildUnifiedTimeline() {
-  const startSec = parseTimeToSeconds(globalStartTimeStr);
+  const startSec = parseClockToSec(globalStartTimeStr);
   timelineRows = [];
 
   // 데이터가 아직 없으면 빈 상태로 표시
@@ -222,7 +249,7 @@ function buildUnifiedTimeline() {
       }
       elapsedSec = lowerCp.timeSec + ((upperCp.timeSec - lowerCp.timeSec) * fraction);
       // Time of Day는 앞쪽 공식 계측 시각 + 경과 차이로 계산 (출발 시각 반올림 오차 방지)
-      const lowerClockSec = lowerCp.clockStr ? parseTimeToSeconds(lowerCp.clockStr) : startSec + lowerCp.timeSec;
+      const lowerClockSec = lowerCp.clockStr ? parseClockToSec(lowerCp.clockStr) : startSec + lowerCp.timeSec;
       clockStr = secondsToClockString(lowerClockSec + (elapsedSec - lowerCp.timeSec));
       label = `${dist.toFixed(0)} km 지점`;
 
@@ -240,7 +267,7 @@ function buildUnifiedTimeline() {
       segSec: segSec,
       elapsedSec: elapsedSec,
       clockStr: clockStr,
-      clockSec: parseTimeToSeconds(clockStr),
+      clockSec: parseClockToSec(clockStr),
       paceStr: paceStr,
       label: label,
       isVerified: isVerified
@@ -265,97 +292,6 @@ function buildUnifiedTimeline() {
   document.getElementById('summaryPace').textContent = secondsToPaceString(avgPaceSec);
 
   renderLapsTable();
-}
-
-// -------------------------------------------------------------------------
-// 주어진 경과 시간(초)에 해당하는 상태 계산 (Time of Day 및 유추)
-// -------------------------------------------------------------------------
-function getRunnerState(elapsedSec) {
-  if (officialCheckpoints.length === 0) {
-    return {
-      elapsedSec: 0,
-      clockStr: "--:--:--",
-      distance: 0,
-      label: "-",
-      pace: "-",
-      isVerified: false,
-      verifiedName: "-",
-      isFinished: false,
-      remainDist: 0,
-      remainSec: 0
-    };
-  }
-  const startSec = parseTimeToSeconds(globalStartTimeStr);
-  const clampedSec = Math.max(0, Math.min(elapsedSec, totalRaceSeconds));
-  const currentClockSec = startSec + clampedSec;
-  const currentClockStr = secondsToClockString(currentClockSec);
-
-  if (clampedSec <= 0) {
-    return {
-      elapsedSec: 0,
-      clockStr: globalStartTimeStr,
-      distance: 0,
-      label: "출발 대기",
-      pace: officialCheckpoints[1].pace,
-      isVerified: true,
-      verifiedName: "0.0km 출발점 (확정)",
-      isFinished: false,
-      remainDist: totalRaceDistance,
-      remainSec: totalRaceSeconds
-    };
-  }
-
-  if (clampedSec >= totalRaceSeconds) {
-    return {
-      elapsedSec: totalRaceSeconds,
-      clockStr: officialCheckpoints[officialCheckpoints.length - 1].clockStr,
-      distance: totalRaceDistance,
-      label: "완주 (Finish)",
-      pace: officialCheckpoints[officialCheckpoints.length - 1].pace,
-      isVerified: true,
-      verifiedName: "공식 피니시 21.14km (확정)",
-      isFinished: true,
-      remainDist: 0,
-      remainSec: 0
-    };
-  }
-
-  // 정확한 체크포인트와 일치 여부 확인 (±10초 이내면 공식 계측 지점 매칭)
-  let matchedCp = null;
-  for (let cp of officialCheckpoints) {
-    if (Math.abs(cp.timeSec - clampedSec) <= 15) {
-      matchedCp = cp;
-      break;
-    }
-  }
-
-  // 인근 구간 찾기
-  let lower = { distance: 0, elapsedSec: 0, paceStr: "05:55" };
-  let upper = timelineRows[0];
-
-  for (let i = 0; i < timelineRows.length; i++) {
-    if (clampedSec <= timelineRows[i].elapsedSec) {
-      upper = timelineRows[i];
-      lower = i > 0 ? timelineRows[i - 1] : { distance: 0, elapsedSec: 0, paceStr: timelineRows[0].paceStr };
-      break;
-    }
-  }
-
-  const fraction = (clampedSec - lower.elapsedSec) / Math.max(1, (upper.elapsedSec - lower.elapsedSec));
-  const currentDist = lower.distance + ((upper.distance - lower.distance) * fraction);
-
-  return {
-    elapsedSec: clampedSec,
-    clockStr: currentClockStr,
-    distance: currentDist,
-    label: matchedCp ? matchedCp.name : `${upper.label} 진행 중`,
-    pace: matchedCp ? matchedCp.pace : upper.paceStr,
-    isVerified: matchedCp !== null,
-    verifiedName: matchedCp ? `공식 계측소 (${matchedCp.name})` : `인근 체크포인트 기반 유추`,
-    isFinished: false,
-    remainDist: Math.max(0, totalRaceDistance - currentDist),
-    remainSec: Math.max(0, totalRaceSeconds - clampedSec)
-  };
 }
 
 // -------------------------------------------------------------------------
@@ -537,7 +473,7 @@ function deriveStartTimeFromCheckpoints() {
   if (startTimeManual) return;
   const cp = officialCheckpoints.find(c => c.distance > 0 && c.clockStr);
   if (!cp) return;
-  globalStartTimeStr = secondsToClockString(parseTimeToSeconds(cp.clockStr) - cp.timeSec);
+  globalStartTimeStr = secondsToClockString(parseClockToSec(cp.clockStr) - cp.timeSec);
   document.getElementById('startTimeInput').value = globalStartTimeStr;
   setStartHint('사진 기록으로 예측됨 · 직접 수정 가능');
 }
@@ -791,10 +727,6 @@ function setClipStartFromTimestamp(sec) {
 // -------------------------------------------------------------------------
 const raceRec = { races: [], date: null, raceId: null, live: {} };  // live: 대회id → 실시간 검색 결과(또는 진행 중 Promise)
 
-function escHtml(str) {
-  return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
 function formatRaceDate(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
   return `${d.getMonth() + 1}.${d.getDate()} (${'일월화수목금토'[d.getDay()]})`;
@@ -813,13 +745,11 @@ function racesOnDate(date) {
 async function loadRaceVideos() {
   const box = document.getElementById('raceRecBox');
   try {
-    const get = async f => { const res = await fetch(Platform.dataUrl(f), { cache: 'no-cache' }); if (!res.ok) throw new Error(res.status); return res.json(); };
-    const { months = [] } = await get('calendar/index.json');
-    const files = await Promise.all(months.map(m => get(`calendar/${m}.json`).catch(() => ({ races: [] }))));
+    const races = await loadRaces();
     const now = new Date();
-    const todayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const todayKey = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
     // 주로영상은 대회가 끝나야 올라오므로 오늘까지 열린 대회만
-    raceRec.races = files.flatMap(f => f.races || []).filter(r => r.date <= todayKey);
+    raceRec.races = races.filter(r => r.date <= todayKey);
   } catch (err) {
     console.warn('대회 목록을 불러오지 못했습니다', err);
     box.style.display = 'none';
@@ -867,7 +797,7 @@ function renderRaceRec() {
 
   const nameSel = document.getElementById('raceNameSelect');
   nameSel.innerHTML = racesOnDate(raceRec.date).map(r =>
-    `<option value="${escHtml(r.id)}">${escHtml(r.name)}</option>`).join('');
+    `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join('');
   nameSel.value = raceRec.raceId;
 
   const race = raceRec.races.find(r => r.id === raceRec.raceId);
@@ -891,10 +821,10 @@ function renderRaceVideos(race, list, loading) {
   grid.innerHTML = list.map(v => {
     const tags = [];
     if (v.lengthSeconds) tags.push(`<span class="tag clock">▶ ${formatDuration(v.lengthSeconds)}</span>`);
-    if (v.publishedAt) tags.push(`<span class="tag">업로드 ${escHtml(v.publishedAt.slice(5).replace('-', '.'))}</span>`);
-    return `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">
-      <img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
-      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div></button>`;
+    if (v.publishedAt) tags.push(`<span class="tag">업로드 ${esc(v.publishedAt.slice(5).replace('-', '.'))}</span>`);
+    return `<button type="button" class="race-video-card" title="${esc(v.title)}" onclick="pickRaceVideo('${esc(v.url)}')">
+      <img loading="lazy" src="${esc(v.thumbnailUrl)}" alt="">
+      <div class="body"><div class="t">${esc(v.title)}</div><div class="c">${esc(v.channel)}</div><div class="tags">${tags.join('')}</div></div></button>`;
   }).join('') + (loading ? '<div class="race-empty" style="grid-column: 1 / -1;">유튜브에서 주로영상을 더 찾는 중...</div>' : '');
 }
 
@@ -930,14 +860,6 @@ function goToStep(n) {
 // -------------------------------------------------------------------------
 // Step 1 -> 2 : 업로드된 사진 OCR 분석 후 계산 데이터에 반영
 // -------------------------------------------------------------------------
-function parseElapsedToSec(str) {
-  const p = (str || '').split(':').map(Number);
-  if (p.some(isNaN)) return 0;
-  if (p.length === 3) return p[0] * 3600 + p[1] * 60 + p[2];
-  if (p.length === 2) return p[0] * 60 + p[1];
-  return 0;
-}
-
 function normOcrText(t) {
   return (t || '')
     .replace(/[；;]/g, ':')
@@ -1156,8 +1078,8 @@ function applyOcrResults(verified, laps, opts) {
     const first = cps.find(c => c.clockStr) || cps[0];
     // 타임테이블 수정에서 다시 계산할 때, 사용자가 직접 고친 출발 시각은 그대로 둔다
     const keepStart = opts.keepStart && startTimeManual;
-    const startSec = keepStart ? parseTimeToSeconds(globalStartTimeStr)
-      : first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
+    const startSec = keepStart ? parseClockToSec(globalStartTimeStr)
+      : first.clockStr ? parseClockToSec(first.clockStr) - first.timeSec : 0;
     if (!keepStart) {
       globalStartTimeStr = secondsToClockString(startSec);
       startTimeManual = false;
@@ -1179,7 +1101,7 @@ function applyOcrResults(verified, laps, opts) {
   laps.forEach((l, i) => {
     const m = /(\d+)/.exec(l.point || '');
     const lapNo = l.lapNo || (m ? parseInt(m[1], 10) : i + 1);
-    const sec = parseElapsedToSec((l.time || '').split('.')[0]) + (parseFloat('0.' + ((l.time || '').split('.')[1] || '0')) || 0);
+    const sec = parseElapsedToSec(l.time);
     const dist = parseFloat(l.dist) || 1.0;
     lapMap.set(lapNo, { lap: lapNo, timeStr: l.time, seconds: sec, distance: dist, pace: normalizePace(l.pace) || '-', estimated: false });
   });
@@ -1191,7 +1113,7 @@ function applyOcrResults(verified, laps, opts) {
     let next = null;
     for (let k = n + 1; k <= lapNos[lapNos.length - 1]; k++) { if (lapMap.has(k)) { next = lapMap.get(k); break; } }
     const secs = prev && next ? (prev.seconds + next.seconds) / 2 : (prev || next || { seconds: 0 }).seconds;
-    rawWatchLaps.push({ lap: n, timeStr: '', seconds: secs, distance: 1.0, pace: normalizePace(secondsToPaceString(secs).replace("'", ':').replace('"', '')), estimated: true });
+    rawWatchLaps.push({ lap: n, timeStr: '', seconds: secs, distance: 1.0, pace: secToPace(secs) || '-', estimated: true });
   }
 
   buildUnifiedTimeline();
@@ -1215,32 +1137,17 @@ function setOcrReviewState(state) {
   document.getElementById('ocrReviewDesc').textContent = desc;
 }
 
-// 초 → 'H:MM:SS' / 'M:SS.s'
-function secToHms(sec) {
-  const t = Math.round(sec), h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
-  return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-}
-function secToLapStr(sec) {
-  const m = Math.floor(sec / 60), s = sec - m * 60;
-  const whole = Math.floor(s), tenth = Math.round((s - whole) * 10);
-  return tenth === 10 ? `${m}:${String(whole + 1).padStart(2, '0')}` : `${m}:${String(whole).padStart(2, '0')}${tenth ? '.' + tenth : ''}`;
-}
-function secToPace(sec) {
-  if (!isFinite(sec) || sec <= 0) return '';
-  const r = Math.round(sec), m = Math.floor(r / 60);
-  return `${m}:${String(r % 60).padStart(2, '0')}`;
-}
 
 function parsedRowHtml(kind, v) {
   const del = '<td><button type="button" class="parsed-del" onclick="deleteParsedRow(this)" title="이 행 삭제">✕</button></td>';
   if (kind === 'cp') {
-    return `<tr><td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '')}" placeholder="21.1"></td>
-      <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="1:52:30"></td>
-      <td><input class="p-clock" value="${escHtml(v.clock ?? '')}" placeholder="09:42:30"></td>${del}</tr>`;
+    return `<tr><td><input class="p-dist" inputmode="decimal" value="${esc(v.distance ?? '')}" placeholder="21.1"></td>
+      <td><input class="p-time" value="${esc(v.time ?? '')}" placeholder="1:52:30"></td>
+      <td><input class="p-clock" value="${esc(v.clock ?? '')}" placeholder="09:42:30"></td>${del}</tr>`;
   }
   return `<tr><td class="lap-no">${v.estimated ? '<span class="est-mark">추정</span>' : ''}</td>
-    <td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '1.00')}" placeholder="1.00"></td>
-    <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="5:38.4"></td>${del}</tr>`;
+    <td><input class="p-dist" inputmode="decimal" value="${esc(v.distance ?? '1.00')}" placeholder="1.00"></td>
+    <td><input class="p-time" value="${esc(v.time ?? '')}" placeholder="5:38.4"></td>${del}</tr>`;
 }
 
 function fillParsedEditor() {
@@ -1294,7 +1201,7 @@ function applyParsedEdits() {
     if (c.value.trim() && !HMS.test(c.value.trim())) return bad(c, '실제 시각은 HH:MM:SS 형식으로 입력해주세요. (예: 09:42:30)');
     const parts = t.value.trim().split(':').map(Number);
     const sec = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 3600 + parts[1] * 60;
-    const clock = c.value.trim() ? secondsToClockString(parseTimeToSeconds(c.value.trim())) : '';
+    const clock = c.value.trim() ? secondsToClockString(parseClockToSec(c.value.trim())) : '';
     cps.push({ dist, sec, clock, input: t });
   }
   if (!cps.length) { err.textContent = '공식 계측 기록을 하나 이상 입력해주세요. (최소한 완주 기록)'; return false; }
@@ -1318,7 +1225,7 @@ function applyParsedEdits() {
     return { point: `${c.dist}km`, time: secToHms(c.sec), clock: c.clock, pace: secToPace((c.sec - prev.sec) / (c.dist - prev.dist)), type: 'verified' };
   });
   const lapItems = laps.map((l, i) => {
-    const sec = parseElapsedToSec(l.time.split('.')[0]) + (parseFloat('0.' + (l.time.split('.')[1] || '0')) || 0);
+    const sec = parseElapsedToSec(l.time);
     return { point: `Lap ${i + 1}`, lapNo: i + 1, time: l.time, dist: l.dist.toFixed(2), pace: secToPace(sec / l.dist), type: 'lap' };
   });
 

@@ -512,42 +512,38 @@ def analyze_video_description(video_meta, url, runner_laps=None, runner_start_ti
         "explanationPoints": notes
     }
 
+def handle(body):
+    """(status, body) — Vercel 핸들러와 로컬 server.py 가 같이 쓴다."""
+    try:
+        req_data = json.loads(body.decode('utf-8')) if body else {}
+    except Exception:
+        return 400, {"error": "잘못된 JSON 요청입니다."}
+
+    url = req_data.get('url', '').strip()
+    if not url:
+        return 400, {"error": "유튜브 URL을 입력해주세요."}
+
+    try:
+        # 재계산 시에는 클라이언트가 보낸 영상 정보를 재사용 (유튜브 재조회 생략)
+        meta = req_data.get('video') or fetch_youtube_metadata(url)
+        analysis = analyze_video_description(
+            meta, url,
+            runner_laps=req_data.get('laps', []),
+            runner_start_time=req_data.get('startTime', '08:00:00'),
+            timeline=req_data.get('timeline', []),
+            override_distance_km=req_data.get('overrideDistanceKm'),
+            override_start_clock=req_data.get('overrideStartClock')
+        )
+        return 200, {"success": True, "video": meta, "analysis": analysis}
+    except Exception as e:
+        return 500, {"error": f"유튜브 분석 실패: {str(e)}"}
+
+
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers.get('Content-Length', 0))
-        post_data = self.rfile.read(content_length)
-        try:
-            req_data = json.loads(post_data.decode('utf-8'))
-        except Exception:
-            self._send_json({"error": "잘못된 JSON 요청입니다."}, 400)
-            return
-
-        url = req_data.get('url', '').strip()
-        if not url:
-            self._send_json({"error": "유튜브 URL을 입력해주세요."}, 400)
-            return
-
-        runner_start_time = req_data.get('startTime', '08:00:00')
-        runner_laps = req_data.get('laps', [])
-        timeline = req_data.get('timeline', [])
-
-        try:
-            meta = req_data.get('video') or fetch_youtube_metadata(url)
-            analysis = analyze_video_description(
-                meta, url,
-                runner_laps=runner_laps,
-                runner_start_time=runner_start_time,
-                timeline=timeline,
-                override_distance_km=req_data.get('overrideDistanceKm'),
-                override_start_clock=req_data.get('overrideStartClock')
-            )
-            self._send_json({
-                "success": True,
-                "video": meta,
-                "analysis": analysis
-            }, 200)
-        except Exception as e:
-            self._send_json({"error": f"유튜브 분석 실패: {str(e)}"}, 500)
+        status, data = handle(self.rfile.read(content_length))
+        self._send_json(data, status)
 
     def do_OPTIONS(self):
         self.send_response(200)
