@@ -661,6 +661,7 @@ function renderYoutubeAnalysis(data) {
     btn.onclick = () => setClipStartFromTimestamp(Math.max(0, analysis.calculatedVideoSeconds - 5));
     quickBtnsEl.appendChild(btn);
   }
+  document.getElementById('ytTimestampQuick').style.display = quickBtnsEl.children.length ? 'flex' : 'none';
 
   // 5. 기본 클립 파라미터 세팅
   const startInput = document.getElementById('clipStartInput');
