@@ -2,20 +2,25 @@
 // 대회 상세는 JS 가 내용을 그리므로, JS 를 실행하지 않는 크롤러·링크 미리보기(네이버, 카카오톡 등)를 위해
 // 빌드 시 대회마다 title·description·OG·JSON-LD 와 기본 정보 요약을 HTML 에 미리 넣어 둔다.
 //
-// 사이트 주소: SITE_URL(예: https://example.com) → 없으면 Vercel 의 VERCEL_PROJECT_PRODUCTION_URL.
-// 둘 다 없으면 절대주소가 필요한 canonical·og:url·sitemap 은 빼고 만든다.
+// 사이트 주소: SITE_URL 환경변수가 있으면 그것, 없으면 운영 도메인(https://www.marathonnote.co.kr).
+// 미리보기 배포에서도 canonical 은 운영 도메인을 가리켜 검색엔진이 운영 주소만 색인하게 한다.
+// 검색엔진 소유 확인: GOOGLE_SITE_VERIFICATION, NAVER_SITE_VERIFICATION 환경변수 값을 홈에 meta 로 넣는다.
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+const SITE_URL = 'https://www.marathonnote.co.kr';
 const SITE_NAME = 'MarathonNote';
+const SITE_NAME_KO = '마라톤노트';
+// og:site_name 처럼 한 번만 쓰는 곳은 두 이름을 함께 ('마라톤노트'로 검색해도 사이트가 연결되도록)
+const SITE_NAME_FULL = `${SITE_NAME_KO} ${SITE_NAME}`;
 const DEFAULT_IMAGE = 'assets/icon-512.png';
 
 // 탭 화면: 같은 index.html 을 쓰되 화면마다 title·description·canonical 을 다르게 만든다
 const VIEWS = {
   home: {
     file: 'index.html', path: '/',
-    title: 'MarathonNote - 마라톤 일정·접수 캘린더와 주로영상 찾기',
-    description: '곧 열리는 마라톤과 접수중인 대회를 한눈에 보고, 레이스 기록으로 유튜브 주로영상 속 내 모습을 찾아보세요.',
+    title: '마라톤노트 MarathonNote - 마라톤 일정·접수 캘린더와 주로영상 찾기',
+    description: '마라톤노트(MarathonNote)에서 곧 열리는 마라톤과 접수중인 대회를 한눈에 보고, 레이스 기록으로 유튜브 주로영상 속 내 모습을 찾아보세요.',
   },
   calendar: {
     file: 'calendar.html', path: '/calendar',
@@ -36,24 +41,33 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const jsonLd = obj => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
 export function siteUrl() {
-  const raw = process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '');
-  return raw.replace(/\/+$/, '');
+  return (process.env.SITE_URL || SITE_URL).replace(/\/+$/, '');
+}
+
+function verificationTags() {
+  const { GOOGLE_SITE_VERIFICATION: google, NAVER_SITE_VERIFICATION: naver } = process.env;
+  return [
+    google && `<meta name="google-site-verification" content="${esc(google)}">`,
+    naver && `<meta name="naver-site-verification" content="${esc(naver)}">`,
+  ].filter(Boolean).join('\n  ');
 }
 
 function headTags({ site, path, title, description, image, type = 'website' }) {
-  const abs = p => (site ? site + (p.startsWith('/') ? p : '/' + p) : '');
+  const abs = p => site + (p.startsWith('/') ? p : '/' + p);
   const img = /^https?:\/\//.test(image) ? image : abs(image);
   return [
     `<meta name="description" content="${esc(description)}">`,
-    site && `<link rel="canonical" href="${esc(abs(path))}">`,
+    `<link rel="canonical" href="${esc(abs(path))}">`,
     `<meta property="og:type" content="${type}">`,
-    `<meta property="og:site_name" content="${SITE_NAME}">`,
+    `<meta property="og:site_name" content="${SITE_NAME_FULL}">`,
     `<meta property="og:locale" content="ko_KR">`,
     `<meta property="og:title" content="${esc(title)}">`,
     `<meta property="og:description" content="${esc(description)}">`,
-    site && `<meta property="og:url" content="${esc(abs(path))}">`,
-    img && `<meta property="og:image" content="${esc(img)}">`,
-    `<meta name="twitter:card" content="${img && image !== DEFAULT_IMAGE ? 'summary_large_image' : 'summary'}">`,
+    `<meta property="og:url" content="${esc(abs(path))}">`,
+    `<meta property="og:image" content="${esc(img)}">`,
+    `<meta name="application-name" content="${SITE_NAME_KO}">`,
+    `<meta name="apple-mobile-web-app-title" content="${SITE_NAME_KO}">`,
+    `<meta name="twitter:card" content="${image !== DEFAULT_IMAGE ? 'summary_large_image' : 'summary'}">`,
   ].filter(Boolean).join('\n  ');
 }
 
@@ -73,7 +87,7 @@ function raceDescription(r) {
 }
 
 function raceJsonLd(r, site) {
-  const url = site ? `${site}/race/${encodeURIComponent(r.id)}` : undefined;
+  const url = `${site}/race/${encodeURIComponent(r.id)}`;
   const reg = r.registration || {};
   const geo = r.coords && r.coords.precision !== 'region'
     ? { '@type': 'GeoCoordinates', latitude: r.coords.lat, longitude: r.coords.lon } : undefined;
@@ -87,8 +101,8 @@ function raceJsonLd(r, site) {
     eventStatus: 'https://schema.org/EventScheduled',
     sport: 'Marathon',
     description: raceDescription(r),
-    ...(url && { url }),
-    ...((r.poster || (site && r.image)) && { image: [r.poster || `${site}/${r.image}`] }),
+    url,
+    ...((r.poster || r.image) && { image: [r.poster || `${site}/${r.image}`] }),
     location: {
       '@type': 'Place',
       name: r.venue || r.location || r.region,
@@ -119,14 +133,19 @@ function raceSummaryHtml(r) {
 
 export function generateSeo(out) {
   const site = siteUrl();
-  if (!site) console.warn('SEO: SITE_URL / VERCEL_PROJECT_PRODUCTION_URL 이 없어 canonical·og:url·sitemap 을 생략합니다.');
 
   // 1) 탭 화면별 HTML
   const indexHtml = readFileSync(join(out, 'index.html'), 'utf8');
-  const homeLd = jsonLd({ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, inLanguage: 'ko', ...(site && { url: site + '/' }) });
+  // 구글은 검색 결과의 사이트 이름을 정할 때 WebSite 의 name·alternateName 을 참고한다
+  const homeLd = jsonLd({
+    '@context': 'https://schema.org', '@type': 'WebSite',
+    name: SITE_NAME_KO, alternateName: [SITE_NAME, 'marathonnote', 'Marathon Note', '마라톤 노트'],
+    inLanguage: 'ko', url: site + '/',
+  });
+  const verify = verificationTags();
   for (const v of Object.values(VIEWS)) {
     let html = addHead(setTitle(indexHtml, v.title), headTags({ site, path: v.path, title: v.title, description: v.description, image: DEFAULT_IMAGE }));
-    if (v.file === 'index.html') html = addHead(html, homeLd);
+    if (v.file === 'index.html') html = addHead(html, [homeLd, verify].filter(Boolean).join('\n  '));
     writeFileSync(join(out, v.file), html);
   }
 
@@ -149,14 +168,12 @@ export function generateSeo(out) {
   }
 
   // 3) robots.txt, sitemap.xml
-  writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n${site ? `\nSitemap: ${site}/sitemap.xml\n` : ''}`);
-  if (site) {
-    const urls = [
-      ...Object.values(VIEWS).map(v => ({ loc: site + v.path })),
-      ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10) })),
-    ];
-    const body = urls.map(u => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n');
-    writeFileSync(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`);
-  }
-  console.log(`SEO: views ${Object.keys(VIEWS).length}, races ${races.length}, sitemap ${site ? 'O' : 'X'} (site="${site}")`);
+  writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${site}/sitemap.xml\n`);
+  const urls = [
+    ...Object.values(VIEWS).map(v => ({ loc: site + v.path })),
+    ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10) })),
+  ];
+  const body = urls.map(u => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n');
+  writeFileSync(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`);
+  console.log(`SEO: views ${Object.keys(VIEWS).length}, races ${races.length} (site="${site}")`);
 }
