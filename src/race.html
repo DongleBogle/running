@@ -79,6 +79,13 @@
     summary { cursor: pointer; font-size: 0.85rem; color: var(--accent-cyan); }
     details table { margin-top: 6px; }
 
+    .vtabs { display: flex; gap: 6px; border-bottom: 1px solid var(--card-border); margin-bottom: 12px; }
+    .vtabs[hidden] { display: none; }
+    .vtab { background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--text-muted);
+      font: inherit; font-size: 0.88rem; font-weight: 700; padding: 8px 12px; cursor: pointer; }
+    .vtab span { font-weight: 500; font-size: 0.8rem; }
+    .vtab.active { color: var(--text-main); border-bottom-color: var(--accent-cyan); }
+    .more-btn { display: block; width: 100%; margin-top: 10px; background: none; cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 600; }
     .videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
     .video { text-decoration: none; color: var(--text-main); background: var(--bg-dark); border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; }
     .video img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: var(--card-border); }
@@ -210,9 +217,9 @@ function weatherHtml(r) {
       · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a> (ERA5, CC BY 4.0)</div></div>`;
 }
 
-const MAX_VIDEOS = 12;
+const VIDEO_FIRST = 3, VIDEO_MORE = 12;  // 처음엔 3개(한 줄), '더 보기'마다 12개씩 더
 function videoGrid(vids) {
-  return vids.length ? `<div class="videos">${vids.slice(0, MAX_VIDEOS).map(v => `<a class="video" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">
+  return vids.length ? `<div class="videos">${vids.map(v => `<a class="video" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">
       <img src="${esc(v.thumbnailUrl)}" alt="" loading="lazy"><div class="t">${esc(v.title)}</div>
       <div class="c">${v.type === 'course' ? '📍 주로영상' : '🎬 영상'} · ${esc(v.channel || '')}${v.publishedAt ? ' · ' + esc(v.publishedAt.slice(0, 4)) : ''}</div></a>`).join('')}</div>` : '';
 }
@@ -220,12 +227,18 @@ function videoGrid(vids) {
 // 영상 목록은 loadLiveVideos 가 유튜브 실시간 검색으로 채운다
 function videosHtml(r) {
   const q = encodeURIComponent(r.name);
-  return `<div class="card"><h2>🎬 관련 영상</h2><div id="videoGrid"></div>
+  return `<div class="card"><h2>🎬 관련 영상</h2>
+    <div class="vtabs" id="videoTabs" hidden>
+      <button type="button" class="vtab" data-when="after">대회 후 <span id="vcntAfter"></span></button>
+      <button type="button" class="vtab" data-when="before">대회 전 <span id="vcntBefore"></span></button>
+    </div>
+    <div id="videoGrid"></div>
     <div class="links">${ext('https://www.youtube.com/results?search_query=' + q, '유튜브에서 검색')}${ext('https://www.youtube.com/results?search_query=' + encodeURIComponent(r.name + ' 주로영상'), '주로영상 검색')}</div>
     <div class="hint" id="videoHint">유튜브에서 관련 영상을 찾는 중...</div></div>`;
 }
 
-// /api/race/videos (YouTube Data API) 결과를 그린다. 실패하면 유튜브 검색 링크만 남는다.
+// /api/race/videos (YouTube Data API) 결과를 업로드 날짜로 '대회 후'(대회일 포함)와 '대회 전'으로 나눠 그린다.
+// 실패하면 유튜브 검색 링크만 남는다.
 async function loadLiveVideos(r) {
   const hint = document.getElementById('videoHint');
   let live = [];
@@ -236,10 +249,34 @@ async function loadLiveVideos(r) {
   } catch (e) { /* 네트워크 오류 등: 검색 링크만 */ }
   const seen = new Set();
   const all = live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId));
-  document.getElementById('videoGrid').innerHTML = videoGrid(all);
-  hint.textContent = all.length ? '유튜브 검색 결과예요. 지난 대회 영상도 함께 보여줘요.'
-    : '아직 찾은 영상이 없어요. 유튜브 검색으로 바로 찾아볼 수 있어요.';
-  hint.hidden = !hint.textContent;
+  const groups = {
+    after: all.filter(v => v.publishedAt >= r.date),
+    before: all.filter(v => !(v.publishedAt >= r.date)),
+  };
+  if (!all.length) {
+    hint.textContent = '아직 찾은 영상이 없어요. 유튜브 검색으로 바로 찾아볼 수 있어요.';
+    return;
+  }
+  const HINT = {
+    after: '대회 당일과 그 이후에 올라온 영상이에요. 주로영상·후기를 볼 수 있어요.',
+    before: '대회 전에 올라온 영상이에요. 코스 분석·준비 영상과 지난 대회 영상이 함께 있어요.',
+  };
+  const tabs = document.getElementById('videoTabs');
+  const shown = { after: VIDEO_FIRST, before: VIDEO_FIRST };
+  const show = when => {
+    tabs.querySelectorAll('.vtab').forEach(b => b.classList.toggle('active', b.dataset.when === when));
+    const list = groups[when], rest = list.length - shown[when];
+    const more = rest > 0 ? `<button type="button" class="btn more-btn" id="videoMore">더 보기 (${rest}개)</button>` : '';
+    document.getElementById('videoGrid').innerHTML = (videoGrid(list.slice(0, shown[when])) + more) ||
+      `<div class="empty">${when === 'after' ? (daysFromToday(r.date) > 0 ? '아직 대회 전이에요. 대회가 끝나면 영상이 올라와요.' : '대회 후 올라온 영상이 아직 없어요.') : '대회 전 영상이 없어요.'}</div>`;
+    hint.textContent = HINT[when];
+    document.getElementById('videoMore')?.addEventListener('click', () => { shown[when] += VIDEO_MORE; show(when); });
+  };
+  document.getElementById('vcntAfter').textContent = groups.after.length;
+  document.getElementById('vcntBefore').textContent = groups.before.length;
+  tabs.querySelectorAll('.vtab').forEach(b => b.addEventListener('click', () => show(b.dataset.when)));
+  tabs.hidden = false;
+  show(groups.after.length ? 'after' : 'before');
 }
 
 function postsHtml(r) {
