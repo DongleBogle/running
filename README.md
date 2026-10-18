@@ -15,6 +15,7 @@ src/
 data/                      # 빌드 시 dist/<target>/data 로 복사
 api/                       # Vercel 서버리스 (세 타깃 공용 백엔드)
 scripts/build.mjs          # src → dist/<target> 조립
+scripts/seo.mjs            # 웹 빌드 시 탭별 HTML·대회별 race/<id>.html·sitemap.xml·robots.txt 생성
 ```
 
 ## 빌드
@@ -30,5 +31,9 @@ scripts/build.mjs          # src → dist/<target> 조립
 ```bash
 API_BASE=https://<배포 도메인> npm run build:toss
 ```
+
+웹 빌드는 검색엔진용 페이지도 함께 만든다(`scripts/seo.mjs`). canonical·og:url·sitemap 에 쓰는 사이트 주소는
+운영 도메인 `https://www.marathonnote.co.kr` (환경변수 `SITE_URL`로 바꿀 수 있음). `marathonnote.co.kr`(www 없음) → www 리다이렉트는 Vercel 도메인 설정에서 한다.
+검색엔진 소유 확인 meta 는 Vercel 환경변수 `GOOGLE_SITE_VERIFICATION`, `NAVER_SITE_VERIFICATION`에 발급받은 값을 넣으면 홈에 들어간다.
 
 로컬 개발: `npm run dev` (web 빌드 후 `server.py`가 `dist/web`을 서빙)

@@ -26,12 +26,12 @@
       "destination": "/api/race_videos"
     },
     {
-      "source": "/(converter|calendar)",
-      "destination": "/index.html"
+      "source": "/:view(converter|calendar)",
+      "destination": "/:view.html"
     },
     {
       "source": "/race/:id",
-      "destination": "/race.html"
+      "destination": "/race/:id.html"
     }
   ],
   "trailingSlash": false

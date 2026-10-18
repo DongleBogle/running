@@ -3,6 +3,7 @@
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { generateSeo } from './seo.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const target = process.argv[2];
@@ -35,4 +36,6 @@ for (const page of ['index.html', 'race.html']) {
   const p = join(out, page);
   writeFileSync(p, readFileSync(p, 'utf8').replace('<!-- @@PLATFORM_HEAD@@ -->', head));
 }
+// 웹은 검색엔진용 페이지(탭별 HTML, 대회별 race/<id>.html, sitemap.xml, robots.txt)를 함께 만든다
+if (target === 'web') generateSeo(out);
 console.log(`built ${target} -> dist/${target} (apiBase="${apiBase}")`);
