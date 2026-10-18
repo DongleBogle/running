@@ -22,6 +22,15 @@ import urllib.request
 from datetime import date
 from http.server import BaseHTTPRequestHandler
 
+# 노출하지 않을 영상의 키워드. 제목이나 설명에 하나라도 있으면 목록에서 뺀다 (영문 대소문자 무시).
+# 띄어쓰기는 그대로 비교한다. ('숨 진짜'가 '숨진'에 걸리지 않도록)
+# 대회 중 사고·사망 소식, 추모 영상 등이 대회 영상 목록에 섞이지 않게 하려는 것. 필요하면 여기에 추가한다.
+BLOCKED_KEYWORDS = [
+    '사망', '숨져', '숨진', '숨졌', '별세', '부고', '영면', '추모', '애도', '명복', '고인', '빈소', '장례',
+    '심정지', '쓰러져', '쓰러진', '쓰러졌', '의식불명', '응급이송', '병원이송', '사고', '참변', '비보',
+    '영원히 기억', '🕊',
+]
+
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos'
 MIN_COURSE_SECONDS = 180  # 이보다 짧은 영상(쇼츠 등)은 주로영상 목록에서 뺀다
@@ -53,6 +62,15 @@ def key_tokens(name):
         if len(t) >= 2 and t not in GENERIC:
             out.append(t)
     return out
+
+
+_BLOCKED = [k.lower() for k in BLOCKED_KEYWORDS]
+
+
+def is_blocked(*texts):
+    """제목·설명에 BLOCKED_KEYWORDS 가 하나라도 있으면 True"""
+    t = re.sub(r'\s+', ' ', ' '.join(texts)).lower()
+    return any(k in t for k in _BLOCKED)
 
 
 def is_related(title, tokens):
@@ -109,6 +127,8 @@ def search_race_videos(name, race_date, api_key, kind=''):
         sn = it.get('snippet') or {}
         title = html.unescape(sn.get('title', ''))
         if not vid or vid in seen or not is_related(title, tokens):
+            continue
+        if is_blocked(title, html.unescape(sn.get('description', ''))):
             continue
         seen.add(vid)
         thumbs = sn.get('thumbnails') or {}
