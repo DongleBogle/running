@@ -448,23 +448,52 @@ function renderPhotosGallery() {
   });
 }
 
+// 확인 팝업. 브라우저 기본 confirm() 은 앱 내 브라우저 등에서 막혀 바로 '취소'가 되므로 페이지 안 dialog 를 쓴다
+function askConfirm(message, opts) {
+  opts = opts || {};
+  const dlg = document.getElementById('confirmDialog');
+  const ok = document.getElementById('confirmOk');
+  document.getElementById('confirmMsg').textContent = message;
+  ok.textContent = opts.okLabel || '확인';
+  ok.className = 'btn ' + (opts.danger ? 'btn-danger' : 'btn-green');
+  return new Promise(resolve => {
+    const done = v => { dlg.removeEventListener('close', onClose); resolve(v); };
+    const onClose = () => done(dlg.returnValue === 'ok');
+    dlg.addEventListener('close', onClose);
+    dlg.querySelectorAll('.confirm-actions button').forEach(b => { b.onclick = () => dlg.close(b.value); });
+    dlg.returnValue = '';
+    dlg.showModal();
+  });
+}
+
 // 개별 사진 삭제
-function removePhoto(photoId) {
+async function removePhoto(photoId) {
   const target = uploadedPhotos.find(p => p.id === photoId);
   const targetName = target ? target.title : "사진";
-  if (confirm(`'${targetName}' 스크린샷을 목록에서 제거하시겠습니까?`)) {
+  if (await askConfirm(`'${targetName}' 스크린샷을 목록에서 제거할까요?`, { okLabel: '제거', danger: true })) {
     uploadedPhotos = uploadedPhotos.filter(p => p.id !== photoId);
     renderPhotosGallery();
   }
 }
 
-// 전체 사진 비우기
-function clearAllUploadedPhotos() {
-  if (uploadedPhotos.length === 0) return;
-  if (confirm("등록된 모든 사진을 제거하시겠습니까?")) {
-    uploadedPhotos = [];
-    renderPhotosGallery();
-  }
+// 전체 사진 비우기: 사진과 함께 추출·수정한 기록(Step 2 타임테이블)도 초기화
+async function clearAllUploadedPhotos() {
+  if (uploadedPhotos.length === 0 && officialCheckpoints.length === 0) return;
+  if (!await askConfirm('등록된 모든 사진과 추출·수정한 기록을 지울까요?', { okLabel: '전체 비우기', danger: true })) return;
+  uploadedPhotos = [];
+  renderPhotosGallery();
+  officialCheckpoints.length = 0;
+  rawWatchLaps.length = 0;
+  startTimeManual = false;
+  globalStartTimeStr = '00:00:00';
+  document.getElementById('startTimeInput').value = '';
+  setStartHint('사진을 올리면 출발 시각이 예측됩니다 · 직접 수정 가능');
+  await kvSet('editedRecords', undefined);
+  document.getElementById('btnResetEdits').hidden = true;
+  toggleParsedEditor(false);
+  setOcrReviewState('manual');
+  document.getElementById('ocrStatus').textContent = '';
+  buildUnifiedTimeline();
 }
 
 // 새 사진 업로드 (최대 MAX_PHOTOS장)
@@ -1063,7 +1092,7 @@ async function analyzeAndGoStep2() {
   const btn = document.getElementById('btnStep2');
   const status = document.getElementById('ocrStatus');
   if (uploadedPhotos.length === 0) {
-    if (!confirm('등록된 사진이 없습니다. OCR 분석 없이 Step 2로 넘어갈까요?')) return;
+    if (!await askConfirm('등록된 사진이 없습니다. 사진 분석 없이 Step 2로 넘어가 기록을 직접 입력할까요?', { okLabel: '넘어가기' })) return;
     goToStep(2);
     return;
   }
@@ -1367,7 +1396,7 @@ async function restoreEditedRecords() {
 
 // 저장한 수정값을 지우고 사진에서 다시 추출 (OCR 결과는 캐시돼 있어 금방 끝남)
 async function resetEditedRecords() {
-  if (!confirm('직접 수정한 값을 지우고 사진에서 추출한 값으로 되돌릴까요?')) return;
+  if (!await askConfirm('직접 수정한 값을 지우고 사진에서 추출한 값으로 되돌릴까요?', { okLabel: '되돌리기', danger: true })) return;
   await kvSet('editedRecords', undefined);
   document.getElementById('btnResetEdits').hidden = true;
   toggleParsedEditor(false);

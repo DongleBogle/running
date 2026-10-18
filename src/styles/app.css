@@ -864,8 +864,6 @@ img, video, iframe { max-width: 100%; }
 }
 
 /* 로고는 상단 바(.topbar)가 보여주므로 변환기 헤더에는 액션만 남긴다 */
-#view-converter header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
-#view-converter header .header-actions { width: auto; }
 
 /* 촬영 지점·시작 시각 자동 추출 실패 팝업 */
 .yt-fail-dialog { max-width: 420px; width: calc(100% - 32px); margin: auto; background: #131b2e; color: #e2e8f0; border: 1px solid #f97316; border-radius: 14px; padding: 20px; }
@@ -905,3 +903,11 @@ img, video, iframe { max-width: 100%; }
 .parsed-table td:last-child, .parsed-table th:last-child { width: 32px; }
 .parsed-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
 .parsed-error { flex: 1; color: #f87171; font-size: 0.82rem; min-width: 200px; }
+
+/* Step 1 사진 버튼 묶음 (전체 사진 비우기 + 새 사진 업로드) */
+.photo-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+/* 공용 확인 팝업 */
+.confirm-dialog { border-color: #334155; }
+.confirm-dialog p { font-size: 0.95rem; margin-bottom: 16px; }
+.confirm-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.confirm-dialog .confirm-actions .btn { width: auto; }

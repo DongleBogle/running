@@ -53,15 +53,6 @@
 <!-- 유튜브 주로 영상 추출 -->
 <main class="view" id="view-converter" hidden>
 <div class="container">
-  <!-- 상단 헤더 -->
-  <header>
-    <div class="header-actions">
-      <button class="btn btn-danger" onclick="clearAllUploadedPhotos()" title="등록된 모든 사진과 데이터를 초기화합니다">
-        전체 사진 비우기
-      </button>
-    </div>
-  </header>
-
   <div class="step-card" id="step1">
     <div class="step-header" onclick="toggleStep(1)">
       <div class="step-num">1</div>
@@ -82,11 +73,16 @@
           <br><strong>스마트칩 공식 기록 이미지 1건</strong>과 <strong>워치 1km 단위 구간기록 이미지</strong>를 첨부해 주세요. 사진은 최대 5장까지 등록할 수 있습니다.
         </p>
       </div>
+      <div class="photo-actions">
+      <button type="button" class="btn btn-danger" onclick="clearAllUploadedPhotos()" title="등록된 모든 사진과 추출·수정한 기록을 초기화합니다">
+        전체 사진 비우기
+      </button>
       <label class="btn btn-outline upload-btn" style="cursor: pointer;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
         새 사진 업로드
         <input type="file" id="photoUploadInput" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
       </label>
+      </div>
     </div>
 
     <!-- 이미지 갤러리 (동적 렌더링) -->
@@ -411,6 +407,15 @@
   </div>
 
 </div>
+  <!-- 확인 팝업 (브라우저 기본 confirm 이 막힌 환경에서도 동작하도록 askConfirm 이 사용) -->
+  <dialog class="yt-fail-dialog confirm-dialog" id="confirmDialog">
+    <p id="confirmMsg"></p>
+    <div class="confirm-actions">
+      <button type="button" class="btn btn-outline" value="cancel">취소</button>
+      <button type="button" class="btn" id="confirmOk" value="ok">확인</button>
+    </div>
+  </dialog>
+
   <!-- 촬영 지점·시작 시각 자동 추출 실패 안내 (renderYoutubeAnalysis 에서 연다) -->
   <dialog class="yt-fail-dialog" id="ytExtractFailDialog">
     <h3>⚠️ 자동 추출에 실패했어요</h3>
