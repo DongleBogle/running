@@ -19,7 +19,7 @@ import re
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler
 
 # 노출하지 않을 영상의 키워드. 제목이나 설명에 하나라도 있으면 목록에서 뺀다 (영문 대소문자 무시).
@@ -36,6 +36,7 @@ VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos'
 MIN_COURSE_SECONDS = 180  # 이보다 짧은 영상(쇼츠 등)은 주로영상 목록에서 뺀다
 CACHE_SECONDS = 6 * 3600
 MAX_RESULTS = 50
+KST = timezone(timedelta(hours=9))
 
 # 고정 지점에서 지나가는 주자를 찍은 영상 (제목 기준)
 COURSE = re.compile(
@@ -92,6 +93,15 @@ def iso_seconds(d):
     return ((dd * 24 + h) * 60 + mi) * 60 + se
 
 
+def kst_date(published_at):
+    """YouTube publishedAt(UTC, '2024-04-07T00:12:34Z') → 한국 날짜 'YYYY-MM-DD'.
+    UTC 날짜를 그대로 자르면 KST 오전 9시 전 업로드가 전날로 잡혀 '대회 전'으로 분류된다."""
+    try:
+        return datetime.fromisoformat(published_at.replace('Z', '+00:00')).astimezone(KST).strftime('%Y-%m-%d')
+    except (AttributeError, ValueError):
+        return (published_at or '')[:10]
+
+
 def fetch_lengths(ids, api_key):
     """videoId → 길이(초). videos.list 는 50개까지 1유닛."""
     if not ids:
@@ -137,7 +147,7 @@ def search_race_videos(name, race_date, api_key, kind=''):
             'url': f'https://www.youtube.com/watch?v={vid}',
             'title': title,
             'channel': html.unescape(sn.get('channelTitle', '')),
-            'publishedAt': sn.get('publishedAt', '')[:10],
+            'publishedAt': kst_date(sn.get('publishedAt', '')),
             'thumbnailUrl': (thumbs.get('medium') or thumbs.get('default') or {}).get('url', ''),
             'type': 'course' if COURSE.search(title) else 'review',
         })
