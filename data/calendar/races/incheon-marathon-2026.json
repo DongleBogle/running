@@ -1,0 +1,139 @@
+{
+ "id": "incheon-marathon-2026",
+ "name": "2026 인천마라톤",
+ "nameEn": "Incheon Marathon 2026",
+ "date": "2026-11-22",
+ "location": "인천 인천아시아드주경기장",
+ "region": "인천",
+ "venue": "인천아시아드주경기장",
+ "distances": [
+  "5km",
+  "10km",
+  "풀"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "풀",
+   "km": 42.2,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/7bc530afc35d728b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788171679/kormarathon/events/event-images-1788171678693.jpg",
+ "registration": {
+  "opensAt": "2026-09-07",
+  "closesAt": "2026-09-07",
+  "closed": true,
+  "url": "http://incheonmarathon.or.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/incheon-marathon-2026",
+ "coords": {
+  "lat": 37.54804,
+  "lon": 126.6677,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 3.9,
+  "tmin": 0.4,
+  "tmax": 9.7,
+  "humidity": 70,
+  "wind": 2.7,
+  "rainChance": 17,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 6.0,
+    "tmin": 2.6,
+    "tmax": 13.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.3,
+    "tmin": 1.7,
+    "tmax": 9.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 5.7,
+    "tmin": 0.6,
+    "tmax": 13.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.1,
+    "tmin": 5.5,
+    "tmax": 12.7,
+    "rain": 1.2
+   },
+   {
+    "year": 2021,
+    "temp": 3.6,
+    "tmin": -0.4,
+    "tmax": 8.0,
+    "rain": 0.5
+   },
+   {
+    "year": 2020,
+    "temp": 6.3,
+    "tmin": 1.5,
+    "tmax": 9.3,
+    "rain": 5.6
+   },
+   {
+    "year": 2019,
+    "temp": 4.7,
+    "tmin": 0.5,
+    "tmax": 13.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 0.2,
+    "tmin": -2.1,
+    "tmax": 5.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 6.7,
+    "tmin": 1.0,
+    "tmax": 11.7,
+    "rain": 3.0
+   },
+   {
+    "year": 2016,
+    "temp": 1.1,
+    "tmin": -2.5,
+    "tmax": 6.6,
+    "rain": 0.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

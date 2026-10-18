@@ -1,0 +1,132 @@
+{
+ "id": "2026-youth-day-namdong-run",
+ "name": "2026 청년의날 남동런",
+ "nameEn": "2026 Youth Day Namdong Run",
+ "date": "2026-09-19",
+ "location": "인천 인천대공원",
+ "region": "인천",
+ "venue": "인천대공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": "만 14세 미만은 법정 대리인 동의가 필요하며 10km는 참가할 수 없습니다."
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/535dd743dd3b264a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786525095/kormarathon/events/og-image-1786525094627-hykojn.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-09-01",
+  "closed": true,
+  "url": "https://namdongrun.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-youth-day-namdong-run",
+ "coords": {
+  "lat": 37.44865,
+  "lon": 126.75246,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 20.7,
+  "tmin": 17.6,
+  "tmax": 24.5,
+  "humidity": 78,
+  "wind": 2.9,
+  "rainChance": 41,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 19.6,
+    "tmin": 18.0,
+    "tmax": 20.7,
+    "rain": 19.5
+   },
+   {
+    "year": 2024,
+    "temp": 26.5,
+    "tmin": 24.5,
+    "tmax": 30.0,
+    "rain": 1.5
+   },
+   {
+    "year": 2023,
+    "temp": 23.1,
+    "tmin": 18.8,
+    "tmax": 26.2,
+    "rain": 1.1
+   },
+   {
+    "year": 2022,
+    "temp": 24.8,
+    "tmin": 17.6,
+    "tmax": 26.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 22.3,
+    "tmin": 19.6,
+    "tmax": 26.1,
+    "rain": 0.3
+   },
+   {
+    "year": 2020,
+    "temp": 21.3,
+    "tmin": 18.9,
+    "tmax": 23.8,
+    "rain": 0.1
+   },
+   {
+    "year": 2019,
+    "temp": 17.0,
+    "tmin": 11.9,
+    "tmax": 23.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 19.9,
+    "tmin": 16.7,
+    "tmax": 22.4,
+    "rain": 6.4
+   },
+   {
+    "year": 2017,
+    "temp": 21.7,
+    "tmin": 18.0,
+    "tmax": 24.2,
+    "rain": 4.6
+   },
+   {
+    "year": 2016,
+    "temp": 20.2,
+    "tmin": 18.0,
+    "tmax": 24.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

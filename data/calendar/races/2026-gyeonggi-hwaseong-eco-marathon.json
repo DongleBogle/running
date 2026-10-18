@@ -1,0 +1,151 @@
+{
+ "id": "2026-gyeonggi-hwaseong-eco-marathon",
+ "name": "2026 경기화성 생태마라톤",
+ "nameEn": "2026 Gyeonggi Hwaseong Eco Marathon",
+ "date": "2026-11-08",
+ "location": "경기 경기도 화성시 궁평항 및 영종로 일대",
+ "region": "경기",
+ "venue": "경기도 화성시 궁평항 및 영종로 일대",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 55000,
+   "note": "일반 5km"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 55000,
+   "note": "가족(성인 1명+자녀 1명)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 60000,
+   "note": "가족(성인 1명+자녀 2명)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": "일반 10km"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 60000,
+   "note": "일반 하프"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/ac4453dff2465e1d.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789526374/kormarathon/events/event-images-1789526373928.jpg",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-10-09",
+  "closed": false,
+  "url": "https://kiccrace.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-gyeonggi-hwaseong-eco-marathon",
+ "coords": {
+  "lat": 37.11666,
+  "lon": 126.68184,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.2,
+  "tmin": 6.1,
+  "tmax": 14.0,
+  "humidity": 72,
+  "wind": 3.3,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.3,
+    "tmin": 11.3,
+    "tmax": 17.2,
+    "rain": 0.2
+   },
+   {
+    "year": 2024,
+    "temp": 6.5,
+    "tmin": 0.9,
+    "tmax": 15.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 5.5,
+    "tmin": 1.8,
+    "tmax": 13.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.7,
+    "tmin": 6.9,
+    "tmax": 15.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 11.0,
+    "tmin": 7.0,
+    "tmax": 14.9,
+    "rain": 22.9
+   },
+   {
+    "year": 2020,
+    "temp": 9.1,
+    "tmin": 6.1,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 4.5,
+    "tmin": 2.7,
+    "tmax": 9.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.2,
+    "tmin": 11.7,
+    "tmax": 16.5,
+    "rain": 34.5
+   },
+   {
+    "year": 2017,
+    "temp": 13.8,
+    "tmin": 8.1,
+    "tmax": 15.0,
+    "rain": 1.0
+   },
+   {
+    "year": 2016,
+    "temp": 3.5,
+    "tmin": 2.6,
+    "tmax": 9.1,
+    "rain": 1.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

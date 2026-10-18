@@ -1,0 +1,132 @@
+{
+ "id": "miracle365-purme-run-1",
+ "name": "넥슨과 함께하는 2026 미라클365 푸르메런",
+ "nameEn": "Miracle365 Purme Run",
+ "date": "2026-11-07",
+ "location": "서울 마포구 월드컵공원 평화의공원 평화광장",
+ "region": "서울",
+ "venue": "마포구 월드컵공원 평화의공원 평화광장",
+ "distances": [
+  "~5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 20000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/d810f21d2eae78a0.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787125239/kormarathon/events/event-images-1787125238522.jpg",
+ "registration": {
+  "opensAt": "2026-08-26",
+  "closesAt": "2026-09-23",
+  "closed": false,
+  "url": "https://purmerun.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/miracle365-purme-run-1",
+ "coords": {
+  "lat": 37.5736,
+  "lon": 126.87037,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.0,
+  "tmin": 4.3,
+  "tmax": 14.1,
+  "humidity": 76,
+  "wind": 2.7,
+  "rainChance": 14,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 10.0,
+    "tmin": 6.9,
+    "tmax": 18.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.6,
+    "tmin": -0.1,
+    "tmax": 11.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.8,
+    "tmin": 2.7,
+    "tmax": 7.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.2,
+    "tmin": 2.6,
+    "tmax": 15.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.9,
+    "tmin": 7.2,
+    "tmax": 19.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.3,
+    "tmin": 9.1,
+    "tmax": 17.0,
+    "rain": 0.9
+   },
+   {
+    "year": 2019,
+    "temp": 7.4,
+    "tmin": 2.4,
+    "tmax": 11.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.6,
+    "tmin": 9.3,
+    "tmax": 15.9,
+    "rain": 2.1
+   },
+   {
+    "year": 2017,
+    "temp": 10.9,
+    "tmin": 6.6,
+    "tmax": 18.4,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 12.2,
+    "tmin": 6.9,
+    "tmax": 15.7,
+    "rain": 2.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

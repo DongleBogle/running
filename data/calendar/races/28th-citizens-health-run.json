@@ -1,0 +1,125 @@
+{
+ "id": "28th-citizens-health-run",
+ "name": "제28회 시민건강달리기대회",
+ "nameEn": "28th Citizens Health Run",
+ "date": "2026-10-18",
+ "location": "경남 창원종합운동장(보조경기장)",
+ "region": "경남",
+ "venue": "창원종합운동장(보조경기장)",
+ "distances": [
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "기타",
+   "km": 6,
+   "fee": 10000,
+   "note": "6km 일반 참가"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/885245efcf4d278a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789362856/kormarathon/events/event-images-1789362855206.jpg",
+ "registration": {
+  "opensAt": "2026-08-05",
+  "closesAt": "2026-09-20",
+  "closed": false,
+  "url": "https://www.cwrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/28th-citizens-health-run",
+ "coords": {
+  "lat": 35.23543,
+  "lon": 128.66542,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 15.5,
+  "tmin": 11.3,
+  "tmax": 20.6,
+  "humidity": 76,
+  "wind": 2.5,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 21.5,
+    "tmin": 17.5,
+    "tmax": 22.6,
+    "rain": 9.6
+   },
+   {
+    "year": 2024,
+    "temp": 20.2,
+    "tmin": 16.4,
+    "tmax": 26.3,
+    "rain": 30.3
+   },
+   {
+    "year": 2023,
+    "temp": 14.7,
+    "tmin": 10.4,
+    "tmax": 23.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.9,
+    "tmin": 6.7,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.4,
+    "tmin": 4.1,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 14.0,
+    "tmin": 9.4,
+    "tmax": 20.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.9,
+    "tmin": 12.3,
+    "tmax": 17.6,
+    "rain": 18.6
+   },
+   {
+    "year": 2018,
+    "temp": 12.5,
+    "tmin": 8.6,
+    "tmax": 18.6,
+    "rain": 1.0
+   },
+   {
+    "year": 2017,
+    "temp": 15.9,
+    "tmin": 12.8,
+    "tmax": 18.6,
+    "rain": 1.2
+   },
+   {
+    "year": 2016,
+    "temp": 17.9,
+    "tmin": 15.3,
+    "tmax": 21.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

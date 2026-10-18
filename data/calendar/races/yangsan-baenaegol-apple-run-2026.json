@@ -1,0 +1,132 @@
+{
+ "id": "yangsan-baenaegol-apple-run-2026",
+ "name": "2026 양산 배내골 애플 런",
+ "nameEn": "Yangsan Baenaegol Apple Run 2026",
+ "date": "2026-11-08",
+ "location": "경남 장선마을회관 앞",
+ "region": "경남",
+ "venue": "장선마을회관 앞",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/41068ebe8e44e012.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1781526467/kormarathon/events/event-images-1781526465813.jpg",
+ "registration": {
+  "opensAt": "2026-06-15",
+  "closesAt": "2026-06-30",
+  "closed": false,
+  "url": "https://k-marathon.or.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/yangsan-baenaegol-apple-run-2026",
+ "coords": {
+  "lat": 35.38783,
+  "lon": 128.36623,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 10.2,
+  "tmin": 5.6,
+  "tmax": 16.9,
+  "humidity": 69,
+  "wind": 2.5,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.6,
+    "tmin": 8.1,
+    "tmax": 16.4,
+    "rain": 13.0
+   },
+   {
+    "year": 2024,
+    "temp": 10.9,
+    "tmin": 6.7,
+    "tmax": 17.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 7.7,
+    "tmin": 3.6,
+    "tmax": 16.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.3,
+    "tmin": 5.1,
+    "tmax": 19.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 15.9,
+    "tmin": 5.4,
+    "tmax": 16.7,
+    "rain": 22.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.3,
+    "tmin": 5.9,
+    "tmax": 17.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 8.5,
+    "tmin": 5.1,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.9,
+    "tmin": 11.2,
+    "tmax": 17.3,
+    "rain": 19.2
+   },
+   {
+    "year": 2017,
+    "temp": 16.2,
+    "tmin": 8.5,
+    "tmax": 21.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 9.1,
+    "tmin": 3.0,
+    "tmax": 11.2,
+    "rain": 1.9
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

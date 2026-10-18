@@ -1,0 +1,132 @@
+{
+ "id": "2026-asics-seoul-shinmun-go-free-run",
+ "name": "2026 Asics Seoul Shinmun Go Free Run",
+ "nameEn": "2026 Asics Seoul Shinmun Go Free Run",
+ "date": "2026-11-21",
+ "location": "서울 여의도 공원",
+ "region": "서울",
+ "venue": "여의도 공원",
+ "distances": [
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/ab4725f57098df44.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785922027/kormarathon/events/event-images-1785922025796.jpg",
+ "registration": {
+  "opensAt": "2026-08-19",
+  "closesAt": "2026-08-24",
+  "closed": false,
+  "url": "https://gofree.seoul.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-asics-seoul-shinmun-go-free-run",
+ "coords": {
+  "lat": 37.52567,
+  "lon": 126.92522,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 3.6,
+  "tmin": -0.0,
+  "tmax": 9.7,
+  "humidity": 70,
+  "wind": 2.4,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 3.6,
+    "tmin": 0.8,
+    "tmax": 10.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 6.5,
+    "tmin": 4.3,
+    "tmax": 12.9,
+    "rain": 0.6
+   },
+   {
+    "year": 2023,
+    "temp": 3.5,
+    "tmin": -0.2,
+    "tmax": 11.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.8,
+    "tmin": 4.9,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 7.7,
+    "tmin": 5.4,
+    "tmax": 11.9,
+    "rain": 5.8
+   },
+   {
+    "year": 2020,
+    "temp": 1.5,
+    "tmin": -2.9,
+    "tmax": 11.2,
+    "rain": 0.2
+   },
+   {
+    "year": 2019,
+    "temp": 0.1,
+    "tmin": -4.2,
+    "tmax": 7.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.3,
+    "tmin": -0.1,
+    "tmax": 7.5,
+    "rain": 1.8
+   },
+   {
+    "year": 2017,
+    "temp": -1.5,
+    "tmin": -5.4,
+    "tmax": 5.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 7.3,
+    "tmin": 3.2,
+    "tmax": 15.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

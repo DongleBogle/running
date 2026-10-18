@@ -1,0 +1,132 @@
+{
+ "id": "2nd-seongnam-ymca-marathon-2026",
+ "name": "제2회 성남YMCA 마라톤",
+ "nameEn": "2nd Seongnam YMCA Marathon 2026",
+ "date": "2026-10-31",
+ "location": "경기 경기 성남시 물빛정원 오리공원 탄천변",
+ "region": "경기",
+ "venue": "경기 성남시 물빛정원 오리공원 탄천변",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "5K FUN RUN · 가족 달리기 · 09:10 출발"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "10K RACE · 09:00 출발"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/2c5f7a3c08dfd14f.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790328584/kormarathon/events/event-images-1790328582957.jpg",
+ "registration": {
+  "opensAt": "2026-09-14",
+  "closesAt": "2026-10-06",
+  "closed": false,
+  "url": "https://runpass.kr/register?race=seongnam-ymca%2F2026"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2nd-seongnam-ymca-marathon-2026",
+ "coords": {
+  "lat": 37.42016,
+  "lon": 127.12621,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.5,
+  "tmin": 5.4,
+  "tmax": 15.4,
+  "humidity": 75,
+  "wind": 1.8,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.2,
+    "tmin": 7.8,
+    "tmax": 18.4,
+    "rain": 1.2
+   },
+   {
+    "year": 2024,
+    "temp": 12.1,
+    "tmin": 7.0,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.1,
+    "tmin": 6.6,
+    "tmax": 18.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 11.8,
+    "tmin": 7.5,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 11.1,
+    "tmin": 6.4,
+    "tmax": 17.5,
+    "rain": 3.3
+   },
+   {
+    "year": 2020,
+    "temp": 9.8,
+    "tmin": 5.6,
+    "tmax": 17.1,
+    "rain": 0.7
+   },
+   {
+    "year": 2019,
+    "temp": 11.5,
+    "tmin": 7.4,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 4.7,
+    "tmin": 1.3,
+    "tmax": 9.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 6.6,
+    "tmin": 1.3,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 8.1,
+    "tmin": 2.0,
+    "tmax": 8.6,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

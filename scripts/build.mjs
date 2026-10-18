@@ -31,6 +31,8 @@ const platformJs = (read('base.js') + '\n' + read(`${target}.js`))
   .replaceAll('__API_BASE__', apiBase);
 writeFileSync(join(out, 'js', 'platform.js'), platformJs);
 
-const htmlPath = join(out, 'index.html');
-writeFileSync(htmlPath, readFileSync(htmlPath, 'utf8').replace('<!-- @@PLATFORM_HEAD@@ -->', head));
+for (const page of ['index.html', 'race.html']) {
+  const p = join(out, page);
+  writeFileSync(p, readFileSync(p, 'utf8').replace('<!-- @@PLATFORM_HEAD@@ -->', head));
+}
 console.log(`built ${target} -> dist/${target} (apiBase="${apiBase}")`);

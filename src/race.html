@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대회 정보 - MarathonNote</title>
+  <!-- /race/<id> 주소에서도 js/, data/ 같은 상대경로가 루트 기준이 되도록 -->
+  <base href="/">
+  <!-- @@PLATFORM_HEAD@@ -->
+  <script src="js/platform.js"></script>
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-neon: #10b981;
+      --accent-gold: #facc15;
+      --accent-cyan: #06b6d4;
+      --accent-orange: #f97316;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+    a { color: var(--accent-cyan); }
+    .container { max-width: 880px; margin: 0 auto; padding: 16px; }
+    .back { display: inline-block; color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; margin-bottom: 12px; cursor: pointer; background: none; border: none; font: inherit; }
+    .btn { display: inline-block; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--card-border); color: var(--text-main); white-space: nowrap; }
+    .btn-green { background: var(--accent-neon); color: #04120c; border-color: var(--accent-neon); }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+    .card h2 { font-size: 1.02rem; margin-bottom: 10px; }
+    .card .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
+    .empty { color: var(--text-muted); font-size: 0.9rem; padding: 6px 0; }
+
+    .hero { display: flex; gap: 16px; align-items: flex-start; }
+    .poster { flex: none; width: 160px; aspect-ratio: 1; border-radius: 12px; object-fit: cover; background: var(--card-border);
+      display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .hero .info { flex: 1; min-width: 0; }
+    .hero h1 { font-size: 1.35rem; line-height: 1.3; word-break: keep-all; }
+    .hero .en { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
+    .hero .meta { margin-top: 8px; font-size: 0.9rem; }
+    .hero .meta div + div { margin-top: 2px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .badge { font-size: 0.72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; background: rgba(100,116,139,.2); color: var(--text-muted); }
+    .badge.open { background: rgba(16,185,129,.15); color: var(--accent-neon); }
+    .badge.upcoming { background: rgba(250,204,21,.15); color: var(--accent-gold); }
+    .badge.dday { background: rgba(6,182,212,.15); color: var(--accent-cyan); }
+    .badge.dday.soon { background: rgba(249,115,22,.15); color: var(--accent-orange); }
+    .badge.major { background: rgba(139,92,246,.18); color: #c4b5fd; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .dist { font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); white-space: nowrap; }
+    .dist.d5 { color: var(--accent-cyan); border-color: rgba(6,182,212,.4); }
+    .dist.d10 { color: var(--accent-neon); border-color: rgba(16,185,129,.4); }
+    .dist.dhalf { color: var(--accent-orange); border-color: rgba(249,115,22,.4); }
+    .dist.dfull { color: var(--accent-purple); border-color: rgba(139,92,246,.45); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--card-border); }
+    th { color: var(--text-muted); font-weight: 600; font-size: 0.78rem; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tr:last-child td { border-bottom: none; }
+
+    .map { width: 100%; height: 260px; border: 0; border-radius: 10px; background: var(--card-border); }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+    .wx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+    .wx { background: var(--bg-dark); border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; }
+    .wx .lbl { font-size: 0.74rem; color: var(--text-muted); }
+    .wx .val { font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .wx .val small { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+    .tip { margin-top: 10px; font-size: 0.86rem; background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.25); border-radius: 10px; padding: 8px 12px; }
+    details { margin-top: 10px; }
+    summary { cursor: pointer; font-size: 0.85rem; color: var(--accent-cyan); }
+    details table { margin-top: 6px; }
+
+    .vtabs { display: flex; gap: 6px; border-bottom: 1px solid var(--card-border); margin-bottom: 12px; }
+    .vtabs[hidden] { display: none; }
+    .vtab { background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--text-muted);
+      font: inherit; font-size: 0.88rem; font-weight: 700; padding: 8px 12px; cursor: pointer; }
+    .vtab span { font-weight: 500; font-size: 0.8rem; }
+    .vtab.active { color: var(--text-main); border-bottom-color: var(--accent-cyan); }
+    .more-btn { display: block; width: 100%; margin-top: 10px; background: none; cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 600; }
+    .videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .video { text-decoration: none; color: var(--text-main); background: var(--bg-dark); border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; }
+    .video img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: var(--card-border); }
+    .video .t { font-size: 0.8rem; padding: 6px 8px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .video .c { font-size: 0.72rem; color: var(--text-muted); padding: 2px 8px 8px; }
+
+    @media (max-width: 560px) {
+      .hero { flex-direction: column; }
+      .poster { width: 100%; aspect-ratio: auto; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <button class="back" id="back" type="button">← 목록으로</button>
+  <div id="page"><div class="empty">대회 정보를 불러오는 중...</div></div>
+</div>
+<script>
+// /race/<대회 id>: data/calendar/races/<id>.json (수집기가 만든 대회별 상세 정보)을 보여준다.
+// /race/<id> 는 vercel.json rewrites(로컬은 server.py)가 race.html 로 보낸다.
+const DAY = 86400000;
+const pad2 = n => String(n).padStart(2, '0');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const dayOf = s => { const [y, m, d] = s.slice(0, 10).split('-').map(Number); return new Date(y, m - 1, d); };
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const daysFromToday = s => Math.round((dayOf(s) - today) / DAY);
+const fmtDay = s => { const d = dayOf(s); return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()} (${'일월화수목금토'[d.getDay()]})`; };
+const fmtDateTime = s => !s ? '?' : (s.length > 10 ? `${fmtDay(s)} ${s.slice(11, 16)}` : fmtDay(s));
+const won = n => n == null ? '-' : n === 0 ? '무료' : n.toLocaleString('ko-KR') + '원';
+const ext = (href, label, cls) => `<a class="btn ${cls || ''}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+
+// calendar.html 의 calStatus 와 같은 기준
+function regStatus(r) {
+  const reg = r.registration || {};
+  if (reg.closed) return 'closed';
+  const parse = s => s ? new Date(s.length <= 10 ? s + 'T00:00:00' : s) : null;
+  const opens = parse(reg.opensAt);
+  let closes = parse(reg.closesAt);
+  if (closes && String(reg.closesAt).length <= 10) closes = new Date(closes.getTime() + DAY - 1);
+  if (!opens && !closes) return 'unknown';
+  if (opens && now < opens) return 'upcoming';
+  if (closes && now > closes) return 'closed';
+  if (new Date(r.date + 'T23:59:59') < now) return 'closed';
+  return 'open';
+}
+const REG_LABEL = { open: '접수중', upcoming: '접수예정', closed: '접수마감', unknown: '접수정보 없음' };
+
+function distClass(d) {
+  const t = String(d).toLowerCase().replace(/\s/g, '');
+  return { '5km': 'd5', '10km': 'd10', '하프': 'dhalf', half: 'dhalf', '풀': 'dfull', full: 'dfull' }[t] || '';
+}
+
+function heroHtml(r) {
+  const n = daysFromToday(r.date), st = regStatus(r), reg = r.registration || {};
+  const dday = n > 0 ? `<span class="badge dday ${n <= 7 ? 'soon' : ''}">D-${n}</span>`
+    : n === 0 ? '<span class="badge dday soon">D-day</span>' : '<span class="badge">종료된 대회</span>';
+  const img = r.poster || r.image;
+  const poster = img
+    ? `<img class="poster" src="${esc(img)}" alt="" onerror="this.outerHTML='<div class=&quot;poster&quot;>🏃</div>'">`
+    : '<div class="poster">🏃</div>';
+  const dists = (r.distances || []).map(d => `<span class="dist ${distClass(d)}">${esc(d)}</span>`).join('');
+  const reglink = reg.url ? ext(reg.url, st === 'open' ? '공식 홈페이지에서 신청 ➔' : '공식 홈페이지', st === 'open' ? 'btn-green' : '') : '';
+  return `<div class="card"><div class="hero">${poster}<div class="info">
+    <h1>${esc(r.name)}</h1>${r.nameEn ? `<div class="en">${esc(r.nameEn)}</div>` : ''}
+    <div class="badges">${dday}<span class="badge ${st}">${REG_LABEL[st]}</span>${r.major ? '<span class="badge major">메이저</span>' : ''}</div>
+    <div class="meta"><div>📅 ${fmtDay(r.date)}</div><div>📍 ${esc(r.location || '장소 미정')}</div>
+      ${reg.opensAt || reg.closesAt ? `<div>📝 접수 ${fmtDateTime(reg.opensAt)} ~ ${fmtDateTime(reg.closesAt)}</div>` : ''}</div>
+    ${dists ? `<div class="badges">${dists}</div>` : ''}
+    <div class="actions">${reglink}</div></div></div></div>`;
+}
+
+function feesHtml(r) {
+  const fees = r.fees || [];
+  if (!fees.length) return '';
+  const rows = fees.map(f => `<tr><td><span class="dist ${distClass(f.category)}">${esc(f.category)}</span>${f.note ? ` <span style="color:var(--text-muted);font-size:.8rem">${esc(f.note)}</span>` : ''}</td>
+    <td class="num">${f.km ? f.km + 'km' : '-'}</td><td class="num">${won(f.fee)}</td></tr>`).join('');
+  return `<div class="card"><h2>🏷️ 종목 · 참가비</h2>
+    <table><thead><tr><th>종목</th><th class="num">거리</th><th class="num">참가비</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="hint">참가비·종목은 바뀔 수 있어요. 신청 전에 공식 홈페이지에서 확인하세요.</div></div>`;
+}
+
+function mapHtml(r) {
+  const q = encodeURIComponent(r.venue || r.location || '');
+  const links = q ? `<div class="links">${ext('https://map.kakao.com/?q=' + q, '카카오맵에서 보기')}${ext('https://map.naver.com/p/search/' + q, '네이버 지도에서 보기')}</div>` : '';
+  const c = r.coords;
+  if (!c && !links) return '';
+  let map = '';
+  if (c) {
+    const span = { venue: 0.008, area: 0.03, region: 0.25 }[c.precision] || 0.03;
+    const bbox = [c.lon - span * 1.6, c.lat - span, c.lon + span * 1.6, c.lat + span].map(v => v.toFixed(5)).join(',');
+    map = `<iframe class="map" loading="lazy" title="대회 장소 지도"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${c.lat},${c.lon}"></iframe>
+      ${c.precision !== 'venue' ? `<div class="hint">정확한 장소를 찾지 못해 ${c.precision === 'region' ? '시·도' : '주변 지역'} 기준으로 표시했어요.</div>` : ''}`;
+  }
+  return `<div class="card"><h2>📍 위치</h2>${map}${links}</div>`;
+}
+
+// 대회 시간대 평균 기온으로 고르는 복장 힌트
+function outfitTip(t) {
+  if (t == null) return '';
+  if (t < 3) return '🧤 꽤 추워요. 긴팔 기능성 상의·긴 타이츠에 장갑·귀마개를 챙기고, 출발 전엔 버릴 겉옷을 입으세요.';
+  if (t < 8) return '🧥 쌀쌀해요. 긴팔 상의(또는 반팔+팔토시)와 장갑을 추천해요. 출발 대기 중 체온 유지에 신경 쓰세요.';
+  if (t < 14) return '👕 달리기 좋은 날씨예요. 반팔·반바지에 얇은 팔토시 정도면 충분해요.';
+  if (t < 20) return '🎽 조금 더울 수 있어요. 가벼운 반팔·반바지, 급수대마다 수분을 챙기세요.';
+  return '☀️ 더워요. 모자·선크림을 챙기고 페이스를 평소보다 여유 있게 잡으세요.';
+}
+
+function weatherHtml(r) {
+  const w = r.climate;
+  if (!w) return r.coords ? '' : `<div class="card"><h2>🌤️ 대회일 날씨</h2><div class="empty">장소 좌표가 없어 날씨 정보를 준비하지 못했어요.</div></div>`;
+  const deg = v => v == null ? '-' : `${v}<small>°C</small>`;
+  const cell = (lbl, val) => `<div class="wx"><div class="lbl">${lbl}</div><div class="val">${val}</div></div>`;
+  const rows = (w.byYear || []).map(y => `<tr><td>${y.year}</td><td class="num">${y.temp ?? '-'}°</td>
+    <td class="num">${y.tmin ?? '-'}° / ${y.tmax ?? '-'}°</td><td class="num">${y.rain >= 1 ? '🌧 ' + y.rain + 'mm' : y.rain > 0 ? y.rain + 'mm' : '-'}</td></tr>`).join('');
+  const d = dayOf(r.date);
+  return `<div class="card"><h2>🌤️ 대회일 날씨 (최근 ${w.years[1] - w.years[0] + 1}년 평균)</h2>
+    <div class="wx-grid">
+      ${cell(`오전 ${w.hours[0]}~${w.hours[1]}시 기온`, deg(w.temp))}
+      ${cell('최저 / 최고', `${w.tmin ?? '-'}° / ${w.tmax ?? '-'}°`)}
+      ${cell('비 올 확률', w.rainChance == null ? '-' : `${w.rainChance}<small>%</small>`)}
+      ${cell('습도 (오전)', `${w.humidity}<small>%</small>`)}
+      ${cell('바람 (오전)', `${w.wind ?? '-'}<small>m/s</small>`)}
+    </div>
+    ${outfitTip(w.temp) ? `<div class="tip">${outfitTip(w.temp)}</div>` : ''}
+    ${rows ? `<details><summary>해마다 ${d.getMonth() + 1}월 ${d.getDate()}일 날씨 보기</summary>
+      <table><thead><tr><th>연도</th><th class="num">오전 기온</th><th class="num">최저 / 최고</th><th class="num">강수</th></tr></thead><tbody>${rows}</tbody></table></details>` : ''}
+    <div class="hint">${w.years[0]}~${w.years[1]}년 대회일 앞뒤 ${w.window}일의 실제 관측 기반 평균이에요. 예보가 아니니 대회 직전엔 일기예보를 꼭 확인하세요.
+      · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a> (ERA5, CC BY 4.0)</div></div>`;
+}
+
+const VIDEO_FIRST = 3, VIDEO_MORE = 12;  // 처음엔 3개(한 줄), '더 보기'마다 12개씩 더
+function videoGrid(vids) {
+  return vids.length ? `<div class="videos">${vids.map(v => `<a class="video" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">
+      <img src="${esc(v.thumbnailUrl)}" alt="" loading="lazy"><div class="t">${esc(v.title)}</div>
+      <div class="c">${v.type === 'course' ? '📍 주로영상' : '🎬 영상'} · ${esc(v.channel || '')}${v.publishedAt ? ' · ' + esc(v.publishedAt.slice(0, 4)) : ''}</div></a>`).join('')}</div>` : '';
+}
+
+// 영상 목록은 loadLiveVideos 가 유튜브 실시간 검색으로 채운다
+// 대회가 끝났으면 구간 변환기(Step 3에서 이 대회가 미리 선택됨)로 보내 주로영상에서 내 모습을 찾게 한다
+function findMeHtml(r) {
+  return daysFromToday(r.date) > 0
+    ? '<div class="hint">대회가 끝나면 레이스 기록으로 주로영상 속 내 모습을 찾을 수 있어요.</div>'
+    : `<div class="links"><a class="btn btn-green" href="converter?race=${encodeURIComponent(r.id)}">🏃 레이스 기록으로 내 모습 찾기 ➔</a></div>`;
+}
+
+function videosHtml(r) {
+  return `<div class="card"><h2>🎬 관련 영상</h2>
+    <div class="vtabs" id="videoTabs" hidden>
+      <button type="button" class="vtab" data-when="after">대회 후 <span id="vcntAfter"></span></button>
+      <button type="button" class="vtab" data-when="before">대회 전 <span id="vcntBefore"></span></button>
+    </div>
+    <div id="videoGrid"></div>
+    ${findMeHtml(r)}
+    <div class="hint" id="videoHint">유튜브에서 관련 영상을 찾는 중...</div></div>`;
+}
+
+// /api/race/videos (YouTube Data API) 결과를 업로드 날짜로 '대회 후'(대회일 포함)와 '대회 전'으로 나눠 그린다.
+// 실패하거나 결과가 없으면 안내 문구만 남는다.
+async function loadLiveVideos(r) {
+  const hint = document.getElementById('videoHint');
+  let live = [];
+  try {
+    const url = Platform.apiUrl('/api/race/videos?' + new URLSearchParams({ name: r.name, date: r.date }));
+    const res = await fetch(url);
+    if (res.ok) live = (await res.json()).videos || [];
+  } catch (e) { /* 네트워크 오류 등: 영상 없이 안내만 */ }
+  const seen = new Set();
+  const all = live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId));
+  const groups = {
+    after: all.filter(v => v.publishedAt >= r.date),
+    before: all.filter(v => !(v.publishedAt >= r.date)),
+  };
+  if (!all.length) {
+    hint.textContent = '아직 찾은 관련 영상이 없어요.';
+    return;
+  }
+  const HINT = {
+    after: '대회 당일과 그 이후에 올라온 영상이에요. 주로영상·후기를 볼 수 있어요.',
+    before: '대회 전에 올라온 영상이에요. 코스 분석·준비 영상과 지난 대회 영상이 함께 있어요.',
+  };
+  const tabs = document.getElementById('videoTabs');
+  const shown = { after: VIDEO_FIRST, before: VIDEO_FIRST };
+  const show = when => {
+    tabs.querySelectorAll('.vtab').forEach(b => b.classList.toggle('active', b.dataset.when === when));
+    const list = groups[when], rest = list.length - shown[when];
+    const more = rest > 0 ? `<button type="button" class="btn more-btn" id="videoMore">더 보기 (${rest}개)</button>` : '';
+    document.getElementById('videoGrid').innerHTML = (videoGrid(list.slice(0, shown[when])) + more) ||
+      `<div class="empty">${when === 'after' ? (daysFromToday(r.date) > 0 ? '아직 대회 전이에요. 대회가 끝나면 영상이 올라와요.' : '대회 후 올라온 영상이 아직 없어요.') : '대회 전 영상이 없어요.'}</div>`;
+    hint.textContent = HINT[when];
+    document.getElementById('videoMore')?.addEventListener('click', () => { shown[when] += VIDEO_MORE; show(when); });
+  };
+  document.getElementById('vcntAfter').textContent = groups.after.length;
+  document.getElementById('vcntBefore').textContent = groups.before.length;
+  tabs.querySelectorAll('.vtab').forEach(b => b.addEventListener('click', () => show(b.dataset.when)));
+  tabs.hidden = false;
+  show(groups.after.length ? 'after' : 'before');
+}
+
+function render(r) {
+  document.title = `${r.name} - MarathonNote`;
+  document.getElementById('page').innerHTML = heroHtml(r) + feesHtml(r) + weatherHtml(r) + mapHtml(r) +
+    videosHtml(r);
+  loadLiveVideos(r);
+}
+
+async function load() {
+  const m = location.pathname.match(/\/race\/([^/]+)\/?$/);
+  const id = m ? decodeURIComponent(m[1]) : '';
+  const page = document.getElementById('page');
+  const notFound = '<div class="card"><div class="empty">대회를 찾지 못했어요. 캘린더에서 다시 골라주세요.</div></div>';
+  if (!id) { page.innerHTML = notFound; return; }
+  try {
+    const res = await fetch(`data/calendar/races/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+    if (res.status === 404) { page.innerHTML = notFound; return; }
+    render(await res.json());
+  } catch (e) {
+    page.innerHTML = '<div class="card"><div class="empty">대회 정보를 불러오지 못했습니다.</div></div>';
+  }
+}
+
+// 목록(홈·캘린더)에서 들어왔으면 뒤로, 바로 열었으면 캘린더로
+document.getElementById('back').addEventListener('click', () => {
+  if (history.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin) history.back();
+  else location.href = 'calendar';
+});
+load();
+</script>
+</body>
+</html>

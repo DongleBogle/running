@@ -1,0 +1,132 @@
+{
+ "id": "olympic-day-run-2026",
+ "name": "올림픽데이런 2026",
+ "nameEn": "Olympic Day Run 2026",
+ "date": "2026-11-08",
+ "location": "서울 올림픽공원 88잔디마당",
+ "region": "서울",
+ "venue": "올림픽공원 88잔디마당",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 59000,
+   "note": "올림픽데이런 티셔츠, 올림픽데이런 니삭스, 리유저블백, 넥워머, 올림픽데이런 스티커, 배번호, 완주메달"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 59000,
+   "note": "올림픽데이런 티셔츠, 올림픽데이런 니삭스, 리유저블백, 넥워머, 올림픽데이런 스티커, 배번호, 완주메달"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/f6661fd912dd8e0b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788313865/kormarathon/events/event-images-1788313864487.jpg",
+ "registration": {
+  "opensAt": "2026-08-24",
+  "closesAt": "2026-09-06",
+  "closed": false,
+  "url": "http://olympicday.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/olympic-day-run-2026",
+ "coords": {
+  "lat": 37.51615,
+  "lon": 127.13093,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.7,
+  "tmin": 4.0,
+  "tmax": 13.8,
+  "humidity": 75,
+  "wind": 1.9,
+  "rainChance": 17,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.1,
+    "tmin": 8.6,
+    "tmax": 15.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 6.2,
+    "tmin": 2.9,
+    "tmax": 14.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 5.4,
+    "tmin": 1.0,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.5,
+    "tmin": 6.0,
+    "tmax": 15.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.4,
+    "tmin": 3.8,
+    "tmax": 13.7,
+    "rain": 19.9
+   },
+   {
+    "year": 2020,
+    "temp": 7.5,
+    "tmin": 2.6,
+    "tmax": 11.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.4,
+    "tmin": -1.2,
+    "tmax": 10.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.0,
+    "tmin": 10.1,
+    "tmax": 15.2,
+    "rain": 38.4
+   },
+   {
+    "year": 2017,
+    "temp": 13.0,
+    "tmin": 5.2,
+    "tmax": 15.0,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 2.1,
+    "tmin": -0.2,
+    "tmax": 8.1,
+    "rain": 0.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

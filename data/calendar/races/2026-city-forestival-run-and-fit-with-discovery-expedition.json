@@ -1,0 +1,131 @@
+{
+ "id": "2026-city-forestival-run-and-fit-with-discovery-expedition",
+ "name": "2026 시포레 RUN & FIT with 디스커버리",
+ "nameEn": "2026 City Forestival RUN & FIT with Discovery Expedition",
+ "date": "2026-09-19",
+ "location": "경기 일산호수공원 노래하는 분수대 일대",
+ "region": "경기",
+ "venue": "일산호수공원 노래하는 분수대 일대",
+ "distances": [
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 69000,
+   "note": "RUN 패키지"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 89000,
+   "note": "RUN & FIT 패키지"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/c1e6451f52fd147e.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788956339/kormarathon/events/event-images-1788956338280.jpg",
+ "registration": {
+  "opensAt": "2026-07-16",
+  "closesAt": "2026-08-20",
+  "closed": true,
+  "url": "https://cityforestival.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-city-forestival-run-and-fit-with-discovery-expedition",
+ "coords": {
+  "lat": 37.65753,
+  "lon": 126.76423,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 20.4,
+  "tmin": 16.7,
+  "tmax": 24.9,
+  "humidity": 80,
+  "wind": 2.2,
+  "rainChance": 34,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 19.2,
+    "tmin": 17.9,
+    "tmax": 21.0,
+    "rain": 18.7
+   },
+   {
+    "year": 2024,
+    "temp": 25.7,
+    "tmin": 24.4,
+    "tmax": 29.5,
+    "rain": 8.5
+   },
+   {
+    "year": 2023,
+    "temp": 22.6,
+    "tmin": 18.5,
+    "tmax": 26.7,
+    "rain": 0.4
+   },
+   {
+    "year": 2022,
+    "temp": 24.7,
+    "tmin": 16.6,
+    "tmax": 26.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 22.0,
+    "tmin": 18.8,
+    "tmax": 26.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 20.2,
+    "tmin": 14.8,
+    "tmax": 24.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 16.8,
+    "tmin": 11.0,
+    "tmax": 23.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 19.8,
+    "tmin": 16.0,
+    "tmax": 23.3,
+    "rain": 9.3
+   },
+   {
+    "year": 2017,
+    "temp": 21.1,
+    "tmin": 16.5,
+    "tmax": 24.3,
+    "rain": 3.9
+   },
+   {
+    "year": 2016,
+    "temp": 20.2,
+    "tmin": 17.4,
+    "tmax": 24.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

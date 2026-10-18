@@ -1,0 +1,139 @@
+{
+ "id": "3rd-positive-power-marathon",
+ "name": "제3회 긍정의 힘 마라톤",
+ "nameEn": "3rd Positive Power Marathon",
+ "date": "2026-12-12",
+ "location": "서울 신정교 하부 영롱이 억새구장",
+ "region": "서울",
+ "venue": "신정교 하부 영롱이 억새구장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/d026080b63043f02.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788252783/kormarathon/events/og-image-1788252782555-frplp.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-12-02",
+  "closed": false,
+  "url": "https://www.powerrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/3rd-positive-power-marathon",
+ "coords": {
+  "lat": 37.51734,
+  "lon": 126.87765,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.2,
+  "tmin": -4.3,
+  "tmax": 4.1,
+  "humidity": 67,
+  "wind": 2.4,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -1.5,
+    "tmin": -4.2,
+    "tmax": 4.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -3.1,
+    "tmin": -4.7,
+    "tmax": 2.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.8,
+    "tmin": 1.2,
+    "tmax": 7.6,
+    "rain": 0.5
+   },
+   {
+    "year": 2022,
+    "temp": -1.4,
+    "tmin": -5.7,
+    "tmax": 5.4,
+    "rain": 2.4
+   },
+   {
+    "year": 2021,
+    "temp": 1.6,
+    "tmin": -5.7,
+    "tmax": 4.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -0.9,
+    "tmin": -4.0,
+    "tmax": 4.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -4.0,
+    "tmin": -6.1,
+    "tmax": 1.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": -5.1,
+    "tmin": -7.0,
+    "tmax": 0.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -11.2,
+    "tmin": -12.3,
+    "tmax": -6.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": -0.1,
+    "tmin": -4.0,
+    "tmax": 6.6,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

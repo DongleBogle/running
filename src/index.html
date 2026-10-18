@@ -53,15 +53,6 @@
 <!-- 유튜브 주로 영상 추출 -->
 <main class="view" id="view-converter" hidden>
 <div class="container">
-  <!-- 상단 헤더 -->
-  <header>
-    <div class="header-actions">
-      <button class="btn btn-danger" onclick="clearAllUploadedPhotos()" title="등록된 모든 사진과 데이터를 초기화합니다">
-        전체 사진 비우기
-      </button>
-    </div>
-  </header>
-
   <div class="step-card" id="step1">
     <div class="step-header" onclick="toggleStep(1)">
       <div class="step-num">1</div>
@@ -82,11 +73,16 @@
           <br><strong>스마트칩 공식 기록 이미지 1건</strong>과 <strong>워치 1km 단위 구간기록 이미지</strong>를 첨부해 주세요. 사진은 최대 5장까지 등록할 수 있습니다.
         </p>
       </div>
+      <div class="photo-actions">
+      <button type="button" class="btn btn-danger" onclick="clearAllUploadedPhotos()" title="등록된 모든 사진과 추출·수정한 기록을 초기화합니다">
+        전체 사진 비우기
+      </button>
       <label class="btn btn-outline upload-btn" style="cursor: pointer;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
         새 사진 업로드
         <input type="file" id="photoUploadInput" multiple accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
       </label>
+      </div>
     </div>
 
     <!-- 이미지 갤러리 (동적 렌더링) -->
@@ -105,6 +101,43 @@
       <div class="step-chevron">▾</div>
     </div>
     <div class="step-body">
+  <!-- 추출 결과 확인 안내 + 추출값(공식 계측·워치 랩) 직접 수정 -->
+  <div class="ocr-review" id="ocrReview">
+    <div class="ocr-review-head">
+      <div>
+        <div class="ocr-review-title" id="ocrReviewTitle">✍️ 기록을 직접 입력할 수 있어요</div>
+        <p id="ocrReviewDesc">사진 없이도 공식 계측 기록과 워치 1km 구간 기록을 입력하면 타임테이블이 계산됩니다.</p>
+      </div>
+      <button type="button" class="btn btn-outline" id="btnToggleParsed" onclick="toggleParsedEditor()">추출 결과 확인·수정</button>
+    </div>
+    <div class="parsed-editor" id="parsedEditor" hidden>
+      <div class="parsed-block">
+        <h4>🏁 공식 계측 기록 (스마트칩)</h4>
+        <p class="parsed-hint">지점·경과 시간은 필수, 실제 시각(Time of Day)은 아는 곳만 입력하세요. 마지막 지점이 완주 기록이 됩니다.</p>
+        <div class="parsed-scroll"><table class="parsed-table">
+          <thead><tr><th>지점 (km)</th><th>경과 시간 (H:MM:SS)</th><th>실제 시각 (HH:MM:SS)</th><th></th></tr></thead>
+          <tbody id="cpEditBody"></tbody>
+        </table></div>
+        <button type="button" class="btn-quick" onclick="addParsedRow('cp')">+ 계측 지점 추가</button>
+      </div>
+      <div class="parsed-block">
+        <h4>⌚ 워치 1km 구간 기록</h4>
+        <p class="parsed-hint">구간 시간은 M:SS 또는 M:SS.S 형식입니다. <span class="est-mark">추정</span> 표시는 사진에서 못 읽어 앞뒤 랩으로 채운 값이에요.</p>
+        <div class="parsed-scroll"><table class="parsed-table">
+          <thead><tr><th>랩</th><th>거리 (km)</th><th>구간 시간</th><th></th></tr></thead>
+          <tbody id="lapEditBody"></tbody>
+        </table></div>
+        <button type="button" class="btn-quick" onclick="addParsedRow('lap')">+ 랩 추가</button>
+      </div>
+      <div class="parsed-actions">
+        <span class="parsed-error" id="parsedError"></span>
+        <button type="button" class="btn btn-outline" id="btnResetEdits" onclick="resetEditedRecords()" hidden>AI 추출값으로 되돌리기</button>
+        <button type="button" class="btn btn-outline" onclick="toggleParsedEditor(false)">취소</button>
+        <button type="button" class="btn btn-green" onclick="applyParsedEdits()">수정값으로 타임테이블 다시 계산</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 러닝 요약 대시보드 카드 -->
   <div class="grid-top">
     <div class="stat-card">
@@ -210,20 +243,19 @@
       </div>
     </div>
 
-    <!-- 대회별 추천 영상 (data/marathon_videos.json, scripts/collect_marathon_videos.py 로 생성) -->
+    <!-- 대회별 주로영상: 날짜 → 그날 대회 → 주로영상 (data/calendar + /api/race/videos) -->
     <div class="race-rec-box" id="raceRecBox">
       <div class="race-rec-head">
-        <h4>🏁 대회별 추천 영상</h4>
-        <span id="raceRecUpdated"></span>
+        <h4>🏁 대회별 주로영상</h4>
       </div>
-      <div class="race-chip-row" id="raceDateChips"></div>
-      <div class="race-chip-row" id="raceNameChips"></div>
+      <div class="race-pick-row">
+        <label class="race-pick date"><span>📅 날짜</span>
+          <select id="raceDateSelect" onchange="selectRaceDate(this.value)"></select></label>
+        <label class="race-pick name"><span>🏃 대회</span>
+          <select id="raceNameSelect" onchange="selectRace(this.value)"></select></label>
+      </div>
       <div class="race-meta" id="raceMeta"></div>
-      <div class="race-tab-row">
-        <button type="button" class="race-tab active" data-kind="course" onclick="setRaceVideoKind('course')">📍 주로영상 <span id="raceCourseCnt" class="race-tab-cnt"></span></button>
-        <button type="button" class="race-tab" data-kind="review" onclick="setRaceVideoKind('review')">🎬 후기·1인칭 <span id="raceReviewCnt" class="race-tab-cnt"></span></button>
-      </div>
-      <p id="raceKindHint" class="race-kind-hint"></p>
+      <p id="raceKindHint" class="race-kind-hint">고정 지점에서 지나가는 주자들을 찍은 영상입니다. 누르면 아래에서 바로 내 통과 시점을 분석합니다.</p>
       <div class="race-video-grid" id="raceVideoGrid"></div>
     </div>
 
@@ -288,17 +320,12 @@
             </ul>
           </div>
 
-          <!-- 타임스탬프 빠른 적용 버튼들 -->
-          <div style="display: flex; gap: 8px; flex-direction: column;">
+          <!-- 타임스탬프 빠른 적용 버튼들 (적용할 시점이 없으면 숨김) -->
+          <div id="ytTimestampQuick" style="display: none; gap: 8px; flex-direction: column;">
             <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">추천 시간대 원클릭 적용:</div>
             <div class="quick-row" id="ytTimestampQuickBtns">
               <!-- 빠른 적용 버튼 -->
             </div>
-          </div>
-
-          <!-- 유튜브 미리보기 임베드 -->
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid #1e293b; background: #000;">
-            <iframe id="ytPreviewIframe" style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
           </div>
         </div>
 
@@ -380,6 +407,26 @@
   </div>
 
 </div>
+  <!-- 확인 팝업 (브라우저 기본 confirm 이 막힌 환경에서도 동작하도록 askConfirm 이 사용) -->
+  <dialog class="yt-fail-dialog confirm-dialog" id="confirmDialog">
+    <p id="confirmMsg"></p>
+    <div class="confirm-actions">
+      <button type="button" class="btn btn-outline" value="cancel">취소</button>
+      <button type="button" class="btn" id="confirmOk" value="ok">확인</button>
+    </div>
+  </dialog>
+
+  <!-- 촬영 지점·시작 시각 자동 추출 실패 안내 (renderYoutubeAnalysis 에서 연다) -->
+  <dialog class="yt-fail-dialog" id="ytExtractFailDialog">
+    <h3>⚠️ 자동 추출에 실패했어요</h3>
+    <p>영상 설명에서 <strong id="ytExtractFailItems"></strong>을(를) 찾지 못했습니다.</p>
+    <p>영상을 살펴보고 아래 칸에 직접 입력한 뒤 <b>수정값으로 다시 계산</b>을 눌러주세요.</p>
+    <ul>
+      <li>📍 촬영 지점: 영상 제목·화면의 km 표지판 (예: 20.9)</li>
+      <li>⏱️ 촬영 시작 시각: 영상 첫 장면의 실제 시각 (예: 08:05:00)</li>
+    </ul>
+    <button type="button" class="btn btn-green" onclick="closeExtractFailDialog()">직접 입력하기</button>
+  </dialog>
 </main>
 
 <!-- 마라톤 캘린더 -->

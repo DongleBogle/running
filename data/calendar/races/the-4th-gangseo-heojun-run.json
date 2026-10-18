@@ -1,0 +1,139 @@
+{
+ "id": "the-4th-gangseo-heojun-run",
+ "name": "제4회 강서허준런(RUN)",
+ "nameEn": "The 4th Gangseo Heojun Run",
+ "date": "2026-10-10",
+ "location": "서울 서울식물원 초지원",
+ "region": "서울",
+ "venue": "서울식물원 초지원",
+ "distances": [
+  "~5km",
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 30000,
+   "note": "패밀리런 종목 (인당)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/051a73de3e260e36.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1783324586/kormarathon/events/event-images-1783324585739.jpg",
+ "registration": {
+  "opensAt": "2026-07-06",
+  "closesAt": "2026-07-30",
+  "closed": false,
+  "url": "http://gangseo.raceplan.co.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/the-4th-gangseo-heojun-run",
+ "coords": {
+  "lat": 37.57107,
+  "lon": 126.83466,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 14.7,
+  "tmin": 10.8,
+  "tmax": 19.7,
+  "humidity": 79,
+  "wind": 2.5,
+  "rainChance": 26,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 17.2,
+    "tmin": 16.0,
+    "tmax": 19.0,
+    "rain": 20.4
+   },
+   {
+    "year": 2024,
+    "temp": 16.4,
+    "tmin": 13.1,
+    "tmax": 21.0,
+    "rain": 0.4
+   },
+   {
+    "year": 2023,
+    "temp": 14.0,
+    "tmin": 10.6,
+    "tmax": 21.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.8,
+    "tmin": 6.1,
+    "tmax": 10.9,
+    "rain": 1.5
+   },
+   {
+    "year": 2021,
+    "temp": 21.7,
+    "tmin": 13.3,
+    "tmax": 24.1,
+    "rain": 11.4
+   },
+   {
+    "year": 2020,
+    "temp": 14.3,
+    "tmin": 9.5,
+    "tmax": 20.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.4,
+    "tmin": 9.0,
+    "tmax": 16.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.2,
+    "tmin": 6.3,
+    "tmax": 14.8,
+    "rain": 4.1
+   },
+   {
+    "year": 2017,
+    "temp": 19.4,
+    "tmin": 15.5,
+    "tmax": 24.0,
+    "rain": 5.5
+   },
+   {
+    "year": 2016,
+    "temp": 11.0,
+    "tmin": 6.9,
+    "tmax": 17.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

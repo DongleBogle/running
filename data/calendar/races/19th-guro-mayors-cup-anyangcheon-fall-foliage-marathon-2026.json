@@ -1,0 +1,132 @@
+{
+ "id": "19th-guro-mayors-cup-anyangcheon-fall-foliage-marathon-2026",
+ "name": "제19회 구로구청장배 안양천 단풍 마라톤대회",
+ "nameEn": "19th Guro Mayors Cup Anyangcheon Fall Foliage Marathon 2026",
+ "date": "2026-09-13",
+ "location": "서울 구일역 하부 인라인스케이트장",
+ "region": "서울",
+ "venue": "구일역 하부 인라인스케이트장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "기록 측정 · 제한 시간 1시간 30분"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 35000,
+   "note": "기록 측정 · 제한 시간 2시간"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/92cbce9a27e25f0b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788956265/kormarathon/events/event-images-1788956264135.jpg",
+ "registration": {
+  "opensAt": "2026-08-03",
+  "closesAt": "2026-08-31",
+  "closed": true,
+  "url": "https://cafe.daum.net/guro-run/LvM7/45"
+ },
+ "source": "https://www.kormarathon.com/ko/races/19th-guro-mayors-cup-anyangcheon-fall-foliage-marathon-2026",
+ "coords": {
+  "lat": 37.49638,
+  "lon": 126.87089,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.0,
+  "tmin": 18.7,
+  "tmax": 26.4,
+  "humidity": 81,
+  "wind": 2.5,
+  "rainChance": 33,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.2,
+    "tmin": 20.0,
+    "tmax": 26.2,
+    "rain": 42.6
+   },
+   {
+    "year": 2024,
+    "temp": 25.4,
+    "tmin": 23.6,
+    "tmax": 27.8,
+    "rain": 19.2
+   },
+   {
+    "year": 2023,
+    "temp": 21.7,
+    "tmin": 19.2,
+    "tmax": 23.2,
+    "rain": 21.3
+   },
+   {
+    "year": 2022,
+    "temp": 23.6,
+    "tmin": 19.8,
+    "tmax": 27.2,
+    "rain": 0.5
+   },
+   {
+    "year": 2021,
+    "temp": 22.7,
+    "tmin": 18.8,
+    "tmax": 28.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 19.1,
+    "tmin": 15.8,
+    "tmax": 23.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 20.6,
+    "tmin": 17.0,
+    "tmax": 26.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 20.3,
+    "tmin": 17.9,
+    "tmax": 25.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 18.0,
+    "tmin": 14.0,
+    "tmax": 23.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 22.7,
+    "tmin": 19.2,
+    "tmax": 27.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

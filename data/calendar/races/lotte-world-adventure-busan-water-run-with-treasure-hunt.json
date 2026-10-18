@@ -1,0 +1,125 @@
+{
+ "id": "lotte-world-adventure-busan-water-run-with-treasure-hunt",
+ "name": "롯데월드 어드벤처 부산 워터런 with 보물찾기",
+ "nameEn": "Lotte World Adventure Busan Water Run with Treasure Hunt",
+ "date": "2026-09-06",
+ "location": "부산 롯데월드 어드벤처 부산",
+ "region": "부산",
+ "venue": "롯데월드 어드벤처 부산",
+ "distances": [
+  "5km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 58000,
+   "note": "첫 2km는 자유롭게 달리는 워밍업 구간이며, 이후 3km는 런데이 애플리케이션으로 보물찾기 미션을 수행"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/996fc4b888e24200.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787634732/kormarathon/events/event-images-1787634731478.jpg",
+ "registration": {
+  "opensAt": "2026-08-23",
+  "closesAt": "2026-09-02",
+  "closed": true,
+  "url": "https://leisure-web.yanolja.com/leisure/10359880"
+ },
+ "source": "https://www.kormarathon.com/ko/races/lotte-world-adventure-busan-water-run-with-treasure-hunt",
+ "coords": {
+  "lat": 35.17995,
+  "lon": 129.07524,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 24.1,
+  "tmin": 20.8,
+  "tmax": 27.1,
+  "humidity": 81,
+  "wind": 3.2,
+  "rainChance": 54,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 27.5,
+    "tmin": 22.6,
+    "tmax": 30.9,
+    "rain": 1.6
+   },
+   {
+    "year": 2024,
+    "temp": 27.6,
+    "tmin": 22.9,
+    "tmax": 29.4,
+    "rain": 2.6
+   },
+   {
+    "year": 2023,
+    "temp": 25.8,
+    "tmin": 22.1,
+    "tmax": 28.3,
+    "rain": 0.8
+   },
+   {
+    "year": 2022,
+    "temp": 22.9,
+    "tmin": 18.9,
+    "tmax": 26.7,
+    "rain": 68.5
+   },
+   {
+    "year": 2021,
+    "temp": 22.5,
+    "tmin": 20.2,
+    "tmax": 25.0,
+    "rain": 7.9
+   },
+   {
+    "year": 2020,
+    "temp": 20.5,
+    "tmin": 17.7,
+    "tmax": 21.7,
+    "rain": 21.6
+   },
+   {
+    "year": 2019,
+    "temp": 26.4,
+    "tmin": 23.8,
+    "tmax": 28.4,
+    "rain": 0.9
+   },
+   {
+    "year": 2018,
+    "temp": 21.4,
+    "tmin": 18.4,
+    "tmax": 24.6,
+    "rain": 0.2
+   },
+   {
+    "year": 2017,
+    "temp": 22.2,
+    "tmin": 21.1,
+    "tmax": 25.7,
+    "rain": 30.6
+   },
+   {
+    "year": 2016,
+    "temp": 24.7,
+    "tmin": 22.7,
+    "tmax": 26.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

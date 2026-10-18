@@ -1,0 +1,146 @@
+{
+ "id": "2026-green-umbrella-runway-marathon",
+ "name": "제2회 초록우산 런웨이 마라톤",
+ "nameEn": "2026 Green Umbrella Runway Marathon",
+ "date": "2026-09-12",
+ "location": "대전 대전엑스포시민광장",
+ "region": "대전",
+ "venue": "대전엑스포시민광장",
+ "distances": [
+  "~5km",
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 2.99,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": "$undefined",
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/bd2560a81a56577f.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1776411686/kormarathon/events/event-images-1776411685202.png",
+ "registration": {
+  "opensAt": "2026-04-01",
+  "closesAt": "2026-07-31",
+  "closed": true,
+  "url": "https://mara1080.com/event/9443583f-6577-466c-ab2f-43d1dbd820d4"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-green-umbrella-runway-marathon",
+ "coords": {
+  "lat": 36.3497,
+  "lon": 127.3849,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.8,
+  "tmin": 19.3,
+  "tmax": 27.3,
+  "humidity": 81,
+  "wind": 2.6,
+  "rainChance": 31,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.8,
+    "tmin": 21.5,
+    "tmax": 25.4,
+    "rain": 11.3
+   },
+   {
+    "year": 2024,
+    "temp": 27.4,
+    "tmin": 25.1,
+    "tmax": 32.5,
+    "rain": 8.4
+   },
+   {
+    "year": 2023,
+    "temp": 24.1,
+    "tmin": 21.0,
+    "tmax": 29.1,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 21.9,
+    "tmin": 19.9,
+    "tmax": 24.2,
+    "rain": 2.9
+   },
+   {
+    "year": 2021,
+    "temp": 22.8,
+    "tmin": 17.4,
+    "tmax": 28.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 19.0,
+    "tmin": 17.9,
+    "tmax": 23.0,
+    "rain": 5.2
+   },
+   {
+    "year": 2019,
+    "temp": 20.5,
+    "tmin": 19.1,
+    "tmax": 22.5,
+    "rain": 7.3
+   },
+   {
+    "year": 2018,
+    "temp": 19.6,
+    "tmin": 14.5,
+    "tmax": 26.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 21.5,
+    "tmin": 16.4,
+    "tmax": 26.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 23.0,
+    "tmin": 20.0,
+    "tmax": 27.9,
+    "rain": 1.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

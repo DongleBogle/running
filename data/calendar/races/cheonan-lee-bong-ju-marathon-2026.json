@@ -1,0 +1,139 @@
+{
+ "id": "cheonan-lee-bong-ju-marathon-2026",
+ "name": "2026 천안 이봉주 마라톤",
+ "nameEn": "CHEONAN LEE BONG JU MARATHON 2026",
+ "date": "2026-10-11",
+ "location": "충남 천안종합운동장 일원",
+ "region": "충남",
+ "venue": "천안종합운동장 일원",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 30000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 30000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/15c82fca3617b3f6.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789350022/kormarathon/events/event-images-1789350020774.jpg",
+ "registration": {
+  "opensAt": "2026-07-31",
+  "closesAt": "2026-08-28",
+  "closed": true,
+  "url": "https://bjlee.casports.or.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/cheonan-lee-bong-ju-marathon-2026",
+ "coords": {
+  "lat": 36.81726,
+  "lon": 127.11278,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 15.1,
+  "tmin": 11.1,
+  "tmax": 19.7,
+  "humidity": 76,
+  "wind": 2.4,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.9,
+    "tmin": 17.7,
+    "tmax": 25.6,
+    "rain": 0.2
+   },
+   {
+    "year": 2024,
+    "temp": 15.6,
+    "tmin": 11.1,
+    "tmax": 21.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 15.7,
+    "tmin": 11.2,
+    "tmax": 21.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.9,
+    "tmin": 6.3,
+    "tmax": 13.8,
+    "rain": 0.1
+   },
+   {
+    "year": 2021,
+    "temp": 12.8,
+    "tmin": 11.5,
+    "tmax": 17.9,
+    "rain": 8.2
+   },
+   {
+    "year": 2020,
+    "temp": 15.4,
+    "tmin": 10.9,
+    "tmax": 21.0,
+    "rain": 0.8
+   },
+   {
+    "year": 2019,
+    "temp": 15.1,
+    "tmin": 9.8,
+    "tmax": 22.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.1,
+    "tmin": 5.2,
+    "tmax": 12.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 15.9,
+    "tmin": 12.2,
+    "tmax": 19.3,
+    "rain": 4.9
+   },
+   {
+    "year": 2016,
+    "temp": 14.0,
+    "tmin": 11.7,
+    "tmax": 19.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

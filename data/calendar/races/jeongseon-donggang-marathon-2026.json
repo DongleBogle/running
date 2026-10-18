@@ -1,0 +1,217 @@
+{
+ "id": "jeongseon-donggang-marathon-2026",
+ "name": "2026 정선동강마라톤대회",
+ "nameEn": "JEONGSEON DONGGANG MARATHON 2026",
+ "date": "2026-10-17",
+ "location": "강원 정선군 동강변 일원(정선생태체험학습장)",
+ "region": "강원",
+ "venue": "정선군 동강변 일원(정선생태체험학습장)",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "일반 참가(타지역) · 5km 건강달리기"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "정선군민 · 5km 건강달리기"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 60000,
+   "note": "일반 참가(타지역) · 5km 커플런(2인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": "정선군민 · 5km 커플런(2인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 60000,
+   "note": "일반 참가(타지역) · 5km 가족런(2인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": "정선군민 · 5km 가족런(2인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 90000,
+   "note": "일반 참가(타지역) · 5km 가족런(3인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 75000,
+   "note": "정선군민 · 5km 가족런(3인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 120000,
+   "note": "일반 참가(타지역) · 5km 가족런(4인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 100000,
+   "note": "정선군민 · 5km 가족런(4인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 150000,
+   "note": "일반 참가(타지역) · 5km 가족런(5인)"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 125000,
+   "note": "정선군민 · 5km 가족런(5인)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "일반 참가(타지역)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 35000,
+   "note": "정선군민"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 40000,
+   "note": "일반 참가(타지역)"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 35000,
+   "note": "정선군민"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/9650bc9d5facf8ad.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789352748/kormarathon/events/event-images-1789352746847.jpg",
+ "registration": {
+  "opensAt": "2026-06-23",
+  "closesAt": "2026-07-22",
+  "closed": true,
+  "url": "https://jsrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/jeongseon-donggang-marathon-2026",
+ "coords": {
+  "lat": 37.38046,
+  "lon": 128.66095,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.7,
+  "tmin": 7.4,
+  "tmax": 17.9,
+  "humidity": 76,
+  "wind": 1.9,
+  "rainChance": 27,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 17.2,
+    "tmin": 14.1,
+    "tmax": 22.5,
+    "rain": 4.6
+   },
+   {
+    "year": 2024,
+    "temp": 15.0,
+    "tmin": 11.0,
+    "tmax": 23.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 9.6,
+    "tmin": 2.5,
+    "tmax": 17.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 12.4,
+    "tmin": 3.5,
+    "tmax": 14.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 3.5,
+    "tmin": -0.6,
+    "tmax": 10.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 10.0,
+    "tmin": 3.8,
+    "tmax": 16.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 13.0,
+    "tmin": 6.2,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.0,
+    "tmin": 7.0,
+    "tmax": 14.4,
+    "rain": 3.3
+   },
+   {
+    "year": 2017,
+    "temp": 13.3,
+    "tmin": 8.1,
+    "tmax": 18.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 15.5,
+    "tmin": 10.5,
+    "tmax": 21.2,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

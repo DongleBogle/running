@@ -1,0 +1,125 @@
+{
+ "id": "oak-valley-winter-half-marathon",
+ "name": "오크밸리 윈터 하프 마라톤",
+ "nameEn": "Oak Valley Winter Half Marathon",
+ "date": "2026-12-05",
+ "location": "강원 오크밸리",
+ "region": "강원",
+ "venue": "오크밸리",
+ "distances": [
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1a9c53fa13028cfb.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788261954/kormarathon/events/event-images-1788261952865.jpg",
+ "registration": {
+  "opensAt": "2026-09-03",
+  "closesAt": "2026-09-15",
+  "closed": false,
+  "url": ""
+ },
+ "source": "https://www.kormarathon.com/ko/races/oak-valley-winter-half-marathon",
+ "coords": {
+  "lat": 37.40694,
+  "lon": 127.80178,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.4,
+  "tmin": -4.6,
+  "tmax": 4.4,
+  "humidity": 63,
+  "wind": 1.6,
+  "rainChance": 14,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -7.8,
+    "tmin": -12.4,
+    "tmax": 0.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -0.6,
+    "tmin": -4.5,
+    "tmax": 4.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 0.8,
+    "tmin": -3.3,
+    "tmax": 9.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": -5.9,
+    "tmin": -7.0,
+    "tmax": 0.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": -0.4,
+    "tmin": -4.3,
+    "tmax": 7.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -2.1,
+    "tmin": -4.6,
+    "tmax": 4.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -4.1,
+    "tmin": -8.6,
+    "tmax": -1.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": -3.0,
+    "tmin": -5.7,
+    "tmax": 3.7,
+    "rain": 0.1
+   },
+   {
+    "year": 2017,
+    "temp": -7.4,
+    "tmin": -8.8,
+    "tmax": -3.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 6.0,
+    "tmin": 0.7,
+    "tmax": 10.2,
+    "rain": 0.2
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:32"
+}

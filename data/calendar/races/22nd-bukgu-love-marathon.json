@@ -1,0 +1,132 @@
+{
+ "id": "22nd-bukgu-love-marathon",
+ "name": "제22회 북구사랑마라톤대회",
+ "nameEn": "22nd Bukgu Love Marathon",
+ "date": "2026-10-18",
+ "location": "대구 금호강 산격야영장",
+ "region": "대구",
+ "venue": "금호강 산격야영장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 15000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 25000,
+   "note": "청년부·장년부 남녀 4개 부문으로 운영"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/472601d88d6fc7e2.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782295532/kormarathon/events/event-images-1782295530786.jpg",
+ "registration": {
+  "opensAt": "2026-08-03",
+  "closesAt": "2026-08-24",
+  "closed": false,
+  "url": "http://maraton.dbsfa365.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/22nd-bukgu-love-marathon",
+ "coords": {
+  "lat": 35.8985,
+  "lon": 128.56035,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 14.4,
+  "tmin": 10.2,
+  "tmax": 20.0,
+  "humidity": 75,
+  "wind": 1.8,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.6,
+    "tmin": 17.0,
+    "tmax": 20.1,
+    "rain": 7.7
+   },
+   {
+    "year": 2024,
+    "temp": 19.1,
+    "tmin": 14.7,
+    "tmax": 24.8,
+    "rain": 8.5
+   },
+   {
+    "year": 2023,
+    "temp": 13.1,
+    "tmin": 8.4,
+    "tmax": 23.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.5,
+    "tmin": 5.0,
+    "tmax": 15.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 7.3,
+    "tmin": 2.3,
+    "tmax": 15.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.3,
+    "tmin": 7.4,
+    "tmax": 19.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.8,
+    "tmin": 11.1,
+    "tmax": 17.6,
+    "rain": 3.8
+   },
+   {
+    "year": 2018,
+    "temp": 11.4,
+    "tmin": 5.7,
+    "tmax": 18.2,
+    "rain": 0.9
+   },
+   {
+    "year": 2017,
+    "temp": 15.5,
+    "tmin": 13.5,
+    "tmax": 18.3,
+    "rain": 0.3
+   },
+   {
+    "year": 2016,
+    "temp": 15.6,
+    "tmin": 11.8,
+    "tmax": 22.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

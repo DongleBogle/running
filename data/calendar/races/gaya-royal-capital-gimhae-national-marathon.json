@@ -1,0 +1,139 @@
+{
+ "id": "gaya-royal-capital-gimhae-national-marathon",
+ "name": "가야왕도김해 전국어울림 마라톤대회",
+ "nameEn": "Gaya Royal Capital Gimhae National Marathon",
+ "date": "2026-11-29",
+ "location": "경남 김해롯데워터파크 제3주차장",
+ "region": "경남",
+ "venue": "김해롯데워터파크 제3주차장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": "청소년 및 장애인은 30,000원 혜택 제공"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/6402d43444e40230.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786932753/kormarathon/events/event-images-1786932752449.jpg",
+ "registration": {
+  "opensAt": "2026-08-13",
+  "closesAt": "2026-10-25",
+  "closed": false,
+  "url": "https://gimhaemarathon.imweb.me/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/gaya-royal-capital-gimhae-national-marathon",
+ "coords": {
+  "lat": 35.38783,
+  "lon": 128.36623,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 4.5,
+  "tmin": 0.6,
+  "tmax": 10.8,
+  "humidity": 65,
+  "wind": 2.5,
+  "rainChance": 11,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 3.4,
+    "tmin": -0.5,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 2.9,
+    "tmin": -0.4,
+    "tmax": 8.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 4.0,
+    "tmin": 0.7,
+    "tmax": 8.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 15.1,
+    "tmin": 5.6,
+    "tmax": 16.8,
+    "rain": 27.8
+   },
+   {
+    "year": 2021,
+    "temp": 4.0,
+    "tmin": -1.7,
+    "tmax": 14.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 2.2,
+    "tmin": -0.9,
+    "tmax": 7.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 3.7,
+    "tmin": 0.8,
+    "tmax": 10.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 4.7,
+    "tmin": 1.5,
+    "tmax": 12.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 9.3,
+    "tmin": 5.6,
+    "tmax": 13.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 0.4,
+    "tmin": -3.8,
+    "tmax": 8.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

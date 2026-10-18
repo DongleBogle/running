@@ -1,0 +1,139 @@
+{
+ "id": "2026-yeongcheon-dam-marathon",
+ "name": "2026 영천댐 마라톤 대회",
+ "nameEn": "2026 Yeongcheon Dam Marathon",
+ "date": "2026-11-07",
+ "location": "경북 영천댐공원 일원",
+ "region": "경북",
+ "venue": "영천댐공원 일원",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "가족과 함께하는 가벼운 코스"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "기념티, 완주메달, 2시간 칩사용"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 40000,
+   "note": "기념티, 완주메달, 3시간 칩사용"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/f6436df8d889951a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1776412220/events/screenshots/screenshot_aHR0cHM6Ly9ydW55Yy5r_1776412218759.jpg",
+ "registration": {
+  "opensAt": "2026-09-01",
+  "closesAt": "2026-09-30",
+  "closed": false,
+  "url": "https://runyc.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-yeongcheon-dam-marathon",
+ "coords": {
+  "lat": 36.5754,
+  "lon": 128.5058,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 8.6,
+  "tmin": 4.1,
+  "tmax": 15.6,
+  "humidity": 75,
+  "wind": 2.0,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 9.4,
+    "tmin": 3.9,
+    "tmax": 18.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.7,
+    "tmin": -1.2,
+    "tmax": 14.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 6.5,
+    "tmin": 2.9,
+    "tmax": 9.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.4,
+    "tmin": 0.8,
+    "tmax": 15.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 12.4,
+    "tmin": 7.2,
+    "tmax": 18.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.4,
+    "tmin": 6.1,
+    "tmax": 19.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 10.7,
+    "tmin": 4.8,
+    "tmax": 15.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.6,
+    "tmin": 8.9,
+    "tmax": 14.8,
+    "rain": 2.9
+   },
+   {
+    "year": 2017,
+    "temp": 9.3,
+    "tmin": 4.3,
+    "tmax": 18.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 10.2,
+    "tmin": 7.6,
+    "tmax": 15.5,
+    "rain": 0.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

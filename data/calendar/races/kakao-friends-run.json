@@ -1,0 +1,132 @@
+{
+ "id": "kakao-friends-run",
+ "name": "카카오프렌즈 런",
+ "nameEn": "KAKAO FRIENDS RUN",
+ "date": "2026-10-10",
+ "location": "경기 성남시 탄천종합운동장",
+ "region": "경기",
+ "venue": "성남시 탄천종합운동장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 80000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 80000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/03d102008d5602cb.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785819707/kormarathon/events/event-images-1785819706050.jpg",
+ "registration": {
+  "opensAt": "2026-08-10",
+  "closesAt": "2026-08-17",
+  "closed": false,
+  "url": "https://b.kakao.com/views/kakaofriendsrun"
+ },
+ "source": "https://www.kormarathon.com/ko/races/kakao-friends-run",
+ "coords": {
+  "lat": 37.41011,
+  "lon": 127.12122,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 14.5,
+  "tmin": 10.6,
+  "tmax": 19.5,
+  "humidity": 78,
+  "wind": 2.0,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 16.9,
+    "tmin": 16.4,
+    "tmax": 18.3,
+    "rain": 18.7
+   },
+   {
+    "year": 2024,
+    "temp": 15.9,
+    "tmin": 12.0,
+    "tmax": 20.8,
+    "rain": 0.3
+   },
+   {
+    "year": 2023,
+    "temp": 13.5,
+    "tmin": 10.2,
+    "tmax": 20.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.4,
+    "tmin": 5.5,
+    "tmax": 10.3,
+    "rain": 1.5
+   },
+   {
+    "year": 2021,
+    "temp": 22.0,
+    "tmin": 13.5,
+    "tmax": 25.0,
+    "rain": 9.1
+   },
+   {
+    "year": 2020,
+    "temp": 14.3,
+    "tmin": 9.8,
+    "tmax": 19.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.5,
+    "tmin": 9.4,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.9,
+    "tmin": 6.8,
+    "tmax": 14.5,
+    "rain": 1.5
+   },
+   {
+    "year": 2017,
+    "temp": 19.3,
+    "tmin": 15.2,
+    "tmax": 23.6,
+    "rain": 0.9
+   },
+   {
+    "year": 2016,
+    "temp": 11.4,
+    "tmin": 7.1,
+    "tmax": 18.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

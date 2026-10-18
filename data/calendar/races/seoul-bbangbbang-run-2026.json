@@ -1,0 +1,132 @@
+{
+ "id": "seoul-bbangbbang-run-2026",
+ "name": "서울 빵빵런2026",
+ "nameEn": "Seoul BbangBbang Run 2026",
+ "date": "2026-11-14",
+ "location": "서울 뚝섬한강공원 수변무대",
+ "region": "서울",
+ "venue": "뚝섬한강공원 수변무대",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 59000,
+   "note": "일반 참가권"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 59000,
+   "note": "일반 참가권"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/5e6618a7da9efc29.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790000059/kormarathon/events/event-images-1790000057814.jpg",
+ "registration": {
+  "opensAt": "2026-09-21",
+  "closesAt": "2026-10-02",
+  "closed": false,
+  "url": "https://seoul.bbangrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/seoul-bbangbbang-run-2026",
+ "coords": {
+  "lat": 37.52983,
+  "lon": 127.06811,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 6.0,
+  "tmin": 2.4,
+  "tmax": 12.3,
+  "humidity": 76,
+  "wind": 1.9,
+  "rainChance": 17,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 5.9,
+    "tmin": 2.7,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.3,
+    "tmin": 9.3,
+    "tmax": 15.6,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 1.5,
+    "tmin": -2.0,
+    "tmax": 8.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.6,
+    "tmin": 3.4,
+    "tmax": 11.9,
+    "rain": 0.6
+   },
+   {
+    "year": 2021,
+    "temp": 9.0,
+    "tmin": 5.5,
+    "tmax": 15.1,
+    "rain": 0.4
+   },
+   {
+    "year": 2020,
+    "temp": 7.0,
+    "tmin": 3.1,
+    "tmax": 17.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -1.7,
+    "tmin": -3.4,
+    "tmax": 2.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 6.1,
+    "tmin": 1.8,
+    "tmax": 12.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 5.4,
+    "tmin": 1.7,
+    "tmax": 9.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 13.5,
+    "tmin": 9.8,
+    "tmax": 17.2,
+    "rain": 2.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

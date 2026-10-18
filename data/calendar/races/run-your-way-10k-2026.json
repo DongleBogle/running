@@ -1,0 +1,137 @@
+{
+ "id": "run-your-way-10k-2026",
+ "name": "2026 Run Your Way 10K (뉴발란스)",
+ "nameEn": "Run Your Way 10K 2026",
+ "date": "2026-10-04",
+ "location": "서울 여의도 공원",
+ "region": "서울",
+ "venue": "여의도 공원",
+ "distances": [
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 80000,
+   "note": "RYW Package"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 259000,
+   "note": "Shake Out Run Package"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 259000,
+   "note": "SC Rebel Package"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/978f391757b98a00.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1784699923/kormarathon/events/event-images-1784699922539.jpg",
+ "registration": {
+  "opensAt": "2026-07-31",
+  "closesAt": "2026-08-02",
+  "closed": false,
+  "url": "https://www.nbkorea.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/run-your-way-10k-2026",
+ "coords": {
+  "lat": 37.52567,
+  "lon": 126.92522,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 16.9,
+  "tmin": 13.5,
+  "tmax": 21.5,
+  "humidity": 80,
+  "wind": 2.7,
+  "rainChance": 43,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.3,
+    "tmin": 19.3,
+    "tmax": 23.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.4,
+    "tmin": 9.4,
+    "tmax": 20.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 16.8,
+    "tmin": 12.7,
+    "tmax": 21.7,
+    "rain": 1.0
+   },
+   {
+    "year": 2022,
+    "temp": 16.1,
+    "tmin": 13.2,
+    "tmax": 21.8,
+    "rain": 21.6
+   },
+   {
+    "year": 2021,
+    "temp": 21.7,
+    "tmin": 18.0,
+    "tmax": 24.9,
+    "rain": 5.5
+   },
+   {
+    "year": 2020,
+    "temp": 17.5,
+    "tmin": 9.7,
+    "tmax": 20.1,
+    "rain": 0.3
+   },
+   {
+    "year": 2019,
+    "temp": 20.2,
+    "tmin": 15.6,
+    "tmax": 24.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 15.9,
+    "tmin": 10.7,
+    "tmax": 23.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 14.3,
+    "tmin": 10.0,
+    "tmax": 20.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 18.9,
+    "tmin": 14.1,
+    "tmax": 27.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,132 @@
+{
+ "id": "2026-gunsan-mayors-cup-short-distance-road-race",
+ "name": "2026 군산시장배 단축마라톤대회",
+ "nameEn": "2026 Gunsan Mayors Cup Short-Distance Road Race",
+ "date": "2026-10-25",
+ "location": "전북 전북 군산시 새만금방조제 해넘이휴게소 하부도로 (비응항 방향)",
+ "region": "전북",
+ "venue": "전북 군산시 새만금방조제 해넘이휴게소 하부도로 (비응항 방향)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": "일반부·학생부 (남녀)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 25000,
+   "note": "일반부 (남녀)"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/7f16b965412b49c0.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790328240/kormarathon/events/event-images-1790328239919.jpg",
+ "registration": {
+  "opensAt": "2026-09-28",
+  "closesAt": "2026-10-08",
+  "closed": false,
+  "url": "https://form.naver.com/response/I9jCxUVxPDF"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-gunsan-mayors-cup-short-distance-road-race",
+ "coords": {
+  "lat": 35.968,
+  "lon": 126.7369,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.8,
+  "tmin": 8.8,
+  "tmax": 18.3,
+  "humidity": 76,
+  "wind": 2.5,
+  "rainChance": 10,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 14.5,
+    "tmin": 10.5,
+    "tmax": 18.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 13.0,
+    "tmin": 8.0,
+    "tmax": 21.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 14.5,
+    "tmin": 9.1,
+    "tmax": 21.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.8,
+    "tmin": 4.5,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.7,
+    "tmin": 6.2,
+    "tmax": 17.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 10.9,
+    "tmin": 5.1,
+    "tmax": 17.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 16.3,
+    "tmin": 12.0,
+    "tmax": 21.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.9,
+    "tmin": 5.8,
+    "tmax": 19.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.2,
+    "tmin": 6.4,
+    "tmax": 17.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 17.3,
+    "tmin": 12.4,
+    "tmax": 18.5,
+    "rain": 16.2
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

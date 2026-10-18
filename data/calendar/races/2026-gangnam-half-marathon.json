@@ -1,0 +1,125 @@
+{
+ "id": "2026-gangnam-half-marathon",
+ "name": "2026 강남하프마라톤",
+ "nameEn": "2026 Gangnam Half Marathon",
+ "date": "2026-11-08",
+ "location": "서울 대치유수지 체육공원",
+ "region": "서울",
+ "venue": "대치유수지 체육공원",
+ "distances": [
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/5e98b05725bbb15c.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786602921/kormarathon/events/event-images-1786602919737.jpg",
+ "registration": {
+  "opensAt": "2026-09-07",
+  "closesAt": "2026-10-23",
+  "closed": false,
+  "url": ""
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-gangnam-half-marathon",
+ "coords": {
+  "lat": 37.5043,
+  "lon": 127.06789,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.6,
+  "tmin": 3.9,
+  "tmax": 13.7,
+  "humidity": 76,
+  "wind": 2.3,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.1,
+    "tmin": 9.0,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 5.2,
+    "tmin": 0.6,
+    "tmax": 14.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 4.5,
+    "tmin": 0.7,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.4,
+    "tmin": 7.4,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.2,
+    "tmin": 3.3,
+    "tmax": 13.5,
+    "rain": 20.1
+   },
+   {
+    "year": 2020,
+    "temp": 7.3,
+    "tmin": 2.3,
+    "tmax": 11.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.1,
+    "tmin": -1.6,
+    "tmax": 10.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.8,
+    "tmin": 9.9,
+    "tmax": 15.4,
+    "rain": 37.8
+   },
+   {
+    "year": 2017,
+    "temp": 12.6,
+    "tmin": 4.9,
+    "tmax": 14.9,
+    "rain": 1.2
+   },
+   {
+    "year": 2016,
+    "temp": 2.1,
+    "tmin": -0.2,
+    "tmax": 8.1,
+    "rain": 0.5
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

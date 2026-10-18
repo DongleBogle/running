@@ -1,0 +1,132 @@
+{
+ "id": "just-run10-gimhae-daedong",
+ "name": "JUST RUN10 김해 대동",
+ "nameEn": "JUST RUN10 Gimhae Daedong",
+ "date": "2026-09-19",
+ "location": "경남 김해 대동생태체육공원",
+ "region": "경남",
+ "venue": "김해 대동생태체육공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/868093f38c77d9c4.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1783865699/kormarathon/events/event-images-1783865698207.jpg",
+ "registration": {
+  "opensAt": "2026-06-01",
+  "closesAt": "2026-08-05",
+  "closed": true,
+  "url": "https://runten.co.kr/competitions/694b75d9-2f7c-4d4e-aa20-4163c44e9c82"
+ },
+ "source": "https://www.kormarathon.com/ko/races/just-run10-gimhae-daedong",
+ "coords": {
+  "lat": 35.26531,
+  "lon": 128.87516,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.1,
+  "tmin": 18.2,
+  "tmax": 25.4,
+  "humidity": 81,
+  "wind": 2.6,
+  "rainChance": 44,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.0,
+    "tmin": 18.5,
+    "tmax": 25.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 28.6,
+    "tmin": 23.9,
+    "tmax": 32.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 24.0,
+    "tmin": 20.4,
+    "tmax": 28.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 24.7,
+    "tmin": 18.0,
+    "tmax": 26.9,
+    "rain": 45.3
+   },
+   {
+    "year": 2021,
+    "temp": 21.0,
+    "tmin": 15.6,
+    "tmax": 25.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 18.5,
+    "tmin": 12.4,
+    "tmax": 24.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 20.6,
+    "tmin": 14.8,
+    "tmax": 23.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 22.5,
+    "tmin": 18.1,
+    "tmax": 25.4,
+    "rain": 4.8
+   },
+   {
+    "year": 2017,
+    "temp": 20.7,
+    "tmin": 15.4,
+    "tmax": 27.4,
+    "rain": 1.4
+   },
+   {
+    "year": 2016,
+    "temp": 20.7,
+    "tmin": 19.7,
+    "tmax": 22.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

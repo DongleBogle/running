@@ -1,0 +1,137 @@
+{
+ "id": "2026-taejongdae-beat-on-zombie-race",
+ "name": "2026 태종대 BEAT ON 좀비레이스",
+ "nameEn": "2026 Taejongdae BEAT ON Zombie Race",
+ "date": "2026-10-31",
+ "location": "부산 영도구 태종대 자동차야외극장 (Drive In 영도)",
+ "region": "부산",
+ "venue": "영도구 태종대 자동차야외극장 (Drive In 영도)",
+ "distances": [
+  "5km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 4,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "5km",
+   "km": 4,
+   "fee": 39000,
+   "note": "얼리버드 할인가는 퀵결제 이용 시에만 적용됩니다."
+  },
+  {
+   "category": "5km",
+   "km": 4,
+   "fee": 45000,
+   "note": "선착순 기간한정 종목입니다."
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/7e498657171aab5c.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787719417/kormarathon/events/event-images-1787719416193.jpg",
+ "registration": {
+  "opensAt": "2026-08-20",
+  "closesAt": "2026-09-10",
+  "closed": false,
+  "url": "https://taejongdaezombie.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-taejongdae-beat-on-zombie-race",
+ "coords": {
+  "lat": 35.05851,
+  "lon": 129.08769,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 12.9,
+  "tmin": 9.1,
+  "tmax": 17.4,
+  "humidity": 63,
+  "wind": 3.7,
+  "rainChance": 10,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 14.2,
+    "tmin": 10.9,
+    "tmax": 18.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 17.7,
+    "tmin": 14.8,
+    "tmax": 20.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.2,
+    "tmin": 8.5,
+    "tmax": 21.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 14.6,
+    "tmin": 12.1,
+    "tmax": 17.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 13.7,
+    "tmin": 8.9,
+    "tmax": 19.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.9,
+    "tmin": 10.2,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.3,
+    "tmin": 6.8,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.1,
+    "tmin": 5.7,
+    "tmax": 14.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 8.9,
+    "tmin": 4.6,
+    "tmax": 16.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.5,
+    "tmin": 10.1,
+    "tmax": 14.4,
+    "rain": 0.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

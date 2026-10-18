@@ -1,0 +1,132 @@
+{
+ "id": "2026-2nd-white-run",
+ "name": "2026 제2회 화이트런",
+ "nameEn": "2026 2nd White Run",
+ "date": "2026-09-12",
+ "location": "서울 영등포구 신정교 및 인라인스케이트장",
+ "region": "서울",
+ "venue": "영등포구 신정교 및 인라인스케이트장",
+ "distances": [
+  "~5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 4.2,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1c5f5347247951a6.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1780314635/events/screenshots/screenshot_aHR0cHM6Ly93d3cud2hp_1780314634164.jpg",
+ "registration": {
+  "opensAt": "2026-04-27",
+  "closesAt": "2026-08-14",
+  "closed": true,
+  "url": "https://www.whiterun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-2nd-white-run",
+ "coords": {
+  "lat": 37.51593,
+  "lon": 126.8829,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 22.0,
+  "tmin": 18.7,
+  "tmax": 26.4,
+  "humidity": 82,
+  "wind": 2.3,
+  "rainChance": 29,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.3,
+    "tmin": 20.0,
+    "tmax": 25.9,
+    "rain": 11.8
+   },
+   {
+    "year": 2024,
+    "temp": 25.2,
+    "tmin": 23.7,
+    "tmax": 25.4,
+    "rain": 19.8
+   },
+   {
+    "year": 2023,
+    "temp": 23.9,
+    "tmin": 20.2,
+    "tmax": 28.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 22.7,
+    "tmin": 18.5,
+    "tmax": 27.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 22.0,
+    "tmin": 17.3,
+    "tmax": 27.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 18.7,
+    "tmin": 18.0,
+    "tmax": 22.3,
+    "rain": 6.3
+   },
+   {
+    "year": 2019,
+    "temp": 21.0,
+    "tmin": 18.4,
+    "tmax": 21.8,
+    "rain": 2.4
+   },
+   {
+    "year": 2018,
+    "temp": 19.2,
+    "tmin": 14.5,
+    "tmax": 26.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 21.0,
+    "tmin": 15.5,
+    "tmax": 25.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 23.4,
+    "tmin": 20.6,
+    "tmax": 26.8,
+    "rain": 0.3
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

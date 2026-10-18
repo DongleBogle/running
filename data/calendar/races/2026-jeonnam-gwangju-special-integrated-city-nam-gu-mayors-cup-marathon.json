@@ -1,0 +1,139 @@
+{
+ "id": "2026-jeonnam-gwangju-special-integrated-city-nam-gu-mayors-cup-marathon",
+ "name": "2026 전남광주통합특별시 남구청장배 마라톤",
+ "nameEn": "2026 Jeonnam-Gwangju Special Integrated City Nam-gu Mayors Cup Marathon",
+ "date": "2026-10-17",
+ "location": "광주 광주공원 앞 광주교 천변 자전거길",
+ "region": "광주",
+ "venue": "광주공원 앞 광주교 천변 자전거길",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 38000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 38000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 38000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/0994c47092b37541.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789445025/kormarathon/events/event-images-1789445024561.jpg",
+ "registration": {
+  "opensAt": "2026-07-10",
+  "closesAt": "2026-09-12",
+  "closed": true,
+  "url": "https://cafe.daum.net/6507447"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-jeonnam-gwangju-special-integrated-city-nam-gu-mayors-cup-marathon",
+ "coords": {
+  "lat": 35.15581,
+  "lon": 126.83064,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 14.9,
+  "tmin": 10.1,
+  "tmax": 20.1,
+  "humidity": 75,
+  "wind": 2.1,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.3,
+    "tmin": 16.7,
+    "tmax": 25.1,
+    "rain": 33.1
+   },
+   {
+    "year": 2024,
+    "temp": 17.9,
+    "tmin": 14.2,
+    "tmax": 24.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.4,
+    "tmin": 7.3,
+    "tmax": 19.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 14.7,
+    "tmin": 8.7,
+    "tmax": 16.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 5.4,
+    "tmin": 3.4,
+    "tmax": 10.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 13.0,
+    "tmin": 6.4,
+    "tmax": 19.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.2,
+    "tmin": 10.4,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 12.4,
+    "tmin": 6.5,
+    "tmax": 18.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 14.1,
+    "tmin": 10.2,
+    "tmax": 20.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 18.3,
+    "tmin": 14.9,
+    "tmax": 22.7,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

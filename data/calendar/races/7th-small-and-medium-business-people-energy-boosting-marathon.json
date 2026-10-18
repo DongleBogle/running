@@ -1,0 +1,139 @@
+{
+ "id": "7th-small-and-medium-business-people-energy-boosting-marathon",
+ "name": "제7회 중소기업인 氣살리기 마라톤 대회",
+ "nameEn": "7th Small and Medium Business People Energy-Boosting Marathon",
+ "date": "2026-10-31",
+ "location": "서울 안양천 축구장",
+ "region": "서울",
+ "venue": "안양천 축구장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 44000,
+   "note": "기록칩은 제공되지 않습니다."
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 55000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21,
+   "fee": 55000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/add18cf8e50275ea.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786517054/kormarathon/events/event-images-1786517053747.jpg",
+ "registration": {
+  "opensAt": "2026-08-07",
+  "closesAt": "2026-10-18",
+  "closed": false,
+  "url": "https://kasmirun.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/7th-small-and-medium-business-people-energy-boosting-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.5,
+  "tmin": 5.5,
+  "tmax": 15.5,
+  "humidity": 76,
+  "wind": 2.1,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.4,
+    "tmin": 9.0,
+    "tmax": 18.1,
+    "rain": 1.7
+   },
+   {
+    "year": 2024,
+    "temp": 12.2,
+    "tmin": 7.6,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 10.5,
+    "tmin": 7.5,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 11.9,
+    "tmin": 8.0,
+    "tmax": 18.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.6,
+    "tmin": 6.9,
+    "tmax": 17.8,
+    "rain": 2.2
+   },
+   {
+    "year": 2020,
+    "temp": 9.6,
+    "tmin": 5.7,
+    "tmax": 17.1,
+    "rain": 1.7
+   },
+   {
+    "year": 2019,
+    "temp": 11.1,
+    "tmin": 5.8,
+    "tmax": 18.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 4.6,
+    "tmin": 0.8,
+    "tmax": 9.7,
+    "rain": 0.1
+   },
+   {
+    "year": 2017,
+    "temp": 6.3,
+    "tmin": 1.4,
+    "tmax": 13.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 7.8,
+    "tmin": 0.9,
+    "tmax": 7.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,132 @@
+{
+ "id": "2026-infinite-challenge-run-in-gyeongju",
+ "name": "2026 무한도전 RUN in 경주",
+ "nameEn": "2026 Infinite Challenge Run in Gyeongju",
+ "date": "2026-09-19",
+ "location": "경북 경주시민운동장",
+ "region": "경북",
+ "venue": "경주시민운동장",
+ "distances": [
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 99900,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 119900,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/0461d048ac683fe3.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1784103747/kormarathon/events/event-images-1784103746552.jpg",
+ "registration": {
+  "opensAt": "2026-07-30",
+  "closesAt": "2026-07-31",
+  "closed": true,
+  "url": ""
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-infinite-challenge-run-in-gyeongju",
+ "coords": {
+  "lat": 35.85994,
+  "lon": 129.2122,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 21.9,
+  "tmin": 18.4,
+  "tmax": 24.9,
+  "humidity": 81,
+  "wind": 3.4,
+  "rainChance": 46,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 22.1,
+    "tmin": 19.0,
+    "tmax": 23.9,
+    "rain": 0.3
+   },
+   {
+    "year": 2024,
+    "temp": 27.3,
+    "tmin": 24.0,
+    "tmax": 33.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 24.2,
+    "tmin": 21.1,
+    "tmax": 28.8,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 23.2,
+    "tmin": 17.9,
+    "tmax": 23.8,
+    "rain": 82.3
+   },
+   {
+    "year": 2021,
+    "temp": 21.5,
+    "tmin": 17.7,
+    "tmax": 23.8,
+    "rain": 1.1
+   },
+   {
+    "year": 2020,
+    "temp": 19.7,
+    "tmin": 13.5,
+    "tmax": 25.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 20.5,
+    "tmin": 15.6,
+    "tmax": 22.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 21.6,
+    "tmin": 17.3,
+    "tmax": 24.2,
+    "rain": 6.0
+   },
+   {
+    "year": 2017,
+    "temp": 21.5,
+    "tmin": 16.0,
+    "tmax": 27.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 20.1,
+    "tmin": 19.1,
+    "tmax": 21.0,
+    "rain": 0.8
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,139 @@
+{
+ "id": "2nd-anyangcheon-maple-run",
+ "name": "제2회 안양천 단풍길 마라톤",
+ "nameEn": "2nd Anyangcheon Maple Run",
+ "date": "2026-11-14",
+ "location": "서울 신정교 하부 영롱이 억새구장",
+ "region": "서울",
+ "venue": "신정교 하부 영롱이 억새구장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/e084b91b78f15f06.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786405285/kormarathon/events/event-images-1786405283759.jpg",
+ "registration": {
+  "opensAt": "2026-08-01",
+  "closesAt": "2026-11-05",
+  "closed": false,
+  "url": "http://maplerun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2nd-anyangcheon-maple-run",
+ "coords": {
+  "lat": 37.51734,
+  "lon": 126.87765,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 6.2,
+  "tmin": 2.6,
+  "tmax": 12.4,
+  "humidity": 75,
+  "wind": 2.2,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 6.4,
+    "tmin": 3.5,
+    "tmax": 13.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.8,
+    "tmin": 10.6,
+    "tmax": 15.8,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 2.0,
+    "tmin": -1.6,
+    "tmax": 8.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.3,
+    "tmin": 3.1,
+    "tmax": 11.8,
+    "rain": 0.5
+   },
+   {
+    "year": 2021,
+    "temp": 9.3,
+    "tmin": 6.1,
+    "tmax": 15.3,
+    "rain": 0.3
+   },
+   {
+    "year": 2020,
+    "temp": 7.4,
+    "tmin": 3.7,
+    "tmax": 17.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -1.7,
+    "tmin": -3.6,
+    "tmax": 3.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 6.5,
+    "tmin": 2.6,
+    "tmax": 13.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 5.7,
+    "tmin": 3.0,
+    "tmax": 9.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 13.5,
+    "tmin": 9.3,
+    "tmax": 16.1,
+    "rain": 2.4
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

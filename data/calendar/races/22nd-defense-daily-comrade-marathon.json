@@ -1,0 +1,132 @@
+{
+ "id": "22nd-defense-daily-comrade-marathon",
+ "name": "제22회 국방일보 전우마라톤",
+ "nameEn": "22nd Defense Daily Comrade Marathon",
+ "date": "2026-11-07",
+ "location": "경기 임진각 평화누리공원",
+ "region": "경기",
+ "venue": "임진각 평화누리공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "기록측정용 칩은 제외"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 20000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/956c4f4878d290c6.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788171563/kormarathon/events/event-images-1788171562255.jpg",
+ "registration": {
+  "opensAt": "2026-09-07",
+  "closesAt": "2026-10-08",
+  "closed": false,
+  "url": "https://www.dema.mil.kr/marathon/main.do"
+ },
+ "source": "https://www.kormarathon.com/ko/races/22nd-defense-daily-comrade-marathon",
+ "coords": {
+  "lat": 37.8923,
+  "lon": 126.744,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.5,
+  "tmin": 3.5,
+  "tmax": 13.9,
+  "humidity": 73,
+  "wind": 2.3,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 9.3,
+    "tmin": 5.8,
+    "tmax": 18.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 3.1,
+    "tmin": -1.9,
+    "tmax": 12.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.2,
+    "tmin": 1.1,
+    "tmax": 7.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 7.0,
+    "tmin": 3.1,
+    "tmax": 14.2,
+    "rain": 1.2
+   },
+   {
+    "year": 2021,
+    "temp": 10.5,
+    "tmin": 6.2,
+    "tmax": 19.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 12.2,
+    "tmin": 9.5,
+    "tmax": 17.2,
+    "rain": 1.2
+   },
+   {
+    "year": 2019,
+    "temp": 6.9,
+    "tmin": 1.0,
+    "tmax": 11.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 10.4,
+    "tmin": 9.4,
+    "tmax": 13.7,
+    "rain": 2.2
+   },
+   {
+    "year": 2017,
+    "temp": 10.9,
+    "tmin": 6.8,
+    "tmax": 17.3,
+    "rain": 2.1
+   },
+   {
+    "year": 2016,
+    "temp": 12.2,
+    "tmin": 5.7,
+    "tmax": 15.0,
+    "rain": 4.3
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

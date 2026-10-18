@@ -1,0 +1,139 @@
+{
+ "id": "2026-ulsan-marathon",
+ "name": "2026 울산마라톤",
+ "nameEn": "2026 Ulsan Marathon",
+ "date": "2026-10-11",
+ "location": "울산 울산종합운동장 및 울산광역시 일원",
+ "region": "울산",
+ "venue": "울산종합운동장 및 울산광역시 일원",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "제한시간 1시간, 오전 09:00 출발"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "제한시간 2시간, 오전 08:40 출발"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 45000,
+   "note": "제한시간 3시간, 오전 08:30 출발"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/845378fb4db1eb88.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1785483014/kormarathon/events/event-images-1785483013111.jpg",
+ "registration": {
+  "opensAt": "2026-07-27",
+  "closesAt": "2026-09-30",
+  "closed": false,
+  "url": "https://run.uaf.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-ulsan-marathon",
+ "coords": {
+  "lat": 35.56246,
+  "lon": 129.34883,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 17.6,
+  "tmin": 13.4,
+  "tmax": 21.2,
+  "humidity": 72,
+  "wind": 3.0,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 21.7,
+    "tmin": 16.1,
+    "tmax": 28.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 17.0,
+    "tmin": 11.1,
+    "tmax": 22.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 17.7,
+    "tmin": 12.0,
+    "tmax": 20.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 12.6,
+    "tmin": 8.1,
+    "tmax": 16.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 18.8,
+    "tmin": 16.9,
+    "tmax": 22.9,
+    "rain": 18.9
+   },
+   {
+    "year": 2020,
+    "temp": 16.9,
+    "tmin": 12.5,
+    "tmax": 19.9,
+    "rain": 0.1
+   },
+   {
+    "year": 2019,
+    "temp": 17.7,
+    "tmin": 11.9,
+    "tmax": 22.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 11.8,
+    "tmin": 8.1,
+    "tmax": 15.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 22.6,
+    "tmin": 16.7,
+    "tmax": 25.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 16.4,
+    "tmin": 12.2,
+    "tmax": 20.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

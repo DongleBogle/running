@@ -423,17 +423,18 @@
   .race-rec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
   .race-rec-head h4 { font-size: 1rem; font-weight: 800; color: #f1f5f9; }
   .race-rec-head span { font-size: 0.74rem; color: #64748b; }
-  .race-chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-  .race-chip { border: 1px solid #334155; background: #0f172a; color: #cbd5e1; border-radius: 999px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-  .race-chip:hover { border-color: #38bdf8; color: #e0f2fe; }
-  .race-chip.active { background: rgba(56,189,248,0.15); border-color: #38bdf8; color: #7dd3fc; }
-  .race-chip.date { font-weight: 800; }
-  .race-chip.date.active { background: rgba(250,204,21,0.12); border-color: #facc15; color: #fde047; }
-  .race-chip .cnt { color: #64748b; font-weight: 500; margin-left: 4px; }
+  /* 날짜 선택(왼쪽) → 그날 대회 선택(오른쪽). 기본 select 라 누르면 세로 목록으로 고른다 */
+  .race-pick-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .race-pick { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .race-pick.date { flex: 0 0 210px; }
+  .race-pick.name { flex: 1; }
+  .race-pick span { font-size: 0.74rem; font-weight: 700; color: #94a3b8; }
+  .race-pick select { width: 100%; min-width: 0; background: #0f172a; color: #e2e8f0; border: 1px solid #334155; border-radius: 10px;
+    padding: 9px 12px; font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+  .race-pick select:hover, .race-pick select:focus { border-color: #38bdf8; outline: none; }
+  .race-pick.date select { border-color: rgba(250,204,21,0.5); color: #fde047; }
+  @media (max-width: 480px) { .race-pick.date { flex-basis: 42%; } }
   .race-meta { font-size: 0.78rem; color: #94a3b8; margin: 4px 0 10px; }
-  .race-tab-row { display: flex; gap: 6px; border-bottom: 1px solid #1e293b; margin-bottom: 12px; }
-  .race-tab { background: none; border: none; border-bottom: 2px solid transparent; color: #94a3b8; padding: 8px 12px; font-size: 0.88rem; font-weight: 700; cursor: pointer; }
-  .race-tab.active { color: #f1f5f9; border-bottom-color: #ef4444; }
   .race-video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; max-height: 520px; overflow-y: auto; padding-right: 2px; }
   .race-video-card { display: flex; flex-direction: column; text-align: left; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden; cursor: pointer; color: inherit; text-decoration: none; padding: 0; font: inherit; transition: all 0.15s; }
   .race-video-card:hover { border-color: #ef4444; transform: translateY(-1px); }
@@ -740,9 +741,7 @@ img, video, iframe { max-width: 100%; }
 .yt-head h3 { font-size: 1.25rem; font-weight: 800; color: #fff; }
 .yt-head p { color: var(--text-muted); font-size: 0.84rem; margin-top: 2px; }
 .yt-head-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-.race-tab-cnt { font-variant-numeric: tabular-nums; }
 .race-kind-hint { font-size: 0.74rem; color: #64748b; margin: -4px 0 10px; }
-.race-tab { white-space: nowrap; }
 
 .yt-title-info { flex: 1; min-width: 0; }
 .yt-title-info h4 { overflow-wrap: anywhere; }
@@ -833,11 +832,6 @@ img, video, iframe { max-width: 100%; }
   .yt-head p { font-size: 0.78rem; word-break: keep-all; }
 
   .race-rec-box { padding: 12px 10px; }
-  .race-chip-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -10px; margin-right: -10px; padding: 0 10px 2px; }
-  .race-chip-row::-webkit-scrollbar { display: none; }
-  .race-chip { flex-shrink: 0; white-space: nowrap; min-height: 38px; }
-  .race-tab-row { gap: 0; }
-  .race-tab { flex: 1; padding: 10px 6px; font-size: 0.84rem; min-height: 42px; }
   .race-video-grid { max-height: 70vh; gap: 8px; }
   .race-video-card .t { font-size: 0.78rem; }
 
@@ -870,5 +864,50 @@ img, video, iframe { max-width: 100%; }
 }
 
 /* 로고는 상단 바(.topbar)가 보여주므로 변환기 헤더에는 액션만 남긴다 */
-#view-converter header { justify-content: flex-end; margin-bottom: 12px; padding-bottom: 12px; }
-#view-converter header .header-actions { width: auto; }
+
+/* 촬영 지점·시작 시각 자동 추출 실패 팝업 */
+.yt-fail-dialog { max-width: 420px; width: calc(100% - 32px); margin: auto; background: #131b2e; color: #e2e8f0; border: 1px solid #f97316; border-radius: 14px; padding: 20px; }
+.yt-fail-dialog::backdrop { background: rgba(2, 6, 23, 0.7); }
+.yt-fail-dialog h3 { font-size: 1.05rem; margin-bottom: 10px; color: #fdba74; }
+.yt-fail-dialog p { font-size: 0.9rem; line-height: 1.55; margin-bottom: 8px; }
+.yt-fail-dialog strong { color: #fdba74; }
+.yt-fail-dialog ul { font-size: 0.82rem; color: #94a3b8; margin: 4px 0 16px 18px; line-height: 1.6; }
+.yt-fail-dialog .btn { width: 100%; justify-content: center; }
+.yt-edit-row input.yt-edit-input.missing { border-color: #f97316; box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25); }
+
+/* Step 2: 추출 결과 확인 안내 + 추출값 직접 수정 */
+.ocr-review { background: #090e1a; border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; }
+.ocr-review.extracted { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.06); }
+.ocr-review.empty { border-color: rgba(249, 115, 22, 0.5); background: rgba(249, 115, 22, 0.06); }
+.ocr-review.edited { border-color: rgba(56, 189, 248, 0.45); background: rgba(56, 189, 248, 0.05); }
+.ocr-review-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.ocr-review-title { font-weight: 800; font-size: 1rem; color: #f1f5f9; }
+.ocr-review-head p { font-size: 0.84rem; color: #94a3b8; margin-top: 2px; }
+.parsed-editor { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.parsed-editor[hidden] { display: none; }
+.parsed-block h4 { font-size: 0.92rem; margin-bottom: 4px; color: #e2e8f0; }
+.parsed-hint { font-size: 0.76rem; color: #64748b; margin-bottom: 8px; }
+.parsed-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-bottom: 8px; }
+.parsed-table th { text-align: left; font-size: 0.72rem; color: #94a3b8; font-weight: 600; padding: 4px; }
+.parsed-table td { padding: 3px 4px; }
+.parsed-table input { width: 100%; min-width: 0; padding: 6px 8px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; font: inherit; font-family: monospace; }
+.parsed-table input:focus { outline: none; border-color: #38bdf8; }
+.parsed-table input.bad { border-color: #ef4444; box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25); }
+.parsed-table .lap-no { color: #94a3b8; font-weight: 700; white-space: nowrap; width: 1%; }
+.parsed-del { background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.9rem; padding: 4px 6px; }
+.parsed-del:hover { color: #f87171; }
+.est-mark { font-size: 0.66rem; font-weight: 700; color: #fbbf24; background: rgba(251, 191, 36, 0.12); border-radius: 4px; padding: 1px 4px; }
+.parsed-scroll { max-height: 340px; overflow-y: auto; margin-bottom: 8px; }
+.parsed-scroll .parsed-table { margin-bottom: 0; }
+.parsed-scroll thead th { position: sticky; top: 0; background: #090e1a; }
+.parsed-table td:last-child, .parsed-table th:last-child { width: 32px; }
+.parsed-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
+.parsed-error { flex: 1; color: #f87171; font-size: 0.82rem; min-width: 200px; }
+
+/* Step 1 사진 버튼 묶음 (전체 사진 비우기 + 새 사진 업로드) */
+.photo-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+/* 공용 확인 팝업 */
+.confirm-dialog { border-color: #334155; }
+.confirm-dialog p { font-size: 0.95rem; margin-bottom: 16px; }
+.confirm-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.confirm-dialog .confirm-actions .btn { width: auto; }

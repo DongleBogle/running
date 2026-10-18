@@ -1,0 +1,132 @@
+{
+ "id": "2nd-mapo-mayors-cup-marathon",
+ "name": "제2회 마포 구청장배 마라톤",
+ "nameEn": "2nd Mapo Mayors Cup Marathon",
+ "date": "2026-09-20",
+ "location": "서울 평화의 공원 평화광장",
+ "region": "서울",
+ "venue": "평화의 공원 평화광장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/5ca006f981aa95f3.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1782217952/kormarathon/events/event-images-1782217951426.jpg",
+ "registration": {
+  "opensAt": "2026-06-01",
+  "closesAt": "2026-08-19",
+  "closed": true,
+  "url": "https://mara1080.com/event/53b338c6-d38a-47b3-9479-080b00c6113a/guide/overview"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2nd-mapo-mayors-cup-marathon",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 19.8,
+  "tmin": 16.1,
+  "tmax": 24.0,
+  "humidity": 78,
+  "wind": 2.5,
+  "rainChance": 31,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.4,
+    "tmin": 16.8,
+    "tmax": 22.6,
+    "rain": 27.4
+   },
+   {
+    "year": 2024,
+    "temp": 25.1,
+    "tmin": 16.7,
+    "tmax": 26.9,
+    "rain": 79.2
+   },
+   {
+    "year": 2023,
+    "temp": 21.3,
+    "tmin": 18.4,
+    "tmax": 22.1,
+    "rain": 39.3
+   },
+   {
+    "year": 2022,
+    "temp": 17.8,
+    "tmin": 13.5,
+    "tmax": 21.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 21.3,
+    "tmin": 17.9,
+    "tmax": 26.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 17.5,
+    "tmin": 13.3,
+    "tmax": 21.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 17.5,
+    "tmin": 12.4,
+    "tmax": 22.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 18.9,
+    "tmin": 16.5,
+    "tmax": 20.0,
+    "rain": 14.0
+   },
+   {
+    "year": 2017,
+    "temp": 16.4,
+    "tmin": 13.2,
+    "tmax": 21.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 18.2,
+    "tmin": 14.4,
+    "tmax": 24.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

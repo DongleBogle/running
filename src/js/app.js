@@ -25,6 +25,7 @@ async function loadPersistedPhotos() {
   } catch (e) { /* 저장소를 못 쓰는 환경(시크릿 모드 등)에서는 캐싱 없이 동작 */ }
   _photosLoaded = true;
   renderPhotosGallery();
+  restoreEditedRecords();
 }
 // 동일 사진은 OCR을 다시 돌리지 않도록 결과를 사진 해시 기준으로 캐싱
 async function photoHash(src) {
@@ -447,23 +448,52 @@ function renderPhotosGallery() {
   });
 }
 
+// 확인 팝업. 브라우저 기본 confirm() 은 앱 내 브라우저 등에서 막혀 바로 '취소'가 되므로 페이지 안 dialog 를 쓴다
+function askConfirm(message, opts) {
+  opts = opts || {};
+  const dlg = document.getElementById('confirmDialog');
+  const ok = document.getElementById('confirmOk');
+  document.getElementById('confirmMsg').textContent = message;
+  ok.textContent = opts.okLabel || '확인';
+  ok.className = 'btn ' + (opts.danger ? 'btn-danger' : 'btn-green');
+  return new Promise(resolve => {
+    const done = v => { dlg.removeEventListener('close', onClose); resolve(v); };
+    const onClose = () => done(dlg.returnValue === 'ok');
+    dlg.addEventListener('close', onClose);
+    dlg.querySelectorAll('.confirm-actions button').forEach(b => { b.onclick = () => dlg.close(b.value); });
+    dlg.returnValue = '';
+    dlg.showModal();
+  });
+}
+
 // 개별 사진 삭제
-function removePhoto(photoId) {
+async function removePhoto(photoId) {
   const target = uploadedPhotos.find(p => p.id === photoId);
   const targetName = target ? target.title : "사진";
-  if (confirm(`'${targetName}' 스크린샷을 목록에서 제거하시겠습니까?`)) {
+  if (await askConfirm(`'${targetName}' 스크린샷을 목록에서 제거할까요?`, { okLabel: '제거', danger: true })) {
     uploadedPhotos = uploadedPhotos.filter(p => p.id !== photoId);
     renderPhotosGallery();
   }
 }
 
-// 전체 사진 비우기
-function clearAllUploadedPhotos() {
-  if (uploadedPhotos.length === 0) return;
-  if (confirm("등록된 모든 사진을 제거하시겠습니까?")) {
-    uploadedPhotos = [];
-    renderPhotosGallery();
-  }
+// 전체 사진 비우기: 사진과 함께 추출·수정한 기록(Step 2 타임테이블)도 초기화
+async function clearAllUploadedPhotos() {
+  if (uploadedPhotos.length === 0 && officialCheckpoints.length === 0) return;
+  if (!await askConfirm('등록된 모든 사진과 추출·수정한 기록을 지울까요?', { okLabel: '전체 비우기', danger: true })) return;
+  uploadedPhotos = [];
+  renderPhotosGallery();
+  officialCheckpoints.length = 0;
+  rawWatchLaps.length = 0;
+  startTimeManual = false;
+  globalStartTimeStr = '00:00:00';
+  document.getElementById('startTimeInput').value = '';
+  setStartHint('사진을 올리면 출발 시각이 예측됩니다 · 직접 수정 가능');
+  await kvSet('editedRecords', undefined);
+  document.getElementById('btnResetEdits').hidden = true;
+  toggleParsedEditor(false);
+  setOcrReviewState('manual');
+  document.getElementById('ocrStatus').textContent = '';
+  buildUnifiedTimeline();
 }
 
 // 새 사진 업로드 (최대 MAX_PHOTOS장)
@@ -519,6 +549,7 @@ function onStartTimeEdit() {
   globalStartTimeStr = v.length === 5 ? v + ':00' : v;
   setStartHint('직접 입력한 값');
   updateAllCalculations();
+  if (document.getElementById('ocrReview').classList.contains('edited')) saveEditedRecords();
 }
 
 function updateAllCalculations() {
@@ -586,12 +617,36 @@ async function analyzeYoutubeVideo(opts) {
 
     currentYtData = data;
     renderYoutubeAnalysis(data);
+    // 빈 칸 표시는 매번 갱신하고, 팝업은 새로 분석했을 때만 (직접 고쳐서 다시 계산할 때는 띄우지 않음)
+    notifyExtractFailure(data.analysis, !opts.reuseVideo);
   } catch (err) {
     console.error(err);
     alert(`유튜브 분석 실패: ${err.message}`);
   } finally {
     loadingEl.style.display = 'none';
     btnAnalyze.disabled = false;
+  }
+}
+
+// 촬영 지점·시작 시각을 영상 설명에서 못 찾았으면 빈 칸을 표시하고, showDialog 면 팝업으로 알린다
+function notifyExtractFailure(analysis, showDialog) {
+  const missing = [];
+  const distEl = document.getElementById('ytEditDistance'), startEl = document.getElementById('ytEditStart');
+  distEl.classList.toggle('missing', analysis.detectedDistanceKm == null);
+  startEl.classList.toggle('missing', !analysis.videoStartTimeStr);
+  if (analysis.detectedDistanceKm == null) missing.push('촬영 지점(km)');
+  if (!analysis.videoStartTimeStr) missing.push('촬영 시작 시각');
+  if (!missing.length || !showDialog) return;
+  document.getElementById('ytExtractFailItems').textContent = missing.join('과 ');
+  document.getElementById('ytExtractFailDialog').showModal();
+}
+
+function closeExtractFailDialog() {
+  document.getElementById('ytExtractFailDialog').close();
+  const first = document.querySelector('.yt-edit-input.missing');
+  if (first) {
+    first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    first.focus({ preventScroll: true });
   }
 }
 
@@ -661,6 +716,7 @@ function renderYoutubeAnalysis(data) {
     btn.onclick = () => setClipStartFromTimestamp(Math.max(0, analysis.calculatedVideoSeconds - 5));
     quickBtnsEl.appendChild(btn);
   }
+  document.getElementById('ytTimestampQuick').style.display = quickBtnsEl.children.length ? 'flex' : 'none';
 
   // 5. 기본 클립 파라미터 세팅
   const startInput = document.getElementById('clipStartInput');
@@ -730,15 +786,10 @@ function setClipStartFromTimestamp(sec) {
 }
 
 // -------------------------------------------------------------------------
-// 대회별 추천 영상 (주로영상 / 후기 구분)
+// 대회별 주로영상: 날짜 → 그날 대회 → 주로영상
+//   대회 목록: data/calendar (전체 대회), 영상: /api/race/videos (유튜브 실시간 검색)
 // -------------------------------------------------------------------------
-const raceRec = { races: [], date: null, raceId: null, kind: 'course' };
-
-// 같은 날짜 대회는 주로영상이 많은 순으로
-function racesOnDate(date) {
-  return raceRec.races.filter(r => r.date === date)
-    .sort((a, b) => (b.course.length - a.course.length) || (b.review.length - a.review.length));
-}
+const raceRec = { races: [], date: null, raceId: null, live: {} };  // live: 대회id → 실시간 검색 결과(또는 진행 중 Promise)
 
 function escHtml(str) {
   return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -755,20 +806,30 @@ function formatDuration(sec) {
   return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${m}:${String(s).padStart(2, '0')}`;
 }
 
+function racesOnDate(date) {
+  return raceRec.races.filter(r => r.date === date).sort((a, b) => a.name.localeCompare(b.name));
+}
+
 async function loadRaceVideos() {
+  const box = document.getElementById('raceRecBox');
   try {
-    const res = await fetch(Platform.dataUrl('marathon_videos.json'), { cache: 'no-cache' });
-    if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    raceRec.races = data.races || [];
-    if (data.generatedAt) document.getElementById('raceRecUpdated').textContent = `수집: ${data.generatedAt.replace('T', ' ').slice(0, 16)}`;
+    const get = async f => { const res = await fetch(Platform.dataUrl(f), { cache: 'no-cache' }); if (!res.ok) throw new Error(res.status); return res.json(); };
+    const { months = [] } = await get('calendar/index.json');
+    const files = await Promise.all(months.map(m => get(`calendar/${m}.json`).catch(() => ({ races: [] }))));
+    const now = new Date();
+    const todayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    // 주로영상은 대회가 끝나야 올라오므로 오늘까지 열린 대회만
+    raceRec.races = files.flatMap(f => f.races || []).filter(r => r.date <= todayKey);
   } catch (err) {
-    console.warn('추천 영상 목록을 불러오지 못했습니다', err);
-    document.getElementById('raceRecBox').style.display = 'none';
+    console.warn('대회 목록을 불러오지 못했습니다', err);
+    box.style.display = 'none';
     return;
   }
-  if (!raceRec.races.length) { document.getElementById('raceRecBox').style.display = 'none'; return; }
-  selectRaceDate(raceRec.races[0].date);
+  if (!raceRec.races.length) { box.style.display = 'none'; return; }
+  // 대회 페이지의 '레이스 기록으로 내 모습 찾기'(converter?race=<id>)로 왔으면 그 대회를 미리 골라 둔다
+  const linked = raceRec.races.find(r => r.id === new URLSearchParams(location.search).get('race'));
+  if (linked) { raceRec.date = linked.date; raceRec.raceId = linked.id; renderRaceRec(); return; }
+  selectRaceDate(raceRec.races.reduce((a, r) => r.date > a ? r.date : a, ''));
 }
 
 // 날짜를 고르면 그 날짜의 대회만 보여준다
@@ -779,60 +840,62 @@ function selectRaceDate(date) {
   renderRaceRec();
 }
 
-// 대회명을 누르면 같은 날짜의 대회들만 남기고 그 대회 영상을 보여준다
 function selectRace(raceId) {
-  const race = raceRec.races.find(r => r.id === raceId);
-  if (!race) return;
-  raceRec.date = race.date;
+  if (!raceRec.races.some(r => r.id === raceId)) return;
   raceRec.raceId = raceId;
   renderRaceRec();
 }
 
-function setRaceVideoKind(kind) {
-  raceRec.kind = kind;
-  renderRaceRec();
+// 유튜브 실시간 검색 (대회당 한 번만 요청하고 결과는 기억해 둔다)
+function fetchLiveCourse(race) {
+  if (!raceRec.live[race.id]) {
+    const url = Platform.apiUrl('/api/race/videos?' + new URLSearchParams({ name: race.name, date: race.date, kind: 'course' }));
+    raceRec.live[race.id] = fetch(url)
+      .then(res => res.ok ? res.json() : { videos: [] })
+      .then(d => (d.videos || []).filter(v => v.type === 'course' && v.publishedAt >= race.date))
+      .catch(() => []);
+  }
+  return raceRec.live[race.id];
 }
 
 function renderRaceRec() {
-  const dates = [...new Set(raceRec.races.map(r => r.date))];
-  document.getElementById('raceDateChips').innerHTML = dates.map(d => {
-    const n = raceRec.races.filter(r => r.date === d).length;
-    return `<button type="button" class="race-chip date ${d === raceRec.date ? 'active' : ''}" onclick="selectRaceDate('${d}')">📅 ${formatRaceDate(d)}<span class="cnt">${n}개 대회</span></button>`;
-  }).join('');
+  const dates = [...new Set(raceRec.races.map(r => r.date))].sort().reverse();
+  const dateSel = document.getElementById('raceDateSelect');
+  dateSel.innerHTML = dates.map(d =>
+    `<option value="${d}">${formatRaceDate(d)} · ${raceRec.races.filter(r => r.date === d).length}개 대회</option>`).join('');
+  dateSel.value = raceRec.date;
 
-  const sameDay = racesOnDate(raceRec.date);
-  document.getElementById('raceNameChips').innerHTML = sameDay.map(r =>
-    `<button type="button" class="race-chip ${r.id === raceRec.raceId ? 'active' : ''}" onclick="selectRace('${r.id}')">${escHtml(r.name)}<span class="cnt">${r.course.length + r.review.length}</span></button>`
-  ).join('');
+  const nameSel = document.getElementById('raceNameSelect');
+  nameSel.innerHTML = racesOnDate(raceRec.date).map(r =>
+    `<option value="${escHtml(r.id)}">${escHtml(r.name)}</option>`).join('');
+  nameSel.value = raceRec.raceId;
 
   const race = raceRec.races.find(r => r.id === raceRec.raceId);
   if (!race) return;
   document.getElementById('raceMeta').textContent = `${formatRaceDate(race.date)} · ${race.location || ''}`;
-  document.getElementById('raceCourseCnt').textContent = race.course.length;
-  document.getElementById('raceReviewCnt').textContent = race.review.length;
-  document.querySelectorAll('.race-tab').forEach(t => t.classList.toggle('active', t.dataset.kind === raceRec.kind));
-  document.getElementById('raceKindHint').textContent = raceRec.kind === 'course'
-    ? '고정 지점에서 지나가는 주자들을 찍은 영상입니다. 누르면 아래에서 바로 내 통과 시점을 분석합니다.'
-    : '참가자 후기·1인칭 풀영상·중계 등입니다. 누르면 유튜브에서 열립니다.';
+  renderRaceVideos(race, [], true);
+  fetchLiveCourse(race).then(live => {
+    if (raceRec.raceId !== race.id) return;  // 그사이 다른 대회를 골랐으면 무시
+    const seen = new Set();  // 같은 영상이 검색 결과에 두 번 올 때가 있어 videoId 로 중복 제거
+    renderRaceVideos(race, live.filter(v => !seen.has(v.videoId) && seen.add(v.videoId)), false);
+  });
+}
 
-  const list = race[raceRec.kind] || [];
+function renderRaceVideos(race, list, loading) {
   const grid = document.getElementById('raceVideoGrid');
   if (!list.length) {
-    grid.innerHTML = `<div class="race-empty" style="grid-column: 1 / -1;">아직 수집된 ${raceRec.kind === 'course' ? '주로영상' : '후기 영상'}이 없습니다.</div>`;
+    grid.innerHTML = `<div class="race-empty" style="grid-column: 1 / -1;">${loading ? '유튜브에서 주로영상을 찾는 중...'
+      : `아직 찾은 주로영상이 없습니다. <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(race.name + ' 주로영상')}" target="_blank" rel="noopener">유튜브에서 직접 검색</a>해 링크를 아래에 붙여넣어 주세요.`}</div>`;
     return;
   }
   grid.innerHTML = list.map(v => {
     const tags = [];
-    if (v.distanceKm != null && v.spot !== '골인/피니시') tags.push(`<span class="tag km">📍 ${v.distanceKm}km</span>`);
-    if (v.spot) tags.push(`<span class="tag fin">🏁 ${escHtml(v.spot)}</span>`);
-    if (v.startClock) tags.push(`<span class="tag clock">⏱️ ${v.startClock.slice(0, 5)}~</span>`);
-    if (v.lengthSeconds) tags.push(`<span class="tag">${formatDuration(v.lengthSeconds)}</span>`);
-    const inner = `<img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
-      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div>`;
-    return raceRec.kind === 'course'
-      ? `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">${inner}</button>`
-      : `<a class="race-video-card" title="${escHtml(v.title)}" href="${escHtml(v.url)}" target="_blank" rel="noopener">${inner}</a>`;
-  }).join('');
+    if (v.lengthSeconds) tags.push(`<span class="tag clock">▶ ${formatDuration(v.lengthSeconds)}</span>`);
+    if (v.publishedAt) tags.push(`<span class="tag">업로드 ${escHtml(v.publishedAt.slice(5).replace('-', '.'))}</span>`);
+    return `<button type="button" class="race-video-card" title="${escHtml(v.title)}" onclick="pickRaceVideo('${escHtml(v.url)}')">
+      <img loading="lazy" src="${escHtml(v.thumbnailUrl)}" alt="">
+      <div class="body"><div class="t">${escHtml(v.title)}</div><div class="c">${escHtml(v.channel)}</div><div class="tags">${tags.join('')}</div></div></button>`;
+  }).join('') + (loading ? '<div class="race-empty" style="grid-column: 1 / -1;">유튜브에서 주로영상을 더 찾는 중...</div>' : '');
 }
 
 function pickRaceVideo(url) {
@@ -1029,7 +1092,13 @@ async function analyzeAndGoStep2() {
   const btn = document.getElementById('btnStep2');
   const status = document.getElementById('ocrStatus');
   if (uploadedPhotos.length === 0) {
-    if (!confirm('등록된 사진이 없습니다. OCR 분석 없이 Step 2로 넘어갈까요?')) return;
+    if (!await askConfirm('등록된 사진이 없습니다. 사진 분석 없이 Step 2로 넘어가 기록을 직접 입력할까요?', { okLabel: '넘어가기' })) return;
+    goToStep(2);
+    return;
+  }
+  // 같은 사진으로 타임테이블을 고쳐 둔 적이 있으면 OCR 결과 대신 그 값을 쓴다
+  if (await restoreEditedRecords()) {
+    status.textContent = '저장된 수정값을 불러왔습니다.';
     goToStep(2);
     return;
   }
@@ -1058,6 +1127,7 @@ async function analyzeAndGoStep2() {
     }
     applyOcrResults(verified, laps);
     status.textContent = `분석 완료: 공식 계측 ${verified.length}개, 랩 ${laps.length}개`;
+    setOcrReviewState(verified.length || laps.length ? 'extracted' : 'empty');
     goToStep(2);
   } catch (err) {
     status.textContent = '';
@@ -1067,7 +1137,8 @@ async function analyzeAndGoStep2() {
   }
 }
 
-function applyOcrResults(verified, laps) {
+function applyOcrResults(verified, laps, opts) {
+  opts = opts || {};
   // 공식 체크포인트: point(예 "5.0km"), time(경과), clock(Time of Day), pace
   const cps = verified
     .map(v => ({
@@ -1083,11 +1154,16 @@ function applyOcrResults(verified, laps) {
   officialCheckpoints.length = 0;
   if (cps.length > 0) {
     const first = cps.find(c => c.clockStr) || cps[0];
-    const startSec = first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
-    globalStartTimeStr = secondsToClockString(startSec);
-    startTimeManual = false;
-    document.getElementById('startTimeInput').value = globalStartTimeStr;
-    setStartHint('사진 기록으로 예측됨 · 직접 수정 가능');
+    // 타임테이블 수정에서 다시 계산할 때, 사용자가 직접 고친 출발 시각은 그대로 둔다
+    const keepStart = opts.keepStart && startTimeManual;
+    const startSec = keepStart ? parseTimeToSeconds(globalStartTimeStr)
+      : first.clockStr ? parseTimeToSeconds(first.clockStr) - first.timeSec : 0;
+    if (!keepStart) {
+      globalStartTimeStr = secondsToClockString(startSec);
+      startTimeManual = false;
+      document.getElementById('startTimeInput').value = globalStartTimeStr;
+      setStartHint(opts.edited ? '수정한 기록으로 예측됨 · 직접 수정 가능' : '사진 기록으로 예측됨 · 직접 수정 가능');
+    }
     officialCheckpoints.push({ distance: 0, timeSec: 0, clockStr: globalStartTimeStr, pace: '-', name: '출발 (Start)' });
     cps.forEach(c => {
       if (!c.clockStr) c.clockStr = secondsToClockString(startSec + c.timeSec);
@@ -1119,4 +1195,218 @@ function applyOcrResults(verified, laps) {
   }
 
   buildUnifiedTimeline();
+}
+
+// -------------------------------------------------------------------------
+// Step 2 : 추출 결과(공식 계측·워치 랩) 확인 및 직접 수정 → 타임테이블 다시 계산
+// -------------------------------------------------------------------------
+const OCR_REVIEW_TEXT = {
+  extracted: ['✅ AI로 기록 추출 완료', '전체 구간별 타임테이블이 올바르게 추출·계산되었는지 확인 후 수정해주세요.'],
+  empty: ['⚠️ 사진에서 기록을 찾지 못했어요', '추출 결과 확인·수정을 눌러 공식 계측 기록과 워치 랩을 직접 입력해주세요.'],
+  edited: ['✏️ 수정한 기록으로 계산했어요', '수정값은 이 브라우저에 저장돼요. 다시 고칠 곳이 있으면 추출 결과 확인·수정을 눌러주세요.'],
+  manual: ['✍️ 기록을 직접 입력할 수 있어요', '사진 없이도 공식 계측 기록과 워치 1km 구간 기록을 입력하면 타임테이블이 계산됩니다.'],
+};
+
+function setOcrReviewState(state) {
+  const [title, desc] = OCR_REVIEW_TEXT[state];
+  const box = document.getElementById('ocrReview');
+  box.className = 'ocr-review ' + state;
+  document.getElementById('ocrReviewTitle').textContent = title;
+  document.getElementById('ocrReviewDesc').textContent = desc;
+}
+
+// 초 → 'H:MM:SS' / 'M:SS.s'
+function secToHms(sec) {
+  const t = Math.round(sec), h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
+  return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+function secToLapStr(sec) {
+  const m = Math.floor(sec / 60), s = sec - m * 60;
+  const whole = Math.floor(s), tenth = Math.round((s - whole) * 10);
+  return tenth === 10 ? `${m}:${String(whole + 1).padStart(2, '0')}` : `${m}:${String(whole).padStart(2, '0')}${tenth ? '.' + tenth : ''}`;
+}
+function secToPace(sec) {
+  if (!isFinite(sec) || sec <= 0) return '';
+  const r = Math.round(sec), m = Math.floor(r / 60);
+  return `${m}:${String(r % 60).padStart(2, '0')}`;
+}
+
+function parsedRowHtml(kind, v) {
+  const del = '<td><button type="button" class="parsed-del" onclick="deleteParsedRow(this)" title="이 행 삭제">✕</button></td>';
+  if (kind === 'cp') {
+    return `<tr><td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '')}" placeholder="21.1"></td>
+      <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="1:52:30"></td>
+      <td><input class="p-clock" value="${escHtml(v.clock ?? '')}" placeholder="09:42:30"></td>${del}</tr>`;
+  }
+  return `<tr><td class="lap-no">${v.estimated ? '<span class="est-mark">추정</span>' : ''}</td>
+    <td><input class="p-dist" inputmode="decimal" value="${escHtml(v.distance ?? '1.00')}" placeholder="1.00"></td>
+    <td><input class="p-time" value="${escHtml(v.time ?? '')}" placeholder="5:38.4"></td>${del}</tr>`;
+}
+
+function fillParsedEditor() {
+  document.getElementById('cpEditBody').innerHTML = officialCheckpoints.filter(c => c.distance > 0).map(c =>
+    parsedRowHtml('cp', { distance: c.distance, time: secToHms(c.timeSec), clock: c.clockStr || '' })).join('');
+  document.getElementById('lapEditBody').innerHTML = rawWatchLaps.map(l =>
+    parsedRowHtml('lap', { distance: Number(l.distance).toFixed(2), time: secToLapStr(l.seconds), estimated: l.estimated })).join('');
+  renumberLaps();
+  document.getElementById('parsedError').textContent = '';
+}
+
+function renumberLaps() {
+  document.querySelectorAll('#lapEditBody tr').forEach((tr, i) => {
+    const td = tr.querySelector('.lap-no');
+    td.innerHTML = `${i + 1}${td.querySelector('.est-mark') ? ' <span class="est-mark">추정</span>' : ''}`;
+  });
+}
+
+function toggleParsedEditor(open) {
+  const ed = document.getElementById('parsedEditor');
+  open = open === undefined ? ed.hidden : open;
+  if (open) fillParsedEditor();
+  ed.hidden = !open;
+  document.getElementById('btnToggleParsed').textContent = open ? '닫기' : '추출 결과 확인·수정';
+}
+
+function deleteParsedRow(btn) {
+  btn.closest('tr').remove();
+  renumberLaps();
+}
+
+function addParsedRow(kind) {
+  document.getElementById(kind === 'cp' ? 'cpEditBody' : 'lapEditBody').insertAdjacentHTML('beforeend', parsedRowHtml(kind, {}));
+  if (kind === 'lap') renumberLaps();
+}
+
+// 표의 값을 검사해 OCR 결과와 같은 형태로 바꾼 뒤 applyOcrResults 로 다시 계산한다
+function applyParsedEdits() {
+  const err = document.getElementById('parsedError');
+  document.querySelectorAll('.parsed-table input.bad').forEach(i => i.classList.remove('bad'));
+  const bad = (input, msg) => { input.classList.add('bad'); input.focus(); err.textContent = msg; return false; };
+  const HMS = /^\d{1,2}:\d{2}(:\d{2})?$/, LAP = /^\d{1,2}:\d{2}(\.\d)?$/;
+
+  const cps = [];
+  for (const tr of document.querySelectorAll('#cpEditBody tr')) {
+    const [d, t, c] = ['.p-dist', '.p-time', '.p-clock'].map(s => tr.querySelector(s));
+    if (!d.value.trim() && !t.value.trim() && !c.value.trim()) continue;  // 빈 행은 무시
+    const dist = parseFloat(d.value);
+    if (!(dist > 0)) return bad(d, '계측 지점(km)을 숫자로 입력해주세요.');
+    if (!HMS.test(t.value.trim())) return bad(t, '경과 시간은 H:MM:SS 형식으로 입력해주세요. (예: 1:52:30)');
+    if (c.value.trim() && !HMS.test(c.value.trim())) return bad(c, '실제 시각은 HH:MM:SS 형식으로 입력해주세요. (예: 09:42:30)');
+    const parts = t.value.trim().split(':').map(Number);
+    const sec = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2] : parts[0] * 3600 + parts[1] * 60;
+    const clock = c.value.trim() ? secondsToClockString(parseTimeToSeconds(c.value.trim())) : '';
+    cps.push({ dist, sec, clock, input: t });
+  }
+  if (!cps.length) { err.textContent = '공식 계측 기록을 하나 이상 입력해주세요. (최소한 완주 기록)'; return false; }
+  cps.sort((a, b) => a.dist - b.dist);
+  for (let i = 1; i < cps.length; i++) {
+    if (cps[i].sec <= cps[i - 1].sec) return bad(cps[i].input, `${cps[i].dist}km 경과 시간이 앞 지점보다 빠릅니다. 확인해주세요.`);
+  }
+
+  const laps = [];
+  for (const tr of document.querySelectorAll('#lapEditBody tr')) {
+    const [d, t] = ['.p-dist', '.p-time'].map(s => tr.querySelector(s));
+    if (!d.value.trim() && !t.value.trim()) continue;
+    const dist = parseFloat(d.value);
+    if (!(dist > 0)) return bad(d, '랩 거리(km)를 숫자로 입력해주세요.');
+    if (!LAP.test(t.value.trim())) return bad(t, '구간 시간은 M:SS 또는 M:SS.S 형식으로 입력해주세요. (예: 5:38.4)');
+    laps.push({ dist, time: t.value.trim() });
+  }
+
+  const verified = cps.map((c, i) => {
+    const prev = cps[i - 1] || { dist: 0, sec: 0 };
+    return { point: `${c.dist}km`, time: secToHms(c.sec), clock: c.clock, pace: secToPace((c.sec - prev.sec) / (c.dist - prev.dist)), type: 'verified' };
+  });
+  const lapItems = laps.map((l, i) => {
+    const sec = parseElapsedToSec(l.time.split('.')[0]) + (parseFloat('0.' + (l.time.split('.')[1] || '0')) || 0);
+    return { point: `Lap ${i + 1}`, lapNo: i + 1, time: l.time, dist: l.dist.toFixed(2), pace: secToPace(sec / l.dist), type: 'lap' };
+  });
+
+  applyOcrResults(verified, lapItems, { keepStart: true, edited: true });
+  toggleParsedEditor(false);
+  setOcrReviewState('edited');
+  saveEditedRecords();
+  document.querySelector('#step2 .table-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
+}
+
+// -------------------------------------------------------------------------
+// 수정한 기록 저장/복원 (IndexedDB 'kv' 의 editedRecords)
+//   지금 등록된 사진 묶음(사진 해시 목록)과 함께 저장해, 같은 사진일 때만 복원한다.
+//   사진을 바꾸면 예전 수정값은 쓰지 않고 새로 추출한다.
+// -------------------------------------------------------------------------
+async function photoSetKey() {
+  const hashes = await Promise.all(uploadedPhotos.map(p => photoHash(p.src)));
+  return hashes.join('|');
+}
+
+// 현재 타임테이블 원본(공식 계측·워치 랩)을 applyOcrResults 입력 형태로
+function currentRecordItems() {
+  const cps = officialCheckpoints.filter(c => c.distance > 0);
+  const verified = cps.map(c => ({ point: `${c.distance}km`, time: secToHms(c.timeSec), clock: c.clockStr || '', pace: c.pace, type: 'verified' }));
+  const laps = rawWatchLaps.map((l, i) => ({ point: `Lap ${i + 1}`, lapNo: i + 1, time: secToLapStr(l.seconds), dist: Number(l.distance).toFixed(2), pace: l.pace, type: 'lap' }));
+  return { verified, laps };
+}
+
+async function kvGet(key) {
+  try {
+    const db = await openPhotoDb();
+    return await new Promise(resolve => {
+      const r = db.transaction('kv').objectStore('kv').get(key);
+      r.onsuccess = () => resolve(r.result || null);
+      r.onerror = () => resolve(null);
+    });
+  } catch (e) { return null; }
+}
+async function kvSet(key, value) {
+  try {
+    const db = await openPhotoDb();
+    const store = db.transaction('kv', 'readwrite').objectStore('kv');
+    value === undefined ? store.delete(key) : store.put(value, key);
+  } catch (e) { /* 저장소를 못 쓰는 환경에서는 저장 없이 동작 */ }
+}
+
+async function saveEditedRecords() {
+  if (!officialCheckpoints.length) return;
+  await kvSet('editedRecords', {
+    photoKey: await photoSetKey(),
+    ...currentRecordItems(),
+    start: startTimeManual ? globalStartTimeStr : null,
+    savedAt: new Date().toISOString(),
+  });
+  document.getElementById('btnResetEdits').hidden = false;
+}
+
+// 같은 사진 묶음으로 저장된 수정값이 있으면 적용하고 true
+async function restoreEditedRecords() {
+  const saved = await kvGet('editedRecords');
+  if (!saved || saved.photoKey !== await photoSetKey()) return false;
+  applyOcrResults(saved.verified, saved.laps, { edited: true });
+  if (saved.start) {
+    startTimeManual = true;
+    globalStartTimeStr = saved.start;
+    document.getElementById('startTimeInput').value = saved.start;
+    setStartHint('직접 입력한 값');
+    buildUnifiedTimeline();
+  }
+  setOcrReviewState('edited');
+  document.getElementById('btnResetEdits').hidden = false;
+  return true;
+}
+
+// 저장한 수정값을 지우고 사진에서 다시 추출 (OCR 결과는 캐시돼 있어 금방 끝남)
+async function resetEditedRecords() {
+  if (!await askConfirm('직접 수정한 값을 지우고 사진에서 추출한 값으로 되돌릴까요?', { okLabel: '되돌리기', danger: true })) return;
+  await kvSet('editedRecords', undefined);
+  document.getElementById('btnResetEdits').hidden = true;
+  toggleParsedEditor(false);
+  startTimeManual = false;
+  if (uploadedPhotos.length) {
+    await analyzeAndGoStep2();
+  } else {
+    officialCheckpoints.length = 0;
+    rawWatchLaps.length = 0;
+    buildUnifiedTimeline();
+    setOcrReviewState('manual');
+  }
 }

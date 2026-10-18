@@ -1,0 +1,132 @@
+{
+ "id": "2026-run-together-with-bithumb-sharing-d143977b11474a9298a6da27680e7a06",
+ "name": "2026 우리함께런 with 빗썸나눔",
+ "nameEn": "2026 Run Together with Bithumb Sharing",
+ "date": "2026-11-15",
+ "location": "서울 여의도한강공원 물빛무대앞 광장",
+ "region": "서울",
+ "venue": "여의도한강공원 물빛무대앞 광장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 50000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-06",
+  "closesAt": "2026-10-21",
+  "closed": false,
+  "url": "https://bithumbnanumrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-run-together-with-bithumb-sharing-d143977b11474a9298a6da27680e7a06",
+ "coords": {
+  "lat": 37.52567,
+  "lon": 126.93606,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.8,
+  "tmin": 2.3,
+  "tmax": 12.1,
+  "humidity": 74,
+  "wind": 2.4,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 5.6,
+    "tmin": 2.7,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.6,
+    "tmin": 11.6,
+    "tmax": 18.5,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 4.0,
+    "tmin": -0.1,
+    "tmax": 10.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.8,
+    "tmin": 1.8,
+    "tmax": 10.9,
+    "rain": 1.2
+   },
+   {
+    "year": 2021,
+    "temp": 6.3,
+    "tmin": 3.1,
+    "tmax": 13.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.8,
+    "tmin": 5.1,
+    "tmax": 14.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 5.0,
+    "tmin": -0.4,
+    "tmax": 12.0,
+    "rain": 11.8
+   },
+   {
+    "year": 2018,
+    "temp": 5.6,
+    "tmin": 1.8,
+    "tmax": 13.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.5,
+    "tmin": -1.9,
+    "tmax": 5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 3.5,
+    "tmin": 1.0,
+    "tmax": 9.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,146 @@
+{
+ "id": "the-23rd-cheorwon-dmz-international-peace-marathon",
+ "name": "제23회 철원DMZ 국제평화마라톤",
+ "nameEn": "The 23rd Cheorwon DMZ International Peace Marathon",
+ "date": "2026-09-05",
+ "location": "강원 강원도 철원군 고석정(강원 철원군 동송읍 태봉로 1825)",
+ "region": "강원",
+ "venue": "강원도 철원군 고석정(강원 철원군 동송읍 태봉로 1825)",
+ "distances": [
+  "~5km",
+  "10km",
+  "하프",
+  "풀"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 4,
+   "fee": 30000,
+   "note": "코스모스 10리길 걷기."
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": ""
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 45000,
+   "note": ""
+  },
+  {
+   "category": "풀",
+   "km": 42.2,
+   "fee": 50000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/3e6dc6fc3d5ed0b9.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1774151082/kormarathon/events/event-images-1774151081629.png",
+ "registration": {
+  "opensAt": "2026-02-02",
+  "closesAt": "2026-04-05",
+  "closed": true,
+  "url": "http://dmzrun.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/the-23rd-cheorwon-dmz-international-peace-marathon",
+ "coords": {
+  "lat": 38.1849,
+  "lon": 127.28786,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 21.6,
+  "tmin": 17.9,
+  "tmax": 26.2,
+  "humidity": 82,
+  "wind": 2.4,
+  "rainChance": 46,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 24.3,
+    "tmin": 19.4,
+    "tmax": 29.7,
+    "rain": 0.2
+   },
+   {
+    "year": 2024,
+    "temp": 24.1,
+    "tmin": 21.5,
+    "tmax": 28.0,
+    "rain": 4.9
+   },
+   {
+    "year": 2023,
+    "temp": 25.1,
+    "tmin": 21.0,
+    "tmax": 30.7,
+    "rain": 0.1
+   },
+   {
+    "year": 2022,
+    "temp": 19.5,
+    "tmin": 15.8,
+    "tmax": 21.6,
+    "rain": 196.6
+   },
+   {
+    "year": 2021,
+    "temp": 20.9,
+    "tmin": 15.7,
+    "tmax": 25.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 21.3,
+    "tmin": 14.8,
+    "tmax": 25.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 22.7,
+    "tmin": 20.3,
+    "tmax": 26.3,
+    "rain": 39.5
+   },
+   {
+    "year": 2018,
+    "temp": 21.2,
+    "tmin": 16.4,
+    "tmax": 25.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 20.8,
+    "tmin": 17.7,
+    "tmax": 24.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 23.5,
+    "tmin": 19.5,
+    "tmax": 28.4,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

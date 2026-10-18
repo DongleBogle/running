@@ -1,0 +1,143 @@
+{
+ "id": "sono-runtrip-180k-in-gyeongju",
+ "name": "소노 런트립 180K in 경주",
+ "nameEn": "SONO RUNTRIP 180K in Gyeongju",
+ "date": "2026-10-04",
+ "location": "경북 소노캄 경주",
+ "region": "경북",
+ "venue": "소노캄 경주",
+ "distances": [
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "기타",
+   "km": 7,
+   "fee": 63000,
+   "note": "[PET RUN 7K- KB국민카드 결제 시] · 레이스 KIT : 배 번호표 + 기능성 티셔츠 + 짐색 + LED 액세서리 · 펫 전용 KIT : 등 번호표 + LED 블링커 + 리드줄 · 완주 기념품 : 완주 메달·쿠키 메달 + 에너지키트 + 풀앤스파 이용권"
+  },
+  {
+   "category": "기타",
+   "km": 7,
+   "fee": 70000,
+   "note": "[PET RUN 7K] · 레이스 KIT : 배 번호표 + 기능성 티셔츠 + 짐색 + LED 액세서리 · 펫 전용 KIT : 등 번호표 + LED 블링커 + 리드줄 · 완주 기념품 : 완주 메달·쿠키 메달 + 에너지키트 + 풀앤스파 이용권"
+  },
+  {
+   "category": "기타",
+   "km": 9,
+   "fee": 63000,
+   "note": "[MAIN RUN 9K - KB국민카드 결제 시] · 레이스 KIT : 배 번호표 + 기능성 티셔츠 + 짐색 + LED 액세서리 · 완주 기념품 : 완주 메달 + 에너지키트 + 풀앤스파 이용권"
+  },
+  {
+   "category": "기타",
+   "km": 9,
+   "fee": 70000,
+   "note": "[MAIN RUN 9K] · 레이스 KIT : 배 번호표 + 기능성 티셔츠 + 짐색 + LED 액세서리 · 완주 기념품 : 완주 메달 + 에너지키트 + 풀앤스파 이용권"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/1048c54d52b5f873.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788755793/kormarathon/events/event-images-1788755792065.jpg",
+ "registration": {
+  "opensAt": "2026-08-12",
+  "closesAt": "2026-10-04",
+  "closed": true,
+  "url": "https://www.sonohotelsresorts.com/reserve/activity/dtl?salesNo=292686"
+ },
+ "source": "https://www.kormarathon.com/ko/races/sono-runtrip-180k-in-gyeongju",
+ "coords": {
+  "lat": 36.5754,
+  "lon": 128.5058,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 17.3,
+  "tmin": 13.4,
+  "tmax": 22.2,
+  "humidity": 80,
+  "wind": 2.2,
+  "rainChance": 39,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 20.0,
+    "tmin": 18.1,
+    "tmax": 22.9,
+    "rain": 4.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.5,
+    "tmin": 10.9,
+    "tmax": 21.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 14.5,
+    "tmin": 9.0,
+    "tmax": 22.6,
+    "rain": 0.3
+   },
+   {
+    "year": 2022,
+    "temp": 21.7,
+    "tmin": 13.8,
+    "tmax": 22.8,
+    "rain": 36.5
+   },
+   {
+    "year": 2021,
+    "temp": 21.5,
+    "tmin": 15.5,
+    "tmax": 27.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 18.2,
+    "tmin": 12.8,
+    "tmax": 22.5,
+    "rain": 0.4
+   },
+   {
+    "year": 2019,
+    "temp": 19.3,
+    "tmin": 14.2,
+    "tmax": 25.6,
+    "rain": 0.3
+   },
+   {
+    "year": 2018,
+    "temp": 17.3,
+    "tmin": 11.8,
+    "tmax": 21.8,
+    "rain": 0.1
+   },
+   {
+    "year": 2017,
+    "temp": 16.0,
+    "tmin": 14.2,
+    "tmax": 18.2,
+    "rain": 0.4
+   },
+   {
+    "year": 2016,
+    "temp": 19.1,
+    "tmin": 15.2,
+    "tmax": 23.6,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

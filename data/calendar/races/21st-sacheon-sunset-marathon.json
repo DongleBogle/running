@@ -1,0 +1,145 @@
+{
+ "id": "21st-sacheon-sunset-marathon",
+ "name": "제21회 사천노을 마라톤대회",
+ "nameEn": "21st Sacheon Sunset Marathon",
+ "date": "2026-10-31",
+ "location": "경남 사천 선진거북선공원 및 무지갯빛 해안도로",
+ "region": "경남",
+ "venue": "사천 선진거북선공원 및 무지갯빛 해안도로",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "일반부"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 15000,
+   "note": "학생부"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "일반"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 40000,
+   "note": "일반"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/e816f340b2a69c1f.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789524600/kormarathon/events/event-images-1789524599427.jpg",
+ "registration": {
+  "opensAt": "2026-08-21",
+  "closesAt": "2026-09-16",
+  "closed": true,
+  "url": "https://sunset.or.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/21st-sacheon-sunset-marathon",
+ "coords": {
+  "lat": 35.09367,
+  "lon": 128.09124,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.7,
+  "tmin": 7.1,
+  "tmax": 18.4,
+  "humidity": 72,
+  "wind": 2.2,
+  "rainChance": 7,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 11.7,
+    "tmin": 8.4,
+    "tmax": 19.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.9,
+    "tmin": 11.8,
+    "tmax": 21.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 13.7,
+    "tmin": 10.3,
+    "tmax": 22.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 13.1,
+    "tmin": 8.2,
+    "tmax": 20.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 12.1,
+    "tmin": 6.3,
+    "tmax": 20.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.1,
+    "tmin": 6.1,
+    "tmax": 17.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 10.4,
+    "tmin": 4.8,
+    "tmax": 19.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 7.8,
+    "tmin": 2.7,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 7.5,
+    "tmin": 1.9,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 10.0,
+    "tmin": 7.7,
+    "tmax": 13.4,
+    "rain": 0.1
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

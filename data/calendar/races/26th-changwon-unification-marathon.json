@@ -1,0 +1,131 @@
+{
+ "id": "26th-changwon-unification-marathon",
+ "name": "제26회 창원통일마라톤대회",
+ "nameEn": "26th Changwon Unification Marathon",
+ "date": "2026-11-15",
+ "location": "경남 창원종합운동장 보조경기장",
+ "region": "경남",
+ "venue": "창원종합운동장 보조경기장",
+ "distances": [
+  "5km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": "일반"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 10000,
+   "note": "초등학생 이하"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/308ea533727b803b.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789118595/kormarathon/events/event-images-1789118594093.jpg",
+ "registration": {
+  "opensAt": "2026-09-14",
+  "closesAt": "2026-10-01",
+  "closed": false,
+  "url": "https://www.tongilmarathon.kr"
+ },
+ "source": "https://www.kormarathon.com/ko/races/26th-changwon-unification-marathon",
+ "coords": {
+  "lat": 35.23543,
+  "lon": 128.66542,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 9.6,
+  "tmin": 5.4,
+  "tmax": 15.7,
+  "humidity": 70,
+  "wind": 2.4,
+  "rainChance": 14,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 8.9,
+    "tmin": 4.9,
+    "tmax": 17.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 14.0,
+    "tmin": 11.8,
+    "tmax": 19.7,
+    "rain": 0.4
+   },
+   {
+    "year": 2023,
+    "temp": 6.2,
+    "tmin": 0.4,
+    "tmax": 13.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.2,
+    "tmin": 4.6,
+    "tmax": 15.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.7,
+    "tmin": 4.8,
+    "tmax": 16.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 11.4,
+    "tmin": 6.7,
+    "tmax": 18.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 6.4,
+    "tmin": 0.3,
+    "tmax": 15.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.0,
+    "tmin": 4.7,
+    "tmax": 15.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 8.1,
+    "tmin": 3.1,
+    "tmax": 12.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 11.3,
+    "tmin": 7.8,
+    "tmax": 14.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

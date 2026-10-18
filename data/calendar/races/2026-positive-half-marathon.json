@@ -1,0 +1,125 @@
+{
+ "id": "2026-positive-half-marathon",
+ "name": "2026 긍정 하프 마라톤",
+ "nameEn": "2026 Positive Half Marathon",
+ "date": "2026-11-28",
+ "location": "서울 뚝섬 한강공원",
+ "region": "서울",
+ "venue": "뚝섬 한강공원",
+ "distances": [
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": "$undefined",
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/6fdf53fefa5de5a1.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1787217423/kormarathon/events/event-images-1787217422240.jpg",
+ "registration": {
+  "opensAt": "2026-08-20",
+  "closesAt": "2026-08-24",
+  "closed": false,
+  "url": "https://www.goodrunner.co.kr/race/race.html?id=111"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-positive-half-marathon",
+ "coords": {
+  "lat": 37.54724,
+  "lon": 127.04741,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 0.8,
+  "tmin": -2.4,
+  "tmax": 6.4,
+  "humidity": 71,
+  "wind": 1.9,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -0.0,
+    "tmin": -1.9,
+    "tmax": 5.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -2.0,
+    "tmin": -5.8,
+    "tmax": 1.6,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": -2.0,
+    "tmin": -3.7,
+    "tmax": 3.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.6,
+    "tmin": 3.6,
+    "tmax": 14.4,
+    "rain": 29.2
+   },
+   {
+    "year": 2021,
+    "temp": 0.7,
+    "tmin": -2.8,
+    "tmax": 9.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -3.3,
+    "tmin": -4.7,
+    "tmax": 1.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.9,
+    "tmin": -1.7,
+    "tmax": 8.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 1.8,
+    "tmin": -0.8,
+    "tmax": 7.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 1.1,
+    "tmin": -2.0,
+    "tmax": 8.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": -1.5,
+    "tmin": -4.0,
+    "tmax": 4.3,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

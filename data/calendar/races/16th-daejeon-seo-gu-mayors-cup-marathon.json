@@ -1,0 +1,138 @@
+{
+ "id": "16th-daejeon-seo-gu-mayors-cup-marathon",
+ "name": "제16회 대전서구청장배 마라톤대회",
+ "nameEn": "16th Daejeon Seo-gu Mayors Cup Marathon",
+ "date": "2026-11-15",
+ "location": "대전 대전 엑스포 다리 밑 (갑천변)",
+ "region": "대전",
+ "venue": "대전 엑스포 다리 밑 (갑천변)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "일반"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 35000,
+   "note": "가족런"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "A조·B조"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/23c3818527c47322.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789531832/kormarathon/events/event-images-1789531831430.jpg",
+ "registration": {
+  "opensAt": "2026-08-28",
+  "closesAt": "2026-10-01",
+  "closed": false,
+  "url": "https://jgmrun.com"
+ },
+ "source": "https://www.kormarathon.com/ko/races/16th-daejeon-seo-gu-mayors-cup-marathon",
+ "coords": {
+  "lat": 36.36028,
+  "lon": 127.28318,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 6.8,
+  "tmin": 2.8,
+  "tmax": 13.5,
+  "humidity": 73,
+  "wind": 2.0,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 6.3,
+    "tmin": 2.2,
+    "tmax": 14.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 13.1,
+    "tmin": 11.2,
+    "tmax": 16.8,
+    "rain": 3.8
+   },
+   {
+    "year": 2023,
+    "temp": 5.8,
+    "tmin": 2.6,
+    "tmax": 12.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 6.8,
+    "tmin": 2.2,
+    "tmax": 11.5,
+    "rain": 0.8
+   },
+   {
+    "year": 2021,
+    "temp": 8.3,
+    "tmin": 4.0,
+    "tmax": 14.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 9.6,
+    "tmin": 4.4,
+    "tmax": 17.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 8.3,
+    "tmin": -0.7,
+    "tmax": 14.1,
+    "rain": 0.6
+   },
+   {
+    "year": 2018,
+    "temp": 6.2,
+    "tmin": 1.2,
+    "tmax": 14.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 4.8,
+    "tmin": 2.1,
+    "tmax": 8.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 6.2,
+    "tmin": 2.7,
+    "tmax": 12.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,125 @@
+{
+ "id": "2026-econow-run-7c6afaffc7f04723aed67f7a3d703838",
+ "name": "2026 에코나우런",
+ "nameEn": "2026 ECONOW RUN",
+ "date": "2026-11-15",
+ "location": "서울 서울 뚝섬한강공원 수변무대",
+ "region": "서울",
+ "venue": "서울 뚝섬한강공원 수변무대",
+ "distances": [
+  "5km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "비경쟁 환경마라톤 (선착순 300명)"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-01",
+  "closesAt": "2026-11-08",
+  "closed": false,
+  "url": "https://econow.campaignus.me/econow_run"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-econow-run-7c6afaffc7f04723aed67f7a3d703838",
+ "coords": {
+  "lat": 37.52983,
+  "lon": 127.06811,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.6,
+  "tmin": 2.1,
+  "tmax": 12.0,
+  "humidity": 75,
+  "wind": 2.0,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 4.9,
+    "tmin": 1.6,
+    "tmax": 14.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.0,
+    "tmin": 10.2,
+    "tmax": 18.6,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 3.5,
+    "tmin": 0.3,
+    "tmax": 10.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.5,
+    "tmin": 1.4,
+    "tmax": 10.6,
+    "rain": 2.1
+   },
+   {
+    "year": 2021,
+    "temp": 6.5,
+    "tmin": 3.9,
+    "tmax": 12.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.3,
+    "tmin": 4.8,
+    "tmax": 15.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 5.1,
+    "tmin": -0.7,
+    "tmax": 11.6,
+    "rain": 11.1
+   },
+   {
+    "year": 2018,
+    "temp": 5.2,
+    "tmin": 1.3,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.5,
+    "tmin": -1.9,
+    "tmax": 5.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 3.4,
+    "tmin": 1.0,
+    "tmax": 9.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,132 @@
+{
+ "id": "jurassic-park-run",
+ "name": "쥬라기파크 런",
+ "nameEn": "Jurassic Park Run",
+ "date": "2026-10-25",
+ "location": "경기 하남 미사경정공원",
+ "region": "경기",
+ "venue": "하남 미사경정공원",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 70000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 80000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/80cf08475b20a260.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786440172/kormarathon/events/event-images-1786440171480.png",
+ "registration": {
+  "opensAt": "2026-09-14",
+  "closesAt": "2026-10-15",
+  "closed": false,
+  "url": "https://jurassicparkrun.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/jurassic-park-run",
+ "coords": {
+  "lat": 37.56008,
+  "lon": 127.20763,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 11.0,
+  "tmin": 7.1,
+  "tmax": 16.8,
+  "humidity": 80,
+  "wind": 1.8,
+  "rainChance": 13,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 13.4,
+    "tmin": 11.0,
+    "tmax": 17.3,
+    "rain": 0.7
+   },
+   {
+    "year": 2024,
+    "temp": 11.0,
+    "tmin": 6.2,
+    "tmax": 19.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 14.2,
+    "tmin": 10.8,
+    "tmax": 19.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 8.0,
+    "tmin": 3.0,
+    "tmax": 15.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 8.1,
+    "tmin": 2.9,
+    "tmax": 15.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.4,
+    "tmin": 5.6,
+    "tmax": 16.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 14.8,
+    "tmin": 10.4,
+    "tmax": 19.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 9.7,
+    "tmin": 4.2,
+    "tmax": 17.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 11.1,
+    "tmin": 8.4,
+    "tmax": 16.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 12.8,
+    "tmin": 11.1,
+    "tmax": 17.4,
+    "rain": 30.9
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}

@@ -1,0 +1,138 @@
+{
+ "id": "angseong-binae-gil-marathon",
+ "name": "앙성비내길마라톤",
+ "nameEn": "Angseong Binae-gil Marathon",
+ "date": "2026-10-10",
+ "location": "충북 충주시 앙성온천광장",
+ "region": "충북",
+ "venue": "충주시 앙성온천광장",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "충주 시민 전용 종목"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "관외 참가자 종목"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 45000,
+   "note": "중학생 이상 참가 가능"
+  }
+ ],
+ "major": false,
+ "image": "data/calendar/images/66d018739d44463a.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1786696249/kormarathon/events/event-images-1786696248255.jpg",
+ "registration": {
+  "opensAt": "2026-06-01",
+  "closesAt": "2026-09-04",
+  "closed": false,
+  "url": "https://mara1080.com/event/380079d2-ab1c-4351-b1f2-d21ccaba5cdd"
+ },
+ "source": "https://www.kormarathon.com/ko/races/angseong-binae-gil-marathon",
+ "coords": {
+  "lat": 36.99073,
+  "lon": 127.92599,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 15.0,
+  "tmin": 11.3,
+  "tmax": 20.0,
+  "humidity": 80,
+  "wind": 1.8,
+  "rainChance": 24,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 18.5,
+    "tmin": 17.8,
+    "tmax": 20.6,
+    "rain": 3.7
+   },
+   {
+    "year": 2024,
+    "temp": 15.7,
+    "tmin": 11.8,
+    "tmax": 21.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 14.3,
+    "tmin": 9.7,
+    "tmax": 22.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.8,
+    "tmin": 6.3,
+    "tmax": 11.5,
+    "rain": 3.0
+   },
+   {
+    "year": 2021,
+    "temp": 22.4,
+    "tmin": 16.8,
+    "tmax": 27.0,
+    "rain": 2.9
+   },
+   {
+    "year": 2020,
+    "temp": 14.2,
+    "tmin": 7.8,
+    "tmax": 21.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 11.2,
+    "tmin": 8.4,
+    "tmax": 15.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 13.1,
+    "tmin": 7.9,
+    "tmax": 15.1,
+    "rain": 0.6
+   },
+   {
+    "year": 2017,
+    "temp": 19.5,
+    "tmin": 16.0,
+    "tmax": 24.5,
+    "rain": 0.1
+   },
+   {
+    "year": 2016,
+    "temp": 11.7,
+    "tmin": 8.4,
+    "tmax": 18.6,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-18T13:03"
+}
