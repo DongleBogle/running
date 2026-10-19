@@ -1,5 +1,7 @@
 // 홈 · 캘린더 · 변환기 · 대회 상세(race.html)가 같이 쓰는 도우미. platform.js 바로 다음에 불러온다.
 const DAY_MS = 86400000;
+// 구간 변환기 주로영상 검색은 오늘부터 이 날수 전까지 열린 대회만 (그보다 오래된 대회는 목록에서 빼고 링크를 직접 붙여넣게 안내) (유튜브 검색 할당량 절약). api/race_videos.py 와 맞춘다
+const COURSE_SEARCH_DAYS = 21;
 const pad2 = n => String(n).padStart(2, '0');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 // 'YYYY-MM-DD'(뒤에 시각이 붙어도 됨) → 그 날 0시(로컬)

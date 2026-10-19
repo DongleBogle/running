@@ -5,10 +5,16 @@ GET /api/race/videos?name=<대회명>&date=<YYYY-MM-DD>[&kind=course]
 
 - 키: 환경변수 YOUTUBE_API_KEY (Vercel 프로젝트 설정 / 로컬은 .env.local)
 - search.list 1회 = 100유닛(결과 50개까지 같은 비용), 기본 한도는 하루 10,000유닛(약 100회)이라
-  응답을 CDN 에 6시간 캐시해(s-maxage) 같은 대회는 하루 몇 번만 실제로 검색한다.
+  응답을 CDN 에 12시간 캐시하고(s-maxage), 만료 뒤에도 7일간은 옛 응답을 먼저 주며 뒤에서 갱신한다(stale-while-revalidate).
+  CDN 을 거치지 않는 요청(로컬·콜드 리전)을 위해 함수 인스턴스 메모리에도 같은 기간 결과를 들고 있고,
+  할당량 초과 등으로 검색이 실패하면 메모리에 남은 옛 결과를 대신 돌려준다.
+  할당량 초과 응답은 CDN 에 10분 캐시해 그동안 같은 요청이 API 를 다시 두드리지 않게 한다.
+- 실패는 stderr 로 남긴다 (Vercel 대시보드 → Logs 에서 '[race_videos]' 로 검색). 요청 URL 에 키가 들어 있어 URL 은 남기지 않는다.
 - 같은 이름의 지난 대회 영상도 참고가 되므로 연도는 빼고 검색하고, 최근 3년 영상만 받는다.
 - 영상 길이(lengthSeconds)는 videos.list(1유닛)로 한 번에 받는다.
-- kind=course: 구간 변환기 Step 3 용. 대회일 이후 올라온 영상만, 3분 이하(쇼츠 등)는 빼고 받는다.
+- kind=course: 구간 변환기 Step 3 용. 오늘(KST)부터 COURSE_SEARCH_DAYS 일 전까지 열린 대회만 검색하고, 그보다 오래된 대회는
+  검색 없이 빈 목록을 준다 (할당량 절약, 프런트 common.js 의 COURSE_SEARCH_DAYS 와 맞춘다).
+  대회일 이후 올라온 영상만, 3분 이하(쇼츠 등)는 빼고 받는다.
   대회명 검색과 '대회명 주로영상' 검색을 합친다(200유닛). 한쪽만으로는 주로영상이 절반도 안 잡힌다. (주로영상 여부는 type 으로 구분;
   검색어에 '주로영상'을 붙이면 '17km지점'처럼 그 단어가 없는 영상이 빠져서 붙이지 않는다)
 """
@@ -16,6 +22,8 @@ import html
 import json
 import os
 import re
+import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -33,8 +41,11 @@ BLOCKED_KEYWORDS = [
 
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos'
+COURSE_SEARCH_DAYS = 21
 MIN_COURSE_SECONDS = 180  # 이보다 짧은 영상(쇼츠 등)은 주로영상 목록에서 뺀다
-CACHE_SECONDS = 6 * 3600
+CACHE_SECONDS = 12 * 3600          # CDN·메모리 캐시가 새 결과로 보는 기간
+STALE_SECONDS = 7 * 24 * 3600      # 이 기간까지는 옛 결과라도 실패 응답 대신 돌려준다
+QUOTA_ERROR_CACHE_SECONDS = 600    # 할당량 초과 응답의 CDN 캐시
 MAX_RESULTS = 50
 KST = timezone(timedelta(hours=9))
 
@@ -161,29 +172,62 @@ def search_race_videos(name, race_date, api_key, kind=''):
     return {'success': True, 'query': query, 'videos': videos}
 
 
+# (name, date, kind) → (저장 시각, 결과). 인스턴스가 살아 있는 동안만 유지된다.
+_memo = {}
+
+
+def log_error(msg):
+    print(f'[race_videos] {msg}', file=sys.stderr, flush=True)
+
+
 def handle(query_string):
-    """(status, body, cache) — Vercel 핸들러와 로컬 server.py 가 같이 쓴다."""
+    """(status, body, cache_seconds) — cache_seconds 가 0 이면 캐시하지 않는다.
+    Vercel 핸들러와 로컬 server.py 가 같이 쓴다."""
     qs = urllib.parse.parse_qs(query_string)
     name = (qs.get('name') or [''])[0].strip()[:80]
     race_date = (qs.get('date') or [''])[0].strip()
     kind = (qs.get('kind') or [''])[0].strip()
     if not name:
-        return 400, {'error': '대회명(name)이 필요합니다.'}, False
+        return 400, {'error': '대회명(name)이 필요합니다.'}, 0
+    if kind == 'course' and re.fullmatch(r'\d{4}-\d{2}-\d{2}', race_date) and \
+            race_date < (datetime.now(KST).date() - timedelta(days=COURSE_SEARCH_DAYS)).isoformat():
+        return 200, {'success': True, 'query': core_name(name), 'videos': [], 'tooOld': True}, CACHE_SECONDS
     api_key = os.environ.get('YOUTUBE_API_KEY', '').strip()
     if not api_key:
-        return 503, {'error': 'not_configured', 'message': 'YOUTUBE_API_KEY 가 설정되지 않았습니다.'}, False
+        log_error('YOUTUBE_API_KEY 가 설정되지 않았습니다.')
+        return 503, {'error': 'not_configured', 'message': 'YOUTUBE_API_KEY 가 설정되지 않았습니다.'}, 0
+
+    key = (name, race_date, kind)
+    hit = _memo.get(key)
+    now = time.time()
+    if hit and now - hit[0] < CACHE_SECONDS:
+        return 200, hit[1], int(CACHE_SECONDS - (now - hit[0]))
     try:
-        return 200, search_race_videos(name, race_date, api_key, kind), True
+        result = search_race_videos(name, race_date, api_key, kind)
+        _memo[key] = (now, result)
+        return 200, result, CACHE_SECONDS
     except urllib.error.HTTPError as e:
-        reason = ''
+        reason, message = '', ''
         try:
-            reason = json.loads(e.read().decode('utf-8'))['error']['errors'][0]['reason']
+            err = json.loads(e.read().decode('utf-8'))['error']
+            reason, message = err['errors'][0]['reason'], err.get('message', '')
         except Exception:
             pass
-        status = 429 if reason in ('quotaExceeded', 'rateLimitExceeded') else 502
-        return status, {'error': reason or f'youtube_http_{e.code}'}, False
+        quota = reason in ('quotaExceeded', 'rateLimitExceeded')
+        status = 429 if quota else 502
+        body = {'error': reason or f'youtube_http_{e.code}'}
+        cache = QUOTA_ERROR_CACHE_SECONDS if quota else 0
+        log_error(f'YouTube API HTTP {e.code} reason={reason or "-"} name={name!r} date={race_date!r} '
+                  f'kind={kind or "-"} message={message}')
     except Exception as e:
-        return 502, {'error': f'유튜브 검색 실패: {e}'}, False
+        status, body, cache = 502, {'error': f'유튜브 검색 실패: {e}'}, 0
+        log_error(f'검색 실패 {type(e).__name__}: {e} name={name!r} date={race_date!r} kind={kind or "-"}')
+
+    # 실패했어도 메모리에 옛 결과가 있으면 그걸 준다 (CDN 에는 짧게만 캐시)
+    if hit and now - hit[0] < STALE_SECONDS:
+        log_error(f'옛 결과로 대신 응답 ({int((now - hit[0]) / 3600)}시간 전 결과) name={name!r}')
+        return 200, hit[1], 600
+    return status, body, cache
 
 
 class handler(BaseHTTPRequestHandler):
@@ -193,8 +237,13 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Cache-Control', f'public, s-maxage={CACHE_SECONDS}, stale-while-revalidate=86400'
-                         if cache else 'no-store')
+        if not cache:
+            cc = 'no-store'
+        elif status == 200:
+            cc = f'public, s-maxage={cache}, stale-while-revalidate={STALE_SECONDS}'
+        else:  # 실패 응답은 잠깐만 들고 있고 옛 것으로 내주지 않는다
+            cc = f'public, s-maxage={cache}'
+        self.send_header('Cache-Control', cc)
         self.send_header('Content-Length', str(len(body)))
         self.end_headers()
         self.wfile.write(body)
