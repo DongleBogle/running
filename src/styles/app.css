@@ -741,6 +741,7 @@ img, video, iframe { max-width: 100%; }
 .yt-head p { color: var(--text-muted); font-size: 0.84rem; margin-top: 2px; }
 .yt-head-badges { display: flex; gap: 6px; flex-wrap: wrap; }
 .race-kind-hint { font-size: 0.74rem; color: #64748b; margin: -4px 0 10px; }
+.race-old-hint { font-size: 0.74rem; color: #64748b; margin: 10px 0 0; }
 
 .yt-title-info { flex: 1; min-width: 0; }
 .yt-title-info h4 { overflow-wrap: anywhere; }

@@ -803,16 +803,20 @@ async function loadRaceVideos() {
   const box = document.getElementById('raceRecBox');
   try {
     const races = await loadRaces();
-    const now = new Date();
-    const todayKey = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
-    // 주로영상은 대회가 끝나야 올라오므로 오늘까지 열린 대회만
-    raceRec.races = races.filter(r => r.date <= todayKey);
+    // 주로영상은 대회가 끝나야 올라오므로 오늘까지, 검색 할당량 때문에 COURSE_SEARCH_DAYS 일 전까지 열린 대회만.
+    // 그보다 오래된 대회는 raceOldHint 로 링크를 직접 붙여넣게 안내한다
+    raceRec.races = races.filter(r => daysAgo(r.date) >= 0 && daysAgo(r.date) <= COURSE_SEARCH_DAYS);
   } catch (err) {
     console.warn('대회 목록을 불러오지 못했습니다', err);
     box.style.display = 'none';
     return;
   }
-  if (!raceRec.races.length) { box.style.display = 'none'; return; }
+  document.getElementById('raceOldHint').textContent =
+    `${COURSE_SEARCH_DAYS / 7}주 이전 대회는 주로영상 유튜브 링크를 아래에 직접 첨부해주세요.`;
+  if (!raceRec.races.length) {  // 최근 대회가 없으면 안내만 남긴다
+    box.querySelectorAll('.race-pick-row, #raceMeta, #raceKindHint, #raceVideoGrid').forEach(el => { el.style.display = 'none'; });
+    return;
+  }
   // 대회 페이지의 '레이스 기록으로 내 모습 찾기'(converter?race=<id>)로 왔으면 그 대회를 미리 골라 둔다
   const linked = raceRec.races.find(r => r.id === new URLSearchParams(location.search).get('race'));
   if (linked) { raceRec.date = linked.date; raceRec.raceId = linked.id; renderRaceRec(); return; }
@@ -860,12 +864,6 @@ function renderRaceRec() {
   const race = raceRec.races.find(r => r.id === raceRec.raceId);
   if (!race) return;
   document.getElementById('raceMeta').textContent = `${formatRaceDate(race.date)} · ${race.location || ''}`;
-  // 검색 할당량 때문에 COURSE_SEARCH_DAYS 일보다 오래된 대회는 검색하지 않고 링크를 직접 붙여넣게 한다
-  if (daysAgo(race.date) > COURSE_SEARCH_DAYS) {
-    document.getElementById('raceVideoGrid').innerHTML =
-      '<div class="race-empty" style="grid-column: 1 / -1;">별도 유튜브 링크를 첨부해주세요.</div>';
-    return;
-  }
   renderRaceVideos(race, [], true);
   fetchLiveCourse(race).then(live => {
     if (raceRec.raceId !== race.id) return;  // 그사이 다른 대회를 골랐으면 무시
