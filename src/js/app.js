@@ -797,10 +797,12 @@ async function loadRaceVideos() {
   const box = document.getElementById('raceRecBox');
   try {
     const races = await loadRaces();
+    const key = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
     const now = new Date();
-    const todayKey = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
-    // 주로영상은 대회가 끝나야 올라오므로 오늘까지 열린 대회만
-    raceRec.races = races.filter(r => r.date <= todayKey);
+    const todayKey = key(now);
+    const fromKey = key(new Date(now.getFullYear(), now.getMonth(), now.getDate() - COURSE_SEARCH_DAYS));
+    // 주로영상은 대회가 끝나야 올라오므로 오늘까지, 검색 할당량 때문에 COURSE_SEARCH_DAYS 일 전까지 열린 대회만
+    raceRec.races = races.filter(r => r.date >= fromKey && r.date <= todayKey);
   } catch (err) {
     console.warn('대회 목록을 불러오지 못했습니다', err);
     box.style.display = 'none';

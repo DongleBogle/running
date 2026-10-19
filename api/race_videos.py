@@ -12,7 +12,9 @@ GET /api/race/videos?name=<대회명>&date=<YYYY-MM-DD>[&kind=course]
 - 실패는 stderr 로 남긴다 (Vercel 대시보드 → Logs 에서 '[race_videos]' 로 검색). 요청 URL 에 키가 들어 있어 URL 은 남기지 않는다.
 - 같은 이름의 지난 대회 영상도 참고가 되므로 연도는 빼고 검색하고, 최근 3년 영상만 받는다.
 - 영상 길이(lengthSeconds)는 videos.list(1유닛)로 한 번에 받는다.
-- kind=course: 구간 변환기 Step 3 용. 대회일 이후 올라온 영상만, 3분 이하(쇼츠 등)는 빼고 받는다.
+- kind=course: 구간 변환기 Step 3 용. 오늘(KST)부터 COURSE_SEARCH_DAYS 일 전까지 열린 대회만 검색하고, 그보다 오래된 대회는
+  검색 없이 빈 목록을 준다 (할당량 절약, 프런트 common.js 의 COURSE_SEARCH_DAYS 와 맞춘다).
+  대회일 이후 올라온 영상만, 3분 이하(쇼츠 등)는 빼고 받는다.
   대회명 검색과 '대회명 주로영상' 검색을 합친다(200유닛). 한쪽만으로는 주로영상이 절반도 안 잡힌다. (주로영상 여부는 type 으로 구분;
   검색어에 '주로영상'을 붙이면 '17km지점'처럼 그 단어가 없는 영상이 빠져서 붙이지 않는다)
 """
@@ -39,6 +41,7 @@ BLOCKED_KEYWORDS = [
 
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos'
+COURSE_SEARCH_DAYS = 21
 MIN_COURSE_SECONDS = 180  # 이보다 짧은 영상(쇼츠 등)은 주로영상 목록에서 뺀다
 CACHE_SECONDS = 12 * 3600          # CDN·메모리 캐시가 새 결과로 보는 기간
 STALE_SECONDS = 7 * 24 * 3600      # 이 기간까지는 옛 결과라도 실패 응답 대신 돌려준다
@@ -186,6 +189,9 @@ def handle(query_string):
     kind = (qs.get('kind') or [''])[0].strip()
     if not name:
         return 400, {'error': '대회명(name)이 필요합니다.'}, 0
+    if kind == 'course' and re.fullmatch(r'\d{4}-\d{2}-\d{2}', race_date) and \
+            race_date < (datetime.now(KST).date() - timedelta(days=COURSE_SEARCH_DAYS)).isoformat():
+        return 200, {'success': True, 'query': core_name(name), 'videos': [], 'tooOld': True}, CACHE_SECONDS
     api_key = os.environ.get('YOUTUBE_API_KEY', '').strip()
     if not api_key:
         log_error('YOUTUBE_API_KEY 가 설정되지 않았습니다.')
