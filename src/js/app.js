@@ -423,15 +423,18 @@ function askConfirm(message, opts) {
 // 출발 시각을 넣으면 true, 사진 첨부를 고르거나 닫으면 false
 function askStartTimeOrPhoto() {
   const dlg = document.getElementById('needStartDialog');
-  const input = document.getElementById('needStartInput');
-  const err = document.getElementById('needStartErr');
-  input.value = startTimeManual ? globalStartTimeStr : '';
-  err.textContent = '';
+  const sels = ['needStartH', 'needStartM', 'needStartS'].map(id => document.getElementById(id));
+  sels.forEach((sel, i) => {
+    if (sel.options.length) return;
+    const max = i === 0 ? 24 : 60;
+    for (let n = 0; n < max; n++) sel.add(new Option(String(n).padStart(2, '0')));
+  });
+  // 대부분 대회가 오전 8시 출발이라 기본값으로 둔다
+  (startTimeManual ? globalStartTimeStr : '08:00:00').split(':').forEach((v, i) => { sels[i].value = v.padStart(2, '0'); });
   return new Promise(resolve => {
     const finish = v => { dlg.onclose = null; dlg.close(); resolve(v); };
     document.getElementById('needStartOk').onclick = () => {
-      if (!input.value) { err.textContent = '출발 시각을 입력해주세요.'; input.focus(); return; }
-      document.getElementById('startTimeInput').value = input.value;
+      document.getElementById('startTimeInput').value = sels.map(s => s.value).join(':');
       finish(true);
       onStartTimeEdit();
     };
