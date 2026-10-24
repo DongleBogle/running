@@ -3,9 +3,9 @@
  "name": "2026 인천마라톤",
  "nameEn": "Incheon Marathon 2026",
  "date": "2026-11-22",
- "location": "인천 인천아시아드주경기장",
+ "location": "인천 아시아드주경기장",
  "region": "인천",
- "venue": "인천아시아드주경기장",
+ "venue": "아시아드주경기장",
  "distances": [
   "5km",
   "10km",
@@ -36,14 +36,14 @@
  "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1788171679/kormarathon/events/event-images-1788171678693.jpg",
  "registration": {
   "opensAt": "2026-09-07",
-  "closesAt": "2026-09-07",
-  "closed": true,
+  "closesAt": "2026-10-27",
+  "closed": false,
   "url": "http://incheonmarathon.or.kr/"
  },
  "source": "https://www.kormarathon.com/ko/races/incheon-marathon-2026",
  "coords": {
-  "lat": 37.54804,
-  "lon": 126.6677,
+  "lat": 37.5452,
+  "lon": 126.66522,
   "precision": "venue"
  },
  "climate": {
@@ -135,5 +135,5 @@
    }
   ]
  },
- "generatedAt": "2026-10-18T13:03"
+ "generatedAt": "2026-10-24T21:23"
 }

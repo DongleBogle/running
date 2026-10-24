@@ -1,6 +1,6 @@
 {
  "id": "2026-sports-seoul-half-marathon",
- "name": "2026 스포츠서울 하프마라톤",
+ "name": "2026 스포츠서울 하프마라톤 (취소)",
  "nameEn": "2026 Sports Seoul Half Marathon",
  "date": "2026-11-29",
  "location": "서울 목동종합운동장 및 안양천 코스",
@@ -37,7 +37,7 @@
  "registration": {
   "opensAt": null,
   "closesAt": null,
-  "closed": false,
+  "closed": true,
   "url": ""
  },
  "source": "https://www.kormarathon.com/ko/races/2026-sports-seoul-half-marathon",
@@ -135,5 +135,5 @@
    }
   ]
  },
- "generatedAt": "2026-10-18T13:03"
+ "generatedAt": "2026-10-24T21:23"
 }

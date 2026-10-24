@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "generatedAt": "2026-10-18T13:03",
+ "generatedAt": "2026-10-24T21:23",
  "races": [
   {
    "id": "2026-jtbc-seoul-marathon",
@@ -98,7 +98,7 @@
     "5km",
     "10km"
    ],
-   "image": "data/calendar/images/2e855b663dae4670.jpg",
+   "image": "data/calendar/images/dffc6eb0c4ede820.jpg",
    "registration": {
     "opensAt": "2026-09-21",
     "closesAt": "2026-10-21",
@@ -160,6 +160,22 @@
    }
   },
   {
+   "id": "2026-virtual-hangul-run-518a4282ac6c4cec802eeb335972c9b8",
+   "name": "2026 버추얼 한글런",
+   "date": "2026-11-04",
+   "location": "서울 전국 / 원하는 장소 어디서나",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-09",
+    "closesAt": "2026-11-04",
+    "closed": false,
+    "url": "https://gift.kakao.com/product/14443548"
+   }
+  },
+  {
    "id": "2026-global-6k-for-water-in-goyang",
    "name": "2026 Global 6K for Water in 고양",
    "date": "2026-11-07",
@@ -207,22 +223,6 @@
     "closesAt": "2026-09-30",
     "closed": false,
     "url": "https://runyc.kr/"
-   }
-  },
-  {
-   "id": "2026-ocean-capital-busan-run-festa",
-   "name": "2026 해양수도 부산 런페스타",
-   "date": "2026-11-07",
-   "location": "부산 부산 북항친수공원 잔디마당",
-   "distances": [
-    "10km"
-   ],
-   "image": "data/calendar/images/f36c75d6156424ba.jpg",
-   "registration": {
-    "opensAt": "2026-08-07",
-    "closesAt": "2026-08-31",
-    "closed": true,
-    "url": "http://runfesta.co.kr"
    }
   },
   {
@@ -343,6 +343,23 @@
     "closesAt": "2026-09-09",
     "closed": true,
     "url": "https://www.jinhaemarathon.co.kr"
+   }
+  },
+  {
+   "id": "damyang-metasequoia-national-marathon-68bbee789bcd4a3490a3b455c236e86b",
+   "name": "제21회 담양 메타세쿼이아 전국마라톤대회",
+   "date": "2026-11-07",
+   "location": "전남 담양추성경기장, 전남 담양군 담양읍 관방제림길 69",
+   "distances": [
+    "5km",
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-22",
+    "closesAt": "2026-10-20",
+    "closed": false,
+    "url": "https://www.metarun.kr"
    }
   },
   {
@@ -553,6 +570,24 @@
    }
   },
   {
+   "id": "2026-sports-council-president-s-cup-ansan-run-marathon-c9111b8349604e64bf4922f992d5e52d",
+   "name": "2026 체육회장배 안산RUN마라톤대회",
+   "date": "2026-11-08",
+   "location": "경기 안산호수공원 중앙무대 일대",
+   "distances": [
+    "~5km",
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-01",
+    "closesAt": "2026-10-20",
+    "closed": false,
+    "url": "http://aaaf.koreashout.com/bbs/board.php?bo_table=competition&wr_id=105"
+   }
+  },
+  {
    "id": "2026-haenam-ttangkkeut-national-marathon",
    "name": "2026 해남땅끝 전국마라톤대회",
    "date": "2026-11-08",
@@ -604,6 +639,22 @@
     "closesAt": "2026-09-06",
     "closed": false,
     "url": "http://olympicday.co.kr/"
+   }
+  },
+  {
+   "id": "2nd-83-tower-uphill-run-challenge-9306661322a742b0877a59983a6869a5",
+   "name": "이월드 83타워 업힐런 챌린지 (2회)",
+   "date": "2026-11-08",
+   "location": "대구 이월드 제1주차장 스타트존 (대구광역시 달서구 두류공원로 200)",
+   "distances": [
+    "~5km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-10",
+    "closesAt": "2026-10-31",
+    "closed": false,
+    "url": "https://eworld83toweruphillrun.lovable.app/"
    }
   },
   {
@@ -951,6 +1002,23 @@
    }
   },
   {
+   "id": "2026-innovation-city-marathon-616a6369a51a40bdae364ca69a83e1ea",
+   "name": "2026 영남일보 혁신도시마라톤 in DAEGU",
+   "date": "2026-11-15",
+   "location": "대구 대구혁신도시 신서중앙공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": null,
+    "closed": false,
+    "url": "http://inno.ynmarathon.kr"
+   }
+  },
+  {
    "id": "2026-run-together-with-bithumb-sharing-d143977b11474a9298a6da27680e7a06",
    "name": "2026 우리함께런 with 빗썸나눔",
    "date": "2026-11-15",
@@ -962,7 +1030,7 @@
    "image": "",
    "registration": {
     "opensAt": "2026-10-06",
-    "closesAt": "2026-10-21",
+    "closesAt": "2026-11-05",
     "closed": false,
     "url": "https://bithumbnanumrun.com"
    }
@@ -1068,7 +1136,7 @@
    "image": "data/calendar/images/ba6885ed85835ad0.jpg",
    "registration": {
     "opensAt": "2026-05-06",
-    "closesAt": "2026-05-28",
+    "closesAt": "2026-10-30",
     "closed": true,
     "url": "https://www.mara1080.com/event/c8dc2c22-a83a-4743-9e34-c884e9809dbb"
    }
@@ -1194,6 +1262,22 @@
    }
   },
   {
+   "id": "wagurun-2026-fe21ac1771bf4a60a318ddf4032a7e3e",
+   "name": "2026 와구런",
+   "date": "2026-11-21",
+   "location": "광주 광주광역시 광산구 산월동 824-5",
+   "distances": [
+    "5km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": "2026-10-25",
+    "closed": false,
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdI59l03OqFfzFW0nzn-XtZojEjmlDxjOK6OKoNkJ0YkAIn1w/viewform"
+   }
+  },
+  {
    "id": "give-run-2026-busan",
    "name": "GIVE RUN 2026 부산",
    "date": "2026-11-21",
@@ -1225,6 +1309,22 @@
     "closesAt": "2026-10-15",
     "closed": false,
     "url": "https://www.kclf.org/braverun"
+   }
+  },
+  {
+   "id": "2026-the-last-run-goodbye-jamsil-2c3264b4e42349e08ac8d2dc3b0f6a4d",
+   "name": "2026 The Last Run : 굿바이잠실",
+   "date": "2026-11-22",
+   "location": "서울 서울 잠실종합운동장",
+   "distances": [
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-22",
+    "closesAt": "2026-10-30",
+    "closed": true,
+    "url": "https://lgtwinslastrungoodbyejamsil.com/"
    }
   },
   {
@@ -1265,7 +1365,7 @@
   },
   {
    "id": "10k-night-run",
-   "name": "2026 서리풀 잠수교 10K 런 (2026 잠수교 10K 나이트런 - 11월 22일로 일정 변경)",
+   "name": "2026 서리풀 잠수교 10K 런 (2026 잠수교 10K 나이트런)",
    "date": "2026-11-22",
    "location": "서울 반포한강공원 달빛광장",
    "distances": [
@@ -1301,7 +1401,7 @@
    "id": "incheon-marathon-2026",
    "name": "2026 인천마라톤",
    "date": "2026-11-22",
-   "location": "인천 인천아시아드주경기장",
+   "location": "인천 아시아드주경기장",
    "distances": [
     "5km",
     "10km",
@@ -1310,8 +1410,8 @@
    "image": "data/calendar/images/7bc530afc35d728b.jpg",
    "registration": {
     "opensAt": "2026-09-07",
-    "closesAt": "2026-09-07",
-    "closed": true,
+    "closesAt": "2026-10-27",
+    "closed": false,
     "url": "http://incheonmarathon.or.kr/"
    }
   },
@@ -1414,7 +1514,7 @@
     "opensAt": "2026-10-20",
     "closesAt": "2026-11-03",
     "closed": false,
-    "url": ""
+    "url": "https://fest.kakaopay.com/esg/longrun/about"
    }
   },
   {
@@ -1489,7 +1589,7 @@
   },
   {
    "id": "2026-sports-seoul-half-marathon",
-   "name": "2026 스포츠서울 하프마라톤",
+   "name": "2026 스포츠서울 하프마라톤 (취소)",
    "date": "2026-11-29",
    "location": "서울 목동종합운동장 및 안양천 코스",
    "distances": [
@@ -1501,8 +1601,26 @@
    "registration": {
     "opensAt": null,
     "closesAt": null,
-    "closed": false,
+    "closed": true,
     "url": ""
+   }
+  },
+  {
+   "id": "2026-wonju-chiak-marathon-7f764242a3364d45abb444a8af69b83f",
+   "name": "2026 원주 치악마라톤",
+   "date": "2026-11-29",
+   "location": "강원 원주종합운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-16",
+    "closesAt": "2026-10-30",
+    "closed": false,
+    "url": "https://wonju.raceplan.co.kr/"
    }
   },
   {
@@ -1520,6 +1638,24 @@
     "closesAt": "2026-11-15",
     "closed": false,
     "url": "https://www.xn--ob0bs4k27c8xc9da633vynbkyur2ft5hckl.kr:9016/run/1100.asp?T=3&wgu=1"
+   }
+  },
+  {
+   "id": "2026-cheonan-hope-sharing-marathon-f5e887b0df1d4bbdb046f7b0ae6aa98e",
+   "name": "2026 천안희망나눔 마라톤",
+   "date": "2026-11-29",
+   "location": "충남 천안 독립기념관 겨레의집 (충청남도 천안시 동남구 목천읍 독립기념관로 1)",
+   "distances": [
+    "~5km",
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-01",
+    "closesAt": "2026-10-25",
+    "closed": false,
+    "url": "https://runwithus.co.kr"
    }
   },
   {

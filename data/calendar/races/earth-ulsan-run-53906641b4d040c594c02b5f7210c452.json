@@ -1,0 +1,138 @@
+{
+ "id": "earth-ulsan-run-53906641b4d040c594c02b5f7210c452",
+ "name": "어울런(Earth Ulsan Run)",
+ "nameEn": "Earth Ulsan Run",
+ "date": "2026-12-05",
+ "location": "울산 태화강 남구 둔치",
+ "region": "울산",
+ "venue": "태화강 남구 둔치",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 20000,
+   "note": "누국나 참가 가능"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 10000,
+   "note": "14세 미만, 보호자 동반 등록 필수"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 20000,
+   "note": "18세 이상"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-22",
+  "closesAt": "2026-10-27",
+  "closed": false,
+  "url": "https://earth-ulsan.run/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/earth-ulsan-run-53906641b4d040c594c02b5f7210c452",
+ "coords": {
+  "lat": 35.53881,
+  "lon": 129.35401,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 4.0,
+  "tmin": 0.4,
+  "tmax": 9.7,
+  "humidity": 56,
+  "wind": 3.6,
+  "rainChance": 6,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -0.3,
+    "tmin": -2.8,
+    "tmax": 5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 3.5,
+    "tmin": -0.1,
+    "tmax": 9.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 6.3,
+    "tmin": 1.6,
+    "tmax": 13.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 1.3,
+    "tmin": -0.9,
+    "tmax": 5.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 4.0,
+    "tmin": -0.5,
+    "tmax": 11.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 4.4,
+    "tmin": 0.6,
+    "tmax": 8.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 3.4,
+    "tmin": -0.8,
+    "tmax": 6.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.1,
+    "tmin": 1.7,
+    "tmax": 11.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -2.2,
+    "tmin": -4.2,
+    "tmax": 1.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 8.6,
+    "tmin": 6.2,
+    "tmax": 14.2,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-24T21:23"
+}

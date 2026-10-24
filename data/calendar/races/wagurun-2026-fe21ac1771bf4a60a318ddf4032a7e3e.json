@@ -1,0 +1,125 @@
+{
+ "id": "wagurun-2026-fe21ac1771bf4a60a318ddf4032a7e3e",
+ "name": "2026 와구런",
+ "nameEn": "WAGURUN 2026",
+ "date": "2026-11-21",
+ "location": "광주 광주광역시 광산구 산월동 824-5",
+ "region": "광주",
+ "venue": "광주광역시 광산구 산월동 824-5",
+ "distances": [
+  "5km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "약 5km 푸드 러닝·걷기"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-10-25",
+  "closed": false,
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSdI59l03OqFfzFW0nzn-XtZojEjmlDxjOK6OKoNkJ0YkAIn1w/viewform"
+ },
+ "source": "https://www.kormarathon.com/ko/races/wagurun-2026-fe21ac1771bf4a60a318ddf4032a7e3e",
+ "coords": {
+  "lat": 35.15581,
+  "lon": 126.83064,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 7.3,
+  "tmin": 3.2,
+  "tmax": 13.1,
+  "humidity": 71,
+  "wind": 2.6,
+  "rainChance": 17,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 7.3,
+    "tmin": 4.3,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 7.3,
+    "tmin": 3.7,
+    "tmax": 14.5,
+    "rain": 0.2
+   },
+   {
+    "year": 2023,
+    "temp": 5.4,
+    "tmin": -0.3,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.7,
+    "tmin": 5.1,
+    "tmax": 17.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 10.6,
+    "tmin": 5.7,
+    "tmax": 16.1,
+    "rain": 0.2
+   },
+   {
+    "year": 2020,
+    "temp": 5.5,
+    "tmin": 0.7,
+    "tmax": 14.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 3.5,
+    "tmin": -1.4,
+    "tmax": 13.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.8,
+    "tmin": 0.5,
+    "tmax": 13.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.4,
+    "tmin": -2.4,
+    "tmax": 9.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 11.2,
+    "tmin": 6.9,
+    "tmax": 18.3,
+    "rain": 0.6
+   }
+  ]
+ },
+ "generatedAt": "2026-10-24T21:23"
+}
