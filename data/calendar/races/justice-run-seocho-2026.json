@@ -25,8 +25,8 @@
   }
  ],
  "major": false,
- "image": "data/calendar/images/2e855b663dae4670.jpg",
- "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790056997/kormarathon/events/event-images-1790056996610.jpg",
+ "image": "data/calendar/images/dffc6eb0c4ede820.jpg",
+ "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1790057008/kormarathon/banners/banner-images-1790057007222.jpg",
  "registration": {
   "opensAt": "2026-09-21",
   "closesAt": "2026-10-21",
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-10-18T13:03"
+ "generatedAt": "2026-10-24T21:23"
 }

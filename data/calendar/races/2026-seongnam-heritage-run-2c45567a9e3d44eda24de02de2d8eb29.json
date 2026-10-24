@@ -1,0 +1,132 @@
+{
+ "id": "2026-seongnam-heritage-run-2c45567a9e3d44eda24de02de2d8eb29",
+ "name": "2026 성남 헤리티지런",
+ "nameEn": "2026 Seongnam Heritage Run",
+ "date": "2026-12-12",
+ "location": "경기 탄천종합운동장 (경기 성남시 분당구 탄천로 215)",
+ "region": "경기",
+ "venue": "탄천종합운동장 (경기 성남시 분당구 탄천로 215)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 40000,
+   "note": "기록칩 미제공 · 제한시간 1시간"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 50000,
+   "note": "기록칩 제공 · 제한시간 1시간 30분"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-22",
+  "closesAt": "2026-11-06",
+  "closed": false,
+  "url": "https://charun.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-seongnam-heritage-run-2c45567a9e3d44eda24de02de2d8eb29",
+ "coords": {
+  "lat": 37.41011,
+  "lon": 127.12122,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.1,
+  "tmin": -4.3,
+  "tmax": 4.0,
+  "humidity": 65,
+  "wind": 2.1,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -0.8,
+    "tmin": -4.2,
+    "tmax": 5.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -3.1,
+    "tmin": -4.9,
+    "tmax": 2.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.6,
+    "tmin": -0.8,
+    "tmax": 7.4,
+    "rain": 0.7
+   },
+   {
+    "year": 2022,
+    "temp": -1.0,
+    "tmin": -5.1,
+    "tmax": 5.2,
+    "rain": 1.8
+   },
+   {
+    "year": 2021,
+    "temp": 1.7,
+    "tmin": -5.9,
+    "tmax": 4.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -0.8,
+    "tmin": -3.9,
+    "tmax": 4.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -3.8,
+    "tmin": -5.9,
+    "tmax": 1.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": -4.9,
+    "tmin": -6.7,
+    "tmax": -0.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": -11.4,
+    "tmin": -12.4,
+    "tmax": -6.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 0.1,
+    "tmin": -3.8,
+    "tmax": 7.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-10-24T21:23"
+}

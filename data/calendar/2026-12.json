@@ -1,6 +1,6 @@
 {
  "month": "2026-12",
- "generatedAt": "2026-10-18T13:32",
+ "generatedAt": "2026-10-24T21:23",
  "races": [
   {
    "id": "sawe-2026-world-record-international-marathon-festival",
@@ -53,6 +53,23 @@
    }
   },
   {
+   "id": "earth-ulsan-run-53906641b4d040c594c02b5f7210c452",
+   "name": "어울런(Earth Ulsan Run)",
+   "date": "2026-12-05",
+   "location": "울산 태화강 남구 둔치",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-22",
+    "closesAt": "2026-10-27",
+    "closed": false,
+    "url": "https://earth-ulsan.run/"
+   }
+  },
+  {
    "id": "oak-valley-winter-half-marathon",
    "name": "오크밸리 윈터 하프 마라톤",
    "date": "2026-12-05",
@@ -84,6 +101,24 @@
     "closesAt": "2026-10-28",
     "closed": false,
     "url": "http://hangangmarathon.kr"
+   }
+  },
+  {
+   "id": "4th-garden5-life-race-f989573765a34eaaa804837455213e7d",
+   "name": "제4회 garden5 LIFE RACE",
+   "date": "2026-12-05",
+   "location": "서울 송파구 가든파이브 라이프 중앙광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-15",
+    "closesAt": "2026-10-21",
+    "closed": false,
+    "url": "http://www.irunman.kr/sub1_1.php?uid=97"
    }
   },
   {
@@ -121,6 +156,24 @@
    }
   },
   {
+   "id": "2026-hwasun-dolmen-marathon-056fe86f722045a29882f0bce46ad72f",
+   "name": "2026 화순고인돌마라톤대회",
+   "date": "2026-12-06",
+   "location": "전남 화순공설운동장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-20",
+    "closesAt": "2026-11-10",
+    "closed": false,
+    "url": "https://www.xn--299a84k68cg1cr8pi6h5qsd0i.kr:9020/run/1100.asp?T=3&wgu=1"
+   }
+  },
+  {
    "id": "20th-yangsan-national-half-marathon",
    "name": "제20회 양산전국하프마라톤대회",
    "date": "2026-12-06",
@@ -153,6 +206,23 @@
     "closesAt": "2026-10-30",
     "closed": false,
     "url": "https://roadracing.co.kr/"
+   }
+  },
+  {
+   "id": "2026-seongnam-heritage-run-2c45567a9e3d44eda24de02de2d8eb29",
+   "name": "2026 성남 헤리티지런",
+   "date": "2026-12-12",
+   "location": "경기 탄천종합운동장 (경기 성남시 분당구 탄천로 215)",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-22",
+    "closesAt": "2026-11-06",
+    "closed": false,
+    "url": "https://charun.co.kr/"
    }
   },
   {
