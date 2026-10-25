@@ -27,3 +27,5 @@ data/.climate_cache.json
 # Build output / deps
 dist/
 node_modules/
+.vercel
+.env*
