@@ -19,8 +19,8 @@ const DEFAULT_IMAGE = 'assets/icon-512.png';
 const VIEWS = {
   home: {
     file: 'index.html', path: '/',
-    title: '마라톤노트 MarathonNote - 마라톤 일정·접수 캘린더와 주로영상 찾기',
-    description: '마라톤노트(MarathonNote)에서 곧 열리는 마라톤과 접수중인 대회를 한눈에 보고, 레이스 기록으로 유튜브 주로영상 속 내 모습을 찾아보세요.',
+    title: '마라톤노트 MarathonNote - 마라톤 일정·주로영상 찾기',
+    description: '마라톤노트에서 접수중인 마라톤 대회 일정을 한눈에 보고, 레이스 기록으로 유튜브 주로영상 속 내 모습을 찾아보세요.',
   },
   calendar: {
     file: 'calendar.html', path: '/calendar',
@@ -30,7 +30,7 @@ const VIEWS = {
   converter: {
     file: 'converter.html', path: '/converter',
     title: '레이스 기록으로 주로영상 속 내 모습 찾기 - MarathonNote',
-    description: '스마트칩 기록과 워치 구간기록 사진으로 지점별 통과 시각을 계산하고, 유튜브 주로영상에서 내 모습이 나오는 장면을 찾아 클립으로 받으세요.',
+    description: '스마트칩 기록이나 워치 랩 사진으로 지점별 통과 시각을 계산해 유튜브 주로영상 속 내 모습을 클립으로 받으세요.',
   },
 };
 
@@ -80,9 +80,10 @@ function dateLabel(d) {
 }
 
 function raceDescription(r) {
-  const parts = [`${dateLabel(r.date)} ${r.location || r.region || ''}에서 열리는 ${r.name}.`];
+  // 네이버 권장(설명 80자 이내)에 맞추려 장소는 지역명만 쓴다(상세 장소는 본문에 있음)
+  const parts = [`${dateLabel(r.date)} ${r.region || ''} ${r.name}.`];
   if (r.distances?.length) parts.push(`종목 ${r.distances.join('·')}.`);
-  parts.push('참가비, 접수 일정, 대회날 예상 날씨와 유튜브 주로영상을 확인하세요.');
+  parts.push('참가비·접수 일정·날씨·주로영상 확인.');
   return parts.join(' ').replace(/\s+/g, ' ');
 }
 
@@ -157,7 +158,9 @@ export function generateSeo(out) {
     .filter(r => r.id && /^\d{4}-\d{2}-\d{2}$/.test(r.date || ''));
   mkdirSync(join(out, 'race'), { recursive: true });
   for (const r of races) {
-    const title = `${r.name} (${r.date}) - ${SITE_NAME}`;
+    // 네이버 권장(제목 40자 이내): 넘치면 브랜드명 접미사를 뺀다
+    const base = `${r.name} (${r.date})`;
+    const title = `${base} - ${SITE_NAME}`.length <= 40 ? `${base} - ${SITE_NAME}` : base;
     const tags = headTags({
       site, path: `/race/${encodeURIComponent(r.id)}`, title, description: raceDescription(r),
       image: r.image || r.poster || DEFAULT_IMAGE, type: 'article',
