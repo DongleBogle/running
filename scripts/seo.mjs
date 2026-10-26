@@ -87,9 +87,18 @@ function raceDescription(r) {
   return parts.join(' ').replace(/\s+/g, ' ');
 }
 
+// 접수 상태 → Offer.availability (빌드 시점 기준, 날짜는 KST)
+function offerAvailability(reg) {
+  const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  if (reg.closed || (reg.closesAt && reg.closesAt < today)) return 'https://schema.org/SoldOut';
+  if (reg.opensAt && reg.opensAt > today) return 'https://schema.org/PreOrder';
+  return 'https://schema.org/InStock';
+}
+
 function raceJsonLd(r, site) {
   const url = `${site}/race/${encodeURIComponent(r.id)}`;
   const reg = r.registration || {};
+  const availability = offerAvailability(reg);
   const geo = r.coords && r.coords.precision !== 'region'
     ? { '@type': 'GeoCoordinates', latitude: r.coords.lat, longitude: r.coords.lon } : undefined;
   return {
@@ -98,6 +107,7 @@ function raceJsonLd(r, site) {
     name: r.name,
     ...(r.nameEn && { alternateName: r.nameEn }),
     startDate: r.date,
+    endDate: r.date, // 대회는 하루 행사
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     sport: 'Marathon',
@@ -110,9 +120,11 @@ function raceJsonLd(r, site) {
       address: { '@type': 'PostalAddress', streetAddress: r.location, addressRegion: r.region, addressCountry: 'KR' },
       ...(geo && { geo }),
     },
+    // 주최 단체 데이터가 없어 대회 공식(접수) 사이트를 주최 측으로 둔다
+    ...(reg.url && { organizer: { '@type': 'Organization', name: r.name, url: reg.url } }),
     ...(r.fees?.length && {
       offers: r.fees.filter(f => f.fee).map(f => ({
-        '@type': 'Offer', name: f.category, price: f.fee, priceCurrency: 'KRW',
+        '@type': 'Offer', name: f.category, price: f.fee, priceCurrency: 'KRW', availability,
         ...(reg.url && { url: reg.url }),
         ...(reg.opensAt && { validFrom: reg.opensAt }),
       })),
