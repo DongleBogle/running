@@ -241,7 +241,7 @@ def clock_to_video_seconds(chapters, clock_sec, video_length):
     return None
 
 def detect_finish_offset_m(title, desc):
-    pat = r'(?:골인|피니시|피니쉬|결승(?:선)?|finish)\s*(?:지점\s*)?(\d+)\s*m\s*(?:직전|전|앞|남|막판)'
+    pat = r'(?:골인|피니시|피니쉬|결승(?:선)?|마지막|finish)\s*(?:지점\s*)?(\d+)\s*(?:m|미터)\s*(?:직전|전|앞|남|막판)'
     for text in (title, desc):
         m = re.search(pat, text or '', re.IGNORECASE)
         if m:
