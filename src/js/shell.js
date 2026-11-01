@@ -1,7 +1,7 @@
-// 탭 전환: 주소 경로(/ · /converter · /calendar)에 맞는 화면 하나만 보여준다.
+// 탭 전환: 주소 경로(/ · /converter · /calendar · /pace)에 맞는 화면 하나만 보여준다.
 // 탭을 누르면 새로고침 없이 경로만 바꾸고(pushState), 뒤로가기(popstate)도 같은 방식으로 처리한다.
 (() => {
-  const VIEWS = ['home', 'converter', 'calendar'];
+  const VIEWS = ['home', 'converter', 'calendar', 'pace'];
   const pathOf = view => (view === 'home' ? './' : view);
   function viewOf(pathname) {
     const last = pathname.replace(/\/+$/, '').split('/').pop();

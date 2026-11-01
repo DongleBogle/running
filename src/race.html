@@ -205,9 +205,15 @@ function videoGrid(vids) {
 
 // 영상 목록은 loadLiveVideos 가 유튜브 실시간 검색으로 채운다
 // 대회가 끝났으면 구간 변환기(Step 3에서 이 대회가 미리 선택됨)로 보내 주로영상에서 내 모습을 찾게 한다
+// 대회 전이면 가장 긴 종목으로 페이스 계산기를 열어 목표 페이스·구간표를 짜게 한다
+function paceLink(r) {
+  const cls = (r.distances || []).map(distClass);
+  const d = cls.includes('dfull') ? 'full' : cls.includes('dhalf') ? 'half' : cls.includes('d10') ? '10' : cls.includes('d5') ? '5' : '';
+  return `<a class="btn" href="pace${d ? '?d=' + d : ''}">⏱️ 목표 페이스 · 구간표 짜기 ➔</a>`;
+}
 function findMeHtml(r) {
   return daysFromToday(r.date) > 0
-    ? '<div class="hint">대회가 끝나면 레이스 기록으로 주로영상 속 내 모습을 찾을 수 있어요.</div>'
+    ? `<div class="links">${paceLink(r)}</div><div class="hint">대회가 끝나면 레이스 기록으로 주로영상 속 내 모습을 찾을 수 있어요.</div>`
     : `<div class="links"><a class="btn btn-green" href="converter?race=${encodeURIComponent(r.id)}">🏃 레이스 기록으로 내 모습 찾기 ➔</a></div>`;
 }
 

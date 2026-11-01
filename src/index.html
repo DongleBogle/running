@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles/shell.css">
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/calendar.css">
+  <link rel="stylesheet" href="styles/pace.css">
   <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
   <script src="js/common.js"></script>
@@ -23,8 +24,9 @@
     </div>
   </a>
   <nav>
-    <a class="tab" href="converter" data-view="converter">🎬 유튜브 주로 영상 추출</a>
-    <a class="tab" href="calendar" data-view="calendar">📅 마라톤 캘린더</a>
+    <a class="tab" href="converter" data-view="converter">🎬 <span class="tab-long">유튜브 주로 영상 추출</span><span class="tab-short">주로영상</span></a>
+    <a class="tab" href="calendar" data-view="calendar">📅 <span class="tab-long">마라톤 캘린더</span><span class="tab-short">캘린더</span></a>
+    <a class="tab" href="pace" data-view="pace">⏱️ <span class="tab-long">페이스 계산기</span><span class="tab-short">페이스</span></a>
   </nav>
 </div>
 
@@ -479,9 +481,143 @@
 </div>
 </main>
 
+<!-- 마라톤 페이스 계산기 -->
+<main class="view" id="view-pace" hidden>
+<div class="container">
+  <div class="pace-intro">
+    <h2>⏱️ 마라톤 페이스 계산기</h2>
+    <p>목표 기록을 넣으면 1km 페이스와 구간별 통과 시각표를, 달린 기록을 넣으면 페이스와 다른 종목 예상 기록을 계산해요.</p>
+  </div>
+
+  <section class="pace-card" id="paceGoal">
+    <h3>🎯 목표 기록 → 페이스 · 구간표</h3>
+    <div class="pace-row">
+      <span class="lbl">종목</span>
+      <div class="pace-chips" data-group="goalDist">
+        <button type="button" class="pace-chip" data-km="5">5km</button>
+        <button type="button" class="pace-chip" data-km="10">10km</button>
+        <button type="button" class="pace-chip" data-km="21.0975">하프</button>
+        <button type="button" class="pace-chip active" data-km="42.195">풀</button>
+      </div>
+    </div>
+    <div class="pace-row">
+      <span class="lbl">목표</span>
+      <div class="pace-time">
+        <input type="number" inputmode="numeric" min="0" max="23" id="goalH" value="4" aria-label="목표 시간"><span>시간</span>
+        <input type="number" inputmode="numeric" min="0" max="59" id="goalM" value="0" aria-label="목표 분"><span>분</span>
+        <input type="number" inputmode="numeric" min="0" max="59" id="goalS" value="0" aria-label="목표 초"><span>초</span>
+      </div>
+    </div>
+    <div class="pace-row">
+      <span class="lbl">빠른 선택</span>
+      <div class="pace-chips" id="goalPresets"></div>
+    </div>
+    <div class="pace-row">
+      <span class="lbl">페이스</span>
+      <div class="pace-time">
+        <input type="number" inputmode="numeric" min="2" max="20" id="goalPm" aria-label="1km 페이스 분"><span>분</span>
+        <input type="number" inputmode="numeric" min="0" max="59" id="goalPs" aria-label="1km 페이스 초"><span>초 / km</span>
+      </div>
+      <span class="hint">페이스를 바꾸면 목표 기록이 다시 계산돼요</span>
+    </div>
+
+    <div class="pace-result">
+      <div><div class="k">필요한 1km 페이스</div><div class="v" id="goalPace">-</div></div>
+      <div><div class="k">시속</div><div class="v" id="goalSpeed">-</div></div>
+      <div><div class="k">5km 구간마다</div><div class="v" id="goalPer5">-</div></div>
+    </div>
+
+    <div class="pace-row pace-split-opts">
+      <span class="lbl">구간표</span>
+      <div class="pace-chips" data-group="splitStep">
+        <button type="button" class="pace-chip" data-step="1">1km마다</button>
+        <button type="button" class="pace-chip active" data-step="5">5km마다</button>
+      </div>
+      <label class="pace-start">출발 시각 <input type="time" id="goalStart" value="08:00"></label>
+    </div>
+    <div class="pace-table-wrap">
+      <table class="pace-table">
+        <thead><tr><th>지점</th><th class="num">누적 기록</th><th class="num">통과 시각</th></tr></thead>
+        <tbody id="splitBody"></tbody>
+      </table>
+    </div>
+    <p class="hint">일정한 페이스로 달린다고 가정한 계산이에요. 출발선 통과가 늦어지면(건타임과 넷타임 차이) 통과 시각도 그만큼 늦어져요.</p>
+  </section>
+
+  <section class="pace-card" id="paceRecord">
+    <h3>📊 달린 기록 → 페이스 · 예상 기록</h3>
+    <div class="pace-row">
+      <span class="lbl">거리</span>
+      <div class="pace-chips" data-group="recDist">
+        <button type="button" class="pace-chip" data-km="5">5km</button>
+        <button type="button" class="pace-chip active" data-km="10">10km</button>
+        <button type="button" class="pace-chip" data-km="21.0975">하프</button>
+        <button type="button" class="pace-chip" data-km="42.195">풀</button>
+      </div>
+      <div class="pace-time"><input type="number" inputmode="decimal" min="0.1" max="200" step="0.01" id="recKm" value="10" aria-label="거리(km)"><span>km</span></div>
+    </div>
+    <div class="pace-row">
+      <span class="lbl">기록</span>
+      <div class="pace-time">
+        <input type="number" inputmode="numeric" min="0" max="23" id="recH" value="0" aria-label="기록 시간"><span>시간</span>
+        <input type="number" inputmode="numeric" min="0" max="59" id="recM" value="55" aria-label="기록 분"><span>분</span>
+        <input type="number" inputmode="numeric" min="0" max="59" id="recS" value="0" aria-label="기록 초"><span>초</span>
+      </div>
+    </div>
+    <div class="pace-result">
+      <div><div class="k">1km 페이스</div><div class="v" id="recPace">-</div></div>
+      <div><div class="k">시속</div><div class="v" id="recSpeed">-</div></div>
+    </div>
+    <div class="pace-table-wrap">
+      <table class="pace-table">
+        <thead><tr><th>종목</th><th class="num">같은 페이스 유지</th><th class="num">예상 기록 (리겔 공식)</th></tr></thead>
+        <tbody id="predictBody"></tbody>
+      </table>
+    </div>
+    <p class="hint">리겔 공식은 거리가 길어질수록 페이스가 떨어지는 것을 반영한 추정치(T₂ = T₁ × (D₂/D₁)<sup>1.06</sup>)예요. 장거리 훈련량에 따라 실제 기록은 달라질 수 있어요.</p>
+  </section>
+
+  <section class="pace-card">
+    <h3>📋 페이스별 완주 기록표</h3>
+    <div class="pace-table-wrap">
+      <table class="pace-table" id="paceChart">
+        <thead><tr><th>1km 페이스</th><th class="num">시속</th><th class="num">5km</th><th class="num">10km</th><th class="num">하프</th><th class="num">풀</th></tr></thead>
+        <tbody>
+          <tr><td>4'00"</td><td class="num">15.0km/h</td><td class="num">20:00</td><td class="num">40:00</td><td class="num">1:24:23</td><td class="num">2:48:47</td></tr>
+          <tr><td>4'15"</td><td class="num">14.1km/h</td><td class="num">21:15</td><td class="num">42:30</td><td class="num">1:29:40</td><td class="num">2:59:20</td></tr>
+          <tr><td>4'30"</td><td class="num">13.3km/h</td><td class="num">22:30</td><td class="num">45:00</td><td class="num">1:34:56</td><td class="num">3:09:53</td></tr>
+          <tr><td>4'45"</td><td class="num">12.6km/h</td><td class="num">23:45</td><td class="num">47:30</td><td class="num">1:40:13</td><td class="num">3:20:26</td></tr>
+          <tr><td>5'00"</td><td class="num">12.0km/h</td><td class="num">25:00</td><td class="num">50:00</td><td class="num">1:45:29</td><td class="num">3:30:59</td></tr>
+          <tr><td>5'15"</td><td class="num">11.4km/h</td><td class="num">26:15</td><td class="num">52:30</td><td class="num">1:50:46</td><td class="num">3:41:31</td></tr>
+          <tr><td>5'30"</td><td class="num">10.9km/h</td><td class="num">27:30</td><td class="num">55:00</td><td class="num">1:56:02</td><td class="num">3:52:04</td></tr>
+          <tr><td>5'45"</td><td class="num">10.4km/h</td><td class="num">28:45</td><td class="num">57:30</td><td class="num">2:01:19</td><td class="num">4:02:37</td></tr>
+          <tr><td>6'00"</td><td class="num">10.0km/h</td><td class="num">30:00</td><td class="num">1:00:00</td><td class="num">2:06:35</td><td class="num">4:13:10</td></tr>
+          <tr><td>6'30"</td><td class="num">9.2km/h</td><td class="num">32:30</td><td class="num">1:05:00</td><td class="num">2:17:08</td><td class="num">4:34:16</td></tr>
+          <tr><td>7'00"</td><td class="num">8.6km/h</td><td class="num">35:00</td><td class="num">1:10:00</td><td class="num">2:27:41</td><td class="num">4:55:22</td></tr>
+          <tr><td>7'30"</td><td class="num">8.0km/h</td><td class="num">37:30</td><td class="num">1:15:00</td><td class="num">2:38:14</td><td class="num">5:16:28</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pace-card pace-faq">
+    <h3>❓ 자주 묻는 질문</h3>
+    <details><summary>서브4(풀코스 4시간 이내)를 하려면 페이스가 얼마여야 하나요?</summary>
+      <p>42.195km를 4시간에 달리려면 1km당 평균 5분 41초 페이스가 필요해요. 급수·혼잡 구간을 생각하면 5분 35초 안팎으로 잡는 러너가 많아요.</p></details>
+    <details><summary>하프 2시간(서브2)은 몇 분 페이스인가요?</summary>
+      <p>21.0975km를 2시간에 달리려면 1km당 5분 41초 페이스예요. 서브4 풀코스와 같은 페이스예요.</p></details>
+    <details><summary>대회 기록과 워치 기록 거리가 다른 이유는 뭔가요?</summary>
+      <p>공식 코스는 가장 짧은 경로(코너 안쪽)로 측정하지만, 실제로는 사람을 피해 바깥으로 돌고 GPS 오차도 있어서 워치 거리가 보통 0.3~1% 길게 나와요. 목표 페이스는 워치 페이스보다 조금 빠르게 잡는 게 안전해요.</p></details>
+    <details><summary>대회가 끝난 뒤 주로영상에서 내 모습을 찾을 수 있나요?</summary>
+      <p>네. <a href="converter" data-view="converter">유튜브 주로 영상 추출</a>에서 스마트칩 기록이나 워치 랩 사진을 넣으면 지점별 통과 시각을 계산해 영상 속 내 모습을 찾아 줘요.</p></details>
+  </section>
+</div>
+</main>
+
 <script src="js/shell.js"></script>
 <script src="js/home.js"></script>
 <script src="js/app.js"></script>
 <script src="js/calendar.js"></script>
+<script src="js/pace.js"></script>
 </body>
 </html>
