@@ -15,25 +15,25 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "기타",
    "km": 15,
-   "fee": "$undefined",
+   "fee": null,
    "note": "트레일런"
   },
   {
    "category": "기타",
    "km": 28,
-   "fee": "$undefined",
+   "fee": null,
    "note": "트레일런"
   }
  ],

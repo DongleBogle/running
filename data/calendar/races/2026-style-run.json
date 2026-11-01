@@ -14,13 +14,13 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": "석촌호수·송파대로 반환 코스"
   }
  ],

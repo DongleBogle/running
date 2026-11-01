@@ -16,25 +16,25 @@
   {
    "category": "~5km",
    "km": 4.2,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

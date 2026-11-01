@@ -16,31 +16,31 @@
   {
    "category": "~5km",
    "km": 2,
-   "fee": "$undefined",
+   "fee": null,
    "note": "2km 걷기"
   },
   {
    "category": "기타",
    "km": 5.18,
-   "fee": "$undefined",
+   "fee": null,
    "note": "5.18 km 코스"
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": "10 km 코스"
   },
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": "Half 코스"
   },
   {
    "category": "기타",
    "km": 30,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

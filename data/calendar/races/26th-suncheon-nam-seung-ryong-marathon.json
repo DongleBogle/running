@@ -16,25 +16,25 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": "8월 7일 10시부터 개인 접수 시작"
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": "8월 6일 10시부터 개인 접수 시작"
   },
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": "8월 5일 10시부터 개인 접수 시작"
   },
   {
    "category": "풀",
    "km": 42.2,
-   "fee": "$undefined",
+   "fee": null,
    "note": "8월 5일 10시부터 개인 접수 시작"
   }
  ],

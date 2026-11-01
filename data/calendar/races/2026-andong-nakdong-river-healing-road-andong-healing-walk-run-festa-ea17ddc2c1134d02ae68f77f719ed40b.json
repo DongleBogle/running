@@ -13,13 +13,13 @@
   {
    "category": "기타",
    "km": 9,
-   "fee": "$undefined",
+   "fee": null,
    "note": "힐링워크 (약 9km, 참가비는 연령별 상이)"
   },
   {
    "category": "기타",
    "km": 9,
-   "fee": "$undefined",
+   "fee": null,
    "note": "힐링런 (약 9km, 참가비는 연령별 상이)"
   }
  ],

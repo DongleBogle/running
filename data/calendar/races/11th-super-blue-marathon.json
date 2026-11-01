@@ -16,25 +16,25 @@
   {
    "category": "기타",
    "km": 1.6,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "~5km",
    "km": 1.6,
-   "fee": "$undefined",
+   "fee": null,
    "note": "슈퍼블루 걷기 종목"
   },
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],
