@@ -32,6 +32,11 @@ const VIEWS = {
     title: '레이스 기록으로 주로영상 속 내 모습 찾기 - MarathonNote',
     description: '스마트칩 기록이나 워치 랩 사진으로 지점별 통과 시각을 계산해 유튜브 주로영상 속 내 모습을 클립으로 받으세요.',
   },
+  pace: {
+    file: 'pace.html', path: '/pace',
+    title: '마라톤 페이스 계산기 - 서브4·구간표 | MarathonNote',
+    description: '목표 기록으로 1km 페이스와 구간별 통과 시각표를, 달린 기록으로 하프·풀코스 예상 기록을 계산하세요.',
+  },
 };
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
@@ -144,6 +149,17 @@ function raceSummaryHtml(r) {
     <div class="empty">대회 정보를 불러오는 중...</div></div>`;
 }
 
+// 페이스 계산기의 자주 묻는 질문(<details><summary>질문</summary><p>답</p>)을 FAQPage 로
+function faqLd(html) {
+  const text = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const faq = html.slice(html.indexOf('id="view-pace"'));
+  const items = [...faq.matchAll(/<details><summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p><\/details>/g)];
+  return {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: items.map(([, q, a]) => ({ '@type': 'Question', name: text(q), acceptedAnswer: { '@type': 'Answer', text: text(a) } })),
+  };
+}
+
 export function generateSeo(out) {
   const site = siteUrl();
 
@@ -159,6 +175,7 @@ export function generateSeo(out) {
   for (const v of Object.values(VIEWS)) {
     let html = addHead(setTitle(indexHtml, v.title), headTags({ site, path: v.path, title: v.title, description: v.description, image: DEFAULT_IMAGE }));
     if (v.file === 'index.html') html = addHead(html, [homeLd, verify].filter(Boolean).join('\n  '));
+    if (v.file === 'pace.html') html = addHead(html, jsonLd(faqLd(html)));
     writeFileSync(join(out, v.file), html);
   }
 

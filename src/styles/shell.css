@@ -7,9 +7,13 @@
   border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
 .tab.active { color: var(--accent-neon); border-bottom-color: var(--accent-neon); }
 .view[hidden] { display: none; }
+.tab-short { display: none; }
 @media (max-width: 640px) {
   .topbar { gap: 0; padding: 12px 12px 0; }
   .topbar .header-title h1 { font-size: 1.3rem; }
   .topbar nav { width: 100%; }
-  .tab { flex: 1; padding: 10px 8px; text-align: center; }
+  .tab { flex: 1; padding: 10px 4px; text-align: center; }
+  /* 좁은 화면에서는 탭 이름을 줄여 세 탭이 한 줄에 들어가게 */
+  .tab-long { display: none; }
+  .tab-short { display: inline; }
 }

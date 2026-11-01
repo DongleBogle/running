@@ -14,6 +14,10 @@
     {
       "source": "/calendar.html",
       "destination": "/calendar"
+    },
+    {
+      "source": "/pace.html",
+      "destination": "/pace"
     }
   ],
   "rewrites": [
@@ -26,7 +30,7 @@
       "destination": "/api/race_videos"
     },
     {
-      "source": "/:view(converter|calendar)",
+      "source": "/:view(converter|calendar|pace)",
       "destination": "/:view.html"
     },
     {
