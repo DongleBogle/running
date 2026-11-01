@@ -1,0 +1,132 @@
+{
+ "id": "winter-run-ab2f3d202bcf42808e796eb00ab9b959",
+ "name": "겨울왕국 레이스",
+ "nameEn": "Winter Run",
+ "date": "2026-12-13",
+ "location": "서울 안양천 신정교 하부 육상트랙구장",
+ "region": "서울",
+ "venue": "안양천 신정교 하부 육상트랙구장",
+ "distances": [
+  "~5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 3,
+   "fee": 10000,
+   "note": ""
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 10000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-11-04",
+  "closesAt": "2026-11-11",
+  "closed": false,
+  "url": "https://play.google.com/store/apps/details?id=com.kaaf.krun&hl=ko&pli=1"
+ },
+ "source": "https://www.kormarathon.com/ko/races/winter-run-ab2f3d202bcf42808e796eb00ab9b959",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -1.7,
+  "tmin": -4.7,
+  "tmax": 3.4,
+  "humidity": 65,
+  "wind": 2.4,
+  "rainChance": 21,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 1.7,
+    "tmin": -1.9,
+    "tmax": 2.2,
+    "rain": 9.8
+   },
+   {
+    "year": 2024,
+    "temp": -0.8,
+    "tmin": -2.6,
+    "tmax": 2.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 1.6,
+    "tmin": -1.9,
+    "tmax": 10.0,
+    "rain": 0.6
+   },
+   {
+    "year": 2022,
+    "temp": -0.6,
+    "tmin": -8.0,
+    "tmax": 1.6,
+    "rain": 0.6
+   },
+   {
+    "year": 2021,
+    "temp": -5.4,
+    "tmin": -7.1,
+    "tmax": -0.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -0.3,
+    "tmin": -7.5,
+    "tmax": 1.8,
+    "rain": 1.7
+   },
+   {
+    "year": 2019,
+    "temp": -1.9,
+    "tmin": -4.7,
+    "tmax": 4.6,
+    "rain": 0.7
+   },
+   {
+    "year": 2018,
+    "temp": -2.3,
+    "tmin": -6.7,
+    "tmax": 2.7,
+    "rain": 0.3
+   },
+   {
+    "year": 2017,
+    "temp": -10.8,
+    "tmin": -11.9,
+    "tmax": -4.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 1.9,
+    "tmin": -2.7,
+    "tmax": 6.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-01T14:17"
+}
