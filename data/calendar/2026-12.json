@@ -1,6 +1,6 @@
 {
  "month": "2026-12",
- "generatedAt": "2026-10-24T21:23",
+ "generatedAt": "2026-11-01T14:17",
  "races": [
   {
    "id": "sawe-2026-world-record-international-marathon-festival",
@@ -261,6 +261,22 @@
    }
   },
   {
+   "id": "2026-pyeongchang-snow-run-6411481ca7cc47bd98ba976fda8088e5",
+   "name": "2026 평창 스노우런",
+   "date": "2026-12-12",
+   "location": "강원 알펜시아 스키점프센터",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-24",
+    "closesAt": "2026-11-20",
+    "closed": false,
+    "url": "https://order.doortoout.com/12/8/78"
+   }
+  },
+  {
    "id": "3rd-positive-power-marathon",
    "name": "제3회 긍정의 힘 마라톤",
    "date": "2026-12-12",
@@ -276,6 +292,23 @@
     "closesAt": "2026-12-02",
     "closed": false,
     "url": "https://www.powerrun.kr"
+   }
+  },
+  {
+   "id": "winter-run-ab2f3d202bcf42808e796eb00ab9b959",
+   "name": "겨울왕국 레이스",
+   "date": "2026-12-13",
+   "location": "서울 안양천 신정교 하부 육상트랙구장",
+   "distances": [
+    "~5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-11-04",
+    "closesAt": "2026-11-11",
+    "closed": false,
+    "url": "https://play.google.com/store/apps/details?id=com.kaaf.krun&hl=ko&pli=1"
    }
   },
   {

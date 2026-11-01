@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "generatedAt": "2026-10-24T21:23",
+ "generatedAt": "2026-11-01T14:17",
  "races": [
   {
    "id": "2026-jtbc-seoul-marathon",
@@ -1030,7 +1030,7 @@
    "image": "",
    "registration": {
     "opensAt": "2026-10-06",
-    "closesAt": "2026-11-05",
+    "closesAt": "2026-11-09",
     "closed": false,
     "url": "https://bithumbnanumrun.com"
    }
@@ -1365,7 +1365,7 @@
   },
   {
    "id": "10k-night-run",
-   "name": "2026 서리풀 잠수교 10K 런 (2026 잠수교 10K 나이트런)",
+   "name": "2026 서리풀 잠수교 10K 런 (2026 잠수교 10K 나이트런) 취소",
    "date": "2026-11-22",
    "location": "서울 반포한강공원 달빛광장",
    "distances": [

@@ -1,0 +1,41 @@
+{
+ "month": "2027-01",
+ "generatedAt": "2026-11-01T14:17",
+ "races": [
+  {
+   "id": "2027-new-years-sunrise-run",
+   "name": "2027 새해일출런",
+   "date": "2027-01-01",
+   "location": "서울 신정교하부육상트랙구장",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "data/calendar/images/be11b2ec100ac559.jpg",
+   "registration": {
+    "opensAt": null,
+    "closesAt": null,
+    "closed": false,
+    "url": "http://새해일출런.kr/"
+   }
+  },
+  {
+   "id": "2027-jeonmahyeop-new-year-s-marathon-11c05e58816d4e8bb0cb12d44266ca0e",
+   "name": "2027 전마협 새해 동계 마라톤대회",
+   "date": "2027-01-10",
+   "location": "충남 금산인삼엑스포주차장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-26",
+    "closed": false,
+    "url": "https://mara1080.com/event/2c881231-b5dd-4ae8-a587-c02d539566af"
+   }
+  }
+ ]
+}
