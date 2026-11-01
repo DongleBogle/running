@@ -14,13 +14,13 @@
   {
    "category": "기타",
    "km": 11,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": "하프코스"
   }
  ],

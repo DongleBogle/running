@@ -13,7 +13,7 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

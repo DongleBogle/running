@@ -99,6 +99,7 @@ function raceJsonLd(r, site) {
   const url = `${site}/race/${encodeURIComponent(r.id)}`;
   const reg = r.registration || {};
   const availability = offerAvailability(reg);
+  const fees = (r.fees || []).filter(f => Number.isFinite(f.fee));
   const geo = r.coords && r.coords.precision !== 'region'
     ? { '@type': 'GeoCoordinates', latitude: r.coords.lat, longitude: r.coords.lon } : undefined;
   return {
@@ -120,12 +121,13 @@ function raceJsonLd(r, site) {
       address: { '@type': 'PostalAddress', streetAddress: r.location, addressRegion: r.region, addressCountry: 'KR' },
       ...(geo && { geo }),
     },
-    // 주최 단체 데이터가 없어 대회 공식(접수) 사이트를 주최 측으로 둔다
-    ...(reg.url && { organizer: { '@type': 'Organization', name: r.name, url: reg.url } }),
-    ...(r.fees?.length && {
-      offers: r.fees.filter(f => f.fee).map(f => ({
+    // 주최 단체 데이터가 없어 대회 공식(접수) 사이트를 주최 측으로 둔다 (없으면 이름만)
+    organizer: { '@type': 'Organization', name: r.name, ...(reg.url && { url: reg.url }) },
+    // 참가비 미정(null)은 빼고, 무료(0)는 가격 0 으로 둔다
+    ...(fees.length && {
+      offers: fees.map(f => ({
         '@type': 'Offer', name: f.category, price: f.fee, priceCurrency: 'KRW', availability,
-        ...(reg.url && { url: reg.url }),
+        url: reg.url || url,
         ...(reg.opensAt && { validFrom: reg.opensAt }),
       })),
     }),

@@ -13,7 +13,7 @@
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": "FILA ESPRESSO 패키지 구매 또는 FILA RUN 패키지 래플로 신청"
   }
  ],

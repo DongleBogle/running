@@ -14,13 +14,13 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10.4,
-   "fee": "$undefined",
+   "fee": null,
    "note": "서킷 2바퀴를 도는 기록측정 정식 코스"
   }
  ],

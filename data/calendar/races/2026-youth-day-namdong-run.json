@@ -14,13 +14,13 @@
   {
    "category": "5km",
    "km": 5,
-   "fee": "$undefined",
+   "fee": null,
    "note": "만 14세 미만은 법정 대리인 동의가 필요하며 10km는 참가할 수 없습니다."
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

@@ -39,7 +39,7 @@
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

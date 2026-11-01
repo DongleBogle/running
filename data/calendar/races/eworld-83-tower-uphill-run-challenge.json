@@ -13,7 +13,7 @@
   {
    "category": "~5km",
    "km": 1.8,
-   "fee": "$undefined",
+   "fee": null,
    "note": "약 1.8km 야외 업힐 코스 후 83타워 4층부터 77층까지 수직 계단 550개"
   }
  ],

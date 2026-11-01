@@ -15,19 +15,19 @@
   {
    "category": "기타",
    "km": 5.9,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "10km",
    "km": 10,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   },
   {
    "category": "하프",
    "km": 21.1,
-   "fee": "$undefined",
+   "fee": null,
    "note": ""
   }
  ],

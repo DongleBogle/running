@@ -95,6 +95,10 @@ def poster_url(u, width=800):
     return u
 
 
+def fee_amount(v):  # 미정 참가비는 Next.js 직렬화로 '$undefined' 문자열이 온다
+    return v if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+
+
 def dist_label(c):
     return c.replace('Half', '하프').replace('Full', '풀')
 
@@ -112,7 +116,7 @@ def parse_event(html, slug):
     cats = [c for c in cats if c.get('category')]
     dist = list(dict.fromkeys(dist_label(c['category']) for c in cats))
     # 종목별 참가비: 짧은 거리부터, 같은 거리는 일반 → 할인(김천시민 등 설명 있는 항목) 순
-    fees = [{'category': dist_label(c['category']), 'km': c.get('distance_km'), 'fee': c.get('fee_amount'),
+    fees = [{'category': dist_label(c['category']), 'km': c.get('distance_km'), 'fee': fee_amount(c.get('fee_amount')),
              'note': c.get('description') or ''}
             for c in sorted(cats, key=lambda c: (c.get('distance_km') or 0, bool(c.get('description')), c.get('sort_index') or 0))]
     opens = ev.get('reg_start_date') or ev.get('additional_reg_start_date')
