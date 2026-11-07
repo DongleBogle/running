@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "generatedAt": "2026-11-01T14:17",
+ "generatedAt": "2026-11-07T13:09",
  "races": [
   {
    "id": "2026-jtbc-seoul-marathon",
@@ -176,6 +176,23 @@
    }
   },
   {
+   "id": "seobonggi-short-marathon-d164bd5dcb774eebb1c1c3da41246433",
+   "name": "서봉기 단축마라톤대회",
+   "date": "2026-11-06",
+   "location": "경북 문경시민운동장",
+   "distances": [
+    "기타",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-15",
+    "closesAt": "2026-11-06",
+    "closed": false,
+    "url": "http://cafe.daum.net/seobongmarathon"
+   }
+  },
+  {
    "id": "2026-global-6k-for-water-in-goyang",
    "name": "2026 Global 6K for Water in 고양",
    "date": "2026-11-07",
@@ -192,6 +209,22 @@
    }
   },
   {
+   "id": "2026-ten-bridges-night-walk-festival-in-miryang-6c379efe597d434fab6f0bbcbdc31274",
+   "name": "2026 Ten Bridges Night Walk Festival in 밀양",
+   "date": "2026-11-07",
+   "location": "경남 밀양시 일원",
+   "distances": [
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-21",
+    "closesAt": "2026-10-30",
+    "closed": false,
+    "url": "https://www.mywalk.kr"
+   }
+  },
+  {
    "id": "2026-mexicana-run-with-pepsi-acc38de66e594a48b2f4121ac4e32b9c",
    "name": "2026 멕시카나런 with 펩시",
    "date": "2026-11-07",
@@ -205,6 +238,55 @@
     "closesAt": "2026-10-14",
     "closed": true,
     "url": "https://www.mexicana.co.kr"
+   }
+  },
+  {
+   "id": "2026-mungyeong-legend-trail-baekdudaegan-7f1b5e36d32c46ccaeeac82e1abce634",
+   "name": "2026 문경 레전드 트레일 백두대간",
+   "date": "2026-11-07",
+   "location": "경북 문경새재 야외공연장",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-08-07",
+    "closesAt": null,
+    "closed": true,
+    "url": "http://legendtrail.kr/"
+   }
+  },
+  {
+   "id": "2026-egg-run-f2b6229023f54ffd9478fee3d29840ca",
+   "name": "2026 에그런",
+   "date": "2026-11-07",
+   "location": "세종 국립세종수목원 축제마당",
+   "distances": [
+    "5km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-07",
+    "closesAt": null,
+    "closed": true,
+    "url": "http://eggrun2026.imweb.me/"
+   }
+  },
+  {
+   "id": "yeosu-eleven-bridge-marathon-dfe9750e98434e36835a28a064c81de0",
+   "name": "2026 여수 일레븐브리지마라톤",
+   "date": "2026-11-07",
+   "location": "전남 여수시 화양면 조발전망대 광장",
+   "distances": [
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": "2026-10-23",
+    "closed": false,
+    "url": "http://11bridge.com/"
    }
   },
   {
@@ -812,6 +894,23 @@
    }
   },
   {
+   "id": "starcall-x-rolling-stone-retro-run-in-jeungpyeong-ba9581daa23746058d5b92059cde2ff6",
+   "name": "스타콜x롤링스톤 레트로 런 IN 증평",
+   "date": "2026-11-14",
+   "location": "충북 증평 보강천 시민체육공원",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": null,
+    "closed": true,
+    "url": "https://n-runplus.co.kr/Jeungpyeong"
+   }
+  },
+  {
    "id": "26th-suncheon-nam-seung-ryong-marathon",
    "name": "제26회 순천남승룡마라톤",
    "date": "2026-11-14",
@@ -1002,6 +1101,24 @@
    }
   },
   {
+   "id": "2026-yeonsu-district-mayor-s-cup-songdo-walk-run-3016fd52bd3a4921bfa03268f5da464f",
+   "name": "2026 연수구청장배 송도 WALK & RUN",
+   "date": "2026-11-15",
+   "location": "인천 송도 달빛공원",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-09",
+    "closesAt": "2026-11-08",
+    "closed": false,
+    "url": "http://walknrun.kr/"
+   }
+  },
+  {
    "id": "2026-innovation-city-marathon-616a6369a51a40bdae364ca69a83e1ea",
    "name": "2026 영남일보 혁신도시마라톤 in DAEGU",
    "date": "2026-11-15",
@@ -1054,6 +1171,24 @@
    }
   },
   {
+   "id": "2026-youth-race-5826e621ef1545d08d72feadb281cd95",
+   "name": "2026 청춘레이스",
+   "date": "2026-11-15",
+   "location": "서울 우이천 다목적광장 (서울특별시 성북구 석관동 376)",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-08",
+    "closed": false,
+    "url": "https://youngrace.kr/"
+   }
+  },
+  {
    "id": "9th-seoul-peace-marathon",
    "name": "9회 서울평화마라톤",
    "date": "2026-11-15",
@@ -1068,6 +1203,23 @@
     "closesAt": "2026-10-16",
     "closed": false,
     "url": "https://seoultongilrun.imweb.me/25"
+   }
+  },
+  {
+   "id": "happy-trail-run-festival-for-children-with-cancer-544df82abab64c1b8785a4e27a481655",
+   "name": "소아암 환우돕기 제17회 행복 트레일런 축제",
+   "date": "2026-11-15",
+   "location": "서울 청계산 수변공원 (서울 서초구 청계산로7길 9-52)",
+   "distances": [
+    "10km",
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": "2026-10-30",
+    "closed": false,
+    "url": "http://happytrailrun.com/"
    }
   },
   {
@@ -1262,6 +1414,22 @@
    }
   },
   {
+   "id": "2026-namhae-trail-race-fall-148244e7b1d6487ea58c296314377408",
+   "name": "2026 남해트레일레이스 Fall",
+   "date": "2026-11-21",
+   "location": "경남 남해공설운동장 (경남 남해군 남해읍 망운로9번길 42-17)",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-24",
+    "closesAt": null,
+    "closed": false,
+    "url": "https://rocknrun.co.kr/contest/RE26266001/course"
+   }
+  },
+  {
    "id": "wagurun-2026-fe21ac1771bf4a60a318ddf4032a7e3e",
    "name": "2026 와구런",
    "date": "2026-11-21",
@@ -1292,6 +1460,58 @@
     "closesAt": null,
     "closed": false,
     "url": "https://giverun.kr/home/main.ubs"
+   }
+  },
+  {
+   "id": "k-geosang-trail-running-race-67bcddfd133646a4b5012d1377e0d84e",
+   "name": "K-거상 트레일 러닝 대회",
+   "date": "2026-11-21",
+   "location": "경남 의령여자중학교 (경남 의령군 가례면 의병로 67)",
+   "distances": [
+    "5km",
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-28",
+    "closesAt": "2026-11-15",
+    "closed": false,
+    "url": "https://www.kpioneertrailrun.co.kr/ko/sub2_3.html"
+   }
+  },
+  {
+   "id": "just-run10-daegu-autumn-aa735c49245b451a81e08d30c909ddd5",
+   "name": "런텐 JUST RUN10 대구 하반기",
+   "date": "2026-11-21",
+   "location": "대구 금호강 러닝성지",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": null,
+    "closed": true,
+    "url": "https://runten.co.kr/competitions/58e65d73-a79a-4ab9-bf91-b7b0a1606388"
+   }
+  },
+  {
+   "id": "seoul-life-marathon-2026-b243954a0e2949e0bf25ced3eff2d974",
+   "name": "서울 라이프마라톤 2026",
+   "date": "2026-11-21",
+   "location": "서울 상암 평화의공원 평화광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-10",
+    "closed": false,
+    "url": "http://seoul.lifemarathon.co.kr/"
    }
   },
   {
@@ -1433,6 +1653,22 @@
    }
   },
   {
+   "id": "busan-student-and-citizen-relay-run-0d5bce9df881499584b12ad08231e47f",
+   "name": "부산항일학생의거 86주년 부산학생시민 이어달리기",
+   "date": "2026-11-22",
+   "location": "부산 구덕운동장 → 남포동·부산역·서면 → 부산학생교육문화회관",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-13",
+    "closesAt": "2026-11-10",
+    "closed": false,
+    "url": "https://forms.gle/kuXEkqnkUQPY8Twm6"
+   }
+  },
+  {
    "id": "smile-run-together-for-a-brighter-world",
    "name": "자이스 스마일 레이스",
    "date": "2026-11-22",
@@ -1447,6 +1683,23 @@
     "closesAt": "2026-09-30",
     "closed": false,
     "url": "https://zeiss-smilerace.kr"
+   }
+  },
+  {
+   "id": "19th-daegu-mayor-s-cup-sports-for-all-athletics-championships-6be7c6878d9b42d4aaaa85a481ab7edf",
+   "name": "제19회 대구광역시장기 생활체육 육상대회",
+   "date": "2026-11-22",
+   "location": "대구 대구스타디움 (대구 수성구 유니버시아드로 180)",
+   "distances": [
+    "~5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-15",
+    "closesAt": "2026-11-05",
+    "closed": false,
+    "url": "http://marathon.pe.kr/"
    }
   },
   {
@@ -1502,6 +1755,23 @@
    }
   },
   {
+   "id": "2026-kind-seo-gu-study-room-give-run-dfe28bfd5a4a46dcaac5d0334a35d1c2",
+   "name": "2026 착한서구 공부방 GIVE & RUN",
+   "date": "2026-11-28",
+   "location": "광주 영산강 자전거길 (전남광주통합특별시 서구 서창둑길 377, 극락교~서창교)",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-15",
+    "closesAt": "2026-11-17",
+    "closed": false,
+    "url": "https://www.xn--ok0by8pbse4oj.kr:9021/run/1100.asp?T=5&wgu=1"
+   }
+  },
+  {
    "id": "2026-long-run-aafaeb7ee8e740cc999eedd4ec700e1f",
    "name": "2026 카카오페이 롱런",
    "date": "2026-11-28",
@@ -1515,6 +1785,23 @@
     "closesAt": "2026-11-03",
     "closed": false,
     "url": "https://fest.kakaopay.com/esg/longrun/about"
+   }
+  },
+  {
+   "id": "2026-spotv-night-run-let-s-run-park-seoul-09137a501011467590f53bedd3c5d93c",
+   "name": "2026 한국마사회와 함께하는 SPOTV NIGHT RUN",
+   "date": "2026-11-28",
+   "location": "경기 렛츠런파크 (과천시 경마공원대로 107)",
+   "distances": [
+    "~5km",
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-31",
+    "closesAt": "2026-11-14",
+    "closed": false,
+    "url": "https://spotvrun.co.kr/"
    }
   },
   {
@@ -1709,6 +1996,22 @@
     "closesAt": "2026-09-30",
     "closed": false,
     "url": "https://runwithus.co.kr/"
+   }
+  },
+  {
+   "id": "9th-gwangjin-gu-mayor-s-cup-athletics-competition-d83e36e5d791418f9c2c339b7fca3730",
+   "name": "제9회 광진구청장배 육상대회",
+   "date": "2026-11-29",
+   "location": "서울 중랑천 체육공원 생활체육 에어로빅장 (중곡동 물놀이장 옆)",
+   "distances": [
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-15",
+    "closesAt": "2026-11-11",
+    "closed": false,
+    "url": "https://ksgaaf.co.kr"
    }
   }
  ]

@@ -1,0 +1,132 @@
+{
+ "id": "2026-kind-seo-gu-study-room-give-run-dfe28bfd5a4a46dcaac5d0334a35d1c2",
+ "name": "2026 착한서구 공부방 GIVE & RUN",
+ "nameEn": "2026 Kind Seo-gu Study Room Give & Run",
+ "date": "2026-11-28",
+ "location": "광주 영산강 자전거길 (전남광주통합특별시 서구 서창둑길 377, 극락교~서창교)",
+ "region": "광주",
+ "venue": "영산강 자전거길 (전남광주통합특별시 서구 서창둑길 377, 극락교~서창교)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": "버프 · 제한시간 1시간"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 40000,
+   "note": "기념 티셔츠 · 제한시간 2시간"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-15",
+  "closesAt": "2026-11-17",
+  "closed": false,
+  "url": "https://www.xn--ok0by8pbse4oj.kr:9021/run/1100.asp?T=5&wgu=1"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-kind-seo-gu-study-room-give-run-dfe28bfd5a4a46dcaac5d0334a35d1c2",
+ "coords": {
+  "lat": 35.15581,
+  "lon": 126.83064,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.4,
+  "tmin": 1.1,
+  "tmax": 10.8,
+  "humidity": 69,
+  "wind": 2.7,
+  "rainChance": 19,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 6.4,
+    "tmin": 0.8,
+    "tmax": 9.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 5.9,
+    "tmin": 3.5,
+    "tmax": 9.2,
+    "rain": 1.4
+   },
+   {
+    "year": 2023,
+    "temp": 5.8,
+    "tmin": 3.3,
+    "tmax": 8.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 15.7,
+    "tmin": 7.4,
+    "tmax": 19.1,
+    "rain": 22.7
+   },
+   {
+    "year": 2021,
+    "temp": 3.3,
+    "tmin": -1.7,
+    "tmax": 13.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 4.6,
+    "tmin": 4.0,
+    "tmax": 5.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.7,
+    "tmin": -0.8,
+    "tmax": 11.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.7,
+    "tmin": -0.2,
+    "tmax": 10.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 5.4,
+    "tmin": 0.7,
+    "tmax": 14.0,
+    "rain": 1.3
+   },
+   {
+    "year": 2016,
+    "temp": 5.1,
+    "tmin": 2.1,
+    "tmax": 7.1,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}

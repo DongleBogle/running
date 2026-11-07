@@ -1,0 +1,157 @@
+{
+ "id": "2026-season-end-marathon-f3610d51efff4ecea47481d8fa5f31d8",
+ "name": "2026 시즌마감마라톤대회",
+ "nameEn": "2026 Season End Marathon",
+ "date": "2026-12-13",
+ "location": "인천 아시아드경기장 북측 광장",
+ "region": "인천",
+ "venue": "아시아드경기장 북측 광장",
+ "distances": [
+  "5km",
+  "10km",
+  "하프"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 65000,
+   "note": "일반"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 60000,
+   "note": "서해구민"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 65000,
+   "note": "일반"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": "서해구민"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 65000,
+   "note": "일반"
+  },
+  {
+   "category": "하프",
+   "km": 21.1,
+   "fee": 60000,
+   "note": "서해구민"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-22",
+  "closesAt": "2026-11-23",
+  "closed": false,
+  "url": "https://42195race.com/apply/apply.php"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-season-end-marathon-f3610d51efff4ecea47481d8fa5f31d8",
+ "coords": {
+  "lat": 37.55159,
+  "lon": 126.6771,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": -0.8,
+  "tmin": -3.9,
+  "tmax": 4.1,
+  "humidity": 64,
+  "wind": 3.2,
+  "rainChance": 20,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 2.5,
+    "tmin": -1.3,
+    "tmax": 3.0,
+    "rain": 7.4
+   },
+   {
+    "year": 2024,
+    "temp": -0.4,
+    "tmin": -2.1,
+    "tmax": 3.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 1.8,
+    "tmin": -1.6,
+    "tmax": 10.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 0.2,
+    "tmin": -7.4,
+    "tmax": 3.6,
+    "rain": 0.8
+   },
+   {
+    "year": 2021,
+    "temp": -4.2,
+    "tmin": -5.7,
+    "tmax": 0.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 1.0,
+    "tmin": -6.2,
+    "tmax": 2.8,
+    "rain": 0.9
+   },
+   {
+    "year": 2019,
+    "temp": 0.4,
+    "tmin": -3.6,
+    "tmax": 7.0,
+    "rain": 1.5
+   },
+   {
+    "year": 2018,
+    "temp": -0.3,
+    "tmin": -5.6,
+    "tmax": 3.4,
+    "rain": 2.2
+   },
+   {
+    "year": 2017,
+    "temp": -9.3,
+    "tmin": -9.9,
+    "tmax": -3.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 1.5,
+    "tmin": -2.6,
+    "tmax": 5.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}

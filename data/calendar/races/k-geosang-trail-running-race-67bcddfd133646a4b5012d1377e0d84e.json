@@ -1,0 +1,138 @@
+{
+ "id": "k-geosang-trail-running-race-67bcddfd133646a4b5012d1377e0d84e",
+ "name": "K-거상 트레일 러닝 대회",
+ "nameEn": "K-Geosang Trail Running Race",
+ "date": "2026-11-21",
+ "location": "경남 의령여자중학교 (경남 의령군 가례면 의병로 67)",
+ "region": "경남",
+ "venue": "의령여자중학교 (경남 의령군 가례면 의병로 67)",
+ "distances": [
+  "5km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 25000,
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 19,
+   "fee": 55000,
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 27,
+   "fee": 60000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-09-28",
+  "closesAt": "2026-11-15",
+  "closed": false,
+  "url": "https://www.kpioneertrailrun.co.kr/ko/sub2_3.html"
+ },
+ "source": "https://www.kormarathon.com/ko/races/k-geosang-trail-running-race-67bcddfd133646a4b5012d1377e0d84e",
+ "coords": {
+  "lat": 35.32366,
+  "lon": 128.24509,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 6.9,
+  "tmin": 2.8,
+  "tmax": 13.1,
+  "humidity": 67,
+  "wind": 2.4,
+  "rainChance": 14,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 6.5,
+    "tmin": 1.8,
+    "tmax": 13.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 8.1,
+    "tmin": 3.6,
+    "tmax": 15.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 5.4,
+    "tmin": -0.3,
+    "tmax": 14.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 10.7,
+    "tmin": 6.1,
+    "tmax": 18.2,
+    "rain": 0.0
+   },
+   {
+    "year": 2021,
+    "temp": 9.7,
+    "tmin": 6.2,
+    "tmax": 16.8,
+    "rain": 0.1
+   },
+   {
+    "year": 2020,
+    "temp": 5.4,
+    "tmin": 1.4,
+    "tmax": 13.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 4.2,
+    "tmin": -0.0,
+    "tmax": 12.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 5.0,
+    "tmin": 0.2,
+    "tmax": 12.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 3.3,
+    "tmin": -1.6,
+    "tmax": 10.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 10.8,
+    "tmin": 7.3,
+    "tmax": 17.8,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}

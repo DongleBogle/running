@@ -1,0 +1,144 @@
+{
+ "id": "2026-jeongeup-hometown-love-marathon-5b10e501c99d484f8311dea3aec5e08e",
+ "name": "제1회 정읍시 고향사랑기부마라톤대회",
+ "nameEn": "2026 Jeongeup Hometown Love Marathon",
+ "date": "2026-12-06",
+ "location": "전북 정읍시 내장산 단풍생태공원 (전북특별자치도 정읍시 내장동364-2)",
+ "region": "전북",
+ "venue": "정읍시 내장산 단풍생태공원 (전북특별자치도 정읍시 내장동364-2)",
+ "distances": [
+  "5km",
+  "10km"
+ ],
+ "fees": [
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 30000,
+   "note": "정읍시민"
+  },
+  {
+   "category": "5km",
+   "km": 5,
+   "fee": 100000,
+   "note": "타지역 참가자 · 고향사랑기부금(기부증 제출)"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 30000,
+   "note": "정읍시민"
+  },
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 100000,
+   "note": "타지역 참가자 · 고향사랑기부금(기부증 제출)"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-01",
+  "closesAt": "2026-11-20",
+  "closed": false,
+  "url": "http://love.myrunup.kr/home/entry/participate/agree.ubs"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-jeongeup-hometown-love-marathon-5b10e501c99d484f8311dea3aec5e08e",
+ "coords": {
+  "lat": 35.46921,
+  "lon": 126.84209,
+  "precision": "area"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 2.4,
+  "tmin": -0.8,
+  "tmax": 6.8,
+  "humidity": 70,
+  "wind": 2.8,
+  "rainChance": 17,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 0.7,
+    "tmin": -3.9,
+    "tmax": 8.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 4.1,
+    "tmin": 1.9,
+    "tmax": 7.1,
+    "rain": 0.5
+   },
+   {
+    "year": 2023,
+    "temp": 7.2,
+    "tmin": 4.6,
+    "tmax": 12.8,
+    "rain": 3.2
+   },
+   {
+    "year": 2022,
+    "temp": 1.3,
+    "tmin": -2.9,
+    "tmax": 6.3,
+    "rain": 0.1
+   },
+   {
+    "year": 2021,
+    "temp": 8.0,
+    "tmin": 2.9,
+    "tmax": 11.9,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 3.7,
+    "tmin": -0.2,
+    "tmax": 7.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": -6.0,
+    "tmin": -8.1,
+    "tmax": -0.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 0.4,
+    "tmin": -0.1,
+    "tmax": 4.4,
+    "rain": 3.7
+   },
+   {
+    "year": 2017,
+    "temp": 0.6,
+    "tmin": -4.2,
+    "tmax": 6.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 0.7,
+    "tmin": -0.7,
+    "tmax": 3.9,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}
