@@ -1,6 +1,6 @@
 {
  "month": "2027-01",
- "generatedAt": "2026-11-01T14:17",
+ "generatedAt": "2026-11-07T13:09",
  "races": [
   {
    "id": "2027-new-years-sunrise-run",
@@ -20,6 +20,23 @@
    }
   },
   {
+   "id": "19th-national-new-year-shirtless-marathon-092b37aa38f04ab7bec53a1183237bfa",
+   "name": "제19회 전국새해알몸마라톤대회",
+   "date": "2027-01-03",
+   "location": "대구 대구육상진흥센터 앞 (대구 수성구 미술관로88)",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-28",
+    "closesAt": "2026-12-10",
+    "closed": false,
+    "url": "https://r.dgrunner.co.kr:9023/run/1100.asp?T=3&wgu=1"
+   }
+  },
+  {
    "id": "2027-jeonmahyeop-new-year-s-marathon-11c05e58816d4e8bb0cb12d44266ca0e",
    "name": "2027 전마협 새해 동계 마라톤대회",
    "date": "2027-01-10",
@@ -35,6 +52,24 @@
     "closesAt": "2026-11-26",
     "closed": false,
     "url": "https://mara1080.com/event/2c881231-b5dd-4ae8-a587-c02d539566af"
+   }
+  },
+  {
+   "id": "2027-polar-bear-marathon-a34e9e8dd5bc4899bd3503b5aabda316",
+   "name": "2027 북극곰 마라톤",
+   "date": "2027-01-23",
+   "location": "서울 신정교 하부 영롱이억새구장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": null,
+    "closesAt": "2027-01-17",
+    "closed": false,
+    "url": "https://polarbearrun.kr/join/register.asp"
    }
   }
  ]

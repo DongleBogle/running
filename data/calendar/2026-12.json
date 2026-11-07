@@ -1,7 +1,24 @@
 {
  "month": "2026-12",
- "generatedAt": "2026-11-01T14:17",
+ "generatedAt": "2026-11-07T13:09",
  "races": [
+  {
+   "id": "2026-moak-trail-run-41df47c07e1b4237a10110f2eef09945",
+   "name": "2026 모악트레일런",
+   "date": "2026-12-05",
+   "location": "전북 대한민국술테마박물관 (전북 완주군 구이면 덕천전원길 232-58)",
+   "distances": [
+    "10km",
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-20",
+    "closed": false,
+    "url": "https://samsam3315.imweb.me/77"
+   }
+  },
   {
    "id": "sawe-2026-world-record-international-marathon-festival",
    "name": "2026 월드 레코드 금산 국제 마라톤 축제",
@@ -83,6 +100,24 @@
     "closesAt": "2026-09-15",
     "closed": false,
     "url": ""
+   }
+  },
+  {
+   "id": "national-marathon-association-2026-gold-run-race-9edbeefdd0fb40db98fcf9316e00c03a",
+   "name": "전국마라톤협회 2026 골드런 레이스",
+   "date": "2026-12-05",
+   "location": "충남 금산세계인삼엑스포주차장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-06",
+    "closed": false,
+    "url": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb"
    }
   },
   {
@@ -174,6 +209,23 @@
    }
   },
   {
+   "id": "2026-jeongeup-hometown-love-marathon-5b10e501c99d484f8311dea3aec5e08e",
+   "name": "제1회 정읍시 고향사랑기부마라톤대회",
+   "date": "2026-12-06",
+   "location": "전북 정읍시 내장산 단풍생태공원 (전북특별자치도 정읍시 내장동364-2)",
+   "distances": [
+    "5km",
+    "10km"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-01",
+    "closesAt": "2026-11-20",
+    "closed": false,
+    "url": "http://love.myrunup.kr/home/entry/participate/agree.ubs"
+   }
+  },
+  {
    "id": "20th-yangsan-national-half-marathon",
    "name": "제20회 양산전국하프마라톤대회",
    "date": "2026-12-06",
@@ -206,6 +258,24 @@
     "closesAt": "2026-10-30",
     "closed": false,
     "url": "https://roadracing.co.kr/"
+   }
+  },
+  {
+   "id": "2026-one-more-run-e2a056302708429c915aceb7c34e132b",
+   "name": "2026 ONE MORE RUN",
+   "date": "2026-12-12",
+   "location": "인천 영종구 씨사이드파크 하늘구름광장 야외무대 (인천 영종구 중산동1967-1)",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-09-14",
+    "closesAt": "2026-11-15",
+    "closed": false,
+    "url": "https://www.omrun.co.kr/register/"
    }
   },
   {
@@ -292,6 +362,24 @@
     "closesAt": "2026-12-02",
     "closed": false,
     "url": "https://www.powerrun.kr"
+   }
+  },
+  {
+   "id": "2026-season-end-marathon-f3610d51efff4ecea47481d8fa5f31d8",
+   "name": "2026 시즌마감마라톤대회",
+   "date": "2026-12-13",
+   "location": "인천 아시아드경기장 북측 광장",
+   "distances": [
+    "5km",
+    "10km",
+    "하프"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-10-22",
+    "closesAt": "2026-11-23",
+    "closed": false,
+    "url": "https://42195race.com/apply/apply.php"
    }
   },
   {

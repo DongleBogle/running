@@ -1,0 +1,138 @@
+{
+ "id": "2026-spotv-night-run-let-s-run-park-seoul-09137a501011467590f53bedd3c5d93c",
+ "name": "2026 한국마사회와 함께하는 SPOTV NIGHT RUN",
+ "nameEn": "2026 SPOTV NIGHT RUN Let's Run Park Seoul",
+ "date": "2026-11-28",
+ "location": "경기 렛츠런파크 (과천시 경마공원대로 107)",
+ "region": "경기",
+ "venue": "렛츠런파크 (과천시 경마공원대로 107)",
+ "distances": [
+  "~5km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "~5km",
+   "km": 0.45,
+   "fee": 15000,
+   "note": "패밀리런 450m · 500명 · 만 4세 이상 · 1인당 요금 · 비기록·메달 미제공"
+  },
+  {
+   "category": "~5km",
+   "km": 3.5,
+   "fee": 40000,
+   "note": "3.5km 기록레이스 · 500명 · 기록칩·완주메달 제공"
+  },
+  {
+   "category": "기타",
+   "km": 7,
+   "fee": 70000,
+   "note": "7km 기록레이스 · 1,000명 · 기록칩·완주메달 제공"
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": "2026-10-31",
+  "closesAt": "2026-11-14",
+  "closed": false,
+  "url": "https://spotvrun.co.kr/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/2026-spotv-night-run-let-s-run-park-seoul-09137a501011467590f53bedd3c5d93c",
+ "coords": {
+  "lat": 37.44595,
+  "lon": 127.01403,
+  "precision": "venue"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 1.0,
+  "tmin": -2.5,
+  "tmax": 6.5,
+  "humidity": 66,
+  "wind": 2.3,
+  "rainChance": 16,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": -0.2,
+    "tmin": -1.8,
+    "tmax": 4.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": -0.7,
+    "tmin": -4.5,
+    "tmax": 2.3,
+    "rain": 0.8
+   },
+   {
+    "year": 2023,
+    "temp": -2.0,
+    "tmin": -4.1,
+    "tmax": 3.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 9.3,
+    "tmin": 5.2,
+    "tmax": 15.1,
+    "rain": 18.0
+   },
+   {
+    "year": 2021,
+    "temp": 1.0,
+    "tmin": -3.9,
+    "tmax": 10.1,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": -3.6,
+    "tmin": -5.4,
+    "tmax": 1.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2019,
+    "temp": 2.8,
+    "tmin": -2.8,
+    "tmax": 8.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2018,
+    "temp": 1.8,
+    "tmin": -1.0,
+    "tmax": 7.4,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.0,
+    "tmin": -2.4,
+    "tmax": 8.3,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": -0.6,
+    "tmin": -2.3,
+    "tmax": 4.5,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}

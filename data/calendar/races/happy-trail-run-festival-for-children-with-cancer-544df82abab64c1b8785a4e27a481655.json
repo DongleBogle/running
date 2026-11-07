@@ -1,0 +1,132 @@
+{
+ "id": "happy-trail-run-festival-for-children-with-cancer-544df82abab64c1b8785a4e27a481655",
+ "name": "소아암 환우돕기 제17회 행복 트레일런 축제",
+ "nameEn": "Happy Trail Run Festival for Children with Cancer",
+ "date": "2026-11-15",
+ "location": "서울 청계산 수변공원 (서울 서초구 청계산로7길 9-52)",
+ "region": "서울",
+ "venue": "청계산 수변공원 (서울 서초구 청계산로7길 9-52)",
+ "distances": [
+  "10km",
+  "기타"
+ ],
+ "fees": [
+  {
+   "category": "10km",
+   "km": 10,
+   "fee": 60000,
+   "note": ""
+  },
+  {
+   "category": "기타",
+   "km": 20,
+   "fee": 70000,
+   "note": ""
+  }
+ ],
+ "major": false,
+ "image": "",
+ "poster": "",
+ "registration": {
+  "opensAt": null,
+  "closesAt": "2026-10-30",
+  "closed": false,
+  "url": "http://happytrailrun.com/"
+ },
+ "source": "https://www.kormarathon.com/ko/races/happy-trail-run-festival-for-children-with-cancer-544df82abab64c1b8785a4e27a481655",
+ "coords": {
+  "lat": 37.56668,
+  "lon": 126.97829,
+  "precision": "region"
+ },
+ "climate": {
+  "years": [
+   2016,
+   2025
+  ],
+  "window": 3,
+  "hours": [
+   7,
+   11
+  ],
+  "temp": 5.5,
+  "tmin": 2.0,
+  "tmax": 11.9,
+  "humidity": 74,
+  "wind": 2.2,
+  "rainChance": 23,
+  "byYear": [
+   {
+    "year": 2025,
+    "temp": 4.8,
+    "tmin": 1.7,
+    "tmax": 14.0,
+    "rain": 0.0
+   },
+   {
+    "year": 2024,
+    "temp": 12.4,
+    "tmin": 11.4,
+    "tmax": 18.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2023,
+    "temp": 3.0,
+    "tmin": -2.0,
+    "tmax": 10.7,
+    "rain": 0.0
+   },
+   {
+    "year": 2022,
+    "temp": 5.6,
+    "tmin": 1.7,
+    "tmax": 10.9,
+    "rain": 1.5
+   },
+   {
+    "year": 2021,
+    "temp": 5.7,
+    "tmin": 2.7,
+    "tmax": 12.8,
+    "rain": 0.0
+   },
+   {
+    "year": 2020,
+    "temp": 8.3,
+    "tmin": 4.8,
+    "tmax": 14.6,
+    "rain": 0.5
+   },
+   {
+    "year": 2019,
+    "temp": 5.0,
+    "tmin": 0.1,
+    "tmax": 11.4,
+    "rain": 14.4
+   },
+   {
+    "year": 2018,
+    "temp": 5.3,
+    "tmin": 1.7,
+    "tmax": 12.6,
+    "rain": 0.0
+   },
+   {
+    "year": 2017,
+    "temp": 2.4,
+    "tmin": -1.7,
+    "tmax": 5.5,
+    "rain": 0.0
+   },
+   {
+    "year": 2016,
+    "temp": 3.0,
+    "tmin": 0.6,
+    "tmax": 9.0,
+    "rain": 0.0
+   }
+  ]
+ },
+ "generatedAt": "2026-11-07T13:09"
+}
