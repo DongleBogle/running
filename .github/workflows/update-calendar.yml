@@ -67,12 +67,23 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          {
+            echo "매주 토요일 자동 수집(\`scripts/collect_marathon_calendar.py\`) 결과입니다."
+            echo
+            python3 scripts/calendar_diff.py
+            echo
+            echo "실행 로그: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > "$RUNNER_TEMP/pr-body.md"
+          cat "$RUNNER_TEMP/pr-body.md" >> "$GITHUB_STEP_SUMMARY"
           git switch -c "$BRANCH"
           git add data/calendar
           git commit -q -m "chore: 마라톤 캘린더 데이터 갱신 ($(date -u +%Y-%m-%d))"
           git push -f origin "$BRANCH"
-          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number -q '.[].number')" ]; then
+          PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[].number')
+          if [ -z "$PR" ]; then
             gh pr create --base main --head "$BRANCH" \
               --title "chore: 마라톤 캘린더 데이터 갱신 (자동)" \
-              --body "매주 토요일 자동 수집(\`scripts/collect_marathon_calendar.py\`) 결과입니다. 실행 로그: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              --body-file "$RUNNER_TEMP/pr-body.md"
+          else
+            gh pr edit "$PR" --body-file "$RUNNER_TEMP/pr-body.md"
           fi
