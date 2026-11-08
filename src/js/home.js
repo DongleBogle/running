@@ -55,9 +55,39 @@
     }), '지금 접수중인 대회가 없어요.');
   }
 
+  // 띄어쓰기가 달라도 찾히도록 공백을 없애고 비교한다. 검색어가 여러 단어면 모두 포함된 대회만
+  const compact = s => String(s || '').toLowerCase().replace(/\s/g, '');
+  const matches = (r, words) => {
+    const text = [r.name, r.location, ...(r.distances || [])].map(compact).join('|');
+    return words.every(w => text.includes(w));
+  };
+
+  function renderSearch(races) {
+    const words = document.getElementById('homeSearch').value.trim().split(/\s+/).filter(Boolean).map(compact);
+    document.getElementById('searchSection').hidden = !words.length;
+    document.getElementById('homeBrowse').hidden = !!words.length;
+    if (!words.length) return;
+
+    // 앞으로 열릴 대회를 가까운 순으로 먼저, 끝난 대회는 최근 순으로 뒤에
+    const found = races.filter(r => matches(r, words)).map(r => ({ r, n: daysFromToday(r.date) })).sort((a, b) =>
+      (a.n < 0) - (b.n < 0) || (a.n < 0 ? b.n - a.n : a.n - b.n) || a.r.name.localeCompare(b.r.name));
+    document.getElementById('searchSub').textContent = `${found.length}개`;
+    document.getElementById('searchList').innerHTML = found.map(({ r, n }) => {
+      const label = n < 0 ? '종료' : n === 0 ? 'D-day' : 'D-' + n;
+      const cls = n < 0 ? 'past' : n === 0 ? 'today' : n <= 3 ? 'soon' : '';
+      const extra = n < 0 ? '' : `<div class="meta">${REG_LABEL[regStatus(r)]}</div>`;
+      return item(r, `<div class="home-dday ${cls}">${label}</div>`, extra);
+    }).join('') || '<div class="empty">검색 결과가 없어요. 다른 대회명이나 지역으로 찾아보세요.</div>';
+  }
+
   async function loadHome() {
     try {
-      render(await loadRaces());
+      const races = await loadRaces();
+      render(races);
+      const input = document.getElementById('homeSearch');
+      input.addEventListener('input', () => renderSearch(races));
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });  // 모바일 키보드 닫기
+      renderSearch(races);  // 뒤로 가기로 입력값이 복원된 경우
     } catch (e) {
       for (const id of ['upcomingList', 'openList'])
         document.getElementById(id).innerHTML = '<div class="empty">대회 정보를 불러오지 못했습니다.</div>';

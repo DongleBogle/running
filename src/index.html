@@ -33,6 +33,19 @@
 <!-- 홈 -->
 <main class="view" id="view-home">
 <div class="container">
+    <div class="home-search">
+      <input type="search" id="homeSearch" placeholder="🔍 대회명, 지역, 종목으로 검색" aria-label="마라톤 대회 검색" enterkeyhint="search">
+    </div>
+
+    <section class="home-section" id="searchSection" hidden>
+      <div class="home-head">
+        <h2>🔍 검색 결과</h2>
+        <span class="sub" id="searchSub"></span>
+      </div>
+      <div class="home-list" id="searchList"></div>
+    </section>
+
+    <div id="homeBrowse">
     <section class="home-section">
       <div class="home-head">
         <h2>🏁 곧 열리는 마라톤</h2>
@@ -50,6 +63,7 @@
       </div>
       <div class="home-list" id="openList"></div>
     </section>
+    </div>
 </div>
 </main>
 
