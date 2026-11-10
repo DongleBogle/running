@@ -102,14 +102,6 @@ function offerAvailability(reg) {
   return 'https://schema.org/InStock';
 }
 
-// Offer.validFrom: 접수 시작일. 모르면(opensAt 없음) '적어도 이때부터는 판매 중'인 하한값으로
-// 빌드일과 접수 마감일 중 이른 날을 쓴다 (구글 리치결과 'validFrom 누락' 경고 대응)
-function offerValidFrom(reg) {
-  if (reg.opensAt) return reg.opensAt;
-  const today = kstToday();
-  return reg.closesAt && reg.closesAt < today ? reg.closesAt : today;
-}
-
 function raceJsonLd(r, site) {
   const url = `${site}/race/${encodeURIComponent(r.id)}`;
   const reg = r.registration || {};
@@ -143,7 +135,8 @@ function raceJsonLd(r, site) {
       offers: fees.map(f => ({
         '@type': 'Offer', name: f.category, price: f.fee, priceCurrency: 'KRW', availability,
         url: reg.url || url,
-        validFrom: offerValidFrom(reg),
+        // 접수 시작일을 모르면 추정값 대신 비워 둔다 (구글 'validFrom 누락'은 심각하지 않은 경고)
+        ...(reg.opensAt && { validFrom: reg.opensAt }),
       })),
     }),
   };
