@@ -92,9 +92,11 @@ function raceDescription(r) {
   return parts.join(' ').replace(/\s+/g, ' ');
 }
 
+const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+
 // 접수 상태 → Offer.availability (빌드 시점 기준, 날짜는 KST)
 function offerAvailability(reg) {
-  const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const today = kstToday();
   if (reg.closed || (reg.closesAt && reg.closesAt < today)) return 'https://schema.org/SoldOut';
   if (reg.opensAt && reg.opensAt > today) return 'https://schema.org/PreOrder';
   return 'https://schema.org/InStock';
@@ -133,6 +135,7 @@ function raceJsonLd(r, site) {
       offers: fees.map(f => ({
         '@type': 'Offer', name: f.category, price: f.fee, priceCurrency: 'KRW', availability,
         url: reg.url || url,
+        // 접수 시작일을 모르면 추정값 대신 비워 둔다 (구글 'validFrom 누락'은 심각하지 않은 경고)
         ...(reg.opensAt && { validFrom: reg.opensAt }),
       })),
     }),
@@ -162,11 +165,61 @@ function faqLd(html) {
   };
 }
 
+
+// ── 크롤링용 정적 링크 ──
+// 캘린더는 JS 로 '이번 달'만 그려서, 지난 달·다음 달 대회는 페이지 어디에서도 링크되지 않는다
+// (구글이 '발견됨 - 현재 색인이 생성되지 않음'으로 미뤄 둠). 빌드 시 <a href> 를 HTML 에 직접 넣는다.
+const raceHref = r => `/race/${encodeURIComponent(r.id)}`;
+const raceLi = r => `<li><a href="${raceHref(r)}">${esc(r.name)}</a> <span>${r.date.slice(5).replace('-', '.')}${r.region ? ` · ${esc(r.region)}` : ''}</span></li>`;
+
+// 캘린더 아래 '월별 전체 대회' (최근 달이 위, 모두 접어 둠 — 링크는 접혀 있어도 크롤러가 읽는다)
+function raceArchiveHtml(races) {
+  const byMonth = new Map();
+  for (const r of [...races].sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name))) {
+    const m = r.date.slice(0, 7);
+    if (!byMonth.has(m)) byMonth.set(m, []);
+    byMonth.get(m).push(r);
+  }
+  const months = [...byMonth.keys()].sort().reverse();
+  const sections = months.map(m => {
+    const [y, mo] = m.split('-').map(Number);
+    return `<details><summary>${y}년 ${mo}월 마라톤 대회 (${byMonth.get(m).length})</summary><ul>${byMonth.get(m).map(raceLi).join('')}</ul></details>`;
+  }).join('\n      ');
+  return `<section class="cal-archive" aria-label="월별 전체 대회">
+      <h2>월별 전체 마라톤 대회</h2>
+      ${sections}
+    </section>`;
+}
+
+// 대회 상세 아래 '같은 지역 대회'·'비슷한 시기 대회' (각 6개, 날짜가 가까운 순)
+function relatedRacesHtml(r, races) {
+  const dist = x => Math.abs(Date.parse(x.date) - Date.parse(r.date));
+  const others = races.filter(x => x.id !== r.id).sort((a, b) => dist(a) - dist(b) || a.date.localeCompare(b.date));
+  const region = r.region ? others.filter(x => x.region === r.region).slice(0, 6) : [];
+  const shown = new Set(region.map(x => x.id));
+  const nearby = others.filter(x => !shown.has(x.id)).slice(0, 6);
+  const block = (title, list) => list.length
+    ? `<h2>${title}</h2><ul>${[...list].sort((a, b) => a.date.localeCompare(b.date)).map(raceLi).join('')}</ul>` : '';
+  return `<nav class="card related" aria-label="다른 마라톤 대회">
+    ${block(`${esc(r.region)} 지역 다른 대회`, region)}
+    ${block('비슷한 시기 대회', nearby)}
+    <p><a href="/calendar">전체 마라톤 일정 캘린더 보기 ›</a></p>
+  </nav>`;
+}
+
 export function generateSeo(out) {
   const site = siteUrl();
 
-  // 1) 탭 화면별 HTML
-  const indexHtml = readFileSync(join(out, 'index.html'), 'utf8');
+  const racesDir = join(out, 'data', 'calendar', 'races');
+  const races = readdirSync(racesDir).filter(f => f.endsWith('.json'))
+    .map(f => JSON.parse(readFileSync(join(racesDir, f), 'utf8')))
+    .filter(r => r.id && /^\d{4}-\d{2}-\d{2}$/.test(r.date || ''));
+
+  // 1) 탭 화면별 HTML (캘린더 화면 아래에 월별 전체 대회 링크를 넣어 둔다)
+  const calListTag = '<div class="cal-list" id="calList"></div>';
+  const indexSrc = readFileSync(join(out, 'index.html'), 'utf8');
+  if (!indexSrc.includes(calListTag)) throw new Error('SEO: index.html 에 #calList 가 없어 대회 링크를 넣지 못했습니다');
+  const indexHtml = indexSrc.replace(calListTag, `${calListTag}\n    ${raceArchiveHtml(races)}`);
   // 구글은 검색 결과의 사이트 이름을 정할 때 WebSite 의 name·alternateName 을 참고한다
   const homeLd = jsonLd({
     '@context': 'https://schema.org', '@type': 'WebSite',
@@ -183,10 +236,6 @@ export function generateSeo(out) {
 
   // 2) 대회별 정적 HTML
   const raceTpl = readFileSync(join(out, 'race.html'), 'utf8');
-  const racesDir = join(out, 'data', 'calendar', 'races');
-  const races = readdirSync(racesDir).filter(f => f.endsWith('.json'))
-    .map(f => JSON.parse(readFileSync(join(racesDir, f), 'utf8')))
-    .filter(r => r.id && /^\d{4}-\d{2}-\d{2}$/.test(r.date || ''));
   mkdirSync(join(out, 'race'), { recursive: true });
   for (const r of races) {
     // 네이버 권장(제목 40자 이내): 넘치면 브랜드명 접미사를 뺀다
@@ -197,7 +246,8 @@ export function generateSeo(out) {
       image: r.image || r.poster || DEFAULT_IMAGE, type: 'article',
     });
     const html = addHead(setTitle(raceTpl, title), `${tags}\n  ${jsonLd(raceJsonLd(r, site))}`)
-      .replace('<div id="page"><div class="empty">대회 정보를 불러오는 중...</div></div>', `<div id="page">${raceSummaryHtml(r)}</div>`);
+      .replace('<div id="page"><div class="empty">대회 정보를 불러오는 중...</div></div>',
+        `<div id="page">${raceSummaryHtml(r)}</div>\n  ${relatedRacesHtml(r, races)}`);
     writeFileSync(join(out, 'race', `${r.id}.html`), html);
   }
 

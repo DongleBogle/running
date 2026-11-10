@@ -41,6 +41,14 @@
     .card h2 { font-size: 1.02rem; margin-bottom: 10px; }
     .card .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
     .empty { color: var(--text-muted); font-size: 0.9rem; padding: 6px 0; }
+    /* 빌드 시 넣는 다른 대회 링크 (scripts/seo.mjs) */
+    .related h2 + ul { margin-bottom: 14px; }
+    .related ul { list-style: none; display: grid; gap: 5px; }
+    .related li { font-size: 0.88rem; }
+    .related li a { color: var(--text-main); text-decoration: none; }
+    .related li a:hover { color: var(--accent-cyan); text-decoration: underline; }
+    .related li span { color: var(--text-muted); font-size: 0.78rem; margin-left: 4px; }
+    .related p { font-size: 0.85rem; }
 
     .hero { display: flex; gap: 16px; align-items: flex-start; }
     .poster { flex: none; width: 160px; aspect-ratio: 1; border-radius: 12px; object-fit: cover; background: var(--card-border);

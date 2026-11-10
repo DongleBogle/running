@@ -64,3 +64,14 @@
   #view-calendar .cal-chip.optick { background: var(--accent-cyan); }
   #view-calendar .cal-cell .chips { display: flex; flex-wrap: wrap; gap: 3px; }
 }
+
+/* 빌드 시 넣는 월별 전체 대회 링크 (scripts/seo.mjs) */
+#view-calendar .cal-archive { margin-top: 28px; border-top: 1px solid var(--card-border); padding-top: 16px; }
+#view-calendar .cal-archive h2 { font-size: 1rem; margin: 0 0 8px; }
+#view-calendar .cal-archive details { border-bottom: 1px solid var(--card-border); padding: 8px 0; }
+#view-calendar .cal-archive summary { cursor: pointer; font-weight: 600; font-size: 0.92rem; }
+#view-calendar .cal-archive ul { list-style: none; margin: 8px 0 4px; padding: 0; display: grid; gap: 4px; }
+#view-calendar .cal-archive li { font-size: 0.86rem; }
+#view-calendar .cal-archive a { color: var(--text-main); text-decoration: none; }
+#view-calendar .cal-archive a:hover { color: var(--accent-cyan); text-decoration: underline; }
+#view-calendar .cal-archive li span { color: var(--text-muted); font-size: 0.78rem; margin-left: 4px; }
