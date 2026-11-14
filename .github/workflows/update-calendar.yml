@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: '0 1 * * 6'  # UTC 토 01:00 = KST 토 10:00
   workflow_dispatch:
+  # 워크플로·수집기를 고치는 PR 에서는 수집·빌드만 해 보고 PR 은 만들지 않는다(dry run).
+  pull_request:
+    paths:
+      - .github/workflows/update-calendar.yml
+      - scripts/collect_marathon_calendar.py
 
 permissions:
   contents: write
@@ -60,8 +65,15 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Upload collected data
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: calendar-data
+          path: data/calendar
+
       - name: Open or update PR
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.diff.outputs.changed == 'true' && github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
