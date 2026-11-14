@@ -1,0 +1,101 @@
+# 매주 토요일 10:00(KST) 마라톤 캘린더 데이터를 다시 수집하고, 바뀐 게 있으면 PR 을 올린다.
+name: Update marathon calendar
+
+on:
+  schedule:
+    - cron: '0 1 * * 6'  # UTC 토 01:00 = KST 토 10:00
+  workflow_dispatch:
+  # 워크플로·수집기를 고치는 PR 에서는 수집·빌드만 해 보고 PR 은 만들지 않는다(dry run).
+  pull_request:
+    paths:
+      - .github/workflows/update-calendar.yml
+      - scripts/collect_marathon_calendar.py
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-calendar
+  cancel-in-progress: false
+
+env:
+  BRANCH: auto/calendar-update
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120  # 캐시 없는 첫 실행은 50분 남짓 걸린다
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 좌표·날씨 캐시(gitignore 대상)를 실행 간에 이어 쓴다. 키가 매번 달라 항상 새로 저장된다.
+      - name: Restore collector caches
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/.geo_cache.json
+            data/.climate_cache.json
+          key: collector-cache-${{ github.run_id }}
+          restore-keys: collector-cache-
+
+      - name: Collect calendar
+        run: python3 scripts/collect_marathon_calendar.py
+
+      # 날씨 API 타임아웃으로 빠진 대회를 채운다(캐시된 것은 다시 조회하지 않음).
+      - name: Collect calendar (retry missing)
+        run: python3 scripts/collect_marathon_calendar.py
+
+      - name: Check build
+        run: npm run build:web
+
+      # generatedAt 만 바뀐 경우는 변경 없음으로 본다. (-I 는 --name-only 에 적용되지 않아 hunk 유무로 판단)
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff -I'"generatedAt"' -- data/calendar | grep -q '^@@' \
+             || [ -n "$(git ls-files --others --exclude-standard -- data/calendar)" ] \
+             || [ -n "$(git ls-files --deleted -- data/calendar)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload collected data
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: calendar-data
+          path: data/calendar
+
+      - name: Open or update PR
+        if: steps.diff.outputs.changed == 'true' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          {
+            echo "매주 토요일 자동 수집(\`scripts/collect_marathon_calendar.py\`) 결과입니다."
+            echo
+            python3 scripts/calendar_diff.py
+            echo
+            echo "실행 로그: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > "$RUNNER_TEMP/pr-body.md"
+          cat "$RUNNER_TEMP/pr-body.md" >> "$GITHUB_STEP_SUMMARY"
+          git switch -c "$BRANCH"
+          git add data/calendar
+          git commit -q -m "chore: 마라톤 캘린더 데이터 갱신 ($(date -u +%Y-%m-%d))"
+          git push -f origin "$BRANCH"
+          PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[].number')
+          if [ -z "$PR" ]; then
+            gh pr create --base main --head "$BRANCH" \
+              --title "chore: 마라톤 캘린더 데이터 갱신 (자동)" \
+              --body-file "$RUNNER_TEMP/pr-body.md"
+          else
+            gh pr edit "$PR" --body-file "$RUNNER_TEMP/pr-body.md"
+          fi
