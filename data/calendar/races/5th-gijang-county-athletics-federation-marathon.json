@@ -28,8 +28,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/5th-gijang-county-athletics-federation-marathon",
  "coords": {
-  "lat": 35.19964,
-  "lon": 129.22403,
+  "lat": 35.22903,
+  "lon": 129.24025,
   "precision": "area"
  },
  "climate": {
@@ -42,84 +42,84 @@
    7,
    11
   ],
-  "temp": 4.3,
-  "tmin": 0.7,
-  "tmax": 8.7,
+  "temp": 4.5,
+  "tmin": 0.9,
+  "tmax": 8.9,
   "humidity": 60,
   "wind": 3.2,
   "rainChance": 16,
   "byYear": [
    {
     "year": 2025,
-    "temp": 8.4,
-    "tmin": 5.1,
-    "tmax": 12.4,
+    "temp": 8.6,
+    "tmin": 5.2,
+    "tmax": 12.5,
     "rain": 4.7
    },
    {
     "year": 2024,
-    "temp": 1.7,
-    "tmin": -1.9,
-    "tmax": 6.9,
+    "temp": 1.9,
+    "tmin": -1.7,
+    "tmax": 7.1,
     "rain": 0.0
    },
    {
     "year": 2023,
-    "temp": 9.3,
-    "tmin": 7.1,
-    "tmax": 13.1,
+    "temp": 9.5,
+    "tmin": 7.2,
+    "tmax": 13.2,
     "rain": 0.0
    },
    {
     "year": 2022,
-    "temp": 4.7,
-    "tmin": 1.8,
-    "tmax": 8.9,
+    "temp": 4.8,
+    "tmin": 1.9,
+    "tmax": 9.0,
     "rain": 0.0
    },
    {
     "year": 2021,
-    "temp": -0.3,
-    "tmin": -3.5,
-    "tmax": 6.6,
+    "temp": -0.1,
+    "tmin": -3.4,
+    "tmax": 6.8,
     "rain": 0.0
    },
    {
     "year": 2020,
-    "temp": 4.3,
-    "tmin": 0.4,
-    "tmax": 10.2,
+    "temp": 4.5,
+    "tmin": 0.6,
+    "tmax": 10.4,
     "rain": 0.0
    },
    {
     "year": 2019,
-    "temp": 2.9,
-    "tmin": -2.3,
-    "tmax": 8.6,
+    "temp": 3.1,
+    "tmin": -2.2,
+    "tmax": 8.7,
     "rain": 0.0
    },
    {
     "year": 2018,
-    "temp": 0.7,
-    "tmin": -2.5,
-    "tmax": 5.9,
+    "temp": 0.8,
+    "tmin": -2.3,
+    "tmax": 6.0,
     "rain": 0.0
    },
    {
     "year": 2017,
-    "temp": -3.6,
-    "tmin": -5.6,
-    "tmax": 1.4,
+    "temp": -3.4,
+    "tmin": -5.4,
+    "tmax": 1.6,
     "rain": 0.0
    },
    {
     "year": 2016,
-    "temp": 9.9,
-    "tmin": 7.9,
-    "tmax": 11.4,
+    "temp": 10.0,
+    "tmin": 8.0,
+    "tmax": 11.5,
     "rain": 0.0
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

@@ -44,7 +44,7 @@
  "coords": {
   "lat": 37.81666,
   "lon": 127.58714,
-  "precision": "area"
+  "precision": "venue"
  },
  "climate": {
   "years": [
@@ -61,7 +61,7 @@
   "tmax": 21.5,
   "humidity": 82,
   "wind": 1.7,
-  "rainChance": 34,
+  "rainChance": 33,
   "byYear": [
    {
     "year": 2025,
@@ -89,7 +89,7 @@
     "temp": 17.0,
     "tmin": 16.1,
     "tmax": 21.9,
-    "rain": 97.0
+    "rain": 93.0
    },
    {
     "year": 2021,
@@ -110,7 +110,7 @@
     "temp": 20.4,
     "tmin": 16.2,
     "tmax": 24.2,
-    "rain": 33.6
+    "rain": 37.1
    },
    {
     "year": 2018,
@@ -131,9 +131,9 @@
     "temp": 20.3,
     "tmin": 17.8,
     "tmax": 25.4,
-    "rain": 16.7
+    "rain": 18.0
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

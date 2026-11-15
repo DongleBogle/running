@@ -47,7 +47,7 @@
   "tmax": 14.0,
   "humidity": 75,
   "wind": 2.7,
-  "rainChance": 19,
+  "rainChance": 17,
   "byYear": [
    {
     "year": 2025,
@@ -68,7 +68,7 @@
     "temp": 3.6,
     "tmin": 2.8,
     "tmax": 7.3,
-    "rain": 0.0
+    "rain": 0.1
    },
    {
     "year": 2022,
@@ -110,16 +110,16 @@
     "temp": 10.8,
     "tmin": 5.9,
     "tmax": 18.2,
-    "rain": 0.3
+    "rain": 0.0
    },
    {
     "year": 2016,
     "temp": 12.8,
     "tmin": 7.7,
     "tmax": 16.3,
-    "rain": 2.6
+    "rain": 2.2
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

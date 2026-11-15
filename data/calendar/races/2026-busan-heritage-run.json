@@ -35,8 +35,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/2026-busan-heritage-run",
  "coords": {
-  "lat": 35.04949,
-  "lon": 128.96201,
+  "lat": 35.04918,
+  "lon": 128.96221,
   "precision": "area"
  },
  "climate": {
@@ -54,14 +54,14 @@
   "tmax": 17.3,
   "humidity": 68,
   "wind": 3.6,
-  "rainChance": 16,
+  "rainChance": 17,
   "byYear": [
    {
     "year": 2025,
     "temp": 16.8,
     "tmin": 13.4,
     "tmax": 18.5,
-    "rain": 8.6
+    "rain": 5.8
    },
    {
     "year": 2024,
@@ -110,14 +110,14 @@
     "temp": 16.1,
     "tmin": 14.3,
     "tmax": 18.9,
-    "rain": 43.6
+    "rain": 41.6
    },
    {
     "year": 2017,
     "temp": 16.7,
     "tmin": 10.6,
     "tmax": 21.1,
-    "rain": 1.0
+    "rain": 1.1
    },
    {
     "year": 2016,
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

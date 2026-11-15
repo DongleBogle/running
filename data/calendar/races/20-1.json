@@ -73,21 +73,21 @@
   "tmax": 23.4,
   "humidity": 80,
   "wind": 2.1,
-  "rainChance": 44,
+  "rainChance": 41,
   "byYear": [
    {
     "year": 2025,
     "temp": 20.7,
     "tmin": 18.6,
     "tmax": 22.9,
-    "rain": 1.2
+    "rain": 1.1
    },
    {
     "year": 2024,
     "temp": 15.7,
     "tmin": 11.3,
     "tmax": 23.4,
-    "rain": 0.3
+    "rain": 0.7
    },
    {
     "year": 2023,
@@ -115,37 +115,37 @@
     "temp": 19.5,
     "tmin": 15.6,
     "tmax": 22.1,
-    "rain": 4.1
+    "rain": 4.2
    },
    {
     "year": 2019,
     "temp": 20.9,
     "tmin": 16.2,
     "tmax": 26.9,
-    "rain": 1.4
+    "rain": 1.1
    },
    {
     "year": 2018,
     "temp": 17.2,
     "tmin": 10.5,
     "tmax": 24.1,
-    "rain": 1.7
+    "rain": 0.5
    },
    {
     "year": 2017,
     "temp": 18.1,
     "tmin": 16.0,
     "tmax": 20.4,
-    "rain": 0.2
+    "rain": 0.3
    },
    {
     "year": 2016,
     "temp": 21.4,
     "tmin": 18.5,
     "tmax": 25.9,
-    "rain": 0.5
+    "rain": 0.0
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

@@ -54,7 +54,7 @@
   "tmax": 9.8,
   "humidity": 70,
   "wind": 1.9,
-  "rainChance": 23,
+  "rainChance": 21,
   "byYear": [
    {
     "year": 2025,
@@ -89,7 +89,7 @@
     "temp": 7.5,
     "tmin": 4.8,
     "tmax": 11.9,
-    "rain": 4.2
+    "rain": 2.2
    },
    {
     "year": 2020,
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

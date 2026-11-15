@@ -48,8 +48,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/2026-autumn-breeze-u-running-festa",
  "coords": {
-  "lat": 37.55872,
-  "lon": 127.20496,
+  "lat": 37.56461,
+  "lon": 127.19892,
   "precision": "area"
  },
  "climate": {
@@ -102,7 +102,7 @@
     "temp": 7.8,
     "tmin": 4.6,
     "tmax": 11.8,
-    "rain": 4.5
+    "rain": 2.3
    },
    {
     "year": 2020,
@@ -141,5 +141,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

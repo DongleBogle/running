@@ -35,8 +35,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/just-run10-daejeon-second-half-2026",
  "coords": {
-  "lat": 36.35455,
-  "lon": 127.35456,
+  "lat": 36.35452,
+  "lon": 127.35459,
   "precision": "area"
  },
  "climate": {
@@ -124,9 +124,9 @@
     "temp": 12.2,
     "tmin": 10.1,
     "tmax": 18.0,
-    "rain": 3.6
+    "rain": 1.8
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

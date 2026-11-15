@@ -35,8 +35,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/2026-hug-run",
  "coords": {
-  "lat": 37.56759,
-  "lon": 126.89372,
+  "lat": 37.57611,
+  "lon": 126.89583,
   "precision": "area"
  },
  "climate": {
@@ -117,7 +117,7 @@
     "temp": -6.7,
     "tmin": -7.9,
     "tmax": -2.5,
-    "rain": 0.3
+    "rain": 0.1
    },
    {
     "year": 2016,
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }
