@@ -650,9 +650,9 @@ function renderYoutubeAnalysis(data) {
   document.getElementById('ytVideoTitle').textContent = video.title;
   document.getElementById('ytVideoAuthor').textContent = video.author || "YouTube Channel";
   
-  const totalMin = Math.floor(video.lengthSeconds / 60);
-  const totalSec = video.lengthSeconds % 60;
-  document.getElementById('ytVideoDuration').textContent = `영상 전체 길이: ${totalMin}분 ${totalSec}초 (${video.lengthSeconds}초)`;
+  // 길이를 못 받은 경우(0) '0분 0초'로 보이지 않게 비워 둔다
+  document.getElementById('ytVideoDuration').textContent =
+    video.lengthSeconds ? `영상 전체 길이: ${formatDuration(video.lengthSeconds)}` : '';
 
   // 2. 배지 렌더링
   const badgesEl = document.getElementById('ytAnalysisBadges');
@@ -731,6 +731,10 @@ function onClipParamsChange() {
   const rangeStr = `${startMin}:${String(startRemainderSec).padStart(2, '0')} ~ ${endMin}:${String(endRemainderSec).padStart(2, '0')} (${durSec}초)`;
   document.getElementById('clipRangeText').textContent = rangeStr;
   document.getElementById('clipExactSecondsText').textContent = `${startSec}초 ~ ${endSec}초 구간`;
+  // 길이 빠른 선택 버튼은 지금 구간 길이와 같은 것만 강조
+  document.querySelectorAll('#clipDurationBtns .btn-quick').forEach(b => {
+    b.classList.toggle('active', Number(b.dataset.dur) === durSec);
+  });
 
   // 유튜브 외부 링크 및 IFrame 갱신
   if (currentYtData && currentYtData.video) {

@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import ssl
 import urllib.request
@@ -101,6 +102,24 @@ def fetch_player_mweb(video_id):
     except Exception:
         return {}
 
+def fetch_length_data_api(video_id):
+    """YouTube Data API videos.list 로 영상 길이(초) 조회. 키(YOUTUBE_API_KEY)가 없거나 실패하면 0"""
+    api_key = os.environ.get('YOUTUBE_API_KEY', '').strip()
+    if not api_key:
+        return 0
+    try:
+        params = urllib.parse.urlencode({'part': 'contentDetails', 'id': video_id, 'key': api_key})
+        with urllib.request.urlopen('https://www.googleapis.com/youtube/v3/videos?' + params, timeout=6) as resp:
+            items = json.loads(resp.read().decode('utf-8')).get('items', [])
+        d = (items[0].get('contentDetails') or {}).get('duration', '') if items else ''
+        m = re.fullmatch(r'P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', d)
+        if not m:
+            return 0
+        dd, h, mi, se = (int(x or 0) for x in m.groups())
+        return ((dd * 24 + h) * 60 + mi) * 60 + se
+    except Exception:
+        return 0
+
 def fetch_youtube_metadata(url):
     video_id = extract_video_id(url)
     if not video_id:
@@ -159,6 +178,10 @@ def fetch_youtube_metadata(url):
             length_seconds = length_seconds or int(p.get('lengthSeconds', 0) or 0)
         except Exception:
             pass
+
+    # 그래도 길이가 없으면(Vercel 에서 watch 페이지·player API 가 모두 막힌 경우) Data API videos.list(1유닛)로 받는다
+    if not length_seconds:
+        length_seconds = fetch_length_data_api(video_id)
 
     if not title:
         m_title = re.search(r'<meta property="og:title" content="(.*?)"', html)

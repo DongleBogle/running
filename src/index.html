@@ -371,11 +371,11 @@
           <!-- 클립 길이 빠른 선택 -->
           <div>
             <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 6px;">길이 빠른 선택:</div>
-            <div class="quick-row">
-              <button class="btn-quick" onclick="setClipDuration(15)">15초</button>
-              <button class="btn-quick" onclick="setClipDuration(30)" style="border-color: #38bdf8; color: #38bdf8; font-weight: 700;">30초 (기본)</button>
-              <button class="btn-quick" onclick="setClipDuration(60)">1분</button>
-              <button class="btn-quick" onclick="setClipDuration(120)">2분</button>
+            <div class="quick-row" id="clipDurationBtns">
+              <button class="btn-quick" data-dur="15" onclick="setClipDuration(15)">15초</button>
+              <button class="btn-quick" data-dur="30" onclick="setClipDuration(30)">30초</button>
+              <button class="btn-quick" data-dur="60" onclick="setClipDuration(60)">1분</button>
+              <button class="btn-quick" data-dur="120" onclick="setClipDuration(120)">2분</button>
             </div>
           </div>
 
