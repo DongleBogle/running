@@ -34,8 +34,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/2026-andong-nakdong-river-healing-road-andong-healing-walk-run-festa-ea17ddc2c1134d02ae68f77f719ed40b",
  "coords": {
-  "lat": 36.56019,
-  "lon": 128.73108,
+  "lat": 36.56018,
+  "lon": 128.73109,
   "precision": "area"
  },
  "climate": {
@@ -53,7 +53,7 @@
   "tmax": 22.8,
   "humidity": 80,
   "wind": 2.3,
-  "rainChance": 36,
+  "rainChance": 34,
   "byYear": [
    {
     "year": 2025,
@@ -67,7 +67,7 @@
     "temp": 16.7,
     "tmin": 13.9,
     "tmax": 19.1,
-    "rain": 4.2
+    "rain": 3.7
    },
    {
     "year": 2023,
@@ -81,7 +81,7 @@
     "temp": 22.9,
     "tmin": 20.1,
     "tmax": 27.8,
-    "rain": 3.7
+    "rain": 5.0
    },
    {
     "year": 2021,
@@ -102,7 +102,7 @@
     "temp": 21.5,
     "tmin": 17.8,
     "tmax": 24.4,
-    "rain": 27.5
+    "rain": 38.9
    },
    {
     "year": 2018,
@@ -116,7 +116,7 @@
     "temp": 19.3,
     "tmin": 14.6,
     "tmax": 21.6,
-    "rain": 1.2
+    "rain": 0.9
    },
    {
     "year": 2016,
@@ -127,5 +127,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

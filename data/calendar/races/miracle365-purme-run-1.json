@@ -75,7 +75,7 @@
     "temp": 3.8,
     "tmin": 2.7,
     "tmax": 7.4,
-    "rain": 0.0
+    "rain": 0.1
    },
    {
     "year": 2022,
@@ -117,16 +117,16 @@
     "temp": 10.9,
     "tmin": 6.6,
     "tmax": 18.4,
-    "rain": 0.4
+    "rain": 0.1
    },
    {
     "year": 2016,
     "temp": 12.2,
     "tmin": 6.9,
     "tmax": 15.7,
-    "rain": 2.6
+    "rain": 2.2
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

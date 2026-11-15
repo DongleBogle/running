@@ -35,8 +35,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/2026-hanam-misa-lake-energy-run",
  "coords": {
-  "lat": 37.55872,
-  "lon": 127.20496,
+  "lat": 37.56461,
+  "lon": 127.19892,
   "precision": "area"
  },
  "climate": {
@@ -110,14 +110,14 @@
     "temp": -3.7,
     "tmin": -5.8,
     "tmax": 1.9,
-    "rain": 0.1
+    "rain": 0.0
    },
    {
     "year": 2017,
     "temp": -6.9,
     "tmin": -8.0,
     "tmax": -2.7,
-    "rain": 0.1
+    "rain": 0.0
    },
    {
     "year": 2016,
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

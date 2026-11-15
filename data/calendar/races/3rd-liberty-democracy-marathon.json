@@ -110,23 +110,23 @@
     "temp": 10.6,
     "tmin": 9.9,
     "tmax": 15.4,
-    "rain": 37.0
+    "rain": 36.6
    },
    {
     "year": 2017,
     "temp": 12.4,
     "tmin": 5.1,
     "tmax": 14.6,
-    "rain": 2.1
+    "rain": 2.4
    },
    {
     "year": 2016,
     "temp": 1.7,
     "tmin": -0.4,
     "tmax": 7.4,
-    "rain": 0.5
+    "rain": 0.9
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

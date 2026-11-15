@@ -35,8 +35,8 @@
  },
  "source": "https://www.kormarathon.com/ko/races/gyeongju-bomun-night-run-wheres-wally",
  "coords": {
-  "lat": 35.86077,
-  "lon": 129.2684,
+  "lat": 35.85044,
+  "lon": 129.27675,
   "precision": "area"
  },
  "climate": {
@@ -49,74 +49,74 @@
    7,
    11
   ],
-  "temp": 11.3,
-  "tmin": 6.5,
-  "tmax": 16.6,
+  "temp": 11.7,
+  "tmin": 7.0,
+  "tmax": 17.1,
   "humidity": 72,
   "wind": 2.7,
   "rainChance": 13,
   "byYear": [
    {
     "year": 2025,
-    "temp": 10.2,
-    "tmin": 5.2,
-    "tmax": 18.1,
+    "temp": 10.6,
+    "tmin": 5.7,
+    "tmax": 18.6,
     "rain": 0.0
    },
    {
     "year": 2024,
-    "temp": 14.8,
-    "tmin": 9.7,
-    "tmax": 20.1,
+    "temp": 15.2,
+    "tmin": 10.2,
+    "tmax": 20.5,
     "rain": 0.0
    },
    {
     "year": 2023,
-    "temp": 13.2,
-    "tmin": 6.2,
-    "tmax": 21.3,
+    "temp": 13.7,
+    "tmin": 6.7,
+    "tmax": 21.8,
     "rain": 0.0
    },
    {
     "year": 2022,
-    "temp": 13.1,
-    "tmin": 7.3,
-    "tmax": 17.3,
+    "temp": 13.6,
+    "tmin": 7.8,
+    "tmax": 17.7,
     "rain": 0.0
    },
    {
     "year": 2021,
-    "temp": 11.1,
-    "tmin": 5.6,
-    "tmax": 18.4,
+    "temp": 11.5,
+    "tmin": 6.1,
+    "tmax": 18.8,
     "rain": 0.0
    },
    {
     "year": 2020,
-    "temp": 11.3,
-    "tmin": 5.9,
-    "tmax": 16.0,
+    "temp": 11.8,
+    "tmin": 6.4,
+    "tmax": 16.5,
     "rain": 0.0
    },
    {
     "year": 2019,
-    "temp": 11.6,
-    "tmin": 7.5,
-    "tmax": 18.1,
+    "temp": 12.1,
+    "tmin": 8.0,
+    "tmax": 18.5,
     "rain": 0.0
    },
    {
     "year": 2018,
-    "temp": 6.8,
-    "tmin": 2.8,
-    "tmax": 12.1,
+    "temp": 7.2,
+    "tmin": 3.2,
+    "tmax": 12.6,
     "rain": 0.0
    },
    {
     "year": 2017,
-    "temp": 7.4,
-    "tmin": 3.2,
-    "tmax": 15.3,
+    "temp": 7.8,
+    "tmin": 3.7,
+    "tmax": 15.8,
     "rain": 0.0
    },
    {
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }

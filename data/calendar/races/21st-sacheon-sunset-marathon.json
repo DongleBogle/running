@@ -67,7 +67,7 @@
   "tmax": 18.4,
   "humidity": 72,
   "wind": 2.2,
-  "rainChance": 7,
+  "rainChance": 6,
   "byYear": [
    {
     "year": 2025,
@@ -141,5 +141,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-07T13:09"
+ "generatedAt": "2026-11-15T12:24"
 }
