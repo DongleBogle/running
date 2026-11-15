@@ -279,6 +279,10 @@ def fetch_json_retry(url, tries=3):
             if e.code != 429 or i == tries - 1:
                 raise
             time.sleep(30 * (i + 1))  # 분당 호출 제한에 걸리면 잠시 쉬었다 다시
+        except (urllib.error.URLError, TimeoutError) as e:  # 연결·읽기 시간 초과 (GitHub Actions 에서 잦음)
+            if i == tries - 1:
+                raise
+            time.sleep(5 * (i + 1))
 
 
 def climate(lat, lon, race_date, cache):
@@ -334,6 +338,14 @@ def r1(x):
     return None if x is None else round(x, 1)
 
 
+def prev_climate(race_id):
+    try:
+        with open(os.path.join(RACES_DIR, f'{race_id}.json'), encoding='utf-8') as f:
+            return json.load(f).get('climate')
+    except (OSError, ValueError):
+        return None
+
+
 def enrich(races):
     """좌표·과거 날씨를 붙인다. overrides 로 coords 를 직접 넣은 대회는 그 좌표를 쓴다."""
     geo_cache, clim_cache = load_cache(GEO_CACHE), load_cache(CLIMATE_CACHE)
@@ -350,7 +362,7 @@ def enrich(races):
             return climate(r['coords']['lat'], r['coords']['lon'], r['date'], clim_cache)
         except Exception as e:
             print(f'  climate skip {r["id"]}: {e}', file=sys.stderr)
-            return None
+            return prev_climate(r['id'])  # 이번에 못 받으면 지난번 값을 그대로 둔다
 
     with ThreadPoolExecutor(3) as ex:
         for r, c in zip(todo, ex.map(one, todo)):
