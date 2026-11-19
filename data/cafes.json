@@ -150,6 +150,26 @@
       "mapQuery": "플루이드 염창"
     },
     {
+      "id": "cafe-vickleby",
+      "name": "카페 비클레비 (Vickleby)",
+      "region": "서울",
+      "district": "강서구",
+      "spot": "염창 · 안양천 · 한강",
+      "address": "서울 강서구 양천로67길 93-23",
+      "course": "염창나들목 한강공원, 안양천 합수부~양화대교·가양대교 코스",
+      "minKm": 0,
+      "discountType": "fixed",
+      "discountBadge": "러너 인증 할인",
+      "discountDetail": "한강 러닝 후 방문 시 러너 할인 혜택 제공 (세부 할인율은 매장·인스타 공지 참고)",
+      "condition": "당일 러닝 앱 기록 현장 인증",
+      "perks": ["염창나들목 바로 앞", "애견 동반", "한강 코스 인접"],
+      "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80",
+      "instagram": "https://www.instagram.com/cafe.vickleby/",
+      "instagramHandle": "@cafe.vickleby",
+      "naverUrl": "https://naver.me/5k7fJije",
+      "mapQuery": "서울 강서구 양천로67길 93-23"
+    },
+    {
       "id": "souvenir-haus",
       "name": "수베니어하우스 (Souvenir Haus)",
       "region": "서울",

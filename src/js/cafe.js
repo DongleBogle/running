@@ -67,7 +67,7 @@
 
   function cardHtml(c) {
     const q = encodeURIComponent(c.mapQuery || `${c.address} ${c.name}`);
-    const naverUrl = `https://map.naver.com/p/search/${q}`;
+    const naverUrl = c.naverUrl ? esc(c.naverUrl) : `https://map.naver.com/p/search/${q}`;
     const kakaoUrl = `https://map.kakao.com/?q=${q}`;
     const perks = (c.perks || []).map(p => `<span class="cafe-perk">#${esc(p)}</span>`).join('');
     const badgeCls = c.discountType === 'distance' ? 'distance' : '';
