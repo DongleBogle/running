@@ -130,7 +130,7 @@
       "condition": "스트라바·나이키런클럽(NRC) 등 당일 러닝 앱 기록 인증",
       "perks": ["야외 테라스", "양재천 바로 앞"],
       "image": "https://bwissue.com/files/attach/images/141892/196/194/002/3828fc8a0c3836d25530c3bcf268fc44.jpg",
-      "mapQuery": "양재천 카페 푸릇푸릇"
+      "mapQuery": "양재천 prt prt"
     },
     {
       "id": "fluid-yeomchang",
@@ -147,7 +147,7 @@
       "condition": "5km 이상 러닝 후 24시간 이내 러닝 앱 기록 인증",
       "perks": ["크루 모임 친화", "한강 코스 인접"],
       "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
-      "mapQuery": "염창 플루이드"
+      "mapQuery": "플루이드 염창"
     },
     {
       "id": "souvenir-haus",
@@ -185,7 +185,7 @@
       "image": "https://cdn.imweb.me/thumbnail/20260707/f4a5068fa5276.jpeg",
       "instagram": "https://www.instagram.com/thebarnberlin.korea/",
       "instagramHandle": "@thebarnberlin.korea",
-      "mapQuery": "신사 더반 베를린"
+      "mapQuery": "더반베를린 신사"
     },
     {
       "id": "wherever-buam",
@@ -223,7 +223,7 @@
       "image": "https://contents.sixshop.com/uploadedFiles/182310/default/image_1633660407956.jpg",
       "instagram": "https://www.instagram.com/wickerpark_seoul/",
       "instagramHandle": "@wickerpark_seoul",
-      "mapQuery": "광교 위커파크"
+      "mapQuery": "위커파크 앨리웨이 광교"
     },
     {
       "id": "soup-or-salad-jeonpo",
@@ -261,7 +261,7 @@
       "image": "https://ak-d.tripcdn.com/images/1mi5i2234dfr87s2894D7.jpg?proc=resize%2Fm_z%2Cw_375%2Ch_0%3Bformat%2Ff_webp%2C9C2E",
       "instagram": "https://www.instagram.com/thebarnberlin.korea/",
       "instagramHandle": "@thebarnberlin.korea",
-      "mapQuery": "해운대 달맞이길 더반 베를린"
+      "mapQuery": "더반베를린 부산"
     },
     {
       "id": "thebarn-jeju",
@@ -280,7 +280,7 @@
       "image": "https://cdn.imweb.me/thumbnail/20260707/f4a5068fa5276.jpeg",
       "instagram": "https://www.instagram.com/thebarnberlin.korea/",
       "instagramHandle": "@thebarnberlin.korea",
-      "mapQuery": "제주 산지로 더반 베를린"
+      "mapQuery": "더반베를린 제주"
     }
   ]
 }
