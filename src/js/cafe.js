@@ -1,7 +1,10 @@
-// 러닝 기록 인증 할인 카페 탭 (#view-cafe): data/cafes.json 을 불러와 지역·코스·혜택 필터 및 키워드 검색을 제공한다.
+// 러닝 기록 인증 할인 카페 탭 (#view-cafe):
+// 서버리스 API(/api/cafes)를 통해 지역·코스·혜택 필터링과 페이지네이션된 카페 목록을 불러온다.
 (() => {
   const root = document.getElementById('view-cafe');
   if (!root) return;
+
+  const PAGE_SIZE = 8;
 
   const searchInput = document.getElementById('cafeSearch');
   const regionWrap = document.getElementById('cafeRegionChips');
@@ -10,55 +13,40 @@
   const countEl = document.getElementById('cafeCount');
   const resetBtn = document.getElementById('cafeResetBtn');
   const gridEl = document.getElementById('cafeList');
+  const moreWrap = document.getElementById('cafeMoreWrap');
+  const moreBtn = document.getElementById('cafeMoreBtn');
 
   const state = {
     region: 'all',
     spot: 'all',
     perk: 'all',
     query: '',
+    page: 1,
   };
 
-  let allCafes = [];
-
-  const compact = s => String(s || '').toLowerCase().replace(/\s+/g, '');
-
-  function matchPerk(c, perk) {
-    if (perk === 'all') return true;
-    if (perk === 'distance') return c.discountType === 'distance';
-    if (perk === 'storage') return (c.perks || []).some(p => p.includes('보관') || p.includes('샤워') || p.includes('탈의'));
-    if (perk === 'fullfree') return /100%|무료/.test(c.discountDetail || '') || /100%|무료/.test(c.discountBadge || '');
-    return true;
-  }
-
-  function matchWords(c, words) {
-    if (!words.length) return true;
-    const text = [
-      c.name, c.region, c.district, c.spot, c.address,
-      c.course, c.discountBadge, c.discountDetail, c.condition,
-      ...(c.perks || []),
-    ].map(compact).join('|');
-    return words.every(w => text.includes(w));
-  }
+  let loadedCafes = [];
+  let metaRegions = [];
+  let metaSpots = [];
+  let totalMatched = 0;
+  let totalAll = 0;
+  let hasMore = false;
+  let activeController = null;
+  let debounceTimer = null;
 
   function renderRegionChips() {
-    const counts = new Map();
-    for (const c of allCafes) counts.set(c.region, (counts.get(c.region) || 0) + 1);
-    const regions = ['all', ...counts.keys()];
-    regionWrap.innerHTML = regions.map(r => {
-      const label = r === 'all' ? '전체' : r;
-      const cnt = r === 'all' ? allCafes.length : counts.get(r);
-      const active = state.region === r ? 'active' : '';
-      return `<button type="button" class="cafe-chip ${active}" data-region="${esc(r)}">${esc(label)}<span class="cnt">${cnt}</span></button>`;
+    const chips = [{ name: 'all', count: totalAll }, ...metaRegions];
+    regionWrap.innerHTML = chips.map(r => {
+      const label = r.name === 'all' ? '전체' : r.name;
+      const active = state.region === r.name ? 'active' : '';
+      return `<button type="button" class="cafe-chip ${active}" data-region="${esc(r.name)}">${esc(label)}<span class="cnt">${r.count}</span></button>`;
     }).join('');
   }
 
   function renderSpotChips() {
-    const pool = state.region === 'all' ? allCafes : allCafes.filter(c => c.region === state.region);
-    const spots = [...new Set(pool.map(c => c.spot).filter(Boolean))];
-    if (state.spot !== 'all' && !spots.includes(state.spot)) {
+    if (state.spot !== 'all' && !metaSpots.includes(state.spot)) {
       state.spot = 'all';
     }
-    spotWrap.innerHTML = ['all', ...spots].map(s => {
+    spotWrap.innerHTML = ['all', ...metaSpots].map(s => {
       const label = s === 'all' ? '전체 동네·코스' : s;
       const active = state.spot === s ? 'active' : '';
       return `<button type="button" class="cafe-chip ${active}" data-spot="${esc(s)}">${esc(label)}</button>`;
@@ -121,23 +109,76 @@
     renderSpotChips();
     renderPerkChips();
 
-    const words = state.query.trim().split(/\s+/).filter(Boolean).map(compact);
-    const filtered = allCafes.filter(c =>
-      (state.region === 'all' || c.region === state.region) &&
-      (state.spot === 'all' || c.spot === state.spot) &&
-      matchPerk(c, state.perk) &&
-      matchWords(c, words)
-    );
-
-    const hasFilter = state.region !== 'all' || state.spot !== 'all' || state.perk !== 'all' || words.length > 0;
+    const hasFilter = state.region !== 'all' || state.spot !== 'all' || state.perk !== 'all' || state.query.trim().length > 0;
     resetBtn.hidden = !hasFilter;
-    countEl.innerHTML = `검색 결과 <strong>${filtered.length}</strong>곳` + (hasFilter ? ` (전체 ${allCafes.length}곳 중)` : '');
+    countEl.innerHTML = `검색 결과 <strong>${totalMatched}</strong>곳` + (hasFilter ? ` (전체 ${totalAll}곳 중)` : '');
 
-    if (!filtered.length) {
+    if (!loadedCafes.length) {
       gridEl.innerHTML = '<div class="cafe-empty">조건에 맞는 러닝 할인 카페가 없어요. 다른 지역명이나 코스로 검색해 보세요.</div>';
+      moreWrap.hidden = true;
       return;
     }
-    gridEl.innerHTML = filtered.map(cardHtml).join('');
+
+    gridEl.innerHTML = loadedCafes.map(cardHtml).join('');
+    moreWrap.hidden = !hasMore;
+    if (hasMore) {
+      const remain = Math.max(0, totalMatched - loadedCafes.length);
+      moreBtn.textContent = `카페 더 보기 (${remain}곳 남음) ▾`;
+      moreBtn.disabled = false;
+    }
+  }
+
+  async function fetchCafes(append = false) {
+    if (activeController) activeController.abort();
+    activeController = new AbortController();
+
+    if (append) {
+      moreBtn.disabled = true;
+      moreBtn.textContent = '불러오는 중...';
+    }
+
+    const params = new URLSearchParams({
+      region: state.region,
+      spot: state.spot,
+      perk: state.perk,
+      q: state.query.trim(),
+      page: String(state.page),
+      limit: String(PAGE_SIZE),
+    });
+
+    try {
+      const res = await fetch(Platform.apiUrl('/api/cafes?' + params.toString()), {
+        headers: { 'X-Requested-With': 'MarathonNote' },
+        cache: 'no-store',
+        signal: activeController.signal,
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      metaRegions = data.regions || [];
+      metaSpots = data.spots || [];
+      totalMatched = data.total ?? 0;
+      totalAll = data.totalAll ?? 0;
+      hasMore = Boolean(data.hasMore);
+      loadedCafes = append ? loadedCafes.concat(data.cafes || []) : (data.cafes || []);
+      render();
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      if (!append) {
+        gridEl.innerHTML = `<div class="cafe-empty">${esc(e.message || '카페 정보를 불러오지 못했습니다.')}</div>`;
+        moreWrap.hidden = true;
+      } else {
+        moreBtn.disabled = false;
+        moreBtn.textContent = '다시 시도 ▾';
+      }
+    }
+  }
+
+  function resetAndFetch() {
+    state.page = 1;
+    fetchCafes(false);
   }
 
   regionWrap.addEventListener('click', e => {
@@ -145,29 +186,34 @@
     if (!btn) return;
     state.region = btn.dataset.region;
     state.spot = 'all';
-    render();
+    resetAndFetch();
   });
 
   spotWrap.addEventListener('click', e => {
     const btn = e.target.closest('button[data-spot]');
     if (!btn) return;
     state.spot = btn.dataset.spot;
-    render();
+    resetAndFetch();
   });
 
   perkWrap.addEventListener('click', e => {
     const btn = e.target.closest('button[data-perk]');
     if (!btn) return;
     state.perk = btn.dataset.perk;
-    render();
+    resetAndFetch();
   });
 
   searchInput.addEventListener('input', () => {
     state.query = searchInput.value;
-    render();
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(resetAndFetch, 200);
   });
   searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') searchInput.blur();
+    if (e.key === 'Enter') {
+      clearTimeout(debounceTimer);
+      resetAndFetch();
+      searchInput.blur();
+    }
   });
 
   resetBtn.addEventListener('click', () => {
@@ -176,20 +222,14 @@
     state.perk = 'all';
     state.query = '';
     searchInput.value = '';
-    render();
+    resetAndFetch();
   });
 
-  async function init() {
-    try {
-      const res = await fetch(Platform.dataUrl('cafes.json'), { cache: 'no-cache' });
-      if (!res.ok) throw new Error(res.status);
-      const data = await res.json();
-      allCafes = data.cafes || [];
-      render();
-    } catch (e) {
-      gridEl.innerHTML = '<div class="cafe-empty">카페 정보를 불러오지 못했습니다.</div>';
-    }
-  }
+  moreBtn.addEventListener('click', () => {
+    if (!hasMore) return;
+    state.page += 1;
+    fetchCafes(true);
+  });
 
-  init();
+  fetchCafes(false);
 })();

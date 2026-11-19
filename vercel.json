@@ -2,6 +2,11 @@
   "version": 2,
   "buildCommand": "node scripts/build.mjs web",
   "outputDirectory": "dist/web",
+  "functions": {
+    "api/cafes.py": {
+      "includeFiles": "data/cafes.json"
+    }
+  },
   "redirects": [
     {
       "source": "/home.html",

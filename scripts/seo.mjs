@@ -257,7 +257,15 @@ export function generateSeo(out) {
   }
 
   // 3) robots.txt, sitemap.xml
-  writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${site}/sitemap.xml\n`);
+  const blockedBots = [
+    'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'CCBot', 'ClaudeBot', 'anthropic-ai',
+    'Bytespider', 'PerplexityBot', 'Google-Extended', 'Meta-ExternalAgent', 'Applebot-Extended',
+  ];
+  const botRules = blockedBots.map(b => `User-agent: ${b}\nDisallow: /`).join('\n\n');
+  writeFileSync(
+    join(out, 'robots.txt'),
+    `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /data/\n\n${botRules}\n\nSitemap: ${site}/sitemap.xml\n`,
+  );
   const urls = [
     ...Object.values(VIEWS).map(v => ({ loc: site + v.path })),
     ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10) })),

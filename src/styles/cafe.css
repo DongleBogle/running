@@ -331,6 +331,34 @@
   color: var(--text-muted);
   font-size: 0.92rem;
 }
+#view-cafe .cafe-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+#view-cafe .cafe-more-wrap[hidden] {
+  display: none;
+}
+#view-cafe .cafe-more-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 10px 26px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+#view-cafe .cafe-more-btn:hover {
+  border-color: var(--accent-neon);
+  color: var(--accent-neon);
+}
+#view-cafe .cafe-more-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
 #view-cafe .cafe-tips {
   background: rgba(16, 185, 129, 0.06);
   border: 1px solid rgba(16, 185, 129, 0.25);
