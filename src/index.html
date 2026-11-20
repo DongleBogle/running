@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/calendar.css">
   <link rel="stylesheet" href="styles/pace.css">
+  <link rel="stylesheet" href="styles/cafe.css">
   <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
   <script src="js/common.js"></script>
@@ -27,6 +28,7 @@
     <a class="tab" href="converter" data-view="converter">🎬 <span class="tab-long">유튜브 주로 영상 추출</span><span class="tab-short">주로영상</span></a>
     <a class="tab" href="calendar" data-view="calendar">📅 <span class="tab-long">마라톤 캘린더</span><span class="tab-short">캘린더</span></a>
     <a class="tab" href="pace" data-view="pace">⏱️ <span class="tab-long">페이스 계산기</span><span class="tab-short">페이스</span></a>
+    <a class="tab" href="cafe" data-view="cafe">☕ <span class="tab-long">러닝 할인 카페</span><span class="tab-short">할인카페</span></a>
   </nav>
 </div>
 
@@ -633,10 +635,65 @@
 </div>
 </main>
 
+<!-- 러닝 기록 인증 할인 카페 -->
+<main class="view" id="view-cafe" hidden>
+<div class="container">
+  <div class="cafe-intro">
+    <h2>☕ 러닝 기록 인증 할인 카페</h2>
+    <p>달리고 난 뒤 스트라바·NRC·가민 등 러닝 앱 기록을 보여주면 음료를 할인해 주는 전국 ‘러너 프렌들리 카페’를 지역·코스별로 찾아보세요.</p>
+  </div>
+
+  <section class="cafe-tips" aria-label="방문 전 안내">
+    <h3>💡 러닝 인증 할인 방문 팁</h3>
+    <ul>
+      <li>대부분 <strong>스트라바(Strava), 나이키런클럽(NRC), 가민 커넥트(Garmin)</strong> 등 러닝 앱의 <strong>당일 실제 기록 화면</strong>을 주문 시 스태프에게 직접 보여주면 적용됩니다. (단순 캡처본은 제외될 수 있어요.)</li>
+      <li>매장 사정에 따라 이벤트 기간이나 할인 기준이 변경될 수 있으니 방문 전 각 카페의 <strong>공식 인스타그램</strong>이나 지도 공지를 확인해 보세요.</li>
+    </ul>
+  </section>
+
+  <section class="cafe-filter-card" aria-label="지역 및 키워드 검색">
+    <div class="cafe-search-row">
+      <input type="search" id="cafeSearch" class="cafe-search-input" placeholder="🔍 지역(성수, 잠실, 망원, 광안리), 러닝 코스(한강, 석촌호수, 양재천), 카페명 검색" aria-label="러닝 할인 카페 검색" enterkeyhint="search">
+    </div>
+
+    <div class="cafe-filter-row">
+      <span class="lbl">시 · 도</span>
+      <div class="cafe-chips" id="cafeRegionChips"></div>
+    </div>
+
+    <div class="cafe-filter-row">
+      <span class="lbl">동네 · 코스</span>
+      <div class="cafe-chips" id="cafeSpotChips"></div>
+    </div>
+
+    <div class="cafe-filter-row">
+      <span class="lbl">혜택 · 편의</span>
+      <div class="cafe-chips" id="cafePerkChips">
+        <button type="button" class="cafe-chip active" data-perk="all">전체</button>
+        <button type="button" class="cafe-chip" data-perk="distance">📏 거리 비례·차등 할인</button>
+        <button type="button" class="cafe-chip" data-perk="fullfree">🏅 풀코스 무료 혜택</button>
+        <button type="button" class="cafe-chip" data-perk="storage">🎒 짐·러닝화 보관 / 탈의</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="cafe-toolbar">
+    <div class="cafe-count" id="cafeCount">카페 목록을 불러오는 중...</div>
+    <button type="button" class="cafe-reset-btn" id="cafeResetBtn" hidden>필터 초기화 ↺</button>
+  </div>
+
+  <div class="cafe-grid" id="cafeList"></div>
+  <div class="cafe-more-wrap" id="cafeMoreWrap" hidden>
+    <button type="button" class="cafe-more-btn" id="cafeMoreBtn">카페 더 보기 ▾</button>
+  </div>
+</div>
+</main>
+
 <script src="js/shell.js"></script>
 <script src="js/home.js"></script>
 <script src="js/app.js"></script>
 <script src="js/calendar.js"></script>
 <script src="js/pace.js"></script>
+<script src="js/cafe.js"></script>
 </body>
 </html>

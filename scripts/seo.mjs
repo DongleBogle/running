@@ -37,6 +37,11 @@ const VIEWS = {
     title: '마라톤 페이스 계산기 - 서브4·구간표 | MarathonNote',
     description: '목표 기록으로 1km 페이스와 구간별 통과 시각표를, 달린 기록으로 하프·풀코스 예상 기록을 계산하세요.',
   },
+  cafe: {
+    file: 'cafe.html', path: '/cafe',
+    title: '러닝 기록 인증 할인 카페 찾기 - 지역·코스별 러너 카페 | MarathonNote',
+    description: '달린 기록(스트라바·NRC·가민)을 인증하면 커피·음료를 할인해 주는 전국 러너 프렌들리 카페를 지역과 러닝 코스별로 찾아보세요.',
+  },
 };
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
@@ -252,7 +257,15 @@ export function generateSeo(out) {
   }
 
   // 3) robots.txt, sitemap.xml
-  writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${site}/sitemap.xml\n`);
+  const blockedBots = [
+    'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'CCBot', 'ClaudeBot', 'anthropic-ai',
+    'Bytespider', 'PerplexityBot', 'Google-Extended', 'Meta-ExternalAgent', 'Applebot-Extended',
+  ];
+  const botRules = blockedBots.map(b => `User-agent: ${b}\nDisallow: /`).join('\n\n');
+  writeFileSync(
+    join(out, 'robots.txt'),
+    `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /data/\n\n${botRules}\n\nSitemap: ${site}/sitemap.xml\n`,
+  );
   const urls = [
     ...Object.values(VIEWS).map(v => ({ loc: site + v.path })),
     ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10) })),

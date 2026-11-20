@@ -3,7 +3,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 import os
 import sys
 import urllib.parse
-from api import analyze, race_videos
+from api import analyze, cafes, race_videos
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -33,7 +33,7 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With')
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -49,14 +49,23 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
             self.send_json_response(data, status=status)
             return
 
-        # 탭 경로(/converter, /calendar, /pace)는 build 가 만든 화면별 HTML(내용은 index.html 과 같고 title·meta 만 다름)을 내려주고,
+        if path == '/api/cafes':
+            client_ip = self.client_address[0] if self.client_address else ''
+            status, data = cafes.handle(parsed.query, self.headers, client_ip)
+            self.send_json_response(data, status=status, extra_headers={
+                'Cache-Control': 'private, no-store',
+                'X-Robots-Tag': 'noindex, nofollow',
+            })
+            return
+
+        # 탭 경로(/converter, /calendar, /pace, /cafe)는 build 가 만든 화면별 HTML(내용은 index.html 과 같고 title·meta 만 다름)을 내려주고,
         # 화면 전환은 js/shell.js 가 한다
-        if path in ('/converter/', '/calendar/', '/pace/'):  # 끝 슬래시가 있으면 상대경로(styles/ 등)가 깨지므로 정리
+        if path in ('/converter/', '/calendar/', '/pace/', '/cafe/'):  # 끝 슬래시가 있으면 상대경로(styles/ 등)가 깨지므로 정리
             self.send_response(301)
             self.send_header('Location', path.rstrip('/'))
             self.end_headers()
             return
-        if path in ('/converter', '/calendar', '/pace'):
+        if path in ('/converter', '/calendar', '/pace', '/cafe'):
             self.path = path + '.html'
         # 대회 상세 /race/<id> 는 build 가 만든 race/<id>.html (vercel.json 과 같은 규칙, 없는 대회는 404)
         elif path.startswith('/race/') and '/' not in path[len('/race/'):].rstrip('/'):
@@ -71,9 +80,12 @@ class RunningAppHandler(SimpleHTTPRequestHandler):
             return
         self.send_error(404, "Endpoint not found")
 
-    def send_json_response(self, data, status=200):
+    def send_json_response(self, data, status=200, extra_headers=None):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
+        if extra_headers:
+            for k, v in extra_headers.items():
+                self.send_header(k, v)
         self.end_headers()
         self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
 

@@ -2,6 +2,11 @@
   "version": 2,
   "buildCommand": "node scripts/build.mjs web",
   "outputDirectory": "dist/web",
+  "functions": {
+    "api/cafes.py": {
+      "includeFiles": "data/cafes.json"
+    }
+  },
   "redirects": [
     {
       "source": "/home.html",
@@ -18,6 +23,10 @@
     {
       "source": "/pace.html",
       "destination": "/pace"
+    },
+    {
+      "source": "/cafe.html",
+      "destination": "/cafe"
     }
   ],
   "rewrites": [
@@ -30,7 +39,7 @@
       "destination": "/api/race_videos"
     },
     {
-      "source": "/:view(converter|calendar|pace)",
+      "source": "/:view(converter|calendar|pace|cafe)",
       "destination": "/:view.html"
     },
     {
