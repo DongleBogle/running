@@ -28,7 +28,7 @@
  "image": "data/calendar/images/473e53cb1a3d8800.jpg",
  "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1789205237/kormarathon/events/event-images-1789205235659.jpg",
  "registration": {
-  "opensAt": null,
+  "opensAt": "2026-11-17",
   "closesAt": "2026-11-22",
   "closed": false,
   "url": "https://ajgrun.kr/"
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-15T12:24"
+ "generatedAt": "2026-11-21T07:54"
 }

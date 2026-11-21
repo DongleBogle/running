@@ -28,8 +28,8 @@
  "image": "data/calendar/images/be11b2ec100ac559.jpg",
  "poster": "https://res.cloudinary.com/dbst091yt/image/upload/c_limit,w_800,f_jpg,q_auto/v1768454554/kormarathon/events/event-2026-new-years-sunrise-run-main.jpg",
  "registration": {
-  "opensAt": null,
-  "closesAt": null,
+  "opensAt": "2026-10-28",
+  "closesAt": "2026-12-31",
   "closed": false,
   "url": "http://새해일출런.kr/"
  },
@@ -128,5 +128,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-15T12:24"
+ "generatedAt": "2026-11-21T07:54"
 }

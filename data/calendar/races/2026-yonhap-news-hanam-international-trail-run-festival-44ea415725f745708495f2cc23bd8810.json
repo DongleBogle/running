@@ -41,7 +41,7 @@
  "image": "",
  "poster": "",
  "registration": {
-  "opensAt": null,
+  "opensAt": "2026-11-17",
   "closesAt": "2026-11-23",
   "closed": false,
   "url": "https://yhitf.co.kr"
@@ -141,5 +141,5 @@
    }
   ]
  },
- "generatedAt": "2026-11-15T12:24"
+ "generatedAt": "2026-11-21T07:54"
 }
