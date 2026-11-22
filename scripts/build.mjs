@@ -24,6 +24,8 @@ rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(root, 'src'), out, { recursive: true });
 cpSync(join(root, 'data'), join(out, 'data'), { recursive: true });
+// 카페 원본 JSON은 정적 공개 경로에서 제외하고 서버리스 API(/api/cafes)를 통해서만 제공한다
+rmSync(join(out, 'data', 'cafes.json'), { force: true });
 rmSync(join(out, 'js', 'platform'), { recursive: true });
 
 const read = (f) => readFileSync(join(root, 'src/js/platform', f), 'utf8');

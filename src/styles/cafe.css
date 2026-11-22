@@ -1,0 +1,395 @@
+/* 러닝 기록 인증 할인 카페 탭 (#view-cafe) */
+#view-cafe .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+#view-cafe .cafe-intro { margin-bottom: 16px; }
+#view-cafe .cafe-intro h2 { font-size: 1.3rem; margin-bottom: 4px; }
+#view-cafe .cafe-intro p { color: var(--text-muted); font-size: 0.9rem; word-break: keep-all; }
+
+/* 검색 및 지역·코스 필터 카드 */
+#view-cafe .cafe-filter-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+#view-cafe .cafe-search-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+#view-cafe .cafe-search-input {
+  flex: 1;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-size: 16px;
+  font-family: inherit;
+}
+#view-cafe .cafe-search-input:focus {
+  outline: none;
+  border-color: var(--accent-neon);
+}
+#view-cafe .cafe-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+#view-cafe .cafe-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 10px;
+}
+#view-cafe .cafe-filter-row .lbl {
+  width: 68px;
+  flex: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+#view-cafe .cafe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+}
+#view-cafe .cafe-chip {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.83rem;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+#view-cafe .cafe-chip:hover {
+  border-color: #334155;
+}
+#view-cafe .cafe-chip.active {
+  border-color: var(--accent-neon);
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-neon);
+  font-weight: 700;
+}
+#view-cafe .cafe-chip .cnt {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-left: 3px;
+}
+
+/* 결과 카운트 및 필터 초기화 */
+#view-cafe .cafe-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+#view-cafe .cafe-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+#view-cafe .cafe-count strong {
+  color: var(--accent-neon);
+  font-weight: 700;
+}
+#view-cafe .cafe-reset-btn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+#view-cafe .cafe-reset-btn:hover {
+  color: var(--text-main);
+  border-color: var(--accent-cyan);
+}
+
+/* 카페 카드 그리드 */
+#view-cafe .cafe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+#view-cafe .cafe-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s;
+}
+#view-cafe .cafe-card:hover {
+  border-color: #334155;
+}
+#view-cafe .cafe-thumb-wrap {
+  position: relative;
+  width: 100%;
+  height: 168px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  overflow: hidden;
+}
+#view-cafe .cafe-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#view-cafe .cafe-thumb-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.95));
+}
+#view-cafe .cafe-thumb-fallback .ico {
+  font-size: 2rem;
+}
+#view-cafe .cafe-card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+#view-cafe .cafe-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#view-cafe .cafe-region-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+#view-cafe .cafe-discount-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #04120c;
+  background: var(--accent-neon);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+#view-cafe .cafe-discount-badge.distance {
+  background: linear-gradient(135deg, #10b981, #38bdf8);
+}
+
+#view-cafe .cafe-title-box h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-main);
+  word-break: keep-all;
+}
+#view-cafe .cafe-course {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+  word-break: keep-all;
+}
+
+/* 할인 혜택 & 인증 조건 상세 박스 */
+#view-cafe .cafe-benefit-box {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#view-cafe .cafe-benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+#view-cafe .cafe-benefit-row .k {
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-neon);
+  background: rgba(16, 185, 129, 0.12);
+  padding: 1px 6px;
+  border-radius: 5px;
+  margin-top: 1px;
+}
+#view-cafe .cafe-benefit-row.cond .k {
+  color: var(--accent-gold);
+  background: rgba(250, 204, 21, 0.12);
+}
+#view-cafe .cafe-benefit-row .v {
+  color: var(--text-main);
+  flex: 1;
+}
+
+/* 편의시설 태그 & 주소 */
+#view-cafe .cafe-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+#view-cafe .cafe-perk {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+#view-cafe .cafe-address {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 2px;
+}
+
+/* 지도·인스타그램 바로가기 버튼 */
+#view-cafe .cafe-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+#view-cafe .cafe-btn {
+  flex: 1;
+  min-width: 84px;
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--card-border);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+#view-cafe .cafe-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+#view-cafe .cafe-btn.naver {
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+#view-cafe .cafe-btn.naver:hover {
+  background: rgba(16, 185, 129, 0.12);
+}
+#view-cafe .cafe-btn.kakao {
+  border-color: rgba(250, 204, 21, 0.35);
+  color: #fde047;
+}
+#view-cafe .cafe-btn.kakao:hover {
+  background: rgba(250, 204, 21, 0.1);
+}
+#view-cafe .cafe-btn.insta {
+  border-color: rgba(244, 114, 182, 0.35);
+  color: #f472b6;
+}
+#view-cafe .cafe-btn.insta:hover {
+  background: rgba(244, 114, 182, 0.1);
+}
+
+/* 빈 결과 및 방문 팁 안내 카드 */
+#view-cafe .cafe-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 36px 16px;
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+#view-cafe .cafe-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+#view-cafe .cafe-more-wrap[hidden] {
+  display: none;
+}
+#view-cafe .cafe-more-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 10px 26px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+#view-cafe .cafe-more-btn:hover {
+  border-color: var(--accent-neon);
+  color: var(--accent-neon);
+}
+#view-cafe .cafe-more-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+#view-cafe .cafe-tips {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+#view-cafe .cafe-tips h3 {
+  font-size: 0.92rem;
+  color: var(--accent-neon);
+  margin-bottom: 6px;
+}
+#view-cafe .cafe-tips ul {
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  display: grid;
+  gap: 4px;
+}
+#view-cafe .cafe-tips strong {
+  color: var(--text-main);
+}
+#view-cafe .cafe-tips li {
+  word-break: keep-all;
+}
+
+@media (max-width: 640px) {
+  #view-cafe .cafe-grid {
+    grid-template-columns: 1fr;
+  }
+  #view-cafe .cafe-filter-row .lbl {
+    width: 100%;
+  }
+}
