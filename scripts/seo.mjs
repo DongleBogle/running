@@ -220,21 +220,34 @@ export function generateSeo(out) {
     .map(f => JSON.parse(readFileSync(join(racesDir, f), 'utf8')))
     .filter(r => r.id && /^\d{4}-\d{2}-\d{2}$/.test(r.date || ''));
 
-  // 1) 탭 화면별 HTML (캘린더 화면 아래에 월별 전체 대회 링크를 넣어 둔다)
+  // 1) 탭 화면별 HTML
+  // 월별 전체 대회 링크(raceArchiveHtml)는 캘린더 화면(calendar.html)에만 넣어
+  // 홈(index.html)의 대표 내부 링크 비중이 상단 4개 탭(/converter · /calendar · /pace · /cafe)에 집중되도록 한다
   const calListTag = '<div class="cal-list" id="calList"></div>';
   const indexSrc = readFileSync(join(out, 'index.html'), 'utf8');
   if (!indexSrc.includes(calListTag)) throw new Error('SEO: index.html 에 #calList 가 없어 대회 링크를 넣지 못했습니다');
-  const indexHtml = indexSrc.replace(calListTag, `${calListTag}\n    ${raceArchiveHtml(races)}`);
-  // 구글은 검색 결과의 사이트 이름을 정할 때 WebSite 의 name·alternateName 을 참고한다
+  const calendarHtml = indexSrc.replace(calListTag, `${calListTag}\n    ${raceArchiveHtml(races)}`);
+  // 구글·네이버 검색 결과의 사이트 이름 및 대표 서브링크(사이트링크) 참고용 구조화 데이터
   const homeLd = jsonLd({
     '@context': 'https://schema.org', '@type': 'WebSite',
     name: SITE_NAME_KO, alternateName: [SITE_NAME, 'marathonnote', 'Marathon Note', '마라톤 노트'],
     inLanguage: 'ko', url: site + '/',
   });
+  const navLd = jsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+      { '@type': 'SiteNavigationElement', position: 1, name: '유튜브 주로 영상 추출', url: site + '/converter' },
+      { '@type': 'SiteNavigationElement', position: 2, name: '마라톤 캘린더', url: site + '/calendar' },
+      { '@type': 'SiteNavigationElement', position: 3, name: '페이스 계산기', url: site + '/pace' },
+      { '@type': 'SiteNavigationElement', position: 4, name: '러닝 할인 카페', url: site + '/cafe' },
+    ],
+  });
   const verify = verificationTags();
   for (const v of Object.values(VIEWS)) {
-    let html = addHead(setTitle(indexHtml, v.title), headTags({ site, path: v.path, title: v.title, description: v.description, image: DEFAULT_IMAGE }));
-    if (v.file === 'index.html') html = addHead(html, [homeLd, verify].filter(Boolean).join('\n  '));
+    const baseHtml = v.file === 'calendar.html' ? calendarHtml : indexSrc;
+    let html = addHead(setTitle(baseHtml, v.title), headTags({ site, path: v.path, title: v.title, description: v.description, image: DEFAULT_IMAGE }));
+    if (v.file === 'index.html') html = addHead(html, [homeLd, navLd, verify].filter(Boolean).join('\n  '));
     if (v.file === 'pace.html') html = addHead(html, jsonLd(faqLd(html)));
     writeFileSync(join(out, v.file), html);
   }
@@ -267,10 +280,10 @@ export function generateSeo(out) {
     `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /data/\n\n${botRules}\n\nSitemap: ${site}/sitemap.xml\n`,
   );
   const urls = [
-    ...Object.values(VIEWS).map(v => ({ loc: site + v.path })),
-    ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10) })),
+    ...Object.values(VIEWS).map(v => ({ loc: site + v.path, priority: v.path === '/' ? '1.0' : '0.9' })),
+    ...races.map(r => ({ loc: `${site}/race/${encodeURIComponent(r.id)}`, lastmod: (r.generatedAt || '').slice(0, 10), priority: '0.5' })),
   ];
-  const body = urls.map(u => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n');
+  const body = urls.map(u => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}<priority>${u.priority}</priority></url>`).join('\n');
   writeFileSync(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`);
   console.log(`SEO: views ${Object.keys(VIEWS).length}, races ${races.length} (site="${site}")`);
 }
