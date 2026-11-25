@@ -6,9 +6,11 @@
   <title>대회 정보 - MarathonNote</title>
   <!-- /race/<id> 주소에서도 js/, data/ 같은 상대경로가 루트 기준이 되도록 -->
   <base href="/">
+  <link rel="stylesheet" href="styles/strategy.css">
   <!-- @@PLATFORM_HEAD@@ -->
   <script src="js/platform.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/strategy.js"></script>
   <style>
     :root {
       --bg-dark: #0a0e17;
@@ -162,7 +164,7 @@ function heroHtml(r) {
     <div class="meta"><div>📅 ${fmtDay(r.date)}</div><div>📍 ${esc(r.location || '장소 미정')}</div>
       ${reg.opensAt || reg.closesAt ? `<div>📝 접수 ${fmtDateTime(reg.opensAt)} ~ ${fmtDateTime(reg.closesAt)}</div>` : ''}</div>
     ${dists ? `<div class="badges">${dists}</div>` : ''}
-    <div class="actions">${reglink}</div></div></div></div>`;
+    <div class="actions">${reglink}<button type="button" class="btn" id="btnHeroStrategy" style="background:none;cursor:pointer;font:inherit">🎒 레이스 전략 보기</button></div></div></div></div>`;
 }
 
 function feesHtml(r) {
@@ -298,10 +300,34 @@ async function loadLiveVideos(r) {
   show(groups.after.length ? 'after' : 'before');
 }
 
+function mountRaceStrategy(r) {
+  if (!window.RaceStrategy) return;
+  const distMap = { dfull: RaceStrategy.FULL, dhalf: RaceStrategy.HALF, d10: 10, d5: 5 };
+  const kms = [...new Set((r.distances || []).map(d => distMap[distClass(d)]).filter(Boolean))].sort((a, b) => b - a);
+  const w = r.climate || null;
+  const tempSourceText = w && w.temp != null
+    ? `최근 ${w.years[1] - w.years[0] + 1}년 대회일 오전 평균 기온(${w.temp}°C)을 자동 반영했어요. 대회 직전 일기예보에 맞춰 바꿀 수 있어요.`
+    : '목표 기록과 예상 기온을 고르면 복장·에너지젤 보급 타이밍·준비물 체크리스트를 한눈에 정리해 드려요.';
+  const api = RaceStrategy.mount(document.getElementById('raceStrategy'), {
+    id: `race_${r.id}`,
+    title: r.name,
+    subtitle: `${fmtDay(r.date)} · ${r.location || ''}`.replace(/\s*·\s*$/, ''),
+    distances: kms.length ? kms : undefined,
+    defaultKm: kms[0],
+    defaultTemp: w && w.temp != null ? w.temp : 11,
+    defaultRain: !!(w && w.rainChance >= 35),
+    wind: w ? w.wind : null,
+    tempSourceText,
+    collapsible: true,
+  });
+  document.getElementById('btnHeroStrategy')?.addEventListener('click', () => api?.open(true));
+}
+
 function render(r) {
   document.title = `${r.name} (${r.date}) - MarathonNote`;
-  document.getElementById('page').innerHTML = heroHtml(r) + feesHtml(r) + weatherHtml(r) + mapHtml(r) +
-    videosHtml(r);
+  document.getElementById('page').innerHTML = heroHtml(r) + feesHtml(r) + weatherHtml(r) +
+    '<div id="raceStrategy"></div>' + mapHtml(r) + videosHtml(r);
+  mountRaceStrategy(r);
   loadLiveVideos(r);
 }
 

@@ -88,6 +88,7 @@
     const start = $('goalStart').value;
     $('splitBody').innerHTML = splitRows(goalKm, pace, Number(activeChip('splitStep').step)).map(r =>
       `<tr class="${r.finish ? 'finish' : ''}"><td>${r.label}</td><td class="num">${fmtDur(r.sec)}</td><td class="num">${clockAt(start, r.sec)}</td></tr>`).join('');
+    if (strategyApi) strategyApi.update({ km: goalKm, totalSec: total });
   }
   function pickGoalDist(km) {
     goalKm = km;
@@ -128,7 +129,19 @@
   chips('recDist', d => { $('recKm').value = +Number(d.km).toFixed(4); renderRecord(); });
   for (const id of ['recKm', 'recH', 'recM', 'recS']) $(id).addEventListener('input', renderRecord);
 
+  let strategyApi = null;
   const fromQuery = { full: FULL, half: HALF, 10: 10, 5: 5 }[new URLSearchParams(location.search).get('d')];
   pickGoalDist(fromQuery || FULL);
+  if (window.RaceStrategy && $('paceStrategy')) {
+    strategyApi = window.RaceStrategy.mount($('paceStrategy'), {
+      id: 'pace',
+      title: '마라톤 레이스 전략',
+      hideGoalControls: true,
+      defaultKm: goalKm,
+      defaultGoalSec: hms('goalH', 'goalM', 'goalS') || DEFAULT_GOAL[goalKm],
+      defaultTemp: 11,
+      tempSourceText: '위에서 입력한 종목·목표 기록과 예상 기온에 맞춰 복장·에너지젤 보급·준비물 체크리스트를 자동으로 계산해 드려요.',
+    });
+  }
   renderRecord();
 })();
