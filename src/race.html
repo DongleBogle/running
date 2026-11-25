@@ -42,13 +42,30 @@
     .card .hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
     .empty { color: var(--text-muted); font-size: 0.9rem; padding: 6px 0; }
     /* 빌드 시 넣는 다른 대회 링크 (scripts/seo.mjs) */
-    .related h2 + ul { margin-bottom: 14px; }
-    .related ul { list-style: none; display: grid; gap: 5px; }
-    .related li { font-size: 0.88rem; }
-    .related li a { color: var(--text-main); text-decoration: none; }
-    .related li a:hover { color: var(--accent-cyan); text-decoration: underline; }
-    .related li span { color: var(--text-muted); font-size: 0.78rem; margin-left: 4px; }
-    .related p { font-size: 0.85rem; }
+    .related { padding: 14px 16px; }
+    .related .rel-head { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+    .related .rel-head h2 { font-size: 0.9rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0; }
+    .related .rel-count { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); opacity: .75; font-variant-numeric: tabular-nums; }
+    .related .rel-grid { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px 8px; }
+    .related .rel-grid li { min-width: 0; }
+    .related .rel-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+      background: rgba(10,14,23,.5); border: 1px solid rgba(30,41,59,.9); border-radius: 8px;
+      color: var(--text-main); text-decoration: none; font-size: 0.84rem;
+      transition: border-color .15s ease, background-color .15s ease; }
+    .related .rel-item:hover { border-color: rgba(6,182,212,.45); background: rgba(6,182,212,.06); }
+    .related .rel-item:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+    .related .rel-date { flex: none; font-size: 0.76rem; font-variant-numeric: tabular-nums; color: var(--text-muted); white-space: nowrap; }
+    .related .rel-date small { font-size: 0.7rem; margin-left: 3px; opacity: .85; }
+    .related .rel-date.sun small { color: #f87171; }
+    .related .rel-date.sat small { color: #60a5fa; }
+    .related .rel-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; transition: color .15s ease; }
+    .related .rel-item:hover .rel-name { color: var(--accent-cyan); }
+    .related .rel-arrow { flex: none; font-size: 0.9rem; line-height: 1; color: var(--text-muted); opacity: .5; transition: transform .15s ease, color .15s ease, opacity .15s ease; }
+    .related .rel-item:hover .rel-arrow { color: var(--accent-cyan); opacity: 1; transform: translateX(2px); }
+    .related .rel-footer { text-align: right; }
+    .related .rel-grid + .rel-footer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); }
+    .related .rel-all { display: inline-flex; align-items: center; gap: 4px; font-size: 0.82rem; font-weight: 600; color: var(--accent-cyan); text-decoration: none; }
+    .related .rel-all:hover { text-decoration: underline; }
 
     .hero { display: flex; gap: 16px; align-items: flex-start; }
     .poster { flex: none; width: 160px; aspect-ratio: 1; border-radius: 12px; object-fit: cover; background: var(--card-border);
@@ -104,6 +121,9 @@
     .video .t { font-size: 0.8rem; padding: 6px 8px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .video .c { font-size: 0.72rem; color: var(--text-muted); padding: 2px 8px 8px; }
 
+    @media (max-width: 620px) {
+      .related .rel-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 560px) {
       .hero { flex-direction: column; }
       .poster { width: 100%; aspect-ratio: auto; height: 200px; }

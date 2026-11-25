@@ -191,19 +191,34 @@ function raceArchiveHtml(races) {
     </section>`;
 }
 
-// 대회 상세 아래 '같은 지역 대회'·'비슷한 시기 대회' (각 6개, 날짜가 가까운 순)
+function relatedItemHtml(r) {
+  const [y, m, day] = r.date.split('-').map(Number);
+  const dowIdx = new Date(Date.UTC(y, m - 1, day)).getUTCDay();
+  const dowCls = dowIdx === 0 ? ' sun' : dowIdx === 6 ? ' sat' : '';
+  const mmdd = `${String(m).padStart(2, '0')}.${String(day).padStart(2, '0')}`;
+  return `<li><a class="rel-item" href="${raceHref(r)}">
+      <span class="rel-date${dowCls}">${mmdd}<small>${WEEKDAYS[dowIdx]}</small></span>
+      <span class="rel-name">${esc(r.name)}</span>
+      <span class="rel-arrow" aria-hidden="true">›</span>
+    </a></li>`;
+}
+
+// 대회 상세 아래 '같은 지역 다른 대회' (최대 6개, 날짜가 가까운 순)
 function relatedRacesHtml(r, races) {
   const dist = x => Math.abs(Date.parse(x.date) - Date.parse(r.date));
-  const others = races.filter(x => x.id !== r.id).sort((a, b) => dist(a) - dist(b) || a.date.localeCompare(b.date));
-  const region = r.region ? others.filter(x => x.region === r.region).slice(0, 6) : [];
-  const shown = new Set(region.map(x => x.id));
-  const nearby = others.filter(x => !shown.has(x.id)).slice(0, 6);
-  const block = (title, list) => list.length
-    ? `<h2>${title}</h2><ul>${[...list].sort((a, b) => a.date.localeCompare(b.date)).map(raceLi).join('')}</ul>` : '';
+  const region = r.region
+    ? races.filter(x => x.id !== r.id && x.region === r.region)
+      .sort((a, b) => dist(a) - dist(b) || a.date.localeCompare(b.date))
+      .slice(0, 6)
+      .sort((a, b) => a.date.localeCompare(b.date))
+    : [];
+  const listHtml = region.length
+    ? `<div class="rel-head"><h2>${esc(r.region)} 지역 다른 대회</h2><span class="rel-count">${region.length}</span></div>
+    <ul class="rel-grid">${region.map(relatedItemHtml).join('')}</ul>`
+    : '';
   return `<nav class="card related" aria-label="다른 마라톤 대회">
-    ${block(`${esc(r.region)} 지역 다른 대회`, region)}
-    ${block('비슷한 시기 대회', nearby)}
-    <p><a href="/calendar">전체 마라톤 일정 캘린더 보기 ›</a></p>
+    ${listHtml}
+    <div class="rel-footer"><a class="rel-all" href="/calendar">전체 마라톤 일정 캘린더 보기 <span aria-hidden="true">›</span></a></div>
   </nav>`;
 }
 
