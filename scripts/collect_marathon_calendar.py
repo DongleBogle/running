@@ -390,6 +390,24 @@ def apply_overrides(month, races):
             r['registration'].update(reg)
 
 
+def write_if_changed(path, doc):
+    """generatedAt 을 제외한 내용이 기존 파일과 같으면 덮어쓰지 않는다."""
+    new_body = {k: v for k, v in doc.items() if k != 'generatedAt'}
+    try:
+        with open(path, encoding='utf-8') as f:
+            prev = json.load(f)
+        if isinstance(prev, dict) and 'generatedAt' in prev:
+            prev_body = {k: v for k, v in prev.items() if k != 'generatedAt'}
+            if json.dumps(prev_body, sort_keys=True, ensure_ascii=False) == json.dumps(new_body, sort_keys=True, ensure_ascii=False):
+                return False
+    except (OSError, ValueError):
+        pass
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(doc, f, ensure_ascii=False, indent=1)
+        f.write('\n')
+    return True
+
+
 def main():
     args = sys.argv[1:]
     a, b = default_range() if not args else (args[0], args[-1])
@@ -405,13 +423,9 @@ def main():
     os.makedirs(RACES_DIR, exist_ok=True)
     for month, races in by_month.items():
         for r in races:
-            with open(os.path.join(RACES_DIR, f"{r['id']}.json"), 'w', encoding='utf-8') as f:
-                json.dump({**r, 'generatedAt': now}, f, ensure_ascii=False, indent=1)
-                f.write('\n')
+            write_if_changed(os.path.join(RACES_DIR, f"{r['id']}.json"), {**r, 'generatedAt': now})
         listed = [{k: r[k] for k in LIST_FIELDS if k in r} for r in races]
-        with open(os.path.join(OUT_DIR, f'{month}.json'), 'w', encoding='utf-8') as f:
-            json.dump({'month': month, 'generatedAt': now, 'races': listed}, f, ensure_ascii=False, indent=1)
-            f.write('\n')
+        write_if_changed(os.path.join(OUT_DIR, f'{month}.json'), {'month': month, 'generatedAt': now, 'races': listed})
         print(f'{month}: {len(races)}개', file=sys.stderr)
     prune_images()
     prune_race_files()
