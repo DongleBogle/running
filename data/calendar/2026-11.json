@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "generatedAt": "2026-11-15T12:24",
+ "generatedAt": "2026-11-21T07:54",
  "races": [
   {
    "id": "2026-jtbc-seoul-marathon",
@@ -1949,7 +1949,7 @@
    "id": "gaya-royal-capital-gimhae-national-marathon",
    "name": "가야왕도김해 전국어울림 마라톤대회",
    "date": "2026-11-29",
-   "location": "경남 김해롯데워터파크 제3주차장",
+   "location": "경남 가동교차로 (김해시 한림면 가동리24-1)",
    "distances": [
     "5km",
     "10km",
@@ -1974,7 +1974,7 @@
    ],
    "image": "data/calendar/images/473e53cb1a3d8800.jpg",
    "registration": {
-    "opensAt": null,
+    "opensAt": "2026-11-17",
     "closesAt": "2026-11-22",
     "closed": false,
     "url": "https://ajgrun.kr/"

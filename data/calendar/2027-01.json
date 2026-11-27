@@ -1,6 +1,6 @@
 {
  "month": "2027-01",
- "generatedAt": "2026-11-15T12:24",
+ "generatedAt": "2026-11-21T07:54",
  "races": [
   {
    "id": "2027-new-years-sunrise-run",
@@ -13,8 +13,8 @@
    ],
    "image": "data/calendar/images/be11b2ec100ac559.jpg",
    "registration": {
-    "opensAt": null,
-    "closesAt": null,
+    "opensAt": "2026-10-28",
+    "closesAt": "2026-12-31",
     "closed": false,
     "url": "http://새해일출런.kr/"
    }
@@ -66,7 +66,7 @@
    ],
    "image": "",
    "registration": {
-    "opensAt": null,
+    "opensAt": "2026-11-17",
     "closesAt": "2027-01-17",
     "closed": false,
     "url": "https://polarbearrun.kr/join/register.asp"
