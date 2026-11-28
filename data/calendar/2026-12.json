@@ -1,6 +1,6 @@
 {
  "month": "2026-12",
- "generatedAt": "2026-11-21T07:54",
+ "generatedAt": "2026-11-28T08:37",
  "races": [
   {
    "id": "2026-moak-trail-run-41df47c07e1b4237a10110f2eef09945",
@@ -290,7 +290,7 @@
    "image": "",
    "registration": {
     "opensAt": "2026-10-22",
-    "closesAt": "2026-11-06",
+    "closesAt": "2026-12-05",
     "closed": false,
     "url": "https://charun.co.kr/"
    }
@@ -380,6 +380,22 @@
     "closesAt": "2026-11-23",
     "closed": false,
     "url": "https://42195race.com/apply/apply.php"
+   }
+  },
+  {
+   "id": "2026-yi-sun-sin-run-festa-09c5c89e2a2748e389a6a9c36b8ef321",
+   "name": "2026 이순신 런 페스타",
+   "date": "2026-12-13",
+   "location": "충남 신정호 국민관광지 야외음악당",
+   "distances": [
+    "기타"
+   ],
+   "image": "",
+   "registration": {
+    "opensAt": "2026-11-01",
+    "closesAt": "2026-12-02",
+    "closed": false,
+    "url": "https://yssmarathon.com/"
    }
   },
   {
